@@ -1,6 +1,6 @@
 ../../../Binaries/Linky_Ota_OM15081R2/obj/dlist.o: \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Source/dlist.c \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Source/dlist.c \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\_default_types.h \
@@ -33,9 +33,9 @@
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\sched.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\types.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\stdio.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h:
 
@@ -101,4 +101,4 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\types.h
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\stdio.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:

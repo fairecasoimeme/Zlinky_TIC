@@ -1,0 +1,6 @@
+09/13/21 18:44:04
+   text	   data	    bss	    dec	    hex	filename
+ 192144	   2816	  19792	 214752	  346e0	../../../Binaries/Linky_Ota_OM15081R2/Linky_Ota_OM15081R2.axf
+09/13/21 18:46:29
+   text	   data	    bss	    dec	    hex	filename
+ 173932	   2660	  18528	 195120	  2fa30	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf

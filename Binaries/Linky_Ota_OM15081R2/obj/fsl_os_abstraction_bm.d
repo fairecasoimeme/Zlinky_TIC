@@ -1,6 +1,6 @@
 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_os_abstraction_bm.o: \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Source/fsl_os_abstraction_bm.c \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Source/fsl_os_abstraction_bm.c \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\_default_types.h \
@@ -8,10 +8,10 @@
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\_newlib_version.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\_intsup.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\_stdint.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_bm.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_config.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_bm.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\assert.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\_ansi.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\newlib.h \
@@ -32,21 +32,21 @@
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\stdlib.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\stdlib.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\alloca.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/fsl_device_registers.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/core_cm4.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_version.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_compiler.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_gcc.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/mpu_armv7.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/system_JN5189.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189_features.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_clock.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_reset.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Lists/GenericList.h
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/fsl_device_registers.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/core_cm4.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_version.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_compiler.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_gcc.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/mpu_armv7.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/system_JN5189.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189_features.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_clock.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_reset.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Lists/GenericList.h
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h:
 
@@ -62,13 +62,13 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\_intsup.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\_stdint.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_config.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_config.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_bm.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/OSAbstraction/Interface/fsl_os_abstraction_bm.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\assert.h:
 
@@ -110,28 +110,28 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\stdlib.
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\alloca.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/fsl_device_registers.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/fsl_device_registers.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/core_cm4.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/core_cm4.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_version.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_version.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_compiler.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_compiler.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_gcc.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/cmsis_gcc.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/CMSIS/Include/mpu_armv7.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/CMSIS/Include/mpu_armv7.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/system_JN5189.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/system_JN5189.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189_features.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/JN5189_features.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_clock.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_clock.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_common.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_reset.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/devices/JN5189/drivers/fsl_reset.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Lists/GenericList.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Lists/GenericList.h:

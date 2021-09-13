@@ -563,7 +563,7 @@ Discarded input sections
  .data          0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gpio.o
  .bss           0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gpio.o
  .rodata.GPIO_PortInit.str1.1
-                0x00000000       0x84 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gpio.o
+                0x00000000       0x68 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gpio.o
  .text.GPIO_PortInit
                 0x00000000       0x2c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gpio.o
  .rodata.__func__.6599
@@ -589,7 +589,7 @@ Discarded input sections
  .text.I2C_SlaveTransferHandleIRQ
                 0x00000000      0x12a ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_i2c.o
  .rodata.I2C_SlaveTransferNonBlockingInternal.part.0.str1.1
-                0x00000000       0x67 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_i2c.o
+                0x00000000       0x4b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_i2c.o
  .text.I2C_SlaveTransferNonBlockingInternal.part.0
                 0x00000000       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_i2c.o
  .rodata.I2C_GetInstance.str1.1
@@ -1392,7 +1392,7 @@ Discarded input sections
  .text.MSG_Alloc
                 0x00000000        0xe ../../../Binaries/Linky_Ota_OM15081R2/obj/Messaging.o
  .rodata.MSG_GetSize.str1.1
-                0x00000000       0x98 ../../../Binaries/Linky_Ota_OM15081R2/obj/Messaging.o
+                0x00000000       0x7c ../../../Binaries/Linky_Ota_OM15081R2/obj/Messaging.o
  .text.MSG_GetSize
                 0x00000000       0x28 ../../../Binaries/Linky_Ota_OM15081R2/obj/Messaging.o
  .rodata.__func__.3990
@@ -1537,7 +1537,7 @@ Discarded input sections
  .data          0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_rtc.o
  .bss           0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_rtc.o
  .rodata.RTC_CheckDatetimeFormat.str1.1
-                0x00000000       0x69 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_rtc.o
+                0x00000000       0x4d ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_rtc.o
  .text.RTC_CheckDatetimeFormat
                 0x00000000       0xa8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_rtc.o
  .text.RTC_ConvertDatetimeToSeconds
@@ -1583,7 +1583,7 @@ Discarded input sections
  .data          0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
  .bss           0x00000000        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
  .rodata.DMA_ChannelIsActive.part.0.str1.1
-                0x00000000       0x94 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
+                0x00000000       0x78 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
  .text.DMA_ChannelIsActive.part.0
                 0x00000000       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
  .text.DMA_EnableChannel.part.0
@@ -2847,7 +2847,7 @@ Discarded input sections
                 0x00000000       0xe2 ../../../Binaries/Linky_Ota_OM15081R2/obj/PriceCustomCommandResponses.o
  .text.vSE_HandlePriceAck
                 0x00000000       0x48 ../../../Binaries/Linky_Ota_OM15081R2/obj/PriceCustomCommandResponses.o
- .bss.bPriceTimerRegistered.13819
+ .bss.bPriceTimerRegistered.13820
                 0x00000000        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/PriceCustomCommandResponses.o
  .comment       0x00000000       0x7a ../../../Binaries/Linky_Ota_OM15081R2/obj/PriceCustomCommandResponses.o
  .ARM.attributes
@@ -5899,14 +5899,14 @@ END GROUP
                 0x00000000                g_pfnVectors
                 0x00000120                . = ALIGN (0x4)
                 0x00000120                __data_section_table = .
-                0x00000120        0x4 LONG 0x2f0d0 LOADADDR (.data)
+                0x00000120        0x4 LONG 0x2ef50 LOADADDR (.data)
                 0x00000124        0x4 LONG 0x4011b40 ADDR (.data)
                 0x00000128        0x4 LONG 0xa40 SIZEOF (.data)
-                0x0000012c        0x4 LONG 0x2f0c8 LOADADDR (.data_RAM2)
+                0x0000012c        0x4 LONG 0x2ef40 LOADADDR (.data_RAM2)
                 0x00000130        0x4 LONG 0x4020000 ADDR (.data_RAM2)
                 0x00000134        0x4 LONG 0x0 SIZEOF (.data_RAM2)
                 0x00000138                __data_discard_section_table = .
-                0x00000138        0x4 LONG 0x2f0c8 LOADADDR (.data_discard)
+                0x00000138        0x4 LONG 0x2ef40 LOADADDR (.data_discard)
                 0x0000013c        0x4 LONG 0x4000600 ADDR (.data_discard)
                 0x00000140        0x4 LONG 0x0 (_edata_discard - _data_discard)
                 0x00000144                __data_section_table_end = .
@@ -5960,7 +5960,7 @@ END GROUP
                 0x00000200                . = ALIGN (0x40)
  *fill*         0x000001d9       0x27 ff
 
-.text           0x00000200    0x2eec0
+.text           0x00000200    0x2ed38
  FILL mask 0xff
  *(.after_vectors*)
  .after_vectors.reset
@@ -10682,40 +10682,40 @@ END GROUP
  .rodata.vSendImmediateReport.str1.1
                 0x0002ac3c       0xc4 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_reporting.o
  .rodata.vAPP_ZCL_DeviceSpecific_Init.str1.1
-                0x0002ad00       0x31 ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
-                                 0x36 (size before relaxing)
+                0x0002ad00       0x32 ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
+                                 0x37 (size before relaxing)
  .rodata.APP_vProcessRxData.str1.1
-                0x0002ad31      0x22e ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
+                0x0002ad32      0x22e ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
  .rodata.vAPP_LinkySensorSample.str1.1
-                0x0002af5f       0x3e ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
+                0x0002af60       0x3e ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
  .rodata.u8MyEndpoint
-                0x0002af9d        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
-                0x0002af9d                u8MyEndpoint
+                0x0002af9e        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/App_Linky.o
+                0x0002af9e                u8MyEndpoint
  .rodata.APP_vBdbCallback.str1.1
-                0x0002af9e      0x48e ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
+                0x0002af9f      0x48e ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
  .rodata.APP_vFactoryResetRecords.str1.1
-                0x0002b42c       0x35 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
+                0x0002b42d       0x35 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
  .rodata.APP_bNodeIsInRunningState.str1.1
-                0x0002b461       0x36 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
+                0x0002b462       0x36 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
  .rodata.APP_vInitialiseNode.str1.1
-                0x0002b497      0x24c ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
+                0x0002b498      0x24c ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
  .rodata.APP_taskSensor.str1.1
-                0x0002b6e3       0x53 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
+                0x0002b6e4       0x53 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zlo_sensor_node.o
  .rodata.APP_ZCL_cbGeneralCallback.str1.1
-                0x0002b736       0xdd ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
+                0x0002b737       0xdd ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
  .rodata.APP_ZCL_cbEndpointCallback.str1.1
-                0x0002b813      0x30e ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
+                0x0002b814      0x30e ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
  .rodata.APP_ZCL_vInitialise.str1.1
-                0x0002bb21       0x70 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
+                0x0002bb22       0x70 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_zcl_sensor_task.o
  .rodata.gint_callback.str1.1
-                0x0002bb91       0x27 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_buttons.o
+                0x0002bb92       0x27 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_buttons.o
  .rodata.APP_cbTimerButtonScan.str1.1
-                0x0002bbb8       0x90 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_buttons.o
+                0x0002bbb9       0x90 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_buttons.o
  .rodata.vAppHandleRunning.str1.1
-                0x0002bc48       0x29 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_state_machine.o
+                0x0002bc49       0x29 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_state_machine.o
  .rodata.vAppHandleStartup.str1.1
-                0x0002bc71       0x1d ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_state_machine.o
- *fill*         0x0002bc8e        0x2 ff
+                0x0002bc72       0x1d ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_state_machine.o
+ *fill*         0x0002bc8f        0x1 ff
  .rodata.BOARD_Clock32MCapacitanceCharacteristics
                 0x0002bc90        0xc ../../../Binaries/Linky_Ota_OM15081R2/obj/board_utility.o
                 0x0002bc90                BOARD_Clock32MCapacitanceCharacteristics
@@ -10739,598 +10739,598 @@ END GROUP
                 0x0002bde0      0x131 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_event_handler.o
                                 0x136 (size before relaxing)
  .rodata.DbgConsole_SendData.str1.1
-                0x0002bf11       0x8f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
+                0x0002bf11       0x73 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
  .rodata.DbgConsole_Init.str1.1
-                0x0002bfa0       0x28 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
+                0x0002bf84       0x28 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
  .rodata.__func__.6688
-                0x0002bfc8       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
+                0x0002bfac       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
  .rodata.__func__.6722
-                0x0002bfe4       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
+                0x0002bfc8       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
  .rodata.GINT_GetInstance.str1.1
-                0x0002bff4       0x84 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gint.o
+                0x0002bfd8       0x68 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gint.o
  .rodata.__func__.6593
-                0x0002c078       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gint.o
+                0x0002c040       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gint.o
  .rodata.vAppInitOTA.str1.1
-                0x0002c089      0x216 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c051      0x216 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
                                 0x232 (size before relaxing)
  .rodata.vLoadOTAPersistedData.str1.1
-                0x0002c29f       0x33 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c267       0x33 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
  .rodata.vRunAppOTAStateMachine.str1.1
-                0x0002c2d2      0x50d ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c29a      0x50d ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
                                 0x518 (size before relaxing)
  .rodata.vHandleMatchDescriptor.str1.1
-                0x0002c7df       0x7f ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c7a7       0x7f ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
  .rodata.vHandleIeeeAddressRsp.str1.1
-                0x0002c85e       0xd1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c826       0xd1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
                                  0xd3 (size before relaxing)
  .rodata.vHandleAppOtaClient.str1.1
-                0x0002c92f      0x574 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
- .rodata        0x0002cea3       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+                0x0002c8f7      0x574 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
+ .rodata        0x0002ce6b       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
  .rodata.ADC_Configuration.str1.1
-                0x0002ceb3       0x42 ../../../Binaries/Linky_Ota_OM15081R2/obj/temp_sensor_drv.o
+                0x0002ce7b       0x42 ../../../Binaries/Linky_Ota_OM15081R2/obj/temp_sensor_drv.o
  .rodata.load_calibration_param_from_flash.str1.1
-                0x0002cef5       0x99 ../../../Binaries/Linky_Ota_OM15081R2/obj/temp_sensor_drv.o
+                0x0002cebd       0x99 ../../../Binaries/Linky_Ota_OM15081R2/obj/temp_sensor_drv.o
  .rodata.ADC_GetInstance.part.0.str1.1
-                0x0002cf8e       0x82 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002cf56       0x66 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.ADC_Init.str1.1
-                0x0002d010        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002cfbc        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.ADC_GetConvSeqAGlobalConversionResult.str1.1
-                0x0002d01f        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002cfcb        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.ADC_GetChannelConversionResult.str1.1
-                0x0002d02c       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002cfd8       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.__func__.6728
-                0x0002d044       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002cff0       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.__func__.6733
-                0x0002d054        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002d000        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.__func__.6748
-                0x0002d05d       0x16 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002d009       0x16 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.__func__.6767
-                0x0002d073       0x1f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
+                0x0002d01f       0x1f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_adc.o
  .rodata.zps_bAplZdpUnpackNwkAddressResponse.part.0.str1.1
-                0x0002d092        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/appZdpExtraction.o
+                0x0002d03e        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/appZdpExtraction.o
  .rodata.WWDT_GetInstance.str1.1
-                0x0002d092       0x7b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d03e       0x5f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.WWDT_GetDefaultConfig.str1.1
-                0x0002d10d        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d09d        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.WWDT_Init.str1.1
-                0x0002d11c       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d0ac       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.__func__.6592
-                0x0002d137       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d0c7       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.__func__.6596
-                0x0002d148       0x16 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d0d8       0x16 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.__func__.6601
-                0x0002d15e        0xa ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
+                0x0002d0ee        0xa ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wwdt.o
  .rodata.CLOCK_XtalBasicTrim.str1.1
-                0x0002d168       0x7e ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_clock.o
+                0x0002d0f8       0x62 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_clock.o
  .rodata.__func__.6866
-                0x0002d1e6       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_clock.o
+                0x0002d15a       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_clock.o
  .rodata.RESET_SetPeripheralReset.str1.1
-                0x0002d1fa       0x6f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
+                0x0002d16e       0x53 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
  .rodata.__func__.6630
-                0x0002d269       0x19 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
+                0x0002d1c1       0x19 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
  .rodata.__func__.6643
-                0x0002d282       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
+                0x0002d1da       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_reset.o
  .rodata.USART_GetInstance.str1.1
-                0x0002d29d       0x68 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d1f5       0x4c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.USART_TransferStartRingBuffer.str1.1
-                0x0002d305       0x20 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d241       0x20 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.USART_GetDefaultConfig.str1.1
-                0x0002d325        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d261        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.USART_SetBaudRate.str1.1
-                0x0002d325       0x3f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d261       0x3f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.USART_Init.str1.1
-                0x0002d364       0x3c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d2a0       0x3c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.USART_WriteBlocking.str1.1
-                0x0002d3a0       0x24 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d2dc       0x24 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.__func__.6813
-                0x0002d3c4        0xb ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d300        0xb ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.__func__.6817
-                0x0002d3cf        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d30b        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.__func__.6824
-                0x0002d3dc       0x17 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d318       0x17 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.__func__.6837
-                0x0002d3f3       0x12 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d32f       0x12 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.__func__.6847
-                0x0002d405       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
+                0x0002d341       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_usart.o
  .rodata.FLEXCOMM_GetInstance.str1.1
-                0x0002d419       0x65 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
-                                 0x6b (size before relaxing)
+                0x0002d355       0x49 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                                 0x4f (size before relaxing)
  .rodata.FLEXCOMM0_DriverIRQHandler.str1.1
-                0x0002d47e       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d39e       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.FLEXCOMM2_DriverIRQHandler.str1.1
-                0x0002d496       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d3b6       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.FLEXCOMM3_DriverIRQHandler.str1.1
-                0x0002d4ae       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d3ce       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.FLEXCOMM4_DriverIRQHandler.str1.1
-                0x0002d4c6       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d3e6       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.FLEXCOMM5_DriverIRQHandler.str1.1
-                0x0002d4de       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d3fe       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.FLEXCOMM6_DriverIRQHandler.str1.1
-                0x0002d4f6       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d416       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6578
-                0x0002d50e       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d42e       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6598
-                0x0002d523       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d443       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6606
-                0x0002d53e       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d45e       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6610
-                0x0002d559       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d479       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6614
-                0x0002d574       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d494       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6618
-                0x0002d58f       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d4af       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.__func__.6622
-                0x0002d5aa       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
- *fill*         0x0002d5c5        0x3 ff
+                0x0002d4ca       0x1b ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+ *fill*         0x0002d4e5        0x3 ff
  .rodata.s_flexcommBaseAddrs
-                0x0002d5c8       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d4e8       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.s_flexcommClocks
-                0x0002d5e4       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d504       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.s_flexcommResets
-                0x0002d600       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
+                0x0002d520       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_flexcomm.o
  .rodata.SDK_DelayAtLeastUs.str1.1
-                0x0002d61c       0x86 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_common.o
+                0x0002d53c       0x6a ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_common.o
  .rodata.__func__.6589
-                0x0002d6a2       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_common.o
+                0x0002d5a6       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_common.o
  .rodata.lowpower_ldovoltage_reset
-                0x0002d6b5        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_power.o
- *fill*         0x0002d6be        0x2 ff
+                0x0002d5b9        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_power.o
+ *fill*         0x0002d5c2        0x2 ff
  .rodata.timer_param
-                0x0002d6c0       0x60 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wtimer.o
+                0x0002d5c4       0x60 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_wtimer.o
  .rodata.ExceptionUnwindStack.str1.1
-                0x0002d720       0xc2 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002d624       0xc2 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vPrintRegisterBit.str1.1
-                0x0002d7e2        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002d6e6        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vPrintSystemHandlerAndControlStateRegisterBitFields.str1.1
-                0x0002d7ea      0x138 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002d6ee      0x138 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vPrintConfigurableFaultStatusRegisterBitFields.str1.1
-                0x0002d922      0x103 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002d826      0x103 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
                                 0x126 (size before relaxing)
  .rodata.vDebugBusFaultHandler.str1.1
-                0x0002da25      0x191 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002d929      0x191 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
                                 0x194 (size before relaxing)
  .rodata.vDebugUsageFaultHandler.str1.1
-                0x0002dbb6       0x24 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002daba       0x24 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vDebugMemoryFaultHandler.str1.1
-                0x0002dbda       0x46 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002dade       0x46 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vPrintHardFaultStatusRegisterBitFields.str1.1
-                0x0002dc20       0x3d ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002db24       0x3d ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.vDebugHardFaultHandler.str1.1
-                0x0002dc5d       0xa1 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
+                0x0002db61       0xa1 ../../../Binaries/Linky_Ota_OM15081R2/obj/MicroExceptions_arm.o
  .rodata.OTA_PullImageChunk.str1.1
-                0x0002dcfe       0x2c ../../../Binaries/Linky_Ota_OM15081R2/obj/OtaSupport.o
+                0x0002dc02       0x2c ../../../Binaries/Linky_Ota_OM15081R2/obj/OtaSupport.o
  .rodata.str1.1
-                0x0002dd2a        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/TimersManager.o
- *fill*         0x0002dd33        0x1 ff
+                0x0002dc2e        0x9 ../../../Binaries/Linky_Ota_OM15081R2/obj/TimersManager.o
+ *fill*         0x0002dc37        0x1 ff
  .rodata.mCtimerConfig
-                0x0002dd34       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/TMR_Adapter.o
+                0x0002dc38       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/TMR_Adapter.o
  .rodata.CTIMER_GetInstance.str1.1
-                0x0002dd44       0x7f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dc48       0x63 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
  .rodata.CTIMER_Init.str1.1
-                0x0002ddc3       0x7f ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dcab       0x63 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
                                   0x7 (size before relaxing)
  .rodata.__func__.6693
-                0x0002ddc3       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dcab       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
  .rodata.__func__.6698
-                0x0002ddd6        0xc ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
- *fill*         0x0002dde2        0x2 ff
+                0x0002dcbe        0xc ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+ *fill*         0x0002dcca        0x2 ff
  .rodata.s_ctimerBases
-                0x0002dde4        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dccc        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
  .rodata.s_ctimerClocks
-                0x0002ddec        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dcd4        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
  .rodata.s_ctimerIRQ
-                0x0002ddf4        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
- *fill*         0x0002ddf6        0x2 ff
+                0x0002dcdc        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+ *fill*         0x0002dcde        0x2 ff
  .rodata.s_ctimerResets
-                0x0002ddf8        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
+                0x0002dce0        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_ctimer.o
  .rodata.DMA_GetInstance.str1.1
-                0x0002de00       0x82 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
+                0x0002dce8       0x66 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
  .rodata.__func__.6824
-                0x0002de82       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
- *fill*         0x0002de92        0x2 ff
+                0x0002dd4e       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_dma.o
+ *fill*         0x0002dd5e        0x2 ff
  .rodata.maHandleDeepSleepTable
-                0x0002de94       0x30 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWR.o
-                0x0002de94                maHandleDeepSleepTable
+                0x0002dd60       0x30 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWR.o
+                0x0002dd60                maHandleDeepSleepTable
  .rodata.pm_sram0_bank_desc
-                0x0002dec4       0x40 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWRLib.o
-                0x0002dec4                pm_sram0_bank_desc
+                0x0002dd90       0x40 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWRLib.o
+                0x0002dd90                pm_sram0_bank_desc
  .rodata.pm_sram1_bank_desc
-                0x0002df04       0x20 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWRLib.o
-                0x0002df04                pm_sram1_bank_desc
+                0x0002ddd0       0x20 ../../../Binaries/Linky_Ota_OM15081R2/obj/PWRLib.o
+                0x0002ddd0                pm_sram1_bank_desc
  .rodata.SerialManager_Init.str1.1
-                0x0002df24       0x77 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
-                                 0x7e (size before relaxing)
+                0x0002ddf0       0x5b ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                                 0x62 (size before relaxing)
  .rodata.SerialManager_OpenWriteHandle.str1.1
-                0x0002df9b        0xc ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002de4b        0xc ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.SerialManager_CloseWriteHandle.str1.1
-                0x0002dfa7        0x7 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002de57        0x7 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.SerialManager_OpenReadHandle.str1.1
-                0x0002dfae        0xb ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002de5e        0xb ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.SerialManager_CloseReadHandle.str1.1
-                0x0002dfb9       0x3d ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002de69       0x3d ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.SerialManager_WriteBlocking.str1.1
-                0x0002dff6        0xe ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002dea6        0xe ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6663
-                0x0002e004       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002deb4       0x14 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6678
-                0x0002e018       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002dec8       0x13 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6687
-                0x0002e02b       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002dedb       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6698
-                0x0002e040       0x1e ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002def0       0x1e ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6705
-                0x0002e05e       0x1f ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002df0e       0x1f ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6713
-                0x0002e07d       0x1d ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002df2d       0x1d ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.__func__.6720
-                0x0002e09a       0x1e ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
+                0x0002df4a       0x1e ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_manager.o
  .rodata.Serial_UartInit.str1.1
-                0x0002e0b8       0x79 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
-                                 0x86 (size before relaxing)
+                0x0002df68       0x5d ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
+                                 0x6a (size before relaxing)
  .rodata.Serial_UartWrite.str1.1
-                0x0002e131        0xe ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
+                0x0002dfc5        0xe ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
  .rodata.__func__.6683
-                0x0002e131       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
+                0x0002dfc5       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
  .rodata.__func__.6688
-                0x0002e141       0x12 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
+                0x0002dfd5       0x12 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
  .rodata.__func__.6695
-                0x0002e153       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
+                0x0002dfe7       0x11 ../../../Binaries/Linky_Ota_OM15081R2/obj/serial_port_uart.o
  .rodata.HAL_UartInit.str1.1
-                0x0002e164       0xcb ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
-                                 0xd9 (size before relaxing)
+                0x0002dff8       0xaf ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+                                 0xbd (size before relaxing)
  .rodata.HAL_UartReceiveBlocking.str1.1
-                0x0002e22f        0x5 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+                0x0002e0a7        0x5 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
                                   0xc (size before relaxing)
  .rodata.__func__.6834
-                0x0002e234        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+                0x0002e0ac        0xd ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
  .rodata.__func__.6839
-                0x0002e241        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+                0x0002e0b9        0xf ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
  .rodata.__func__.6854
-                0x0002e250       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
- *fill*         0x0002e265        0x3 ff
+                0x0002e0c8       0x15 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+ *fill*         0x0002e0dd        0x3 ff
  .rodata.s_UsartAdapterBase
-                0x0002e268        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
+                0x0002e0e0        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/usart_adapter.o
  .rodata.__assert_func.str1.1
-                0x0002e270       0x3e ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_assert.o
+                0x0002e0e8       0x3e ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_assert.o
  .rodata.str1.1
-                0x0002e2ae        0xa ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_os_abstraction_bm.o
+                0x0002e126        0xa ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_os_abstraction_bm.o
  .rodata.gUseRtos_c
-                0x0002e2b8        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_os_abstraction_bm.o
-                0x0002e2b8                gUseRtos_c
- *fill*         0x0002e2b9        0x1 ff
+                0x0002e130        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_os_abstraction_bm.o
+                0x0002e130                gUseRtos_c
+ *fill*         0x0002e131        0x1 ff
  .rodata.asCLD_BasicClusterAttributeDefinitions
-                0x0002e2ba       0x78 ../../../Binaries/Linky_Ota_OM15081R2/obj/Basic.o
-                0x0002e2ba                asCLD_BasicClusterAttributeDefinitions
+                0x0002e132       0x78 ../../../Binaries/Linky_Ota_OM15081R2/obj/Basic.o
+                0x0002e132                asCLD_BasicClusterAttributeDefinitions
  .rodata.asCLD_GroupsClusterAttributeDefinitions
-                0x0002e332       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/Groups.o
-                0x0002e332                asCLD_GroupsClusterAttributeDefinitions
+                0x0002e1aa       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/Groups.o
+                0x0002e1aa                asCLD_GroupsClusterAttributeDefinitions
  .rodata.asCLD_IdentifyClusterAttributeDefinitions
-                0x0002e342       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/Identify.o
-                0x0002e342                asCLD_IdentifyClusterAttributeDefinitions
+                0x0002e1ba       0x18 ../../../Binaries/Linky_Ota_OM15081R2/obj/Identify.o
+                0x0002e1ba                asCLD_IdentifyClusterAttributeDefinitions
  .rodata.asCLD_ElectricalMeasurementClusterAttributeDefinitions
-                0x0002e35a       0x60 ../../../Binaries/Linky_Ota_OM15081R2/obj/ElectricalMeasurement.o
-                0x0002e35a                asCLD_ElectricalMeasurementClusterAttributeDefinitions
+                0x0002e1d2       0x60 ../../../Binaries/Linky_Ota_OM15081R2/obj/ElectricalMeasurement.o
+                0x0002e1d2                asCLD_ElectricalMeasurementClusterAttributeDefinitions
  .rodata.asCLD_SimpleMeteringClusterAttributeDefinitions
-                0x0002e3ba       0x68 ../../../Binaries/Linky_Ota_OM15081R2/obj/SimpleMetering.o
-                0x0002e3ba                asCLD_SimpleMeteringClusterAttributeDefinitions
- .rodata        0x0002e422        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA.o
+                0x0002e232       0x68 ../../../Binaries/Linky_Ota_OM15081R2/obj/SimpleMetering.o
+                0x0002e232                asCLD_SimpleMeteringClusterAttributeDefinitions
+ .rodata        0x0002e29a        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA.o
  .rodata.asOTAClusterAttributeDefinitions
-                0x0002e42a       0x28 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA.o
-                0x0002e42a                asOTAClusterAttributeDefinitions
+                0x0002e2a2       0x28 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA.o
+                0x0002e2a2                asOTAClusterAttributeDefinitions
  .rodata.eOTA_HandleImageVerification.str1.1
-                0x0002e452       0x56 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA_client.o
+                0x0002e2ca       0x56 ../../../Binaries/Linky_Ota_OM15081R2/obj/OTA_client.o
  .rodata.eZCL_ReportAllAttributes.str1.1
-                0x0002e4a8       0x56 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl.o
+                0x0002e320       0x56 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl.o
                                   0x4 (size before relaxing)
- .rodata        0x0002e4a8        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_attribute.o
+ .rodata        0x0002e320        0x8 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_attribute.o
  .rodata.au8ConstSizeArray
-                0x0002e4b0      0x102 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_attribute.o
-                0x0002e4b0                au8ConstSizeArray
+                0x0002e328      0x102 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_attribute.o
+                0x0002e328                au8ConstSizeArray
  .rodata.vZCL_HandleConfigureReportingCommand.str1.1
-                0x0002e5b2      0x188 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_configureReportingCommandHandle.o
+                0x0002e42a      0x188 ../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_configureReportingCommandHandle.o
  .rodata.BDB_vNsStateMachine.str1.1
-                0x0002e73a       0x32 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_ns.o
+                0x0002e5b2       0x32 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_ns.o
  .rodata.vFbBindCluster.str1.1
-                0x0002e76c       0x32 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_fb_initiator.o
+                0x0002e5e4       0x32 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_fb_initiator.o
                                   0x1 (size before relaxing)
  .rodata.eUnfragmentedUnicastTransmission.str1.1
-                0x0002e76c        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsde.o)
+                0x0002e5e4        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsde.o)
  .rodata.ZPS_vAplHandleApsdeReqRsp.str1.1
-                0x0002e773        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsde.o)
+                0x0002e5eb        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsde.o)
  .rodata.zps_vInitAPSMECmdHdr.str1.1
-                0x0002e77a        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e5f2        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
                                   0x3 (size before relaxing)
  .rodata.zps_eAplSendApsmeCmdFrame.str1.1
-                0x0002e77a        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e5f2        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
  .rodata.zps_eAplApsmeTransportKeyReqRsp.str1.1
-                0x0002e77f       0x12 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e5f7       0x12 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
  .rodata.zps_eAplApsmeUpdateDeviceReqRsp.str1.1
-                0x0002e791        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e609        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
  .rodata.zps_eAplApsmeVerifyKeyReqRsp.str1.1
-                0x0002e796        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e60e        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
                                   0x6 (size before relaxing)
  .rodata.zps_eAplApsmeRequestKeyReqRsp.str1.1
-                0x0002e796        0x2 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
+                0x0002e60e        0x2 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_apsme.o)
  .rodata.zps_vAplApsHandleNldeDcfmInd.str1.1
-                0x0002e796        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_aps_nlde.o)
+                0x0002e60e        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_aps_nlde.o)
                                  0x2c (size before relaxing)
  .rodata.zps_eAplSecDecryptPacket.str1.1
-                0x0002e796        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_sec.o)
+                0x0002e60e        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_sec.o)
                                   0x5 (size before relaxing)
  .rodata.ZPS_vSetKeys.str1.1
-                0x0002e799       0x22 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager.o)
+                0x0002e611       0x22 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager.o)
  .rodata.zps_bAplZdoDefaultServer.str1.1
-                0x0002e7bb       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_default_server.o)
+                0x0002e633       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_default_server.o)
                                  0x2b (size before relaxing)
  .rodata.zps_bAplZdoNwkAddrServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwk_addr_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwk_addr_server.o)
                                   0x4 (size before relaxing)
  .rodata.zps_bAplZdoIeeeAddrServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_ieee_addr_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_ieee_addr_server.o)
                                   0x4 (size before relaxing)
  .rodata.zps_bAplZdoMatchDescServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_match_desc_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_match_desc_server.o)
                                   0x4 (size before relaxing)
  .rodata.zps_bAplZdoSimpleDescServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_simple_desc_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_simple_desc_server.o)
                                   0x3 (size before relaxing)
  .rodata.zps_bAplZdoDeviceAnnceServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_device_annce_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_device_annce_server.o)
                                   0x4 (size before relaxing)
  .rodata.zps_bAplZdoMgmtLeaveServer.str1.1
-                0x0002e7df       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_leave_server.o)
+                0x0002e657       0x24 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_leave_server.o)
                                   0x3 (size before relaxing)
  .rodata.zps_bAplZdoMgmtNWKUpdateServer.str1.1
-                0x0002e7df        0xa ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_nwk_update_server.o)
+                0x0002e657        0xa ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_nwk_update_server.o)
                                  0x10 (size before relaxing)
  .rodata.u8ZdoBindUnbindServerUnpackApdu.str1.1
-                0x0002e7e9        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_bind_unbind_server.o)
+                0x0002e661        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_bind_unbind_server.o)
                                   0x8 (size before relaxing)
  .rodata.zps_eAplZdpSimpleDescRequest.str1.1
-                0x0002e7ee        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_simple_desc_req.o)
+                0x0002e666        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_simple_desc_req.o)
                                   0x4 (size before relaxing)
  .rodata.eSendDeviceAnnounce.str1.1
-                0x0002e7ee        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
+                0x0002e666        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
  .rodata.zps_vAplZdoClientLookupNwkAddress.str1.1
-                0x0002e7f3        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
+                0x0002e66b        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
  .rodata.zps_bAplZdoZdoClient.str1.1
-                0x0002e7f8        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
+                0x0002e670        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_nwkmanager_client.o)
                                   0x4 (size before relaxing)
  .rodata.zps_bAplZdoMgmtBindServer.str1.1
-                0x0002e7f8       0x13 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_bind_server.o)
+                0x0002e670       0x13 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdo_mgmt_bind_server.o)
                                  0x1b (size before relaxing)
  .rodata.zps_eAplZdpGenStatusOnlyResponse.str1.1
-                0x0002e80b        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_apsde_req.o)
+                0x0002e683        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_apsde_req.o)
  .rodata.zps_eAplZdpDeviceAnnceRequest.str1.1
-                0x0002e80b        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_device_annce.o)
+                0x0002e683        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_device_annce.o)
  .rodata.zps_eAplZdpIeeeAddrRequest.str1.1
-                0x0002e80b        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_ieee_addr_req.o)
+                0x0002e683        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_ieee_addr_req.o)
  .rodata.zps_eAplZdpMatchDescRequest.str1.1
-                0x0002e810        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_match_desc_req.o)
+                0x0002e688        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_match_desc_req.o)
  .rodata.zps_eAplZdpMgmtPermitJoiningRequest.str1.1
-                0x0002e815        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_permit_joining_req.o)
+                0x0002e68d        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_permit_joining_req.o)
                                   0x4 (size before relaxing)
  .rodata.zps_eAplZdpNodeDescRequest.str1.1
-                0x0002e815        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_node_desc_req.o)
+                0x0002e68d        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_node_desc_req.o)
                                   0x3 (size before relaxing)
  .rodata.zps_eZdpNwkAddrResponse.str1.1
-                0x0002e815        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_nwk_addr_rsp.o)
+                0x0002e68d        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_nwk_addr_rsp.o)
                                   0xe (size before relaxing)
  .rodata.zps_eZdpIeeeAddrResponse.str1.1
-                0x0002e81a        0xe ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_ieee_addr_rsp.o)
+                0x0002e692        0xe ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_ieee_addr_rsp.o)
  .rodata.zps_eZdpNodeDescResponse.str1.1
-                0x0002e81a        0x9 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_node_desc_rsp.o)
+                0x0002e692        0x9 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_node_desc_rsp.o)
                                   0xd (size before relaxing)
  .rodata.zps_eZdpPowerDescResponse.str1.1
-                0x0002e823        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_power_desc_rsp.o)
+                0x0002e69b        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_power_desc_rsp.o)
  .rodata.zps_eZdpSimpleDescResponse.str1.1
-                0x0002e823        0xb ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_simple_desc_rsp.o)
+                0x0002e69b        0xb ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_simple_desc_rsp.o)
  .rodata.zps_eZdpActiveEpResponse.str1.1
-                0x0002e823        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_active_ep_rsp.o)
+                0x0002e69b        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_active_ep_rsp.o)
  .rodata.zps_eZdpMatchDescResponse.str1.1
-                0x0002e823        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_match_desc_rsp.o)
+                0x0002e69b        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_match_desc_rsp.o)
  .rodata.zps_eZdpSystemServerDiscoveryResponse.str1.1
-                0x0002e823        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_system_server_discovery_rsp.o)
+                0x0002e69b        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_system_server_discovery_rsp.o)
  .rodata.zps_eAplZdpMgmtLqiResponse.str1.1
-                0x0002e823        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_lqi_rsp.o)
+                0x0002e69b        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_lqi_rsp.o)
                                  0x11 (size before relaxing)
  .rodata.zps_eZdpMgmtNwkUpdateNotifyResponse.str1.1
-                0x0002e82b        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_nwk_update_notify_rsp.o)
+                0x0002e6a3        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSAPL.a(zps_apl_zdp_mgmt_nwk_update_notify_rsp.o)
                                   0xf (size before relaxing)
- *fill*         0x0002e82b        0x1 ff
+ *fill*         0x0002e6a3        0x1 ff
  .rodata.CSWTCH.25
-                0x0002e82c       0x80 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
+                0x0002e6a4       0x80 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
  .rodata.CSWTCH.27
-                0x0002e8ac       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
+                0x0002e724       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
  .rodata.CSWTCH.29
-                0x0002e8cc       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
+                0x0002e744       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
  .rodata.CSWTCH.31
-                0x0002e8ec       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
+                0x0002e764       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSMAC_Mini_SOC.a(zps_mac_common.o)
  .rodata.zps_psNwkSendLeaveCmd.str1.1
-                0x0002e90c        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_leave.o)
+                0x0002e784        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_leave.o)
  .rodata.zps_psSendNetworkStatusCmd.str1.1
-                0x0002e90c        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_maint.o)
+                0x0002e784        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_maint.o)
  .rodata.zps_psSendNetworkEdTimeoutReqCmd.str1.1
-                0x0002e90c        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_maint.o)
+                0x0002e784        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_maint.o)
  .rodata.ZPS_vNwkHandleMcpsVsInd.str1.1
-                0x0002e90c        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mcps.o)
+                0x0002e784        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mcps.o)
                                   0xd (size before relaxing)
  .rodata.s_apsStSceTbl
-                0x0002e90c       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mcps.o)
+                0x0002e784       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mcps.o)
  .rodata.s_apsStSmeTbl
-                0x0002e920       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mlme.o)
+                0x0002e798       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_mlme.o)
  .rodata.au32EndDeviceTimeoutConstants
-                0x0002e934       0x3c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nib.o)
-                0x0002e934                au32EndDeviceTimeoutConstants
+                0x0002e7ac       0x3c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nib.o)
+                0x0002e7ac                au32EndDeviceTimeoutConstants
  .rodata.au32NwkPdmRecordOffsets
-                0x0002e970       0x18 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nib.o)
-                0x0002e970                au32NwkPdmRecordOffsets
+                0x0002e7e8       0x18 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nib.o)
+                0x0002e7e8                au32NwkPdmRecordOffsets
  .rodata.atCfmSize
-                0x0002e988       0x40 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nlme.o)
+                0x0002e800       0x40 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_nlme.o)
  .rodata.ZPS_bSecDecrypt.str1.1
-                0x0002e9c8        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_sec.o)
+                0x0002e840        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_sec.o)
  .rodata.zps_eNwkSecDecryptPacket.str1.1
-                0x0002e9cb        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_sec.o)
+                0x0002e843        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_sec.o)
  .rodata.zps_psSendNetworkLinkPowerDelta.str1.1
-                0x0002e9d0        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_subghz.o)
+                0x0002e848        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_subghz.o)
  .rodata.s_aeMlmeDcfmIndToActvStSme
-                0x0002e9d0       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e848       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_aeNlmeReqRspToActvStCme
-                0x0002e9e7       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e85f       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_aeNwkCmdToActvStSce
-                0x0002e9f7        0xd ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e86f        0xd ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_aprActvStHandleCme
-                0x0002ea04       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e87c       0x20 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_aprActvStHandleSce
-                0x0002ea24       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e89c       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_aprActvStHandleSme
-                0x0002ea40       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e8b8       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_atActvStSceStt
-                0x0002ea5c        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e8d4        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.s_atActvStSmeStt
-                0x0002ea62        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e8da        0x6 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
  .rodata.zps_sActvSceTbl
-                0x0002ea68        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
-                0x0002ea68                zps_sActvSceTbl
+                0x0002e8e0        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e8e0                zps_sActvSceTbl
  .rodata.zps_sActvSmeTbl
-                0x0002ea74        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
-                0x0002ea74                zps_sActvSmeTbl
+                0x0002e8ec        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_actv_st.o)
+                0x0002e8ec                zps_sActvSmeTbl
  .rodata.s_aeMlmeDcfmIndToDiscStSme
-                0x0002ea80       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
- *fill*         0x0002ea97        0x1 ff
+                0x0002e8f8       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
+ *fill*         0x0002e90f        0x1 ff
  .rodata.s_aprDiscStHandleSme
-                0x0002ea98       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
+                0x0002e910       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
  .rodata.s_atDiscStSmeStt
-                0x0002eab4        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
+                0x0002e92c        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
  .rodata.zps_sDiscSmeTbl
-                0x0002eabc        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
-                0x0002eabc                zps_sDiscSmeTbl
+                0x0002e934        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_disc_st.o)
+                0x0002e934                zps_sDiscSmeTbl
  .rodata.zps_psSendFrm.str1.1
-                0x0002eac8        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
+                0x0002e940        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
  .rodata.str1.1
-                0x0002eac8        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
+                0x0002e940        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
  .rodata.au8JitterLUT.12323
-                0x0002eac8        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
+                0x0002e940        0x7 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_frm.o)
  .rodata.s_aeNlmeReqRspToIdleStCme
-                0x0002eacf       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_idle_st.o)
-                0x0002eacf                s_aeNlmeReqRspToIdleStCme
- *fill*         0x0002eadf        0x1 ff
+                0x0002e947       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_idle_st.o)
+                0x0002e947                s_aeNlmeReqRspToIdleStCme
+ *fill*         0x0002e957        0x1 ff
  .rodata.s_aprIdleStHandleCme
-                0x0002eae0       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_idle_st.o)
+                0x0002e958       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_idle_st.o)
  .rodata.zps_psNwkSendRejoinReqCmd.str1.1
-                0x0002eaf0        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
+                0x0002e968        0x3 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
  .rodata.zps_psNwkSendRejoinRspCmd.str1.1
-                0x0002eaf0        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
+                0x0002e968        0x4 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
  .rodata.zps_eNwkProcessJoinInd.str1.1
-                0x0002eaf0       0x22 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
- .rodata        0x0002eb12        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
+                0x0002e968       0x22 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
+ .rodata        0x0002e98a        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join.o)
  .rodata.s_aeMlmeDcfmIndToJoinStSme
-                0x0002eb17       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e98f       0x17 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
  .rodata.s_aeNwkCmdToJoinStSce
-                0x0002eb2e        0xd ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
- *fill*         0x0002eb3b        0x1 ff
+                0x0002e9a6        0xd ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+ *fill*         0x0002e9b3        0x1 ff
  .rodata.s_aprJoinStHandleSce
-                0x0002eb3c        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e9b4        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
  .rodata.s_aprJoinStHandleSme
-                0x0002eb44       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e9bc       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
  .rodata.s_atJoinStSceStt
-                0x0002eb54        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e9cc        0x5 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
  .rodata.s_atJoinStSmeStt
-                0x0002eb59       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
- *fill*         0x0002eb6d        0x3 ff
+                0x0002e9d1       0x14 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+ *fill*         0x0002e9e5        0x3 ff
  .rodata.zps_sJoinSceTbl
-                0x0002eb70        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
-                0x0002eb70                zps_sJoinSceTbl
+                0x0002e9e8        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e9e8                zps_sJoinSceTbl
  .rodata.zps_sJoinSmeTbl
-                0x0002eb7c        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
-                0x0002eb7c                zps_sJoinSmeTbl
+                0x0002e9f4        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/Library\libZPSNWK_ZED.a(zps_nwk_join_st.o)
+                0x0002e9f4                zps_sJoinSmeTbl
  .rodata.au8HeaderSize.12999
-                0x0002eb88        0xe ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/lib\libMiniMac.a(Mini_Main.o)
+                0x0002ea00        0xe ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/lib\libMiniMac.a(Mini_Main.o)
  .rodata.sPibInitialValues
-                0x0002eb96       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/lib\libMiniMac.a(Mini_Main.o)
+                0x0002ea0e       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/lib\libMiniMac.a(Mini_Main.o)
  .rodata.radio_DCO_cal.str1.1
-                0x0002eba6        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
- .rodata        0x0002ebae       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ea1e        0x8 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+ .rodata        0x0002ea26       0x1c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
  .rodata.assign_Synth_Cal_Op_Lock_init_regs
-                0x0002ebca       0x40 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ebca                assign_Synth_Cal_Op_Lock_init_regs
+                0x0002ea42       0x40 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ea42                assign_Synth_Cal_Op_Lock_init_regs
  .rodata.assign_Synth_Cal_Startup_init_regs
-                0x0002ec0a       0x44 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ec0a                assign_Synth_Cal_Startup_init_regs
+                0x0002ea82       0x44 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ea82                assign_Synth_Cal_Startup_init_regs
  .rodata.assign_TMU_init_regs
-                0x0002ec4e       0x4c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ec4e                assign_TMU_init_regs
+                0x0002eac6       0x4c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eac6                assign_TMU_init_regs
  .rodata.assign_init_regs
-                0x0002ec9a       0x70 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ec9a                assign_init_regs
+                0x0002eb12       0x70 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eb12                assign_init_regs
  .rodata.assign_init_regs_ES2
-                0x0002ed0a        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed0a                assign_init_regs_ES2
+                0x0002eb82        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eb82                assign_init_regs_ES2
  .rodata.assign_init_regs_ES2MF
-                0x0002ed16        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed16                assign_init_regs_ES2MF
+                0x0002eb8e        0xc ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eb8e                assign_init_regs_ES2MF
  .rodata.assign_std_specific_banked_regs
-                0x0002ed22       0x38 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed22                assign_std_specific_banked_regs
+                0x0002eb9a       0x38 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eb9a                assign_std_specific_banked_regs
  .rodata.assign_unbanked_common_regs
-                0x0002ed5a       0x28 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed5a                assign_unbanked_common_regs
+                0x0002ebd2       0x28 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ebd2                assign_unbanked_common_regs
  .rodata.assign_unbanked_std_specific_regs
-                0x0002ed82       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed82                assign_unbanked_std_specific_regs
+                0x0002ebfa       0x10 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ebfa                assign_unbanked_std_specific_regs
  .rodata.assign_unbanked_zbble_specific_regs
-                0x0002ed92       0x9c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ed92                assign_unbanked_zbble_specific_regs
+                0x0002ec0a       0x9c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ec0a                assign_unbanked_zbble_specific_regs
  .rodata.assign_zbble_specific_banked_regs
-                0x0002ee2e       0x48 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ee2e                assign_zbble_specific_banked_regs
- *fill*         0x0002ee76        0x2 ff
+                0x0002eca6       0x48 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002eca6                assign_zbble_specific_banked_regs
+ *fill*         0x0002ecee        0x2 ff
  .rodata.freq_prog
-                0x0002ee78       0x8c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ee78                freq_prog
+                0x0002ecf0       0x8c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ecf0                freq_prog
  .rodata.lut_defaults
-                0x0002ef04       0x5c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ef04                lut_defaults
+                0x0002ed7c       0x5c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002ed7c                lut_defaults
  .rodata.lut_hiTx_defaults
-                0x0002ef60       0x5c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
-                0x0002ef60                lut_hiTx_defaults
+                0x0002edd8       0x5c ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/XCVR/lib\libRadio.a(radio.o)
+                0x0002edd8                lut_hiTx_defaults
  .rodata._ctype_
-                0x0002efbc      0x101 c:/nxp/mcuxpressoide_11.2.0_4120/ide/tools/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc.a(lib_a-ctype_.o)
-                0x0002efbc                _ctype_
-                0x0002f0c0                . = ALIGN (0x4)
- *fill*         0x0002f0bd        0x3 ff
+                0x0002ee34      0x101 c:/nxp/mcuxpressoide_11.2.0_4120/ide/tools/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp\libc.a(lib_a-ctype_.o)
+                0x0002ee34                _ctype_
+                0x0002ef38                . = ALIGN (0x4)
+ *fill*         0x0002ef35        0x3 ff
 
-.glue_7         0x0002f0c0        0x0
- .glue_7        0x0002f0c0        0x0 linker stubs
+.glue_7         0x0002ef38        0x0
+ .glue_7        0x0002ef38        0x0 linker stubs
 
-.glue_7t        0x0002f0c0        0x0
- .glue_7t       0x0002f0c0        0x0 linker stubs
+.glue_7t        0x0002ef38        0x0
+ .glue_7t       0x0002ef38        0x0 linker stubs
 
-.vfp11_veneer   0x0002f0c0        0x0
- .vfp11_veneer  0x0002f0c0        0x0 linker stubs
+.vfp11_veneer   0x0002ef38        0x0
+ .vfp11_veneer  0x0002ef38        0x0 linker stubs
 
-.v4_bx          0x0002f0c0        0x0
- .v4_bx         0x0002f0c0        0x0 linker stubs
+.v4_bx          0x0002ef38        0x0
+ .v4_bx         0x0002ef38        0x0 linker stubs
 
-.iplt           0x0002f0c0        0x0
- .iplt          0x0002f0c0        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_main.o
+.iplt           0x0002ef38        0x0
+ .iplt          0x0002ef38        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_main.o
 
-.ARM.extab      0x0002f0c0        0x0
+.ARM.extab      0x0002ef38        0x0
  FILL mask 0xff
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0002f0c0                __exidx_start = .
+                0x0002ef38                __exidx_start = .
 
-.ARM.exidx      0x0002f0c0        0x8
+.ARM.exidx      0x0002ef38        0x8
  FILL mask 0xff
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0002f0c0        0x8 c:/nxp/mcuxpressoide_11.2.0_4120/ide/tools/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
-                0x0002f0c8                __exidx_end = .
-                0x0002f0c8                _etext = .
+ .ARM.exidx     0x0002ef38        0x8 c:/nxp/mcuxpressoide_11.2.0_4120/ide/tools/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7e-m/nofp\libgcc.a(_udivmoddi4.o)
+                0x0002ef40                __exidx_end = .
+                0x0002ef40                _etext = .
 
-.rel.dyn        0x0002f0c8        0x0
- .rel.iplt      0x0002f0c8        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_main.o
+.rel.dyn        0x0002ef40        0x0
+ .rel.iplt      0x0002ef40        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_main.o
 
-.data_RAM2      0x04020000        0x0 load address 0x0002f0c8
+.data_RAM2      0x04020000        0x0 load address 0x0002ef40
  FILL mask 0xff
                 [!provide]                PROVIDE (__start_data_RAM2 = .)
  *(.ramfunc.$RAM2)
@@ -11340,14 +11340,14 @@ END GROUP
                 0x04020000                . = ALIGN (0x4)
                 [!provide]                PROVIDE (__end_data_RAM2 = .)
 
-.bss_RAM2       0x04020000        0x0 load address 0x0002f0c8
+.bss_RAM2       0x04020000        0x0 load address 0x0002ef40
                 [!provide]                PROVIDE (__start_bss_RAM2 = .)
  *(.bss.$RAM2*)
  *(.bss.$RAM1*)
                 0x04020000                . = ALIGN ((. != 0x0)?0x4:0x1)
                 [!provide]                PROVIDE (__end_bss_RAM2 = .)
 
-.noinit_RAM2    0x04020000        0x0 load address 0x0002f0c8
+.noinit_RAM2    0x04020000        0x0 load address 0x0002ef40
  *(.noinit.$RAM2*)
  *(.noinit.$RAM1*)
                 0x04020000                . = ALIGN (0x4)
@@ -11376,7 +11376,7 @@ END GROUP
                 0x04000600                . = ALIGN (0x4)
                 0x04000600                __interrupts_ram_end__ = .
 
-.data_discard   0x04000600        0x0 load address 0x0002f0c8
+.data_discard   0x04000600        0x0 load address 0x0002ef40
  FILL mask 0xff
                 0x04000600                _data_discard = .
  *(.data.discard.stack)
@@ -11388,11 +11388,11 @@ END GROUP
                 0x04000600                . = ALIGN (0x4)
                 0x04000600                _edata_discard_noinit = .
 
-.fillerB        0x0002f0c8        0x8
-                0x0002f0c8        0x1 BYTE 0xff
+.fillerB        0x0002ef40       0x10
+                0x0002ef40        0x1 BYTE 0xff
  FILL mask 0xff
-                0x0002f0d0                . = ALIGN (0x10)
- *fill*         0x0002f0c9        0x7 ff
+                0x0002ef50                . = ALIGN (0x10)
+ *fill*         0x0002ef41        0xf ff
 
 .bss_discard    0x04000600      0x9fc
                 0x04000600                _bss_discard = .
@@ -11440,7 +11440,7 @@ END GROUP
                 0x04011b3c                . = ALIGN ((. != 0x0)?0x4:0x1)
                 0x04011b3c                __mac_buffer_end = .
 
-.data           0x04011b40      0xa40 load address 0x0002f0d0
+.data           0x04011b40      0xa40 load address 0x0002ef50
  FILL mask 0xff
                 0x04011b40                _data = .
  *(.data.cpu_stack)
@@ -11742,7 +11742,7 @@ END GROUP
                 0x04012580                . = ALIGN (0x10)
                 0x04012580                _edata = .
 
-.igot.plt       0x04012580        0x0 load address 0x0002fb10
+.igot.plt       0x04012580        0x0 load address 0x0002f990
  .igot.plt      0x04012580        0x0 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_main.o
 
 .bss            0x04012580     0x3a60
@@ -11994,14 +11994,14 @@ END GROUP
  .bss.u32TimeButton
                 0x040145bc        0x4 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_linky_buttons.o
                 0x040145bc                u32TimeButton
- .bss.i.18489   0x040145c0        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
- .bss.pos.18490
+ .bss.i.18523   0x040145c0        0x2 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
+ .bss.pos.18524
                 0x040145c2        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
- .bss.start.18491
+ .bss.start.18525
                 0x040145c3        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
- .bss.u8CRC.18487
+ .bss.u8CRC.18521
                 0x040145c4        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
- .bss.u8TmpCRC.18488
+ .bss.u8TmpCRC.18522
                 0x040145c5        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_uartlinky.o
  *fill*         0x040145c6        0x2 
  .bss.sWake     0x040145c8       0x10 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_sleep_handler.o
@@ -12031,7 +12031,7 @@ END GROUP
                 0x040145f0       0x1c ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_debug_console.o
  .bss.s_gintCallback
                 0x0401460c        0x4 ../../../Binaries/Linky_Ota_OM15081R2/obj/fsl_gint.o
- .bss.bKeyVerified.18395
+ .bss.bKeyVerified.18430
                 0x04014610        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o
  .bss.bWaitUgradeTime
                 0x04014611        0x1 ../../../Binaries/Linky_Ota_OM15081R2/obj/app_ota_client.o

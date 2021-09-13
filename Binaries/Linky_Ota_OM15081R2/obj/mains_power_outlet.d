@@ -1,6 +1,6 @@
 ../../../Binaries/Linky_Ota_OM15081R2/obj/mains_power_outlet.o: \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Source/mains_power_outlet.c \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Source/mains_power_outlet.c \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\stdint.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\machine\_default_types.h \
@@ -37,55 +37,55 @@
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\xlocale.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\strings.h \
  c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\string.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_heap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_apl.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_af.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/mac_vs_sap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_nwk.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/uMac/Include/MMAC.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac_Pib.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_pib.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/AppApi.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/tsv_pub.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/zps_mac_if_table.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aps.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdo.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_nib.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_slist.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSTSV/Include/zps_tsv.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sec.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/aessw_ccm.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/SecLib.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_pub.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdp.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aib.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_heap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_apl.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_af.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/mac_vs_sap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_nwk.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/uMac/Include/MMAC.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac_Pib.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_pib.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/AppApi.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/tsv_pub.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/zps_mac_if_table.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aps.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdo.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_nib.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_slist.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSTSV/Include/zps_tsv.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sec.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/aessw_ccm.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/SecLib.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_pub.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdp.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aib.h \
  ../../../Linky/Source/zcl_options.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Include/mains_power_outlet.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Basic.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Identify.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/OnOff.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Scenes.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h \
- C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/OTA/Include/OTA.h
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Include/mains_power_outlet.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Basic.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Identify.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/OnOff.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Scenes.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/OTA/Include/OTA.h
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/jendefs.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\lib\gcc\arm-none-eabi\9.2.1\include\stdint.h:
 
@@ -159,96 +159,96 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\strings.h:
 
 c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\sys\string.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_heap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_heap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_apl.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_apl.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_af.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_af.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/mac_vs_sap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/mac_vs_sap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_nwk.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_nwk.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/PDUM/Include/pdum_common.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/uMac/Include/MMAC.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/uMac/Include/MMAC.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac_Pib.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/mMac/Include/MiniMac_Pib.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_pib.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_pib.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/mac_sap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/AppApi.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/AppApi.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/tsv_pub.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/ieee-802.15.4/Include/tsv_pub.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/zps_mac_if_table.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSMAC/Include/zps_mac_if_table.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aps.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aps.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdo.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdo.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_nib.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_nib.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_config.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sap.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_slist.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_slist.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSTSV/Include/zps_tsv.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSTSV/Include/zps_tsv.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sec.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_sec.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/aessw_ccm.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/aessw_ccm.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/SecLib.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/SecLib/SecLib.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/framework/Common/EmbeddedTypes.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_pub.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSNWK/Include/zps_nwk_pub.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdp.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_zdp.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aib.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZPSAPL/Include/zps_apl_aib.h:
 
 ../../../Linky/Source/zcl_options.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Include/mains_power_outlet.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Devices/ZHA/Generic/Include/mains_power_outlet.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Basic.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Basic.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Identify.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Identify.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/dlist.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/OnOff.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/OnOff.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Scenes.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Scenes.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h:
 
-C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/OTA/Include/OTA.h:
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/OTA/Include/OTA.h:
