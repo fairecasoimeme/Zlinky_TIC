@@ -1,4 +1,4 @@
-# Zlinky_TIC
+# ZLinky_TIC
  Téléinformation Linky autoalimenté ZigBee 3.0
 
 ## Description
