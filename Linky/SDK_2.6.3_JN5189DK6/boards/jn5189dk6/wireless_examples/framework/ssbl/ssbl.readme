@@ -1,0 +1,14 @@
+Overview
+========
+The SSBL is a secondary stage boot loader.
+Its purpose is to decide among several applications and blobs which are valid and which are to be loaded.
+The SSBL reads the PSECT aka page0 in order to determine whether an OTA has just occurred.
+An OTA can be stored either on the QSPI flash or on the internal flash in a dedicate section if Selective OTA is used.
+
+Beforehand, the OTA client application will have stored the image either in QSPI Flash in a Ciphered way to guarantee secrecy and prevent cloning or in the internal flash for Selective OTA.
+For the QSPI storage, the key that is used is normally a device unique 128 bit key and the image is encrypted using an AES-ECB algorithm.
+
+On completion of the OTA transfer it will have written an OTA entry structure in PSECT used as a mailbox.
+The SSBL detects the presence of this entry to decide whether to attempt loading, deciphering, authenticating of the image.
+Otherwise it directly attempts to read the preferred application index and load the corresponding application using the image directory of the PSECT.
+Eventually, when the application is deemed as valid, the SSBL launches it.

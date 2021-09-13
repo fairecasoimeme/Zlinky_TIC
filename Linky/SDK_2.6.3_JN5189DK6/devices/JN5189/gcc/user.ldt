@@ -1,0 +1,22 @@
+<#assign STACK_OFFSET=32>
+
+<#--
+    ROM map file selection
+    You may override CPU_JN518X_REV assignment below
+    Alternatively ENV_CPU_JN518X_REV environment variable may be set before launching MCUX
+    (environment variable set from project settings or global preference won't work)
+-->
+
+<#assign CPU_JN518X_REV=2>
+
+<#if environment["ENV_CPU_JN518X_REV"]?? && environment["ENV_CPU_JN518X_REV"]=="1">
+  <#assign CPU_JN518X_REV=1>
+</#if>
+
+<#if CPU_JN518X_REV==1>
+  <#include "JN5189_rom_es1.ld">
+<#else>
+  <#include "JN5189_rom.ld" >
+</#if>
+
+<#assign listvarsext=true>

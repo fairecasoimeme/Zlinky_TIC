@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ksdk:examples xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd manifest.xsd">
+  <externalDefinitions>
+    <definition extID="com.nxp.mcuxpresso"/>
+    <definition extID="component.lists.JN5189"/>
+    <definition extID="component.serial_manager.JN5189"/>
+    <definition extID="component.serial_manager_uart.JN5189"/>
+    <definition extID="component.usart_adapter.JN5189"/>
+    <definition extID="device.JN5189_CMSIS.JN5189"/>
+    <definition extID="device.JN5189_startup.JN5189"/>
+    <definition extID="middleware.baremetal.JN5189"/>
+    <definition extID="middleware.framework.generic_lists.JN5189"/>
+    <definition extID="middleware.wireless.EEPROM_MX25R8035F.JN5189"/>
+    <definition extID="middleware.wireless.framework.PDUM.JN5189"/>
+    <definition extID="middleware.wireless.framework.PWRM.JN5189"/>
+    <definition extID="middleware.wireless.framework.common.JN5189"/>
+    <definition extID="middleware.wireless.framework.dbg_logging.JN5189"/>
+    <definition extID="middleware.wireless.framework.flash.external.JN5189"/>
+    <definition extID="middleware.wireless.framework.flash.internal.JN5189"/>
+    <definition extID="middleware.wireless.framework.function_lib.JN5189"/>
+    <definition extID="middleware.wireless.framework.gpio_adapter.JN5189"/>
+    <definition extID="middleware.wireless.framework.keyboard.JN5189"/>
+    <definition extID="middleware.wireless.framework.led.JN5189"/>
+    <definition extID="middleware.wireless.framework.lpm_ble_qn_jn518x.JN5189"/>
+    <definition extID="middleware.wireless.framework.mem_manager.JN5189"/>
+    <definition extID="middleware.wireless.framework.messaging.JN5189"/>
+    <definition extID="middleware.wireless.framework.module_info.JN5189"/>
+    <definition extID="middleware.wireless.framework.nvm.JN5189"/>
+    <definition extID="middleware.wireless.framework.osa.JN5189"/>
+    <definition extID="middleware.wireless.framework.osa_bm.JN5189"/>
+    <definition extID="middleware.wireless.framework.ota.JN5189"/>
+    <definition extID="middleware.wireless.framework.panic.JN5189"/>
+    <definition extID="middleware.wireless.framework.pdm.JN5189"/>
+    <definition extID="middleware.wireless.framework.reset.JN5189"/>
+    <definition extID="middleware.wireless.framework.rng.JN5189"/>
+    <definition extID="middleware.wireless.framework.sec_lib.JN5189"/>
+    <definition extID="middleware.wireless.framework.shell.JN5189"/>
+    <definition extID="middleware.wireless.framework.smgr.JN5189"/>
+    <definition extID="middleware.wireless.framework.smgr.spi_adapter.JN5189"/>
+    <definition extID="middleware.wireless.framework.smgr.uart_adapter.JN5189"/>
+    <definition extID="middleware.wireless.framework.tmr.JN5189"/>
+    <definition extID="middleware.wireless.framework_PDM_lib_jn.JN5189"/>
+    <definition extID="middleware.wireless.xcvr_DK6.JN5189"/>
+    <definition extID="platform.Include_common.JN5189"/>
+    <definition extID="platform.Include_core_cm4.JN5189"/>
+    <definition extID="platform.drivers.aes.JN5189"/>
+    <definition extID="platform.drivers.clock.JN5189"/>
+    <definition extID="platform.drivers.common.JN5189"/>
+    <definition extID="platform.drivers.ctimer.JN5189"/>
+    <definition extID="platform.drivers.flexcomm.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_i2c.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_spi.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_usart.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_usart_dma.JN5189"/>
+    <definition extID="platform.drivers.fmeas.JN5189"/>
+    <definition extID="platform.drivers.gint.JN5189"/>
+    <definition extID="platform.drivers.inputmux.JN5189"/>
+    <definition extID="platform.drivers.inputmux_connections.JN5189"/>
+    <definition extID="platform.drivers.jn_flash.JN5189"/>
+    <definition extID="platform.drivers.jn_iocon.JN5189"/>
+    <definition extID="platform.drivers.jn_pwm.JN5189"/>
+    <definition extID="platform.drivers.jn_rng.JN5189"/>
+    <definition extID="platform.drivers.jn_romapi.JN5189"/>
+    <definition extID="platform.drivers.jn_rtc.JN5189"/>
+    <definition extID="platform.drivers.lpc_adc.JN5189"/>
+    <definition extID="platform.drivers.lpc_dma.JN5189"/>
+    <definition extID="platform.drivers.lpc_gpio.JN5189"/>
+    <definition extID="platform.drivers.pint.JN5189"/>
+    <definition extID="platform.drivers.power_no_lib.JN5189"/>
+    <definition extID="platform.drivers.reset.JN5189"/>
+    <definition extID="platform.drivers.sha.JN5189"/>
+    <definition extID="platform.drivers.spifi.JN5189"/>
+    <definition extID="platform.drivers.wtimer.JN5189"/>
+    <definition extID="platform.drivers.wwdt.JN5189"/>
+    <definition extID="platform.utilities.assert.JN5189"/>
+    <definition extID="utility.debug_console.JN5189"/>
+    <definition extID="mcuxpresso"/>
+    <definition extID="armgcc"/>
+    <definition extID="iar"/>
+  </externalDefinitions>
+  <example id="jn5189dk6_nci_demo_bm" name="nci_demo_bm" category="wireless_examples/framework/nfc/nci_demo/bm" dependency="platform.drivers.jn_rtc.JN5189 platform.drivers.clock.JN5189 platform.drivers.reset.JN5189 platform.drivers.jn_rng.JN5189 platform.drivers.flexcomm_usart.JN5189 platform.drivers.flexcomm.JN5189 platform.drivers.jn_flash.JN5189 platform.drivers.aes.JN5189 platform.drivers.power_no_lib.JN5189 platform.drivers.wtimer.JN5189 platform.drivers.inputmux.JN5189 platform.drivers.fmeas.JN5189 platform.drivers.lpc_adc.JN5189 platform.drivers.spifi.JN5189 platform.drivers.jn_romapi.JN5189 platform.drivers.lpc_gpio.JN5189 platform.drivers.jn_pwm.JN5189 platform.drivers.pint.JN5189 platform.drivers.gint.JN5189 platform.drivers.ctimer.JN5189 platform.drivers.sha.JN5189 platform.drivers.flexcomm_i2c.JN5189 platform.drivers.flexcomm_spi.JN5189 platform.drivers.lpc_dma.JN5189 platform.drivers.wwdt.JN5189 platform.drivers.flexcomm_usart_dma.JN5189 component.serial_manager.JN5189 component.serial_manager_uart.JN5189 platform.utilities.assert.JN5189 utility.debug_console.JN5189 middleware.wireless.framework.osa_bm.JN5189 middleware.wireless.EEPROM_MX25R8035F.JN5189 middleware.wireless.framework.shell.JN5189 middleware.wireless.framework.flash.internal.JN5189 middleware.wireless.framework.gpio_adapter.JN5189 middleware.wireless.framework.keyboard.JN5189 middleware.wireless.framework.led.JN5189 middleware.wireless.framework.reset.JN5189 middleware.wireless.framework.common.JN5189 middleware.wireless.framework.mem_manager.JN5189 middleware.wireless.framework.messaging.JN5189 middleware.wireless.framework.osa.JN5189 middleware.wireless.framework.panic.JN5189 middleware.wireless.framework.rng.JN5189 middleware.wireless.framework.nvm.JN5189 middleware.wireless.framework.smgr.JN5189 middleware.wireless.framework.smgr.uart_adapter.JN5189 middleware.wireless.framework.tmr.JN5189 middleware.wireless.framework.module_info.JN5189 middleware.wireless.framework.function_lib.JN5189 middleware.framework.generic_lists.JN5189 middleware.wireless.framework.sec_lib.JN5189 middleware.wireless.framework.dbg_logging.JN5189 middleware.wireless.framework.pdm.JN5189 middleware.wireless.framework.PDUM.JN5189 middleware.wireless.framework.PWRM.JN5189 middleware.wireless.framework.lpm_ble_qn_jn518x.JN5189 middleware.wireless.xcvr_DK6.JN5189 middleware.wireless.framework.ota.JN5189 platform.drivers.common.JN5189 device.JN5189_startup.JN5189 device.JN5189_CMSIS.JN5189 platform.Include_core_cm4.JN5189 platform.Include_common.JN5189 component.lists.JN5189 platform.drivers.jn_iocon.JN5189 component.usart_adapter.JN5189 platform.drivers.inputmux_connections.JN5189 middleware.wireless.framework.flash.external.JN5189 middleware.wireless.framework.smgr.spi_adapter.JN5189 middleware.baremetal.JN5189 middleware.wireless.framework_PDM_lib_jn.JN5189">
+    <projects>
+      <project type="com.crt.advproject.projecttype.exe" nature="org.eclipse.cdt.core.cnature"/>
+    </projects>
+    <toolchainSettings>
+      <toolchainSetting id_refs="com.nxp.mcuxpresso">
+        <buildSteps>
+          <postBuildStep>arm-none-eabi-size "${BuildArtifactFileName}"; echo "${OsType}" | grep -q win* &amp;&amp;  py -3 "../scripts/dk6_image_tool.py" ${BuildArtifactFileName}|| python3 "../scripts/dk6_image_tool.py" ${BuildArtifactFileName}; arm-none-eabi-objcopy -v -O binary "${BuildArtifactFileName}" "${BuildArtifactFileBaseName}.bin"</postBuildStep>
+        </buildSteps>
+        <option id="com.crt.advproject.gas.fpu" type="enum">
+          <value>com.crt.advproject.gas.fpu.none</value>
+        </option>
+        <option id="com.crt.advproject.gcc.fpu" type="enum">
+          <value>com.crt.advproject.gcc.fpu.none</value>
+        </option>
+        <option id="com.crt.advproject.c.misc.dialect" type="enum">
+          <value>com.crt.advproject.misc.dialect.gnu99</value>
+        </option>
+        <option id="gnu.c.compiler.option.preprocessor.def.symbols" type="stringList">
+          <value>CPU_JN5189</value>
+          <value>JN518x=5180</value>
+          <value>JN5180=5180</value>
+          <value>JENNIC_CHIP_NAME=_JN5180</value>
+          <value>JENNIC_CHIP_FAMILY_NAME=_JN518x</value>
+          <value>__JN518X__</value>
+          <value>CPU_JN518X</value>
+          <value>CORE_M4</value>
+          <value>__CODE_RED</value>
+          <value>WATCHDOG_ALLOWED</value>
+          <value>NDEBUG</value>
+          <value>LITTLE_ENDIAN_PROCESSOR</value>
+          <value>JENNIC_CHIP_FAMILY=JN518x</value>
+          <value>JENNIC_CHIP_FAMILY_JN518x</value>
+          <value>JENNIC_STACK_MAC</value>
+          <value>JENNIC_MAC_MiniMac</value>
+          <value>PDM_NO_RTOS</value>
+          <value>FSL_OSA_BM_TIMER_CONFIG=FSL_OSA_BM_TIMER_SYSTICK</value>
+          <value>__APP_DEBUG</value>
+          <value>__ASSERT_LL_DEBUG</value>
+          <value>__CPU_JN518X_REV=1</value>
+          <value>CR_PRINTF_CHAR</value>
+          <value>SDK_DEBUGCONSOLE=1</value>
+          <value>CR_INTEGER_PRINTF</value>
+          <value>DK6</value>
+        </option>
+        <option id="gnu.c.compiler.option.optimization.flags" type="string">
+          <value>-fno-common</value>
+        </option>
+        <option id="gnu.c.compiler.option.misc.other" type="string">
+          <value>-c  -ffunction-sections  -fdata-sections  -ffreestanding  -fno-builtin -include "${ProjDirPath}/source/app_preinclude.h"</value>
+        </option>
+        <option id="com.crt.advproject.link.fpu" type="enum">
+          <value>com.crt.advproject.link.fpu.none</value>
+        </option>
+        <option id="gnu.c.link.option.nostdlibs" type="boolean">
+          <value>true</value>
+        </option>
+        <option id="gnu.c.link.option.other" type="stringList">
+          <value>--defsym=__app_id__=1</value>
+          <value>--defsym=__app_stated_size__=0x48000</value>
+          <value>--defsym=__app_load_address__=0x0</value>
+          <value>--defsym=gUseNVMLink_d=1</value>
+          <value>--defsym=gEraseNVMLink_d=0</value>
+          <value>--defsym=__ram_vector_table__=1</value>
+          <value>--defsym=gNVMSectorCountLink_d=63</value>
+          <value>--no-wchar-size-warning</value>
+          <value>--sort-section=alignment</value>
+          <value>--gc-sections</value>
+          <value>-print-memory-usage</value>
+          <value>-Map="${BuildArtifactFileBaseName}.map"</value>
+        </option>
+        <option id="com.crt.advproject.link.memory.heapAndStack" type="string">
+          <value>&amp;Heap:Default;Default;0xf0&amp;Stack:Default;Default;Default</value>
+        </option>
+      </toolchainSetting>
+    </toolchainSettings>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/common" target_path="source/common" type="c_include">
+      <files mask="app_sram_cmd.h"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/common" target_path="source/common" type="src">
+      <files mask="app_sram_cmd.c"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo/bm/mcux" target_path="linker-file" type="linker" toolchain="mcuxpresso">
+      <files mask="connectivity.ld"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo/bm" target_path="board" type="c_include">
+      <files mask="board.h"/>
+      <files mask="board_utility.h"/>
+      <files mask="gpio_pins.h"/>
+      <files mask="pin_mux.h"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo/bm" target_path="board" type="src">
+      <files mask="board.c"/>
+      <files mask="board_utility.c"/>
+      <files mask="hardware_init.c"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo" target_path="doc" type="doc">
+      <files mask="readme.txt"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo" target_path="source" type="c_include">
+      <files mask="app_nci.h"/>
+      <files mask="app_preinclude.h"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/framework/nfc/nci_demo" target_path="source" type="src">
+      <files mask="app_nci.c"/>
+      <files mask="nci_demo_main.c"/>
+    </source>
+    <source path="middleware/nci_i2c/include" target_path="middleware/nci_i2c/include" type="c_include">
+      <files mask="global_types.h"/>
+      <files mask="nci.h"/>
+      <files mask="nci_manager.h"/>
+      <files mask="nfc.h"/>
+    </source>
+    <source path="middleware/nci_i2c/source" target_path="middleware/nci_i2c/source" type="src">
+      <files mask="nci_manager.c"/>
+    </source>
+    <source path="tools/imagetool" target_path="scripts" type="script" exclude="true" toolchain="mcuxpresso">
+      <files mask="dk6_image_tool.py"/>
+    </source>
+    <source path="middleware/nci_i2c/driver/lib" type="lib" method="copy" target_path="middleware/nci_i2c/driver/lib" toolchain="armgcc mcuxpresso iar">
+      <files mask="libNCI.a"/>
+    </source>
+    <source path="middleware/nci_i2c/driver/lib" type="lib" method="copy" target_path="middleware/nci_i2c/driver/lib" toolchain="armgcc mcuxpresso iar">
+      <files mask="libNCI.a"/>
+    </source>
+  </example>
+</ksdk:examples>
