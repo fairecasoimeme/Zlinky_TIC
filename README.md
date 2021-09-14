@@ -1,11 +1,18 @@
 # ZLinky_TIC
- Téléinformation Linky autoalimenté ZigBee 3.0
+ Téléinformation Linky autoalimenté communiquant en ZigBee 3.0
+ 
 
 ## Description
+![Description ZLinky_TIC](https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_description.JPG)
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_prototype.jpg" width="400">
 
-ZLinky_TIC est un appareil permettant de remonter toutes les informations du Linky en ZigBee 3.0.  
-ZLinky_TIC est alimenté par votre compteur Linky. Il suffit simplement d'enlever le cash (jaune fluo) et de "plugger" l'appareil en pressant sur le bouton orange.  
-Au départ, ZLinky_TIC est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. L'appareil va clignoter lentement. Ensuite, le bouton relâché, l'appareil est reinitialisé.  
+## PCB
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_face.jpg" width="800">
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_pile.jpg" width="800">
+
+**ZLinky_TIC** est un appareil permettant de transmettre toutes les informations du Linky en ZigBee 3.0.  
+**ZLinky_TIC** est alimenté par votre compteur Linky. Il suffit simplement d'enlever le cash (jaune fluo) et de "plugger" l'appareil en pressant sur le bouton orange.  
+Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. L'appareil va clignoter lentement. Ensuite, le bouton relâché, l'appareil est reinitialisé.  
 Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'un autre coordinateur ZigBee, vous pourrez gérer votre consommation d'électricité.
 
 **!!! WARNING !!! Actuellement, l'appareil ne fonctionne qu'avec le mode Historique du compteur Linky. L'évolution du Firmware permettra de gérer le mode Standard et Gaspar**
@@ -58,4 +65,4 @@ RO= READ only RP= Reportable / RW = Read/Write
 ## Changelog
 
 ### Version 4000-0001
-Version initial
+Version initiale
