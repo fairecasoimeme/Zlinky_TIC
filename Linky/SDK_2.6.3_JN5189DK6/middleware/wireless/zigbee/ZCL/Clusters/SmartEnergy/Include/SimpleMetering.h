@@ -802,7 +802,7 @@ typedef struct
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_2_SUMMATION_DELIVERED
    // zuint48                    u48CurrentTier2SummationDelivered;
-   uint32                     u32CurrentTier2SummationDelivered;
+    uint32                    u32CurrentTier2SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_2_SUMMATION_RECEIVED

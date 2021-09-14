@@ -1167,13 +1167,13 @@ PUBLIC void vReverseMemcpy(uint8 *pu8OutData, uint8 *pu8InData, uint8 u8NumOfByt
     }
     uint8 *pu8Temp = (uint8*)pu8InData;
 
-    #ifdef LITTLE_ENDIAN_PROCESSOR
+    #ifndef LITTLE_ENDIAN_PROCESSOR
         pu8Temp += (u8ZCL_GetAttributeAllignToFourBytesBoundary(u8NumOfBytes) - 1);
     #endif
 
     for(i=0;i<u8NumOfBytes;i++)
     {
-        #ifdef LITTLE_ENDIAN_PROCESSOR
+        #ifndef LITTLE_ENDIAN_PROCESSOR
             *pu8OutData++ = *pu8Temp--;
         #else
             *pu8OutData++ = *pu8Temp++;

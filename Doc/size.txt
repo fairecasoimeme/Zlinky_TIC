@@ -4,3 +4,24 @@
 09/13/21 18:46:29
    text	   data	    bss	    dec	    hex	filename
  173932	   2660	  18528	 195120	  2fa30	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 10:20:27
+   text	   data	    bss	    dec	    hex	filename
+ 192144	   2816	  19792	 214752	  346e0	../../../Binaries/Linky_Ota_OM15081R2/Linky_Ota_OM15081R2.axf
+09/14/21 10:29:49
+   text	   data	    bss	    dec	    hex	filename
+ 173932	   2660	  18528	 195120	  2fa30	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 10:35:38
+   text	   data	    bss	    dec	    hex	filename
+ 173932	   2660	  18544	 195136	  2fa40	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 10:37:55
+   text	   data	    bss	    dec	    hex	filename
+ 173932	   2660	  18544	 195136	  2fa40	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 10:41:41
+   text	   data	    bss	    dec	    hex	filename
+ 173932	   2660	  18528	 195120	  2fa30	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 10:49:03
+   text	   data	    bss	    dec	    hex	filename
+ 173868	   2660	  18528	 195056	  2f9f0	../../../Binaries/Linky_OM15081R2/Linky_OM15081R2.axf
+09/14/21 11:08:45
+   text	   data	    bss	    dec	    hex	filename
+ 192144	   2816	  19792	 214752	  346e0	../../../Binaries/Linky_Ota_OM15081R2/Linky_Ota_OM15081R2.axf

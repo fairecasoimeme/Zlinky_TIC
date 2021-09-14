@@ -196,7 +196,7 @@ PUBLIC uint16 u16ZCL_WriteTypeNBO(uint8 *pu8Data, teZCL_ZCLAttributeType eAttrib
     }
     else
     {
-    #ifdef LITTLE_ENDIAN_PROCESSOR
+    #ifndef LITTLE_ENDIAN_PROCESSOR
         vReverseMemcpy(pu8Data,pvData,u8NumOfBytes);
     #else   
         memcpy(pu8Data,pvData,u8NumOfBytes);

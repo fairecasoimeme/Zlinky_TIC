@@ -254,3 +254,9 @@ Source Files
 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_ns.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/BDB/Source/NwkSteering/bdb_ns.c
 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_fb_common.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/BDB/Source/FindAndBind/bdb_fb_common.c
 ../../../Binaries/Linky_Ota_OM15081R2/obj/bdb_fb_initiator.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/BDB/Source/FindAndBind/bdb_fb_initiator.c
+../../../Binaries/Linky_Ota_OM15081R2/obj/pdum_gen.o ../../../Linky/Source/pdum_gen.c
+../../../Binaries/Linky_Ota_OM15081R2/obj/pdum_apdu.o ../../../Linky/Source/pdum_apdu.S
+../../../Binaries/Linky_Ota_OM15081R2/obj/zps_gen.o ../../../Linky/Source/zps_gen.c
+../../../Binaries/Linky_Ota_OM15081R2/obj/SimpleMetering.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/SmartEnergy/Source/SimpleMetering.c
+../../../Binaries/Linky_Ota_OM15081R2/obj/zcl.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Source/zcl.c
+../../../Binaries/Linky_Ota_OM15081R2/obj/zcl_PDUbufferReadWrite.o ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Source/zcl_PDUbufferReadWrite.c
