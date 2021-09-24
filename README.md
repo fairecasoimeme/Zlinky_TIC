@@ -27,40 +27,39 @@ L'appareil clignote lentement : le bouton "link" est actionné sans relachement 
 
 RO= READ only RP= Reportable / RW = Read/Write	
 
-|Commande TIC|CLUSTER|Attribut|Droit|Force Reported|
-|------------|-------|--------|-----|--------|					
-|ADC0|0x0702|0x0308|RO||		
-|BASE|0x0702|0x0000|RP|x|
-|OPTARIF			|0xFF66|	0x0000|		RO||			
-|ISOUSC			|0x0B01	|0x000D		|RO		||	
-|HCHC			|0x0702	|0x0102		|RO			|x|
-|HCHP			|0x0702	|0x0100		|RO			|x|
-|EJPHN			|0x0702	|0x0100		|RO			|x|
-|EJPHPM			|0x0702	|0x0102		|RO			|x|
-|BBRHCJB			|0x0702	|0x0100		|RO			|x|
-|BBRHPJB			|0x0702	|0x0102		|RO			|x|
-|BBRHCJW			|0x0702	|0x0104		|RO			|x|
-|BBRHPJW			|0x0702	|0x0106		|RO			|x|
-|BBRHCJR			|0x0702	|0x0108		|RO			|x|
-|BBRHPJR			|0x0702	|0x010A		|RO			|x|
-|IINST			|0x0B04	|0x0508		|RP			||
-|IINST1			|0x0B04	|0x0508		|RP			||
-|IINST2			|0x0B04	|0x0908		|RP			||
-|IINST3			|0x0B04	|0x0A08		|RP			||
-|IMAX			|0x0B04	|0x050A		|RO			||
-|IMAX1			|0x0B04	|0x050A		|RO			||
-|IMAX2			|0x0B04	|0x090A		|RO			||
-|IMAX3			|0x0B04	|0x0A0A		|RO			||
-|PMAX			|0x0B04	|0x050D		|RO			||
-|PAPP			|0x0B04	|0x050F		|RP			||
-|PTEC			|0x0702	|0x0020		|RO	||
-|			|0xFF66	|0x0100		|RW		|Change the periodic sending time based on 7 sec cycle. ex : value=1 → send every 7 sec. Value= 5 → send every 35 sec	etc|											
-|DEMAIN			|0xFF66	|0x0001		|RO||
-|HHPHC			|0xFF66	|0x0002		|RO||
-|PPOT 			|0xFF66	|0x0003		|RO||
-|PEJP			|0xFF66	|0x0004		|RO||
-|ADPS			|0xFF66	|0x0005		|RO||			
-
+|Commande TIC|CLUSTER|Attribut|Droit|Force Reported|data type|min max|unit|designation|
+|------------|-------|--------|-----|--------------|---------|-------|----|-----------|					
+|ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|
+|BASE|0x0702|0x0000|RP|x|Uint32|9 car|Wh| Index Base|
+|OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|			
+|ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|
+|HCHC			|0x0702	|0x0102		|RO			|x|Uint32|9 car|Wh|Index HCHC|
+|HCHP			|0x0702	|0x0100		|RO			|x|Uint32|9 car|Wh|Index HCHP|
+|EJPHN			|0x0702	|0x0100		|RO			|x|Uint32|9 car|Wh|Index EJPHN|
+|EJPHPM			|0x0702	|0x0102		|RO			|x|Uint32|9 car|Wh|Index EJPHPM|
+|BBRHCJB			|0x0702	|0x0100		|RO			|x|Uint32|9 car|Wh|Index BBRHCJB|
+|BBRHPJB			|0x0702	|0x0102		|RO			|x|Uint32|9 car|Wh|Index BBRHPJB|
+|BBRHCJW			|0x0702	|0x0104		|RO			|x|Uint32|9 car|Wh|Index BBRHCJW|
+|BBRHPJW			|0x0702	|0x0106		|RO			|x|Uint32|9 car|Wh|Index BBRHPJW|
+|BBRHCJR			|0x0702	|0x0108		|RO			|x|Uint32|9 car|Wh|Index BBRHCJR|
+|BBRHPJR			|0x0702	|0x010A		|RO			|x|Uint32|9 car|Wh|Index BBRHPJR|
+|IINST			|0x0B04	|0x0508		|RP			||Uint16|3 car|A|Courant efficace|
+|IINST1			|0x0B04	|0x0508		|RP			||Uint16|3 car|A|Courant efficace phase 1|
+|IINST2			|0x0B04	|0x0908		|RP			||Uint16|3 car|A|Courant efficace phase 2|
+|IINST3			|0x0B04	|0x0A08		|RP			||Uint16|3 car|A|Courant efficace phase 3|
+|IMAX			|0x0B04	|0x050A		|RO			||Uint16|3 car|A|Intensité maximale|
+|IMAX1			|0x0B04	|0x050A		|RO			||Uint16|3 car|A|Intensité maximale phase 1|
+|IMAX2			|0x0B04	|0x090A		|RO			||Uint16|3 car|A|Intensité maximale phase 2|
+|IMAX3			|0x0B04	|0x0A0A		|RO			||Uint16|3 car|A|Intensité maximale phase 3|
+|PMAX			|0x0B04	|0x050D		|RO			||Uint16|5 car|W|Puissance maximale triphasée atteinte|
+|PAPP			|0x0B04	|0x050F		|RP			||Uint16|5 car|VA|Puissance apparente|
+|PTEC			|0x0702	|0x0020		|RO	||String|4 car|-|Periode tarifaire en cours|
+|			|0xFF66	|0x0100		|RW		|Change the periodic sending time based on 7 sec cycle. ex : value=1 → send every 7 sec. Value= 5 → send every 35 sec	etc|Uint16|-|-|-|											
+|DEMAIN			|0xFF66	|0x0001		|RO||String|4 car|-|Couleur du lendemain|
+|HHPHC			|0xFF66	|0x0002		|RO||Uint8|1 car|-|Horaire Heure Pleines Heures Creuses|
+|PPOT 			|0xFF66	|0x0003		|RO||Uint8|2 car|-| Présence des potentiels|
+|PEJP			|0xFF66	|0x0004		|RO||Uint8|2 car|Min|Préavis début EJP(30min)|
+|ADPS			|0xFF66	|0x0005		|RO||Uint16|3 car|A|Avertissement de Dépassement De Puissance Souscrite|
 
 ## Changelog
 
