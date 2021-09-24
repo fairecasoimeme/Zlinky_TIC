@@ -27,7 +27,7 @@ L'appareil clignote lentement : le bouton "link" est actionné sans relachement 
 
 RO= READ only RP= Reportable / RW = Read/Write	
 
-|Commande TIC|CLUSTER|Attribut|Droit|Force Reported|data type|min max|unit|designation|
+|Commande TIC|CLUSTER|Attribut|Droit|Force Reported|data type|size max|unit|designation|
 |------------|-------|--------|-----|--------------|---------|-------|----|-----------|					
 |ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|
 |BASE|0x0702|0x0000|RP|x|Uint32|9 car|Wh| Index Base|
