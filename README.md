@@ -25,6 +25,21 @@ L'appareil clignote lentement : le bouton "link" est actionné sans relachement 
 
 ## Clusters
 
+### Basic Cluster (0x0000)
+
+|attribut|Name|Value|
+|------|----------|------|
+|0x0000|ZCLVersion|0x0003|  
+0x0001 | ApplicationVersion|0x0001|  
+0x0002 | StackVersion|0x0002|
+0x0003 | HWVersion|0x0001|
+0x0004 | ManufacturerName|LiXee|
+0x0005 | ModelIdentifier|ZLinky_TIC|
+0x0006 | DateCode|20210401|
+0x0007 | PowerSource|0x03|
+
+
+
 RO= READ only RP= Reportable / RW = Read/Write	
 
 |Commande TIC|CLUSTER|Attribut|Droit|Force Reported|data type|size max|unit|designation|
