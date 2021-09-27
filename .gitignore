@@ -1,0 +1,5 @@
+*.o
+*.d
+Linky/Source/pdum_gen.c
+Linky/Source/pdum_gen.h
+mcux/.settings/language.settings.xml
