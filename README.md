@@ -20,8 +20,19 @@ Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'
 ## Voyant lumineux
 
 L'appareil clignote en bleu toutes les 6-7 secondes correspondant aux phases de réveil.  
-L'appareil s'allume en bleu pendant 1 seconde correspondant à l'envoi des données au coordinateur.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_sleep.png" width="200">  
+
+L'appareil clignote 2 fois toutes les 7 secondes : l'appareil n'est pas encore appairé.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_No_JOIN.png" width="400">  
+
+L'appareil s'allume en bleu pendant 3 secondes correspondant à l'envoi des données au coordinateur.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
+
+L'appareil clignote 4 fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_error.png" width="200">  
+
 L'appareil clignote lentement : le bouton "link" est actionné sans relachement pour une réinitilisation.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_Reset.png" width="200">  
 
 ## Clusters
 
