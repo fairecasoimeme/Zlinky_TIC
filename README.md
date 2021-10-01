@@ -102,6 +102,9 @@ RO= READ only RP= Reportable / RW = Read/Write
 |PPOT 			|0xFF66	|0x0003		|RO||Uint8|2 car|-| Présence des potentiels|0|
 |![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) PEJP			|0xFF66	|0x0004		|RP||Uint8|2 car|Min|Préavis début EJP(30min)|0|
 |ADPS			|0xFF66	|0x0005		|RP||Uint16|3 car|A|Avertissement de Dépassement De Puissance Souscrite|0|
+|ADIR1			|0xFF66	|0x0006		|RP||Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
+|ADIR2			|0xFF66	|0x0007		|RP||Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
+|ADIR3			|0xFF66	|0x0008		|RP||Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
 
 ## Changelog
 
