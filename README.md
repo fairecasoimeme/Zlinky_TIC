@@ -75,8 +75,8 @@ RO= READ only RP= Reportable / RW = Read/Write
 |![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint32|9 car|Wh| Index Base|0|
 |OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
 |ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index HCHC|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index HCHP|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index HCHC|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index HCHP|0|
 |![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index EJPHN|0|
 |![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index EJPHPM|0|
 |![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index BBRHCJB|0|
