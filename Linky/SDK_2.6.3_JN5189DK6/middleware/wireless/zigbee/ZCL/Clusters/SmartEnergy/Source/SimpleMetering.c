@@ -182,7 +182,7 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #endif
 
 #ifdef CLD_SM_ATTR_ACTIVE_REGISTER_TIER_DELIVERED
-    ,{E_CLD_SM_ATTR_ID_ACTIVE_REGISTER_TIER_DELIVERED,     E_ZCL_AF_RD,    E_ZCL_OSTRING,    (uint32)(&((tsCLD_SimpleMetering*)(0))->sActiveRegisterTierDelivered), 0}
+    ,{E_CLD_SM_ATTR_ID_ACTIVE_REGISTER_TIER_DELIVERED,     E_ZCL_AF_RD,    E_ZCL_CSTRING,    (uint32)(&((tsCLD_SimpleMetering*)(0))->sActiveRegisterTierDelivered), 0}
 #endif
 
     /* Time Of Use Information attribute attribute ID's set (D.3.2.2.2) */
