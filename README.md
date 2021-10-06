@@ -114,6 +114,25 @@ RO= READ only RP= Reportable / RW = Read/Write
 |ADIR2			|0xFF66	|0x0007		|RP||Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
 |ADIR3			|0xFF66	|0x0008		|RP||Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
 
+## Mise à jour du Firmware (non OTA)
+
+
+Tout d'abord, il faut dévisser le boitier afin de sortir la carte électronique.
+Ensuite, il faut brancher le module USB TTL sur le ZLinky_TIC comme sur la photo. 
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_1.jpg" width="400">  
+
+Pour ceux qui n'ont pas ce modèle, voici la correspondance des 5 PINs : 
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_4.jpg" width="400"> 
+
+Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur la clef USB en maintenant le bouton **Flash** puis relacher.
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_2.jpg" width="400"> 
+
+Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/documentation/mise-a-jour-de-la-zigate-2/) (similaire à la mise à jour d'une ZiGate+ (V2))
+
+
 ## Changelog
 
 ### Version 4000-0001
