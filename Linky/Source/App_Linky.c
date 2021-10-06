@@ -50,7 +50,8 @@
 #include "app.h"
 #include "fsl_usart.h"
 #include "app_uartlinky.h"
-//#include "metering_sensor.h"
+#include "app_blink_led.h"
+#include "ElectricalMeasurement.h"
 
 
 extern uint8_t wdt_update_count;
@@ -89,6 +90,8 @@ tsReports asDefaultReports[ZCL_NUMBER_OF_REPORTS] = \
 	{SE_CLUSTER_ID_SIMPLE_METERING,{0, E_ZCL_UINT32,E_CLD_SM_ATTR_ID_CURRENT_TIER_2_SUMMATION_DELIVERED,ZLO_MIN_REPORT_INTERVAL,ZLO_MAX_REPORT_INTERVAL,0,{LINKY_MINIMUM_REPORTABLE_CHANGE}}},
 	{SE_CLUSTER_ID_SIMPLE_METERING,{0, E_ZCL_UINT32,E_CLD_SM_ATTR_ID_CURRENT_TIER_3_SUMMATION_DELIVERED,ZLO_MIN_REPORT_INTERVAL,ZLO_MAX_REPORT_INTERVAL,0,{LINKY_MINIMUM_REPORTABLE_CHANGE}}},
 */
+	//{LIXEE_CLUSTER_ID_LINKY,{0, E_ZCL_UINT16,0x0005,ZLO_MIN_REPORT_INTERVAL,ZLO_MAX_REPORT_INTERVAL,0,{LINKY_MINIMUM_REPORTABLE_CHANGE}}},
+
 };
 
 /****************************************************************************/
@@ -180,11 +183,11 @@ PUBLIC void vAPP_ZCL_DeviceSpecific_UpdateIdentify(void)
 {
     if(sSensor.sIdentifyServerCluster.u16IdentifyTime%2)
     {
-        GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 0); // On
+        GPIO_PinWrite(GPIO, 0, 10, 0); // On
     }
     else
     {
-        GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1); // Off
+        GPIO_PinWrite(GPIO, 0, 10, 1); // Off
     }
 }
 /****************************************************************************
@@ -202,7 +205,7 @@ PUBLIC void vAPP_ZCL_DeviceSpecific_UpdateIdentify(void)
 PUBLIC void vAPP_ZCL_DeviceSpecific_IdentifyOff(void)
 {
     vAPP_ZCL_DeviceSpecific_SetIdentifyTime(0);
-    GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1); // Off
+    GPIO_PinWrite(GPIO, 0, 10, 1); // Off
 }
 
 /****************************************************************************
@@ -258,6 +261,7 @@ uint8 APP_vProcessRxData ( void )
 				{
 					DBG_vPrintf(1, "\r\nBASE : %s",au8Value);
 					sSensor.sSimpleMeteringServerCluster.u32CurrentSummationDelivered=atol(au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"HHPHC",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nHHPHC : %s",au8Value);
@@ -273,12 +277,12 @@ uint8 APP_vProcessRxData ( void )
 				}else if(memcmp(au8Command,"HCHC",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nHCHC : %s",au8Value);
-					sSensor.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered=atol(au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
 					//DBG_vPrintf(1, "\r\nHCHC : %d",sSensor.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered);
 				}else if(memcmp(au8Command,"HCHP",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nHCHP : %s",au8Value);
-					sSensor.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered=atol(au8Value);
 					//DBG_vPrintf(1, "\r\nHCHP : %d",sSensor.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered);
 					/*uint32 tmp=0;
 					int ln=0;
@@ -379,6 +383,18 @@ uint8 APP_vProcessRxData ( void )
 				{
 					sSensor.sLinkyServerCluster.au16LinkyADPS=atoi(au8Value);
 
+				}else if(memcmp(au8Command,"ADIR1",5)==0)
+				{
+					sSensor.sLinkyServerCluster.au16LinkyADIR1=atoi(au8Value);
+
+				}else if(memcmp(au8Command,"ADIR2",5)==0)
+				{
+					sSensor.sLinkyServerCluster.au16LinkyADIR2=atoi(au8Value);
+
+				}else if(memcmp(au8Command,"ADIR3",5)==0)
+				{
+					sSensor.sLinkyServerCluster.au16LinkyADIR3=atoi(au8Value);
+
 				}else if(memcmp(au8Command,"DEMAIN",6)==0)
 				{
 					memcpy(sSensor.sLinkyServerCluster.au8LinkyDemain, au8Value,4);
@@ -424,12 +440,12 @@ PUBLIC void vAPP_LinkySensorSample(void)
 {
 	uint8 u8StatusLinky;
     loopOK=0;
-
+    vStopBlinkTimer();
     UARTLINKY_vInit();
     UARTLINKY_vSetBaudRate ( 1200 );
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
-    GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 0); // OFF
+    GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 0); // ON
 
     u32Timeout=0;
     while(TRUE)
@@ -447,12 +463,16 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     if (u8StatusLinky == 2)
     {
-    	GPIO_PinInit(GPIO, 0, APP_BASE_BOARD_LED1_PIN, &((const gpio_pin_config_t){kGPIO_DigitalInput, 1}));
-    	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1); // Off
+
+    	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1);
+    	//GPIO_PinInit(GPIO, APP_BASE_BOARD_LED1_PIN, 10, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 1}));
+    	GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 1); // ON
+    	vStartAwakeTimer(2);
+    	vStartBlinkTimer(250);
+
     	DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");
     }else{
-    	GPIO_PinInit(GPIO, 0, APP_BASE_BOARD_LED1_PIN, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 0}));
-    	GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1); //ON
+    	GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 1); //OFF
     }
     //u16ALSResult = random();
    // sSensor.sIlluminanceMeasurementServerCluster.u16MeasuredValue = u16ALSResult;
