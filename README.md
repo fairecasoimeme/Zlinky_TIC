@@ -16,6 +16,14 @@ Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez ré
 Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'un autre coordinateur ZigBee, vous pourrez gérer votre consommation d'électricité.
 
 **!!! WARNING !!! Actuellement, l'appareil ne fonctionne qu'avec le mode Historique du compteur Linky. L'évolution du Firmware permettra de gérer le mode Standard et Gaspar**
+## Installation
+Suivre les instructions suivantes :
+* Retirer le capot vert du Linky
+* Insérer le *ZLinky_TIC* en appuyant sur le bouton au-dessus
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/installation_ZLinky_TIC.png" width="600">  
+
+PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de la marque du Linky
 
 ## Voyant lumineux
 
