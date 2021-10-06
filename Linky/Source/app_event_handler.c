@@ -50,8 +50,9 @@
 #include "app_zcl_tick_handler.h"
 #include "bdb_api.h"
 #include "app_nwk_event_handler.h"
-
+#include "alarms.h"
 #include "zps_gen.h"
+
 
 #include "App_Linky.h"
 
@@ -98,6 +99,7 @@ PRIVATE void vEventLeaveNetwork(void)
 {
 	DBG_vPrintf(1, "\nAPP NWK Event Handler: ZDO Leave" );
 	ZPS_eAplZdoLeaveNetwork(0, FALSE, FALSE);
+	PDM_vDeleteAllDataRecords();
 
 }
 /****************************************************************************
@@ -302,7 +304,16 @@ PRIVATE void vHandlePeriodicReportEvent(void)
 	if (u8CountReport>=countTest)
 	{
 		vAPP_LinkySensorSample();
-		if (memcmp(sSensor.sLinkyServerCluster.sLinkyOptarif.pu8Data,"BASE",4)==0)
+		if 	((sSensor.sLinkyServerCluster.au16LinkyADPS !=0) ||
+				(sSensor.sLinkyServerCluster.au16LinkyADIR1 !=0) ||
+				(sSensor.sLinkyServerCluster.au16LinkyADIR2 !=0) ||
+				(sSensor.sLinkyServerCluster.au16LinkyADIR3 !=0)
+				)
+		{
+			//send alarm
+
+		}
+		/*if (memcmp(sSensor.sLinkyServerCluster.sLinkyOptarif.pu8Data,"BASE",4)==0)
 		{
 			vSendImmediateReport(0x702,0x0);
 		}else if (memcmp(sSensor.sLinkyServerCluster.sLinkyOptarif.pu8Data,"HC..",4)==0)
@@ -313,11 +324,14 @@ PRIVATE void vHandlePeriodicReportEvent(void)
 		{
 			vSendImmediateReport(0x702,0x100);
 			vSendImmediateReport(0x702,0x102);
+		}else{
+			vSendImmediateReport(0x702,0x100);
+			vSendImmediateReport(0x702,0x102);
 			vSendImmediateReport(0x702,0x104);
 			vSendImmediateReport(0x702,0x106);
 			vSendImmediateReport(0x702,0x108);
 			vSendImmediateReport(0x702,0x10A);
-		}
+		}*/
 		u8CountReport=0;
 	}
 
