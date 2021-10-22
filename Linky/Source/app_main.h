@@ -68,6 +68,9 @@ extern PUBLIC uint8 u8TimerPowerOnCount;
 extern PUBLIC uint8 u8TimerLightSensorSample;
 extern PUBLIC uint8 u8TimerTick;
 extern PUBLIC uint8 u8TimerBlink;
+extern PUBLIC uint8 u8TimerAwake;
+extern PUBLIC uint8 u8TimerJoinIdle;
+
 #if (defined APP_NTAG_ICODE)
 extern PUBLIC uint8 u8TimerNtag;
 #endif
@@ -82,6 +85,9 @@ extern PUBLIC tszQueue APP_msgAppEvents;
 extern PUBLIC tszQueue APP_msgBdbEvents;
 
 extern PUBLIC bool_t APP_bPersistantPolling;
+extern PUBLIC uint32 u32JoinedNetwork;
+
+extern PUBLIC uint8 u8ModeLinky;
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/

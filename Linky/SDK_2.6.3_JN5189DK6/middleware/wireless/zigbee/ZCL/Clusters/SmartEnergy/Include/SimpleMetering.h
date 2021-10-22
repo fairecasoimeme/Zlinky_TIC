@@ -209,6 +209,7 @@ typedef enum
 /****************************************************************************/
 /***       Optional attributes                                              ***/
 /****************************************************************************/
+#define CLD_SM_ATTR_SITE_ID
 #define CLD_SM_ATTR_METER_SERIAL_NUMBER
 #define CLD_SM_ATTR_CURRENT_SUMMATION_DELIVERED
 #define CLD_SM_ATTR_CURRENT_TIER_1_SUMMATION_DELIVERED
@@ -217,6 +218,10 @@ typedef enum
 #define CLD_SM_ATTR_CURRENT_TIER_4_SUMMATION_DELIVERED
 #define CLD_SM_ATTR_CURRENT_TIER_5_SUMMATION_DELIVERED
 #define CLD_SM_ATTR_CURRENT_TIER_6_SUMMATION_DELIVERED
+#define CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_DELIVERED
+#define CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_DELIVERED
+#define CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_DELIVERED
+#define CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_DELIVERED
 #define CLD_SM_ATTR_ACTIVE_REGISTER_TIER_DELIVERED
 
 /****************************************************************************/
@@ -842,7 +847,7 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_DELIVERED
-    zuint48                    u48CurrentTier7SummationDelivered;
+    uint32                    u32CurrentTier7SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_RECEIVED
@@ -850,7 +855,7 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_DELIVERED
-    zuint48                    u48CurrentTier8SummationDelivered;
+    uint32                    u32CurrentTier8SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_RECEIVED
@@ -858,7 +863,7 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_DELIVERED
-    zuint48                    u48CurrentTier9SummationDelivered;
+    uint32                    u32CurrentTier9SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_RECEIVED
@@ -866,7 +871,7 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_DELIVERED
-    zuint48                    u48CurrentTier10SummationDelivered;
+    uint32                    u32CurrentTier10SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_RECEIVED

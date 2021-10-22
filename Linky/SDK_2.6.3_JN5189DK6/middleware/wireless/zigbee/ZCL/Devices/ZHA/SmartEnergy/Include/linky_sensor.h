@@ -43,7 +43,9 @@ extern "C" {
 #ifdef CLD_OTA
 #include "OTA.h"
 #endif
-
+#ifdef CLD_ALARMS
+#include "Alarms.h"
+#endif
 #include "PollControl.h"
 #include "SimpleMetering.h"
 #include "ElectricalMeasurement.h"
@@ -68,6 +70,10 @@ typedef struct
     #if (defined CLD_IDENTIFY) && (defined IDENTIFY_SERVER)
         tsZCL_ClusterInstance sIdentifyServer;
     #endif
+
+	#if (defined CLD_ALARMS) && (defined ALARMS_SERVER)
+		tsZCL_ClusterInstance sAlarmsServer;
+	#endif
 
     #if (defined CLD_SIMPLE_METERING) && (defined SM_SERVER)
        tsZCL_ClusterInstance sSimpleMeteringServer;
@@ -117,6 +123,12 @@ typedef struct
         tsCLD_Identify sIdentifyServerCluster;
         tsCLD_IdentifyCustomDataStructure sIdentifyServerCustomDataStructure;
     #endif
+
+	#if (defined CLD_ALARMS) && (defined ALARMS_SERVER)
+		/* Alarms Cluster - Server */
+		tsCLD_Alarms sAlarmsServerCluster;
+		tsCLD_AlarmsCustomDataStructure sAlarmsServerCustomDataStructure;
+	#endif
 
     #if (defined CLD_SIMPLE_METERING) && (defined SM_SERVER)
         /* Simple MEtering Measurement Cluster - Server */

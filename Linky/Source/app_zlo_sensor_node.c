@@ -209,6 +209,7 @@ PUBLIC void APP_vInitialiseNode(void)
     if(eStatusReportReload !=PDM_E_STATUS_OK )
     {
         /*Load Defaults if the data was not correct*/
+    	DBG_vPrintf(TRACE_SENSOR_NODE, "\r\nNODE: vLoadDefaultConfigForReportable");
         vLoadDefaultConfigForReportable();
     }
     /*Make the reportable attributes */
@@ -340,7 +341,9 @@ PUBLIC void APP_vBdbCallback(BDB_tsBdbEvent *psBdbEvent)
     case BDB_EVENT_REJOIN_SUCCESS: // only for ZED
         DBG_vPrintf(TRACE_SENSOR_NODE, "\r\nNODE: APP_vBdbCallback(REJOIN_SUCCESS)");
         bBDBJoinFailed = FALSE;
+        vStartPollTimer(POLL_TIME_FAST);
         vHandleNetworkJoinEndDevice();
+        vStartJoinIdle(5);
         break;
 
     case BDB_EVENT_NWK_STEERING_SUCCESS:
@@ -348,6 +351,7 @@ PUBLIC void APP_vBdbCallback(BDB_tsBdbEvent *psBdbEvent)
         DBG_vPrintf(TRACE_SENSOR_NODE, "\r\nNODE: APP_vBdbCallback(NWK_STEERING_SUCCESS)");
         bBDBJoinFailed = FALSE;
         vHandleNetworkJoinAndRejoin();
+        vStartJoinIdle(15);
         break;
 
     case BDB_EVENT_NO_NETWORK:

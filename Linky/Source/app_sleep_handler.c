@@ -58,6 +58,8 @@
 #include "App_Linky.h"
 #include "app_events.h"
 
+#include "app_sleep_handler.h"
+
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
@@ -139,8 +141,11 @@ PUBLIC void vAttemptToSleep(void)
 
     /* Only enter here if the activity count is equal to the number of non sleep preventing timers (in other words, the activity count
      * will become zero when we stop them) */
+
+
+
     if ((u16ActivityCount == u8ValNumberOfNonSleepPreventingTimers) &&
-        (0 == u8ValNumberOfTimersTaskTimers))
+        (0 == u8ValNumberOfTimersTaskTimers) )
     {
         DBG_vPrintf(TRACE_SLEEP_HANDLER, ", SLEEP YES");
         /* Stop any background timers that are non sleep preventing*/
@@ -150,18 +155,30 @@ PUBLIC void vAttemptToSleep(void)
         if ((SYSCON->WKT_STAT&SYSCON_WKT_STAT_WKT0_RUNNING_MASK) == SYSCON_WKT_STAT_WKT0_RUNNING_MASK)
         {
             vScheduleSleep(FALSE);
+            DBG_vPrintf(TRACE_SLEEP_HANDLER, "\r\nvScheduleSleep(FALSE)");
         }
         else
         {
             vScheduleSleep(TRUE);
+            DBG_vPrintf(TRACE_SLEEP_HANDLER, "\r\nvScheduleSleep(TRUE)");
         }
     }
     else
     {
-//        DBG_vPrintf(TRACE_SLEEP_HANDLER, ", SLEEP NO");
+        //DBG_vPrintf(1, "\r\nu16ActivityCount = %d / u8ValNumberOfNonSleepPreventingTimers = %d ",u16ActivityCount,u8ValNumberOfNonSleepPreventingTimers);
     }
 }
 
+
+PUBLIC void ForceNoSleep(void)
+{
+	/*Start the APP_TickTimer to continue the ZCL tasks */
+	vStartNonSleepPreventingTimers();
+
+	APP_tsEvent sButtonEvent;
+	sButtonEvent.eType = APP_E_EVENT_PERIODIC_REPORT;
+	ZQ_bQueueSend(&APP_msgAppEvents, &sButtonEvent);
+}
 /****************************************************************************/
 /***        Local Function                                                ***/
 /****************************************************************************/
@@ -263,6 +280,7 @@ PRIVATE void vScheduleSleep(bool_t bDeepSleep)
 #ifdef APP_LOW_POWER_API
        // PWR_eScheduleActivity(&sWake, (MAXIMUM_TIME_TO_SLEEP - u32GetNumberOfZCLTicksSinceReport())*APP_TICKS_PER_SECOND , vWakeCallBack);
     	PWR_eScheduleActivity(&sWake, MAXIMUM_TIME_TO_SLEEP * APP_TICKS_PER_SECOND , vWakeCallBack);
+        DBG_vPrintf(TRACE_SLEEP_HANDLER, "\r\nSPWR_eScheduleActivity %ld",MAXIMUM_TIME_TO_SLEEP * APP_TICKS_PER_SECOND);
 #else
         PWRM_eScheduleActivity(&sWake, (MAXIMUM_TIME_TO_SLEEP - u32GetNumberOfZCLTicksSinceReport())*APP_TICKS_PER_SECOND , vWakeCallBack);
 #endif

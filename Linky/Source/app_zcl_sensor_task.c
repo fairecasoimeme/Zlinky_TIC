@@ -296,6 +296,8 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
 
     case E_ZCL_CBET_REPORT_INDIVIDUAL_ATTRIBUTES_CONFIGURE:
         {
+
+
             tsZCL_AttributeReportingConfigurationRecord    *psAttributeReportingRecord= &psEvent->uMessage.sAttributeReportingConfigurationRecord;
             DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: Individual Configure attribute for Cluster = %d",psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum);
             DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: eAttributeDataType = %d",psAttributeReportingRecord->eAttributeDataType);
@@ -304,16 +306,17 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
             DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: u16MinimumReportingInterval = %d",psAttributeReportingRecord->u16MinimumReportingInterval );
             DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: u16TimeoutPeriodField = %d",psAttributeReportingRecord->u16TimeoutPeriodField );
             DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: u8DirectionIsReceived = %d",psAttributeReportingRecord->u8DirectionIsReceived );
-            DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: uAttributeReportableChange = %d",psAttributeReportingRecord->uAttributeReportableChange );
+            DBG_vPrintf(TRACE_ZCL,"\r\nAPP_ZCL: uAttributeReportableChange = %d",psAttributeReportingRecord->uAttributeReportableChange.zuint8ReportableChange );
             if(SE_CLUSTER_ID_SIMPLE_METERING == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
             {
             	DBG_vPrintf(TRACE_ZCL,"\r\npsEvent->eZCL_Status = %d",psEvent->eZCL_Status);
 
-                if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
-                {
+                //if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
+                //{
                     vSaveReportableRecord(SE_CLUSTER_ID_SIMPLE_METERING,psAttributeReportingRecord);
-                }
-                else if(E_ZCL_RESTORE_DEFAULT_REPORT_CONFIGURATION == psEvent->eZCL_Status)
+               // }
+               // else if(E_ZCL_RESTORE_DEFAULT_REPORT_CONFIGURATION == psEvent->eZCL_Status)
+                if(E_ZCL_RESTORE_DEFAULT_REPORT_CONFIGURATION == psEvent->eZCL_Status)
                 {
 
                     vRestoreDefaultRecord(app_u8GetDeviceEndpoint(),
@@ -323,7 +326,21 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
             }else if(MEASUREMENT_AND_SENSING_CLUSTER_ID_ELECTRICAL_MEASUREMENT == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
             {
             	DBG_vPrintf(TRACE_ZCL,"\r\npsEvent->eZCL_Status = %d",psEvent->eZCL_Status);
-            	vSaveReportableRecord(MEASUREMENT_AND_SENSING_CLUSTER_ID_ELECTRICAL_MEASUREMENT,psAttributeReportingRecord);
+            	if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
+            	{
+
+            		vSaveReportableRecord(MEASUREMENT_AND_SENSING_CLUSTER_ID_ELECTRICAL_MEASUREMENT,psAttributeReportingRecord);
+            	}
+
+
+            }else if(LIXEE_CLUSTER_ID_LINKY == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
+            {
+            	DBG_vPrintf(TRACE_ZCL,"\r\npsEvent->eZCL_Status = %d",psEvent->eZCL_Status);
+            	//if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
+            	//{
+
+					vSaveReportableRecord(LIXEE_CLUSTER_ID_LINKY,psAttributeReportingRecord);
+            	//}
 
             }
         }

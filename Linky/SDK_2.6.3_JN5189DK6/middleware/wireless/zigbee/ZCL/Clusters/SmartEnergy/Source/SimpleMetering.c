@@ -237,7 +237,7 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_DELIVERED
-    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_7_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u48CurrentTier7SummationDelivered), 0}
+    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_7_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u32CurrentTier7SummationDelivered), 0}
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_RECEIVED
@@ -245,7 +245,7 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_DELIVERED
-    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_8_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u48CurrentTier8SummationDelivered), 0}
+    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_8_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u32CurrentTier8SummationDelivered), 0}
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_RECEIVED
@@ -253,7 +253,7 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_DELIVERED
-    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_9_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u48CurrentTier9SummationDelivered), 0}
+    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_9_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u32CurrentTier9SummationDelivered), 0}
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_RECEIVED
@@ -261,7 +261,7 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_DELIVERED
-    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_10_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u48CurrentTier10SummationDelivered), 0}
+    ,{E_CLD_SM_ATTR_ID_CURRENT_TIER_10_SUMMATION_DELIVERED,   E_ZCL_AF_RD,    E_ZCL_UINT48,    (uint32)(&((tsCLD_SimpleMetering*)(0))->u32CurrentTier10SummationDelivered), 0}
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_RECEIVED

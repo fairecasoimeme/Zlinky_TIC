@@ -315,7 +315,8 @@ PRIVATE void vHandlePeriodicReportEvent(void)
 		}
 		/*if (memcmp(sSensor.sLinkyServerCluster.sLinkyOptarif.pu8Data,"BASE",4)==0)
 		{
-			vSendImmediateReport(0x702,0x0);
+			vSendImmediateReport(0x702,0x100);
+
 		}else if (memcmp(sSensor.sLinkyServerCluster.sLinkyOptarif.pu8Data,"HC..",4)==0)
 		{
 			vSendImmediateReport(0x702,0x100);

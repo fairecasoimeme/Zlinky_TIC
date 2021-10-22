@@ -208,15 +208,31 @@ PUBLIC void vLoadDefaultConfigForReportable(void)
 PUBLIC void vSaveReportableRecord(  uint16 u16ClusterID,
                                     tsZCL_AttributeReportingConfigurationRecord* psAttributeReportingConfigurationRecord)
 {
-    int iIndex = 0;
-
+    int iIndex=0;
+	int i;
+	for (i=0; i<ZCL_NUMBER_OF_REPORTS; i++)
+	{
+		DBG_vPrintf(TRACE_REPORT,"\r\ncount i : %d Cluster : %04x attr : %04x",i,u16ClusterID,psAttributeReportingConfigurationRecord->u16AttributeEnum);
+		if  ((asSavedReports[i].u16ClusterID==u16ClusterID) && (asSavedReports[i].sAttributeReportingConfigurationRecord.u16AttributeEnum == psAttributeReportingConfigurationRecord->u16AttributeEnum))
+		{
+			iIndex=i;
+			break;
+		}
+		if  (asSavedReports[i].u16ClusterID==0)
+		{
+			iIndex=i;
+			break;
+		}
+	}
     /*For MeasuredValue attribute in Illuminance Measurement Cluster*/
     asSavedReports[iIndex].u16ClusterID=u16ClusterID;
     memcpy( &(asSavedReports[iIndex].sAttributeReportingConfigurationRecord),
-            psAttributeReportingConfigurationRecord,
-            sizeof(tsZCL_AttributeReportingConfigurationRecord) );
+    					psAttributeReportingConfigurationRecord,
+    					sizeof(tsZCL_AttributeReportingConfigurationRecord) );
+
     asSavedReports[iIndex].sAttributeReportingConfigurationRecord.u16TimeoutPeriodField=0;
-    DBG_vPrintf(TRACE_REPORT,"Cluster %04x Type %d Attrib %04x Min %d Max %d IntV %d Direction %d Change %d\n",
+    DBG_vPrintf(TRACE_REPORT,"Save reportable Index :%d Cluster %04x Type %d Attrib %04x Min %d Max %d IntV %d Direction %d Change %d\n",
+    		iIndex,
             asSavedReports[iIndex].u16ClusterID,
             asSavedReports[iIndex].sAttributeReportingConfigurationRecord.eAttributeDataType,
             asSavedReports[iIndex].sAttributeReportingConfigurationRecord.u16AttributeEnum,
@@ -256,7 +272,7 @@ PUBLIC void vRestoreDefaultRecord(  uint8                                       
             &(asDefaultReports[u8Index].sAttributeReportingConfigurationRecord),
             sizeof(tsZCL_AttributeReportingConfigurationRecord) );
 
-    DBG_vPrintf(TRACE_REPORT,"Cluster %04x Type %d Attrib %04x Min %d Max %d IntV %d Direction %d Change %d\n",
+    DBG_vPrintf(TRACE_REPORT,"Restore reportable Cluster %04x Type %d Attrib %04x Min %d Max %d IntV %d Direction %d Change %d\n",
             asSavedReports[u8Index].u16ClusterID,
             asSavedReports[u8Index].sAttributeReportingConfigurationRecord.eAttributeDataType,
             asSavedReports[u8Index].sAttributeReportingConfigurationRecord.u16AttributeEnum,

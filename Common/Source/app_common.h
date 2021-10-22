@@ -153,7 +153,8 @@ typedef struct
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 extern tszQueue                   APP_msgSerialRx;
-extern uint8 APP_vProcessRxData ( void );
+extern uint8 APP_vProcessRxDataHisto ( void );
+extern uint8 APP_vProcessRxDataStandard ( void );
 /****************************************************************************/
 /***        External Variables                                            ***/
 /****************************************************************************/

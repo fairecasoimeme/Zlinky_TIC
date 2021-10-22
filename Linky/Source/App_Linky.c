@@ -63,8 +63,9 @@ uint32 pow10[9]={1,10,100,1000,10000,100000,1000000,10000000,100000000};
 /****************************************************************************/
 uint16             u16PacketType;
 uint16             u16PacketLength;
-uint8              au8Command[20];
-uint8              au8Value[20];
+uint8              au8Command[128];
+uint8              au8Date[128];
+uint8              au8Value[128];
 uint8              loopOK;
 uint32  		   u32Timeout=0;
 /****************************************************************************/
@@ -227,7 +228,188 @@ PUBLIC void APP_cbTimerLinkySample(void *pvParam)
         vAPP_LinkySensorSample();
 }
 
-uint8 APP_vProcessRxData ( void )
+uint8 APP_vProcessRxDataStandard ( void )
+{
+	uint8    u8RxByte;
+	if (loopOK>=2)
+		return 1;
+	if (u32Timeout>100000)
+		return 2;
+	if ( ZQ_bQueueReceive ( &APP_msgSerialRx, &u8RxByte ) )
+	{
+		if( TRUE == bSL_ReadMessageStandard(     MAX_PACKET_SIZE,
+										 au8Command,
+										 au8Date,
+										 au8Value,
+										 u8RxByte
+									   )
+			  )
+			{
+				u32Timeout=0;
+				if (memcmp(au8Command,"ADSC",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nADSC : %s",au8Value);
+
+					memcpy(sSensor.sSimpleMeteringServerCluster.sMeterSerialNumber.pu8Data,au8Value,12);
+					sSensor.sSimpleMeteringServerCluster.sMeterSerialNumber.u8Length=12;
+					loopOK++;
+
+				}else if(memcmp(au8Command,"VTIC",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nVTIC : %s",au8Value);
+					sSensor.sMeterIdentification.au16LinkyMISoftwareRevision=atoi(au8Value);
+
+				}else if(memcmp(au8Command,"DATE",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nDATE : %s",au8Value);
+
+				}else if(memcmp(au8Command,"EASF01",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF01 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF02",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF02 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF03",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF03 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier3SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF04",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF04 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier4SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF05",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF05 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier5SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF06",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF06 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier6SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF07",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF07 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier7SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF08",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF08 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier8SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF09",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF09 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier9SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EASF10",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nEASF10 : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentTier10SummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"EAST",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nEAST : %s",au8Value);
+					sSensor.sSimpleMeteringServerCluster.u32CurrentSummationDelivered = atol(au8Value);
+				}else if(memcmp(au8Command,"IRMS1",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nIRMS1 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+				}else if(memcmp(au8Command,"IRMS2",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nIRMS2 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSCurrentPhB=atoi(au8Value);
+				}else if(memcmp(au8Command,"IRMS3",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nIRMS3 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSCurrentPhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"URMS1",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nURMS1 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSVoltage=atoi(au8Value);
+				}else if(memcmp(au8Command,"URMS2",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nURMS2 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSVoltagePhB=atoi(au8Value);
+				}else if(memcmp(au8Command,"URMS3",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nURMS3 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSVoltagePhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"PREF",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nPREF : %s",au8Value);
+					sSensor.sMeterIdentification.au16LinkyMIAvailablePower=atol(au8Value);
+				}else if(memcmp(au8Command,"STGE",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nSTGE : %s",au8Value);
+					//sSensor.sMeterIdentification.au16LinkyMIAvailablePower=atol(au8Value);
+				}else if(memcmp(au8Command,"PCOUP",5)==0)
+				{
+					DBG_vPrintf(1, "\r\nPCOUP : %s",au8Value);
+					sSensor.sMeterIdentification.au8LinkyMIPowerThreshold=atoi(au8Value);
+				}else if(memcmp(au8Command,"SINSTS1",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSINSTS1 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+				}else if(memcmp(au8Command,"SINSTS2",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSINSTS2 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16ApparentPowerPhB=atol(au8Value);
+				}else if(memcmp(au8Command,"SINSTS3",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSINSTS3 : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16ApparentPowerPhC=atol(au8Value);
+				}else if(memcmp(au8Command,"SINSTS",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+				}else if(memcmp(au8Command,"SMAXSN1",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSMAXSN1 : %s",au8Value);
+					sSensor.sElectricalMeasurement.i16ActivePowerMax=atoi(au8Value);
+				}else if(memcmp(au8Command,"SMAXSN2",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSMAXSN2 : %s",au8Value);
+					sSensor.sElectricalMeasurement.i16ActivePowerMaxPhB=atoi(au8Value);
+				}else if(memcmp(au8Command,"SMAXSN3",7)==0)
+				{
+					DBG_vPrintf(1, "\r\nSMAXSN3 : %s",au8Value);
+					sSensor.sElectricalMeasurement.i16ActivePowerMaxPhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"SMAXSN",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nSMAXSN : %s",au8Value);
+					sSensor.sElectricalMeasurement.i16ActivePowerMax=atoi(au8Value);
+				}else if(memcmp(au8Command,"MSG1",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nMSG1 : %s",au8Value);
+					//sSensor.sElectricalMeasurement.i16ActivePowerMaxPhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"MSG2",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nMSG2 : %s",au8Value);
+					//sSensor.sElectricalMeasurement.i16ActivePowerMaxPhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"PRM",3)==0)
+				{
+					DBG_vPrintf(1, "\r\nPRM : %s",au8Value);
+					memcpy(sSensor.sSimpleMeteringServerCluster.sSiteId.pu8Data,au8Value,14);
+					sSensor.sSimpleMeteringServerCluster.sSiteId.u8Length=14;
+				}else if(memcmp(au8Command,"STGE",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nSTGE : %s",au8Value);
+				}else if(memcmp(au8Command,"RELAIS",6)==0)
+				{
+					DBG_vPrintf(1, "\r\nRELAIS : %s",au8Value);
+				}
+			}
+	}else{
+
+		u32Timeout++;
+	}
+
+#ifdef WATCHDOG_ALLOWED
+	/* Kick the watchdog */
+	WWDT_Refresh(WWDT);
+#endif
+
+	return 0;
+}
+
+uint8 APP_vProcessRxDataHisto ( void )
 {
 	uint8    u8RxByte;
 
@@ -238,7 +420,7 @@ uint8 APP_vProcessRxData ( void )
 	if ( ZQ_bQueueReceive ( &APP_msgSerialRx, &u8RxByte ) )
 	{
 
-		if( TRUE == bSL_ReadMessage(     MAX_PACKET_SIZE,
+		if( TRUE == bSL_ReadMessageHisto(     MAX_PACKET_SIZE,
 		                                 au8Command,
 										 au8Value,
 		                                 u8RxByte
@@ -332,11 +514,6 @@ uint8 APP_vProcessRxData ( void )
 				{
 					DBG_vPrintf(1, "\r\nBBRHPJR : %s",au8Value);
 					sSensor.sSimpleMeteringServerCluster.u32CurrentTier6SummationDelivered=atol(au8Value);
-				}else if(memcmp(au8Command,"IINST",5)==0)
-				{
-					DBG_vPrintf(1, "\r\nIINST : %s",au8Value);
-					sSensor.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
-					//DBG_vPrintf(1, "\r\nIINST : %ld",sSensor.sElectricalMeasurement.u16RMSCurrent);
 				}else if(memcmp(au8Command,"IINST1",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST1 : %s",au8Value);
@@ -349,10 +526,11 @@ uint8 APP_vProcessRxData ( void )
 				{
 					DBG_vPrintf(1, "\r\nIINST3 : %s",au8Value);
 					sSensor.sElectricalMeasurement.u16RMSCurrentPhC=atoi(au8Value);
-				}else if(memcmp(au8Command,"IMAX",4)==0)
+				}else if(memcmp(au8Command,"IINST",5)==0)
 				{
-					DBG_vPrintf(1, "\r\nIMAX : %s",au8Value);
-					sSensor.sElectricalMeasurement.u16RMSCurrentMax=atoi(au8Value);
+					DBG_vPrintf(1, "\r\nIINST : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+					//DBG_vPrintf(1, "\r\nIINST : %ld",sSensor.sElectricalMeasurement.u16RMSCurrent);
 				}else if(memcmp(au8Command,"IMAX1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIMAX1 : %s",au8Value);
@@ -365,6 +543,10 @@ uint8 APP_vProcessRxData ( void )
 				{
 					DBG_vPrintf(1, "\r\nIMAX3 : %s",au8Value);
 					sSensor.sElectricalMeasurement.u16RMSCurrentMaxPhC=atoi(au8Value);
+				}else if(memcmp(au8Command,"IMAX",4)==0)
+				{
+					DBG_vPrintf(1, "\r\nIMAX : %s",au8Value);
+					sSensor.sElectricalMeasurement.u16RMSCurrentMax=atoi(au8Value);
 				}else if(memcmp(au8Command,"PMAX",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPMAX : %s",au8Value);
@@ -406,7 +588,7 @@ uint8 APP_vProcessRxData ( void )
 				}else if(memcmp(au8Command,"PEJP",4)==0)
 				{
 					sSensor.sLinkyServerCluster.au8LinkyPEJP=atoi(au8Value);
-				}else if(memcmp(au8Command,"HHPHC",4)==0)
+				}else if(memcmp(au8Command,"HHPHC",5)==0)
 				{
 					sSensor.sLinkyServerCluster.au8LinkyHHPHC=au8Value;
 				}
@@ -442,7 +624,13 @@ PUBLIC void vAPP_LinkySensorSample(void)
     loopOK=0;
     vStopBlinkTimer();
     UARTLINKY_vInit();
-    UARTLINKY_vSetBaudRate ( 1200 );
+    if (u8ModeLinky==1)
+	{
+		UARTLINKY_vSetBaudRate ( 9600 );
+	}else if (u8ModeLinky==0)
+	{
+		UARTLINKY_vSetBaudRate ( 1200 );
+	}
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
     GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 0); // ON
@@ -450,7 +638,17 @@ PUBLIC void vAPP_LinkySensorSample(void)
     u32Timeout=0;
     while(TRUE)
     {
-    	u8StatusLinky=APP_vProcessRxData();
+    	//u8StatusLinky=APP_vProcessRxDataHisto();
+    	if (u8ModeLinky == 1)
+    	{
+
+    		u8StatusLinky=APP_vProcessRxDataStandard();
+    	}else if (u8ModeLinky == 0)
+    	{
+
+    		u8StatusLinky=APP_vProcessRxDataHisto();
+    	}
+
     	if (u8StatusLinky>0)
     		break;
 
@@ -463,11 +661,19 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     if (u8StatusLinky == 2)
     {
-
+    	if (u8ModeLinky==1)
+    	{
+    		u8ModeLinky=0;
+    		DBG_vPrintf(TRACE_LINKY, "\r\nmode Historique");
+    	}else if (u8ModeLinky==0)
+    	{
+    		u8ModeLinky=1;
+    		DBG_vPrintf(TRACE_LINKY, "\r\nmode Standard");
+    	}
     	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1);
     	//GPIO_PinInit(GPIO, APP_BASE_BOARD_LED1_PIN, 10, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 1}));
     	GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 1); // ON
-    	vStartAwakeTimer(2);
+    	vStartAwakeTimer(5);
     	vStartBlinkTimer(250);
 
     	DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");

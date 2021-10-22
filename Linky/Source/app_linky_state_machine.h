@@ -54,7 +54,8 @@
 PUBLIC void vAPP_HandlePIRStateTransition(void);
 PUBLIC void vAppHandleStartup(void);
 PUBLIC void vAppHandleRunning(ZPS_tsAfEvent* psStackEvent);
-
+PUBLIC void vAPP_cbTimerJoinIdle( void *pvParams);
+PUBLIC void vStartJoinIdle(uint32 u32Loop);
 /****************************************************************************/
 /***        Exported Variables                                            ***/
 /****************************************************************************/

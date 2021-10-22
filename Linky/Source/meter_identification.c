@@ -17,8 +17,10 @@
 
 const tsZCL_AttributeDefinition asCLD_MeterIdentificationClusterAttributeDefinitions[] = {
 
-        {E_CLD_MI_POD,               (E_ZCL_AF_RD),               E_ZCL_UINT16,    (uint32)(&((tsCLD_MeterIdentification*)(0))->au16LinkyMIPOD),0},
+		{E_CLD_MI_SOFTWAREREVISION,  (E_ZCL_AF_RD),               E_ZCL_UINT16,    (uint32)(&((tsCLD_MeterIdentification*)(0))->au16LinkyMISoftwareRevision),0},
+		{E_CLD_MI_POD,               (E_ZCL_AF_RD),               E_ZCL_UINT16,    (uint32)(&((tsCLD_MeterIdentification*)(0))->au16LinkyMIPOD),0},
 		{E_CLD_MI_AVAILABLEPOWER,    (E_ZCL_AF_RD),               E_ZCL_UINT16,    (uint32)(&((tsCLD_MeterIdentification*)(0))->au16LinkyMIAvailablePower),0},
+		{E_CLD_MI_POWERTHRESHOLD,    (E_ZCL_AF_RD),               E_ZCL_UINT8,     (uint32)(&((tsCLD_MeterIdentification*)(0))->au8LinkyMIPowerThreshold),0},
 
 
 };

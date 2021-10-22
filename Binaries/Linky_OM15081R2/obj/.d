@@ -133,6 +133,7 @@
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl_customcommand.h \
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCIF/Include/zcl.h \
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h \
+ ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Alarms.h \
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/PollControl.h \
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/SmartEnergy/Include/SimpleMetering.h \
  ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/SmartEnergy/Include/SimpleMeteringAttributeCount.h \
@@ -142,7 +143,9 @@
  ../../../Linky/Source/app_reporting.h \
  ../../../Linky/Source/app_nwk_event_handler.h \
  ../../../Linky/Source/app_power_on_counter.h \
- ../../../Linky/Source/app_blink_led.h ../../../Linky/Source/App_Linky.h \
+ ../../../Linky/Source/app_blink_led.h \
+ ../../../Linky/Source/app_linky_state_machine.h \
+ ../../../Linky/Source/App_Linky.h \
  ../../../Linky/Source/app_sleep_handler.h \
  ../../../Common/Source/PDM_IDs.h \
  ../../../Common/Source/board/temp_sensor_drv.h \
@@ -421,6 +424,8 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\alloca.h:
 
 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Groups.h:
 
+../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/Alarms.h:
+
 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/General/Include/PollControl.h:
 
 ../../../Linky/SDK_2.6.3_JN5189DK6/middleware/wireless/zigbee/ZCL/Clusters/SmartEnergy/Include/SimpleMetering.h:
@@ -442,6 +447,8 @@ c:\nxp\mcuxpressoide_11.2.0_4120\ide\tools\arm-none-eabi\include\alloca.h:
 ../../../Linky/Source/app_power_on_counter.h:
 
 ../../../Linky/Source/app_blink_led.h:
+
+../../../Linky/Source/app_linky_state_machine.h:
 
 ../../../Linky/Source/App_Linky.h:
 

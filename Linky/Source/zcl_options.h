@@ -64,7 +64,7 @@
 
 
 /* Only one reportable attribute : MeasuredValue */
-#define ZCL_NUMBER_OF_REPORTS     5
+#define ZCL_NUMBER_OF_REPORTS     20
 #define ZLO_MIN_REPORT_INTERVAL   0x1e
 #define ZLO_MAX_REPORT_INTERVAL   0x3d//0x3d
 
@@ -79,15 +79,18 @@
 #define CLD_BASIC
 #define BASIC_SERVER
 
-#define CLD_SCENES
-#define SCENES_CLIENT
+//#define CLD_SCENES
+//#define SCENES_CLIENT
 
 #define CLD_IDENTIFY
 #define IDENTIFY_CLIENT
 #define IDENTIFY_SERVER
 
-#define CLD_GROUPS
-#define GROUPS_CLIENT
+#define CLD_ALARMS
+#define ALARMS_SERVER
+
+//#define CLD_GROUPS
+//#define GROUPS_CLIENT
 
 #define CLD_SIMPLE_METERING
 #define SM_SERVER
@@ -123,8 +126,8 @@
 #define CLD_BAS_APP_VERSION         (1)
 #define CLD_BAS_STACK_VERSION       (2)
 #define CLD_BAS_HARDWARE_VERSION    (1)
-#define CLD_BAS_MANUF_NAME_SIZE     (3)
-#define CLD_BAS_MODEL_ID_SIZE       (15)
+#define CLD_BAS_MANUF_NAME_SIZE     (5)
+#define CLD_BAS_MODEL_ID_SIZE       (11)
 #define CLD_BAS_DATE_SIZE           (8)
 #define CLD_BAS_POWER_SOURCE        E_CLD_BAS_PS_BATTERY
 #define CLD_BAS_SW_BUILD_SIZE       (9)

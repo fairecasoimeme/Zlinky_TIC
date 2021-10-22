@@ -124,7 +124,7 @@ PUBLIC void UARTLINKY_vInit(void)
     usart_config_t config;
 
     USART_GetDefaultConfig(&config);
-    config.baudRate_Bps = 1200U;
+    config.baudRate_Bps = 9600U; //1200U;
     config.enableTx = false;
     config.enableRx = true;
     config.bitCountPerChar = kUSART_7BitsPerChar;
@@ -199,9 +199,111 @@ void APP_isrUartLinky ( void )
             ZQ_bQueueSend(&APP_msgSerialRx, &u8Byte);
     }
 }
+PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *date, uint8 *value,uint8 u8Data)
+{
+	static uint8 u8CRC;
+	static uint8 u8TmpCRCHorodate;
+	static uint8 u8TmpCRC;
+	static uint16 i;
+	static uint8 pos;
+	static bool start;
+
+	switch(u8Data)
+	{
+		case 0x0A:
+			u8TmpCRC=0;
+			u8TmpCRCHorodate=0;
+			memset(command,0,0);
+			memset(date,0,0);
+			memset(value,0,0);
+			command=0;
+			value=0;
+			date=0;
+			start=TRUE;
+			pos=0;
+			i=0;
+
+			break;
+		case 0x09:
+			if (start)
+			{
+				pos++;
+				i=0;
+				u8TmpCRCHorodate+=0x09;
+				u8TmpCRC=u8TmpCRCHorodate;
+
+			}
+			break;
+		case 0x0D:
+			if (start)
+			{
+				if (pos==2)
+				{
+					//Calcul CRC
+
+					u8TmpCRC=(u8TmpCRC & 0x3F)+0x20;
+					if (u8TmpCRC==u8CRC)
+					{
+						memcpy(value,date,128);
+						DBG_vPrintf(1, "\r\n%s %s",command, value);
+						return(TRUE);
+					}else{
+						DBG_vPrintf(1, "\r\ncommand : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRC,u8CRC);
+					}
+
+					start=false;
+				}else if(pos==3)
+				{
+					//Calcul CRC
+					u8TmpCRCHorodate=(u8TmpCRCHorodate & 0x3F)+0x20;
+					if (u8TmpCRCHorodate==u8CRC)
+					{
+						DBG_vPrintf(1, "\r\n%s %s %s",command, date, value);
+						return(TRUE);
+					}else{
+						DBG_vPrintf(1, "\r\nHORODATE - command : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRCHorodate,u8CRC);
+					}
+
+					start=false;
+				}
+			}
+			break;
+		default:
+			if (start)
+			{
+				if (pos==0)
+				{
+					command[i++] = u8Data;
+					u8TmpCRCHorodate+=u8Data;
+					u8TmpCRC=u8TmpCRCHorodate;
+					command[i]='\0';
 
 
-PUBLIC bool bSL_ReadMessage(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 u8Data)
+				}else if (pos==1)
+				{
+					date[i++] = u8Data;
+					u8TmpCRCHorodate+=u8Data;
+					u8TmpCRC=u8TmpCRCHorodate;
+					date[i]='\0';
+
+
+				}else if (pos==2)
+				{
+					value[i++] = u8Data;
+					u8TmpCRCHorodate+=u8Data;
+					value[i]='\0';
+					u8CRC = u8Data;
+
+				}else{
+					u8CRC = u8Data;
+				}
+			}
+			break;
+	}
+	return(FALSE);
+}
+
+PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 u8Data)
 {
 
     static uint8 u8CRC;

@@ -6,7 +6,7 @@
  *
  * COMPONENT:      zps_gen.h
  *
- * DATE:           Tue Sep 14 11:08:41 2021
+ * DATE:           Sat Oct 16 17:03:30 2021
  *
  * AUTHOR:         NXP Zigbee Protocol Stack Configuration Tool
  *
@@ -141,6 +141,7 @@
 #define HOME_AUTOMATION_SCENES_CLUSTER_ID    (0x0005)
 #define HOME_AUTOMATION_ONOFF_CLUSTER_ID    (0x0006)
 #define HOME_AUTOMATION_LEVELCONTROL_CLUSTER_ID    (0x0008)
+#define HOME_AUTOMATION_ALARMS_CLUSTER_ID    (0x0009)
 #define HOME_AUTOMATION_COLOURCONTROL_CLUSTER_ID    (0x0300)
 #define HOME_AUTOMATION_OCCUPANCYSENSING_CLUSTER_ID    (0x0406)
 #define HOME_AUTOMATION_ILLUMINANCEMEASUREMENT_CLUSTER_ID    (0x0400)
@@ -162,23 +163,11 @@
 #define COORDINATOR_ZDO_ENDPOINT    (0)
 #define COORDINATOR_COORD_ENDPOINT    (1)
 
-/* Node 'OccupancySensor' */
-
-/* Endpoints */
-#define OCCUPANCYSENSOR_ZDO_ENDPOINT    (0)
-#define OCCUPANCYSENSOR_SENSOR_ENDPOINT    (1)
-
 /* Node 'Linky' */
 
 /* Endpoints */
 #define LINKY_ZDO_ENDPOINT    (0)
 #define LINKY_SENSOR_ENDPOINT    (1)
-
-/* Node 'LTOSensor' */
-
-/* Endpoints */
-#define LTOSENSOR_ZDO_ENDPOINT    (0)
-#define LTOSENSOR_SENSOR_ENDPOINT    (1)
 /* Table Sizes */
 #define ZPS_NEIGHBOUR_TABLE_SIZE      (2)
 #define ZPS_ADDRESS_MAP_TABLE_SIZE    (16)

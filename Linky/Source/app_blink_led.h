@@ -56,6 +56,7 @@ PUBLIC void vStartBlinkTimer(uint32 u32Ticks);
 PUBLIC void vStopBlinkTimer(void);
 PUBLIC void vAPP_cbBlinkLED( void *pvParams);
 PUBLIC void vAPP_cbTimerAwake( void *pvParams);
+PUBLIC void vStartAwakeTimer(uint32 u32Loop);
 /****************************************************************************/
 /***        Exported Variables                                            ***/
 /****************************************************************************/

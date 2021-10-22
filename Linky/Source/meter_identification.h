@@ -21,14 +21,18 @@
 
 typedef enum
 {
+	E_CLD_MI_SOFTWAREREVISION                      = 0x000A,
 	E_CLD_MI_POD                                   = 0x000C,
     E_CLD_MI_AVAILABLEPOWER                        = 0x000D,
+	E_CLD_MI_POWERTHRESHOLD                        = 0x000E,
 
 
 } teCLD_MeterIdentification_AttributeID;
 
 typedef struct
 {
+	 uint8                       au8LinkyMIPowerThreshold;
+	 uint16 					 au16LinkyMISoftwareRevision;
 	 uint16 					 au16LinkyMIPOD;
 	 uint16 					 au16LinkyMIAvailablePower;
 

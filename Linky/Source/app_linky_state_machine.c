@@ -142,6 +142,18 @@ PUBLIC void vAppHandleStartup(void)
     sDeviceDesc.eNodeState = E_JOINING_NETWORK;
 }
 
+PUBLIC void vStartJoinIdle(uint32 u32Loop)
+{
+	ZTIMER_eStart(u8TimerJoinIdle, ZTIMER_TIME_MSEC(1000 * u32Loop));
+}
+
+PUBLIC void vAPP_cbTimerJoinIdle( void *pvParams)
+{
+	ZTIMER_eStop(u8TimerPoll);
+	DBG_vPrintf(TRACE_SENSOR_STATE, "\r\nSTOP Join IDLE");
+	ForceNoSleep();
+
+}
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

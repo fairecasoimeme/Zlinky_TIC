@@ -197,16 +197,17 @@ PUBLIC void vHandleFailedRejoin(void)
  ****************************************************************************/
 PUBLIC void vHandleNetworkJoinEndDevice(void)
 {
-    DBG_vPrintf(TRACE_NWK_EVENT_HANDLER, "\nAPP NWK Event Handler: Network Join End Device");
+    DBG_vPrintf(TRACE_NWK_EVENT_HANDLER, "\n\rAPP NWK Event Handler: Network Join End Device");
 
     ZPS_eAplAibSetApsUseExtendedPanId( ZPS_u64NwkNibGetEpid(ZPS_pvAplZdoGetNwkHandle()) );
 
     /* Don't turn the timers off if we're in persistent polling mode */
-    if(APP_bPersistantPolling != TRUE)
+    /*if(APP_bPersistantPolling != TRUE)
     {
         ZTIMER_eStop(u8TimerPoll);
         vStopBlinkTimer();
-    }
+    }*/
+
 #if (defined APP_NTAG_ICODE)
     sDeviceDesc.eNodeState = E_RUNNING;
     PDM_eSaveRecordData(PDM_ID_APP_SENSOR,
@@ -255,8 +256,9 @@ PUBLIC void vHandleNetworkLeave(ZPS_tsAfEvent* psStackEvent)
  ****************************************************************************/
 PUBLIC void vHandleNetworkJoinAndRejoin(void)
 {
-    DBG_vPrintf(TRACE_NWK_EVENT_HANDLER, "\nDEVICE_IN_NETWORK");
-    ZTIMER_eStop(u8TimerPoll);
+    DBG_vPrintf(1, "\nDEVICE_IN_NETWORK");
+
+    //ZTIMER_eStop(u8TimerPoll);
     vStopBlinkTimer();
     sDeviceDesc.eNodeState = E_RUNNING;
 
@@ -264,6 +266,9 @@ PUBLIC void vHandleNetworkJoinAndRejoin(void)
                             &sDeviceDesc,
                             sizeof(tsDeviceDesc));
     ZPS_vSaveAllZpsRecords();
+
+
+
 }
 
 /****************************************************************************

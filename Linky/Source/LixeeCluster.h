@@ -28,6 +28,9 @@ typedef enum
 	E_CLD_LINKY_PPOT                           = 0x0003,
 	E_CLD_LINKY_PEJP                           = 0x0004,
 	E_CLD_LINKY_ADPS                           = 0x0005,
+	E_CLD_LINKY_ADIR1                          = 0x0006,
+	E_CLD_LINKY_ADIR2                          = 0x0007,
+	E_CLD_LINKY_ADIR3                          = 0x0008,
 
 	E_CLD_LINKY_PERIODIC_SEND                  = 0x0100,
 
@@ -43,6 +46,9 @@ typedef struct
 	 uint8   					 au8LinkyPPOT;
 	 uint8   					 au8LinkyPEJP;
 	 uint16   					 au16LinkyADPS;
+	 uint16   					 au16LinkyADIR1;
+	 uint16   					 au16LinkyADIR2;
+	 uint16   					 au16LinkyADIR3;
 	 uint16						 au16LinkyPeriodicSend;
 
 } tsCLD_Linky;

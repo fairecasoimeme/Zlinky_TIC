@@ -17,15 +17,18 @@
 
 const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = {
         /* Optarif Linky */
-        {E_CLD_LINKY_OPTARIF,             (E_ZCL_AF_RD),       E_ZCL_CSTRING,    (uint32)(&((tsCLD_Linky*)(0))->sLinkyOptarif),0},
-		{E_CLD_LINKY_DEMAIN ,             (E_ZCL_AF_RD),       E_ZCL_CSTRING,    (uint32)(&((tsCLD_Linky*)(0))->sLinkyDemain),0},
+        {E_CLD_LINKY_OPTARIF,             (E_ZCL_AF_RD),                   E_ZCL_CSTRING,    (uint32)(&((tsCLD_Linky*)(0))->sLinkyOptarif),0},
+		{E_CLD_LINKY_DEMAIN ,             (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_CSTRING,    (uint32)(&((tsCLD_Linky*)(0))->sLinkyDemain),0},
 
 		{E_CLD_LINKY_HHPHC,               (E_ZCL_AF_RD),                   E_ZCL_UINT8,    (uint32)(&((tsCLD_Linky*)(0))->au8LinkyHHPHC),0},
 		{E_CLD_LINKY_PPOT,                (E_ZCL_AF_RD),                   E_ZCL_UINT8,    (uint32)(&((tsCLD_Linky*)(0))->au8LinkyPPOT),0},
-		{E_CLD_LINKY_PEJP,                (E_ZCL_AF_RD),                   E_ZCL_UINT8,    (uint32)(&((tsCLD_Linky*)(0))->au8LinkyPEJP),0},
-		{E_CLD_LINKY_ADPS,                (E_ZCL_AF_RD),                   E_ZCL_UINT16,    (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADPS),0},
+		{E_CLD_LINKY_PEJP,                (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT8,    (uint32)(&((tsCLD_Linky*)(0))->au8LinkyPEJP),0},
+		{E_CLD_LINKY_ADPS,                (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADPS),0},
+		{E_CLD_LINKY_ADIR1,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR1),0},
+		{E_CLD_LINKY_ADIR2,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR2),0},
+		{E_CLD_LINKY_ADIR3,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR3),0},
 
-		{E_CLD_LINKY_PERIODIC_SEND,       (E_ZCL_AF_RD|E_ZCL_AF_WR),                E_ZCL_UINT16,     (uint32)(&((tsCLD_Linky*)(0))->au16LinkyPeriodicSend),0},
+		{E_CLD_LINKY_PERIODIC_SEND,       (E_ZCL_AF_RD|E_ZCL_AF_WR),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyPeriodicSend),0},
 
 
 };
@@ -92,7 +95,7 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.u8Length = 4;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDemain;
 
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->au16LinkyPeriodicSend = 10;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->au16LinkyPeriodicSend = 1;
 
 
         }

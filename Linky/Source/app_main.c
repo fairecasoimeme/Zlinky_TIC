@@ -66,6 +66,7 @@
 #include "app_nwk_event_handler.h"
 #include "app_power_on_counter.h"
 #include "app_blink_led.h"
+#include "app_linky_state_machine.h"
 #include "App_Linky.h"
 #include "app_sleep_handler.h"
 #ifdef APP_NTAG_ICODE
@@ -108,9 +109,9 @@
 #if (defined APP_NTAG_ICODE)
 #define APP_ZTIMER_STORAGE           7 /* NTAG: Added timer */
 #else
-#define APP_ZTIMER_STORAGE           6
+#define APP_ZTIMER_STORAGE           7
 #endif
-#define RX_QUEUE_SIZE                150
+#define RX_QUEUE_SIZE                270
 #if (defined JENNIC_CHIP_FAMILY_JN517x)
 #define NVIC_INT_PRIO_LEVEL_SYSCTRL (1)
 #define NVIC_INT_PRIO_LEVEL_BBC     (7)
@@ -149,6 +150,9 @@ PUBLIC uint8 u8TimerPowerOnCount;
 PUBLIC uint8 u8TimerLightSensorSample;
 PUBLIC uint8 u8TimerTick;
 PUBLIC uint8 u8TimerBlink;
+PUBLIC uint8 u8TimerAwake;
+PUBLIC uint8 u8TimerJoinIdle;
+
 #if (defined APP_NTAG_ICODE)
 PUBLIC uint8 u8TimerNtag;
 #endif
@@ -159,6 +163,8 @@ PUBLIC tszQueue APP_msgAppEvents;
 PUBLIC tszQueue APP_msgBdbEvents;
 
 PUBLIC bool_t APP_bPersistantPolling = FALSE;
+PUBLIC uint32 u32JoinedNetwork=0;
+PUBLIC uint8 u8ModeLinky=0;
 
 /****************************************************************************/
 /***        Local Variables                                               ***/
@@ -321,7 +327,13 @@ void main_task (uint32_t parameter)
         wdt_update_count = 0;
 #endif
         /* See if we are able to sleep or not */
+
         vAttemptToSleep();
+
+        /**/
+
+
+
         /*
          * suspends CPU operation when the system is idle or puts the device to
          * sleep if there are no activities in progress
@@ -423,10 +435,13 @@ PUBLIC void APP_vInitResources(void)
     /* Create Z timers */
     ZTIMER_eOpen(&u8TimerPoll,              APP_cbTimerPoll,                NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerButtonScan,        APP_cbTimerButtonScan,          NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
-    ZTIMER_eOpen(&u8TimerLightSensorSample, APP_cbTimerLinkySample,   NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
+    ZTIMER_eOpen(&u8TimerLightSensorSample, APP_cbTimerLinkySample,         NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerTick,              APP_cbTimerZclTick,             NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerPowerOnCount,      vAPP_cbTimerPowerOnCount,       NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerBlink,             vAPP_cbBlinkLED,                NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
+    ZTIMER_eOpen(&u8TimerAwake,             vAPP_cbTimerAwake,              NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
+    ZTIMER_eOpen(&u8TimerJoinIdle,          vAPP_cbTimerJoinIdle,           NULL,   ZTIMER_FLAG_ALLOW_SLEEP);
+
 #if (defined APP_NTAG_ICODE)
     ZTIMER_eOpen(&u8TimerNtag,              APP_cbNtagTimer,                NULL,   ZTIMER_FLAG_PREVENT_SLEEP);
 #endif
