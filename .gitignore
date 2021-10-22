@@ -1,5 +1,10 @@
 *.o
 *.d
-Linky/Source/pdum_gen.c
-Linky/Source/pdum_gen.h
+*.bin
+*.axf
+*.dis
+*.map
+*.ota
+ZLinky/Source/pdum_gen.c
+ZLinky/Source/pdum_gen.h
 mcux/.settings/language.settings.xml
