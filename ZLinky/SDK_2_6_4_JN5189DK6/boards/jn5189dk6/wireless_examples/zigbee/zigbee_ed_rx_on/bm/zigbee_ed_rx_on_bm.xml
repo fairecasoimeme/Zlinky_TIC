@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ksdk:examples xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd manifest.xsd">
+  <externalDefinitions>
+    <definition extID="com.nxp.mcuxpresso"/>
+    <definition extID="component.lists.JN5189"/>
+    <definition extID="component.serial_manager.JN5189"/>
+    <definition extID="component.serial_manager_uart.JN5189"/>
+    <definition extID="component.usart_adapter.JN5189"/>
+    <definition extID="device.JN5189_CMSIS.JN5189"/>
+    <definition extID="device.JN5189_startup_wireless.JN5189"/>
+    <definition extID="middleware.baremetal.JN5189"/>
+    <definition extID="middleware.framework.generic_lists.JN5189"/>
+    <definition extID="middleware.wireless.framework.DebugExceptionHandlers_jn518x.JN5189"/>
+    <definition extID="middleware.wireless.framework.DebugFifo.JN5189"/>
+    <definition extID="middleware.wireless.framework.PDUM.JN5189"/>
+    <definition extID="middleware.wireless.framework.PWRM.JN5189"/>
+    <definition extID="middleware.wireless.framework.flash.EEPROM_InternalFlash.JN5189"/>
+    <definition extID="middleware.wireless.framework.flash.internal.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_Common_zigbee_with_sdk2.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_OtaSupport_InternalFlash.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_PDM_hf.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_RNG_PUB.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_TimersManager_HF.JN5189"/>
+    <definition extID="middleware.wireless.framework.framework_sec_zigbee.JN5189"/>
+    <definition extID="middleware.wireless.framework.function_lib.JN5189"/>
+    <definition extID="middleware.wireless.framework.gpio_adapter.JN5189"/>
+    <definition extID="middleware.wireless.framework.lpm_ble_qn_jn5189dk6.JN5189"/>
+    <definition extID="middleware.wireless.framework.mem_manager.JN5189"/>
+    <definition extID="middleware.wireless.framework.messaging.JN5189"/>
+    <definition extID="middleware.wireless.framework.osa.JN5189"/>
+    <definition extID="middleware.wireless.framework.osa_bm.JN5189"/>
+    <definition extID="middleware.wireless.framework.panic.JN5189"/>
+    <definition extID="middleware.wireless.framework_PDM_lib_jn.JN5189"/>
+    <definition extID="middleware.wireless.ieee-802.15.4_common.JN5189"/>
+    <definition extID="middleware.wireless.ieee-802.15.4_lib.JN5189"/>
+    <definition extID="middleware.wireless.ieee-802.15.4_mMac.JN5189"/>
+    <definition extID="middleware.wireless.ieee-802.15.4_uMac.JN5189"/>
+    <definition extID="middleware.wireless.xcvr_DK6.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_ZCL_Clusters_Commissioning.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_ZCL_Clusters_General.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_ZCL_Clusters_OTA.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_ZCL_Devices_ZHA_Generic_Base_Device.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_ZED_lib.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_bdb.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_common.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_common_usart_dma_rxbuffer.JN5189"/>
+    <definition extID="middleware.wireless.zigbee_core_zcif.JN5189"/>
+    <definition extID="platform.Include_common.JN5189"/>
+    <definition extID="platform.Include_core_cm4.JN5189"/>
+    <definition extID="platform.drivers.aes.JN5189"/>
+    <definition extID="platform.drivers.clock.JN5189"/>
+    <definition extID="platform.drivers.common.JN5189"/>
+    <definition extID="platform.drivers.ctimer.JN5189"/>
+    <definition extID="platform.drivers.flexcomm.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_i2c.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_spi.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_usart.JN5189"/>
+    <definition extID="platform.drivers.flexcomm_usart_dma.JN5189"/>
+    <definition extID="platform.drivers.fmeas.JN5189"/>
+    <definition extID="platform.drivers.gint.JN5189"/>
+    <definition extID="platform.drivers.inputmux.JN5189"/>
+    <definition extID="platform.drivers.inputmux_connections.JN5189"/>
+    <definition extID="platform.drivers.jn_flash.JN5189"/>
+    <definition extID="platform.drivers.jn_iocon.JN5189"/>
+    <definition extID="platform.drivers.jn_pwm.JN5189"/>
+    <definition extID="platform.drivers.jn_rng.JN5189"/>
+    <definition extID="platform.drivers.jn_romapi.JN5189"/>
+    <definition extID="platform.drivers.jn_rtc.JN5189"/>
+    <definition extID="platform.drivers.lpc_adc.JN5189"/>
+    <definition extID="platform.drivers.lpc_dma.JN5189"/>
+    <definition extID="platform.drivers.lpc_gpio.JN5189"/>
+    <definition extID="platform.drivers.pint.JN5189"/>
+    <definition extID="platform.drivers.power_no_lib.JN5189"/>
+    <definition extID="platform.drivers.reset.JN5189"/>
+    <definition extID="platform.drivers.sha.JN5189"/>
+    <definition extID="platform.drivers.spifi.JN5189"/>
+    <definition extID="platform.drivers.wtimer.JN5189"/>
+    <definition extID="platform.drivers.wwdt.JN5189"/>
+    <definition extID="platform.utilities.assert.JN5189"/>
+    <definition extID="utility.debug_console.JN5189"/>
+    <definition extID="mcuxpresso"/>
+    <definition extID="iar"/>
+    <definition extID="armgcc"/>
+  </externalDefinitions>
+  <example id="jn5189dk6_zigbee_ed_rx_on_bm" name="zigbee_ed_rx_on_bm" category="wireless_examples/zigbee/zigbee_ed_rx_on/bm" dependency="middleware.wireless.framework.osa_bm.JN5189 middleware.wireless.framework.gpio_adapter.JN5189 middleware.wireless.framework.flash.internal.JN5189 middleware.wireless.framework.framework_Common_zigbee_with_sdk2.JN5189 middleware.wireless.framework.DebugExceptionHandlers_jn518x.JN5189 middleware.wireless.framework.mem_manager.JN5189 middleware.wireless.framework.messaging.JN5189 middleware.wireless.framework.osa.JN5189 middleware.wireless.framework.panic.JN5189 middleware.wireless.framework.framework_RNG_PUB.JN5189 middleware.wireless.framework.PWRM.JN5189 middleware.wireless.framework.PDUM.JN5189 middleware.wireless.framework.framework_TimersManager_HF.JN5189 middleware.wireless.framework.function_lib.JN5189 middleware.framework.generic_lists.JN5189 middleware.wireless.framework.lpm_ble_qn_jn5189dk6.JN5189 middleware.wireless.framework.framework_PDM_hf.JN5189 middleware.wireless.framework.DebugFifo.JN5189 middleware.wireless.xcvr_DK6.JN5189 middleware.wireless.framework.framework_OtaSupport_InternalFlash.JN5189 middleware.wireless.zigbee_core_common.JN5189 middleware.wireless.zigbee_core_bdb.JN5189 middleware.wireless.zigbee_core_common_usart_dma_rxbuffer.JN5189 middleware.wireless.zigbee_core_zcif.JN5189 middleware.wireless.zigbee_core_ZCL_Clusters_General.JN5189 middleware.wireless.zigbee_core_ZCL_Devices_ZHA_Generic_Base_Device.JN5189 middleware.wireless.zigbee_core_ZCL_Clusters_Commissioning.JN5189 middleware.wireless.zigbee_core_ZCL_Clusters_OTA.JN5189 middleware.wireless.ieee-802.15.4_common.JN5189 middleware.wireless.ieee-802.15.4_mMac.JN5189 middleware.wireless.ieee-802.15.4_uMac.JN5189 middleware.wireless.framework.framework_sec_zigbee.JN5189 platform.drivers.clock.JN5189 platform.drivers.common.JN5189 device.JN5189_CMSIS.JN5189 device.JN5189_startup_wireless.JN5189 platform.drivers.ctimer.JN5189 platform.drivers.reset.JN5189 platform.drivers.wtimer.JN5189 platform.drivers.flexcomm_spi.JN5189 platform.drivers.power_no_lib.JN5189 platform.drivers.jn_pwm.JN5189 platform.drivers.flexcomm_i2c.JN5189 platform.drivers.jn_rng.JN5189 platform.drivers.fmeas.JN5189 platform.drivers.jn_romapi.JN5189 platform.drivers.wwdt.JN5189 platform.drivers.jn_iocon.JN5189 platform.drivers.inputmux.JN5189 platform.drivers.lpc_gpio.JN5189 platform.drivers.pint.JN5189 platform.drivers.jn_rtc.JN5189 platform.drivers.aes.JN5189 platform.drivers.lpc_adc.JN5189 platform.drivers.gint.JN5189 platform.drivers.sha.JN5189 component.lists.JN5189 platform.drivers.jn_flash.JN5189 platform.drivers.flexcomm_usart_dma.JN5189 platform.drivers.flexcomm_usart.JN5189 platform.drivers.flexcomm.JN5189 component.usart_adapter.JN5189 platform.drivers.spifi.JN5189 component.serial_manager.JN5189 component.serial_manager_uart.JN5189 platform.utilities.assert.JN5189 utility.debug_console.JN5189 platform.Include_core_cm4.JN5189 platform.Include_common.JN5189 middleware.wireless.framework.flash.EEPROM_InternalFlash.JN5189 platform.drivers.inputmux_connections.JN5189 platform.drivers.lpc_dma.JN5189 middleware.baremetal.JN5189 middleware.wireless.framework_PDM_lib_jn.JN5189 middleware.wireless.zigbee_core_ZED_lib.JN5189 middleware.wireless.ieee-802.15.4_lib.JN5189">
+    <projects>
+      <project type="com.crt.advproject.projecttype.exe" nature="org.eclipse.cdt.core.cnature"/>
+    </projects>
+    <toolchainSettings>
+      <toolchainSetting id_refs="com.nxp.mcuxpresso">
+        <buildSteps>
+          <preBuildStep>../tools/ZPSConfig/bin/ZPSConfig.exe -n enddevice_rxon -f ../source/Ed_rx_on/Source/enddevice_rxon.zpscfg -y; ../tools/PDUMConfig/bin/PDUMConfig.exe -z enddevice_rxon -e LITTLE_ENDIAN_PROCESSOR -f ../source/Ed_rx_on/Source/enddevice_rxon.zpscfg -o ../source/Ed_rx_on/Source; ../tools/ZPSConfig/bin/ZPSConfig.exe -n enddevice_rxon -t JN518x -l ../libs/libZPSNWK_ZED.a -a ../libs/libZPSAPL.a  -e LITTLE_ENDIAN_PROCESSOR  -f ../source/Ed_rx_on/Source/enddevice_rxon.zpscfg -o ../source/Ed_rx_on/Source -c "${eclipse_home}/tools/"</preBuildStep>
+          <postBuildStep>arm-none-eabi-size "${BuildArtifactFileName}"; echo "${OsType}" | grep -q win* &amp;&amp; py -3 "../scripts/dk6_image_tool.py" -s 294912 ${BuildArtifactFileName} || python3 "../scripts/dk6_image_tool.py" -s 294912 ${BuildArtifactFileName}; arm-none-eabi-objcopy -v -O binary "${BuildArtifactFileName}" "${BuildArtifactFileBaseName}.bin";arm-none-eabi-objdump -d "${BuildArtifactFileName}" &gt; "${BuildArtifactFileBaseName}.dis";mv "${BuildArtifactFileBaseName}.bin" ../zigbee_ota_build/${BuildArtifactFileBaseName}.bin;../zigbee_ota_build/DeviceCreateOtaEncClient.sh ../zigbee_ota_build win  "0x1037" "OM15081-EDR--JN5189--ENCRYPTED00" "6" "JN518x" "0x0002" ${BuildArtifactFileBaseName} "1234567890ABCDEFA1B2C3D4E5F6F1B4"</postBuildStep>
+        </buildSteps>
+        <option id="com.crt.advproject.gas.fpu" type="enum">
+          <value>com.crt.advproject.gas.fpu.none</value>
+        </option>
+        <option id="com.crt.advproject.gcc.fpu" type="enum">
+          <value>com.crt.advproject.gcc.fpu.none</value>
+        </option>
+        <option id="com.crt.advproject.c.misc.dialect" type="enum">
+          <value>com.crt.advproject.misc.dialect.gnu99</value>
+        </option>
+        <option id="com.crt.advproject.gcc.exe.debug.option.optimization.level" type="enum">
+          <value>gnu.c.optimization.level.size</value>
+        </option>
+        <option id="gnu.c.compiler.option.preprocessor.def.symbols" type="stringList">
+          <value>CPU_JN5189</value>
+          <value>EndDevice</value>
+          <value>ZBPRO_DEVICE_TYPE=ZED</value>
+          <value>cPWR_FullPowerDownMode=1</value>
+          <value>CLD_OTA_KEY='"1234567890ABCDEFA1B2C3D4E5F6F1B4"'</value>
+          <value>CLD_OTA_MANF_ID_VALUE=4151</value>
+          <value>OTA_INTERNAL_STORAGE</value>
+          <value>INTERNAL_ENCRYPTED</value>
+          <value>OTA_ENCRYPTED</value>
+          <value>BUILD_OTA</value>
+          <value>HEAP_SIZE=4000</value>
+          <value>LITTLE_ENDIAN_PROCESSOR</value>
+          <value>vector_table_size=512</value>
+          <value>__ram_vector_table__=1</value>
+          <value>osNumberOfSemaphores=0</value>
+          <value>osNumberOfMutexes=0</value>
+          <value>osNumberOfMessageQs=0</value>
+          <value>osNumberOfMessages=0</value>
+          <value>osNumberOfEvents=0</value>
+          <value>gMainThreadStackSize_c=0</value>
+          <value>gMainThreadPriority_c=0</value>
+          <value>gTaskMultipleInstancesManagement_c=0</value>
+          <value>FSL_OSA_BM_TIMER_CONFIG=FSL_OSA_BM_TIMER_SYSTICK</value>
+          <value>ENABLE_RAM_VECTOR_TABLE</value>
+          <value>gFlashEraseDuringWrite=0</value>
+          <value>gInvalidateHeaderLength=336</value>
+          <value>gEepromType_d=gEepromDevice_InternalFlash_c</value>
+          <value>gOtaVerifyWrite_d=0</value>
+          <value>gEePromParams_BufferSize_c=512</value>
+          <value>gEepromParams_bufferedWrite_c=1</value>
+          <value>gEepromParams_CurrentOffset=0</value>
+          <value>SINGLE_CHANNEL=12</value>
+          <value>TRACE_APP=true</value>
+          <value>TRACE_ZCL=true</value>
+          <value>OM15081</value>
+          <value>ZIGBEE_USE_FRAMEWORK</value>
+          <value>PRINTF_ADVANCED_ENABLE=1</value>
+          <value>gSupportBle=0</value>
+          <value>JN518x=5180</value>
+          <value>JENNIC_CHIP_FAMILY_NAME=_JN518x</value>
+          <value>JENNIC_CHIP_FAMILY=JN518x</value>
+          <value>JENNIC_CHIP_FAMILY_JN518x</value>
+          <value>__JN518X__</value>
+          <value>PDM_NO_RTOS</value>
+          <value>CPU_JN518X</value>
+          <value>CORE_M4</value>
+          <value>__CODE_RED</value>
+          <value>SDK_DEBUGCONSOLE=1</value>
+          <value>JN5189DK6</value>
+          <value>DK6</value>
+          <value>SDK_DEVICE_FAMILY=JN5189</value>
+          <value>SDK_BOARD=jn5189dk6</value>
+          <value>__NEWLIB__</value>
+          <value>MAC_154_IRQHandler=vMMAC_IntHandlerBbc</value>
+          <value>MODEM_154_IRQHandler=vMMAC_IntHandlerPhy</value>
+          <value>SUPPORT_FOR_15_4=1</value>
+          <value>SUPPORT_FOR_BLE=0</value>
+        </option>
+        <option id="gnu.c.compiler.option.optimization.flags" type="string">
+          <value>-fno-common</value>
+        </option>
+        <option id="gnu.c.compiler.option.misc.other" type="string">
+          <value>-c  -ffunction-sections  -fdata-sections  -ffreestanding  -fno-builtin</value>
+        </option>
+        <option id="com.crt.advproject.link.fpu" type="enum">
+          <value>com.crt.advproject.link.fpu.none</value>
+        </option>
+        <option id="gnu.c.link.option.nostdlibs" type="boolean">
+          <value>false</value>
+        </option>
+        <option id="gnu.c.link.option.other" type="stringList">
+          <value>-Map="${BuildArtifactFileBaseName}.map"</value>
+          <value>--gc-sections</value>
+          <value>-print-memory-usage</value>
+          <value>--no-wchar-size-warning</value>
+          <value>--sort-section=alignment</value>
+        </option>
+        <option id="gnu.c.link.option.libs" type="stringList">
+          <value>m</value>
+          <value>c</value>
+          <value>gcc</value>
+          <value>nosys</value>
+        </option>
+        <option id="com.crt.advproject.gas.hdrlib" type="enum">
+          <value>com.crt.advproject.gas.hdrlib.newlibnano</value>
+        </option>
+        <option id="com.crt.advproject.gas.specs" type="enum">
+          <value>com.crt.advproject.gas.specs.newlibnano</value>
+        </option>
+        <option id="com.crt.advproject.gcc.hdrlib" type="enum">
+          <value>com.crt.advproject.gcc.hdrlib.newlibnano</value>
+        </option>
+        <option id="com.crt.advproject.gcc.specs" type="enum">
+          <value>com.crt.advproject.gcc.specs.newlibnano</value>
+        </option>
+        <option id="com.crt.advproject.link.gcc.hdrlib" type="enum">
+          <value>com.crt.advproject.gcc.link.hdrlib.newlibnano.nohost</value>
+        </option>
+        <option id="com.crt.advproject.gcc.exe.release.option.optimization.level" type="enum">
+          <value>gnu.c.optimization.level.size</value>
+        </option>
+      </toolchainSetting>
+    </toolchainSettings>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on/bm/mcux" target_path="linker-file" type="linker" toolchain="mcuxpresso">
+      <files mask="AppBuildNone_JN5189.ld"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on/bm" target_path="board" type="c_include">
+      <files mask="app.h"/>
+      <files mask="board.h"/>
+      <files mask="board_utility.h"/>
+      <files mask="clock_config.h"/>
+      <files mask="pin_mux.h"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on/bm" target_path="board" type="src">
+      <files mask="board.c"/>
+      <files mask="board_utility.c"/>
+      <files mask="clock_config.c"/>
+      <files mask="hardware_init.c"/>
+      <files mask="pin_mux.c"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on" target_path="doc" type="doc">
+      <files mask="readme.txt"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on" target_path="source/Ed_rx_on/Source" type="asm_include">
+      <files mask="pdum_apdu.S"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on" target_path="source/Ed_rx_on/Source" type="c_include">
+      <files mask="app_end_device_node.h"/>
+      <files mask="app_main.h"/>
+      <files mask="app_reporting.h"/>
+      <files mask="app_zcl_task.h"/>
+      <files mask="bdb_options.h"/>
+      <files mask="zcl_options.h"/>
+      <files mask="zigbee_config.h"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on" target_path="source/Ed_rx_on/Source" type="other">
+      <files mask="enddevice_rxon.zpscfg"/>
+    </source>
+    <source path="boards/jn5189dk6/wireless_examples/zigbee/zigbee_ed_rx_on" target_path="source/Ed_rx_on/Source" type="src">
+      <files mask="app_end_device_node.c"/>
+      <files mask="app_main.c"/>
+      <files mask="app_reporting.c"/>
+      <files mask="app_start.c"/>
+      <files mask="app_zcl_task.c"/>
+      <files mask="pdum_gen.c"/>
+      <files mask="zps_gen.c"/>
+    </source>
+    <source path="devices/JN5189/drivers" target_path="drivers" type="src">
+      <files mask="psector_api.c"/>
+    </source>
+    <source path="devices/JN5189/gcc" target_path="linker-file" type="linker" toolchain="mcuxpresso">
+      <files mask="AppBuildOtaRegions.ld"/>
+      <files mask="JN5189_rom.ld"/>
+    </source>
+    <source path="middleware/wireless/framework/Common/devices/JN5180/iar" target_path="linker-file" type="linker" toolchain="iar">
+      <files mask="JN5180_connectivity.icf"/>
+    </source>
+    <source path="middleware/wireless/zigbee/examples/zb_common" target_path="source/Ed_rx_on/Source/Common" type="c_include">
+      <files mask="PDM_IDs.h"/>
+      <files mask="app_buttons.h"/>
+      <files mask="app_common.h"/>
+      <files mask="app_events.h"/>
+      <files mask="app_leds.h"/>
+      <files mask="app_ota_client.h"/>
+      <files mask="app_power_on_counter.h"/>
+      <files mask="app_uart.h"/>
+    </source>
+    <source path="middleware/wireless/zigbee/examples/zb_common" target_path="source/Ed_rx_on/Source/Common" type="src">
+      <files mask="app_buttons.c"/>
+      <files mask="app_leds.c"/>
+      <files mask="app_ota_client.c"/>
+      <files mask="app_power_on_counter.c"/>
+      <files mask="app_uart.c"/>
+      <files mask="app_zigbee_config.c"/>
+    </source>
+    <source path="middleware/wireless/zigbee/examples/zigbee_ed_rx_on/src" target_path="source/Ed_rx_on/Source" type="c_include">
+      <files mask="pdum_gen.h"/>
+      <files mask="zps_gen.h"/>
+    </source>
+    <source path="middleware/wireless/zigbee/examples/zigbee_ota_build" target_path="zigbee_ota_build" type="script" exclude="true" toolchain="mcuxpresso">
+      <files mask="DeviceCreateOtaEncClient.sh"/>
+    </source>
+    <source path="middleware/wireless/zigbee/examples/zigbee_ota_build" target_path="zigbee_ota_build" type="src" toolchain="mcuxpresso">
+      <files mask="LinkKey_Zigbee09.txt"/>
+      <files mask="configOTA_LinkKey.txt"/>
+    </source>
+    <source path="middleware/wireless/zigbee/tools/JET/win" target_path="zigbee_ota_build/win" type="other" exclude="true" toolchain="mcuxpresso">
+      <files mask="JET.exe"/>
+      <files mask="MSVCR71.dll"/>
+      <files mask="w9xpopen.exe"/>
+    </source>
+    <source path="middleware/wireless/zigbee/tools/PDUMConfig/bin" target_path="tools/PDUMConfig/bin" type="other" exclude="true" toolchain="mcuxpresso">
+      <files mask="MSVCR71.dll"/>
+      <files mask="PDUMConfig.exe"/>
+      <files mask="w9xpopen.exe"/>
+    </source>
+    <source path="middleware/wireless/zigbee/tools/ZPSConfig/bin" target_path="tools/ZPSConfig/bin" type="other" exclude="true" toolchain="mcuxpresso">
+      <files mask="MSVCR71.dll"/>
+      <files mask="ZPSConfig.exe"/>
+      <files mask="w9xpopen.exe"/>
+    </source>
+    <source path="tools/imagetool" target_path="scripts" type="script" exclude="true" toolchain="mcuxpresso">
+      <files mask="dk6_image_tool.py"/>
+    </source>
+    <source path="middleware/wireless/framework/SecLib" type="lib" method="copy" target_path="libs" toolchain="armgcc mcuxpresso iar">
+      <files mask="lib_crypto_m4.a"/>
+    </source>
+    <source path="middleware/wireless/framework/SecLib" type="lib" method="copy" target_path="libs" toolchain="armgcc mcuxpresso iar">
+      <files mask="lib_crypto_m4.a"/>
+    </source>
+  </example>
+</ksdk:examples>

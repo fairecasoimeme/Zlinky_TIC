@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * MODULE:             JN-AN-1246
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          pin_mux.c
  *
@@ -68,37 +68,37 @@
 
 void BOARD_InitPins(void)
 {
-    /* USART0 RX/TX pin */
-    IOCON_PinMuxSet(IOCON, 0, 8, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
-    IOCON_PinMuxSet(IOCON, 0, 9, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
+	/* USART0 RX/TX pin */
+	    IOCON_PinMuxSet(IOCON, 0, 8, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
+	    IOCON_PinMuxSet(IOCON, 0, 9, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
 
-    /* USART1 RX pin */
-    IOCON_PinMuxSet(IOCON, 0, 1, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
+	    /* USART1 RX pin */
+	    IOCON_PinMuxSet(IOCON, 0, 1, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
 
-    /* Debugger signals (SWCLK, SWDIO) - need to turn it OFF to reduce power consumption in power modes*/
-    IOCON_PinMuxSet(IOCON, 0, 12, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
+	    /* Debugger signals (SWCLK, SWDIO) - need to turn it OFF to reduce power consumption in power modes*/
+	    IOCON_PinMuxSet(IOCON, 0, 12, IOCON_FUNC2 | IOCON_MODE_INACT | IOCON_DIGITAL_EN);
 
-    //LED Linky
-    IOCON_PinMuxSet(IOCON, 0, 10, IOCON_FUNC0 | IOCON_DIGITAL_EN | IOCON_GPIO_MODE | IOCON_MODE_PULLDOWN);
+	    //LED Linky
+	    IOCON_PinMuxSet(IOCON, 0, 10, IOCON_FUNC0 | IOCON_DIGITAL_EN | IOCON_GPIO_MODE | IOCON_MODE_PULLDOWN);
 
-    /* I2C0  */
-    //IOCON_PinMuxSet(IOCON, 0, 10, IOCON_FUNC5 | IOCON_DIGITAL_EN | IOCON_STDI2C_EN);  /* I2C0_SCL */
-    //IOCON_PinMuxSet(IOCON, 0, 11, IOCON_FUNC5 | IOCON_DIGITAL_EN | IOCON_STDI2C_EN);  /* I2C0_SDA */
+	    /* I2C0  */
+	    //IOCON_PinMuxSet(IOCON, 0, 10, IOCON_FUNC5 | IOCON_DIGITAL_EN | IOCON_STDI2C_EN);  /* I2C0_SCL */
+	    //IOCON_PinMuxSet(IOCON, 0, 11, IOCON_FUNC5 | IOCON_DIGITAL_EN | IOCON_STDI2C_EN);  /* I2C0_SDA */
+
 }
 
 void BOARD_SetPinsForPowerMode(void)
 {
     for ( int i=0; i<22; i++)
     {
-        #ifdef OccupancySensor
-        /* Don't disable LEDs on occupancy sensor generic board */
-        if (i != 16 && i != 6 && i != 3)
-        #endif
-        if (i !=10)
-        {
-            /* configure GPIOs to Input mode */
-            GPIO_PinInit(GPIO, 0, i, &((const gpio_pin_config_t){kGPIO_DigitalInput, 1}));
-            IOCON_PinMuxSet(IOCON, 0, i, IOCON_FUNC0 |  IOCON_MODE_PULLUP | IOCON_DIGITAL_EN);
-        }
+        /* configure GPIOs to Input mode */
+        /*GPIO_PinInit(GPIO, 0, i, &((const gpio_pin_config_t){kGPIO_DigitalInput, 1}));
+        IOCON_PinMuxSet(IOCON, 0, i, IOCON_FUNC0 |  IOCON_MODE_INACT | IOCON_DIGITAL_EN);*/
+    	if (i !=10)
+		{
+			/* configure GPIOs to Input mode */
+			GPIO_PinInit(GPIO, 0, i, &((const gpio_pin_config_t){kGPIO_DigitalInput, 1}));
+			IOCON_PinMuxSet(IOCON, 0, i, IOCON_FUNC0 |  IOCON_MODE_PULLUP | IOCON_DIGITAL_EN);
+		}
     }
 }

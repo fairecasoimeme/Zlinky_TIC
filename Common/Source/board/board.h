@@ -39,6 +39,21 @@
 #define BOARD_LED_RED2_GPIO_PORT 0U
 #define BOARD_LED_RED2_GPIO_PIN 0U
 
+/* There are 2 red LEDs on USB Dongle: PIO4 and PIO10 */
+#define BOARD_LED_USB_DONGLE1_GPIO GPIO
+#define BOARD_LED_USB_DONGLE1_GPIO_PORT 0U
+#define BOARD_LED_USB_DONGLE1_GPIO_PIN 4U
+#define BOARD_LED_USB_DONGLE2_GPIO GPIO
+#define BOARD_LED_USB_DONGLE2_GPIO_PORT 0U
+#define BOARD_LED_USB_DONGLE2_GPIO_PIN 10U
+
+/* SPIFI clock rate */
+#define BOARD_SPIFI_CLK_RATE 16000000U
+
+#ifndef BIT
+#define BIT(x) (1 << (x))
+#endif
+
 /* Board led color mapping */
 #define LOGIC_LED_ON 0U
 #define LOGIC_LED_OFF 1U
@@ -177,8 +192,10 @@ status_t BOARD_InitDebugConsole(void);
 void BOARD_DbgDiagEnable(void);
 void BOARD_DbgLpIoSet(int pinid, int val);
 
-/* MJL-REL10-SDK */
-uint32_t BOARD_GetCtimerClock(CTIMER_Type *timer);
+extern uint32_t BOARD_GetSpiClock(uint32_t instance);
+extern void BOARD_InitSPI(void);
+extern void BOARD_InitSPIFI(void);
+extern void BOARD_SetSpiFi_LowPowerEnter(void);
 
 #if defined(__cplusplus)
 }

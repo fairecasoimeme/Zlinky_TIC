@@ -1,14 +1,13 @@
 /*****************************************************************************
  *
- * MODULE:             JN-AN-1220 ZLO Sensor Demo
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          app_events.h
  *
- * DESCRIPTION:        Application Events
+ * DESCRIPTION:        Base Device application - generic event definitions
  *
  ****************************************************************************
- *
- * This software is owned by NXP B.V. and/or its supplier and is protected
+ * * This software is owned by NXP B.V. and/or its supplier and is protected
  * under applicable copyright laws. All rights are reserved. We grant You,
  * and any third parties, a license to use this software solely and
  * exclusively on NXP products [NXP Microcontrollers such as JN5168, JN5169,
@@ -40,6 +39,7 @@
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
 
+
 /****************************************************************************/
 /***        Type Definitions                                              ***/
 /****************************************************************************/
@@ -48,15 +48,16 @@ typedef enum
     APP_E_EVENT_NONE = 0,
     APP_E_EVENT_BUTTON_UP,
     APP_E_EVENT_BUTTON_DOWN,
-    APP_E_EVENT_PERIODIC_REPORT,
-    APP_E_EVENT_SEND_REPORT,
-    APP_E_EVENT_WAKE_TIMER,
-    APP_E_EVENT_KEEPALIVE_START,
-    APP_E_EVENT_KEEPALIVE_STOP,
-    APP_E_EVENT_FIND_BIND_START,
-    APP_E_EVENT_FIND_BIND_STOP,
+	APP_E_EVENT_BUTTON_LONGPRESS,
+    APP_E_EVENT_PGM_BUTTON_UP,
+    APP_E_EVENT_PGM_BUTTON_DOWN,
+    APP_E_EVENT_LEAVE_AND_RESET,
+    APP_EVENT_POR_FIND_BIND,
+    APP_EVENT_POR_CLEAR_BINDINGS,
+    APP_EVENT_POR_RESET_GP_TABLES,
     APP_E_EVENT_MAX,
-	APP_E_EVENT_BUTTON_LONGPRESS
+	APP_E_EVENT_PERIODIC_REPORT
+
 } APP_teEventType;
 
 typedef struct
@@ -73,6 +74,7 @@ typedef struct
         APP_tsEventButton                   sButton;
     }uEvent;
 } APP_tsEvent;
+
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/

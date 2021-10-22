@@ -1,10 +1,10 @@
 /****************************************************************************
  *
- * MODULE:             JN-AN-1220 ZLO Sensor Demo
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          app_pdm.c
  *
- * DESCRIPTION:        ZLO Demo, PDM Utilities
+ * DESCRIPTION:        PDM event handler callback
  *
  ****************************************************************************
  *
@@ -36,20 +36,10 @@
 /****************************************************************************/
 /***        Include files                                                 ***/
 /****************************************************************************/
-
 #include <jendefs.h>
 #include "PDM.h"
 #include "pdum_gen.h"
-
-#include "zps_gen.h"
-#include "zps_apl.h"
-#include "AppApi.h"
 #include "app_pdm.h"
-#include "PDM_IDs.h"
-#include "app_common.h"
-
-
-
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -77,7 +67,8 @@
 /****************************************************************************/
 /***        Local Variables                                               ***/
 /****************************************************************************/
-extern tsDeviceDesc sDeviceDesc;
+
+
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
@@ -97,47 +88,39 @@ extern tsDeviceDesc sDeviceDesc;
 PUBLIC void vPdmEventHandlerCallback(uint32 u32EventNumber, PDM_eSystemEventCode eSystemEventCode)
 {
 
-    switch (eSystemEventCode)
-    {
+    switch (eSystemEventCode) {
+        /*
+         * The next three events will require the application to take some action
+         */
+        case E_PDM_SYSTEM_EVENT_WEAR_COUNT_TRIGGER_VALUE_REACHED:
+            DBG_vPrintf(TRACE_PDM, "PDM: Segment %d reached trigger wear level\n", u32EventNumber);
+            break;
+        case E_PDM_SYSTEM_EVENT_DESCRIPTOR_SAVE_FAILED:
+            DBG_vPrintf(TRACE_PDM, "PDM: Record Id %d failed to save\n", u32EventNumber);
+            DBG_vPrintf(TRACE_PDM, "PDM: Capacity %d\n", u8PDM_CalculateFileSystemCapacity() );
+            DBG_vPrintf(TRACE_PDM, "PDM: Occupancy %d\n", u8PDM_GetFileSystemOccupancy() );
+            break;
+        case E_PDM_SYSTEM_EVENT_PDM_NOT_ENOUGH_SPACE:
+            DBG_vPrintf(TRACE_PDM, "PDM: Record %d not enough space\n", u32EventNumber);
+            DBG_vPrintf(TRACE_PDM, "PDM: Capacity %d\n", u8PDM_CalculateFileSystemCapacity() );
+            DBG_vPrintf(TRACE_PDM, "PDM: Occupancy %d\n", u8PDM_GetFileSystemOccupancy() );
+            break;
 
-    /*
-     * The next three events will require the application to take some action
-     */
-    case E_PDM_SYSTEM_EVENT_WEAR_COUNT_TRIGGER_VALUE_REACHED:
-        DBG_vPrintf(TRACE_PDM, "PDM: Segment %d reached trigger wear level\n", u32EventNumber);
-        break;
-
-    case E_PDM_SYSTEM_EVENT_DESCRIPTOR_SAVE_FAILED:
-        DBG_vPrintf(TRACE_PDM, "PDM: Record Id %d failed to save\n", u32EventNumber);
-        DBG_vPrintf(TRACE_PDM, "PDM: Capacity %d\n", u8PDM_CalculateFileSystemCapacity() );
-        DBG_vPrintf(TRACE_PDM, "PDM: Occupancy %d\n", u8PDM_GetFileSystemOccupancy() );
-        break;
-
-    case E_PDM_SYSTEM_EVENT_PDM_NOT_ENOUGH_SPACE:
-        DBG_vPrintf(TRACE_PDM, "PDM: Record %d not enough space\n", u32EventNumber);
-        DBG_vPrintf(TRACE_PDM, "PDM: Capacity %d\n", u8PDM_CalculateFileSystemCapacity() );
-        DBG_vPrintf(TRACE_PDM, "PDM: Occupancy %d\n", u8PDM_GetFileSystemOccupancy() );
-        break;
-
-    /*
-     *  The following events are really for information only
-     */
-    case E_PDM_SYSTEM_EVENT_EEPROM_SEGMENT_HEADER_REPAIRED:
-        DBG_vPrintf(TRACE_PDM, "PDM: Segment %d header repaired\n", u32EventNumber);
-        break;
-
-    case E_PDM_SYSTEM_EVENT_SYSTEM_INTERNAL_BUFFER_WEAR_COUNT_SWAP:
-        DBG_vPrintf(TRACE_PDM, "PDM: Segment %d buffer wear count swap\n", u32EventNumber);
-        break;
-
-    case E_PDM_SYSTEM_EVENT_SYSTEM_DUPLICATE_FILE_SEGMENT_DETECTED:
-        DBG_vPrintf(TRACE_PDM, "PDM: Segement %d duplicate selected\n", u32EventNumber);
-        break;
-
-    default:
-        DBG_vPrintf(TRACE_PDM, "PDM: Unexpected call back Code %d Number %d\n", eSystemEventCode, u32EventNumber);
-        break;
-
+        /*
+         *  The following events are really for information only
+         */
+        case E_PDM_SYSTEM_EVENT_EEPROM_SEGMENT_HEADER_REPAIRED:
+            DBG_vPrintf(TRACE_PDM, "PDM: Segment %d header repaired\n", u32EventNumber);
+            break;
+        case E_PDM_SYSTEM_EVENT_SYSTEM_INTERNAL_BUFFER_WEAR_COUNT_SWAP:
+            DBG_vPrintf(TRACE_PDM, "PDM: Segment %d buffer wear count swap\n", u32EventNumber);
+            break;
+        case E_PDM_SYSTEM_EVENT_SYSTEM_DUPLICATE_FILE_SEGMENT_DETECTED:
+            DBG_vPrintf(TRACE_PDM, "PDM: Segement %d duplicate selected\n", u32EventNumber);
+            break;
+        default:
+            DBG_vPrintf(TRACE_PDM, "PDM: Unexpected call back Code %d Number %d\n", eSystemEventCode, u32EventNumber);
+            break;
     }
 }
 #endif
@@ -156,10 +139,10 @@ PUBLIC void vPdmEventHandlerCallback(uint32 u32EventNumber, PDM_eSystemEventCode
 PUBLIC void vDisplayPDMUsage(void)
 {
 #ifdef PDM_EEPROM
-    /*
-    * The functions u8PDM_CalculateFileSystemCapacity and u8PDM_GetFileSystemOccupancy
-    * may be called at any time to monitor space available in  the eeprom
-    */
+/*
+* The functions u8PDM_CalculateFileSystemCapacity and u8PDM_GetFileSystemOccupancy
+* may be called at any time to monitor space available in  the eeprom
+*/
     DBG_vPrintf(TRACE_PDM, "\r\nPDM: Capacity %d\n", u8PDM_CalculateFileSystemCapacity() );
     DBG_vPrintf(TRACE_PDM, "\r\nPDM: Occupancy %d\n", u8PDM_GetFileSystemOccupancy() );
 #endif

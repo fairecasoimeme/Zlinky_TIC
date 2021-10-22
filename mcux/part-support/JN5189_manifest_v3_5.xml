@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:manifest xmlns:ns2="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" format_version="3.5" api_version="2.0.0" configuration="0ab0a37ac46f34e97a4a0f85b3f71a71" id="SDK_2.x_JN5189" name="JN5189" brief="This is SDK version 2.6.1 manifest file. It describes the content of the JN5189 and additional settings for tools that support SDK version 2.6.1">
+    <defines>
+        <define name="CPU_$|package|" value=""/>
+        <define name="CPU_$|package|_$|core|" value=""/>
+    </defines>
+    <ksdk id="MCUXpresso261" name="MCUXpresso261" version="2.6.1" revision="374 2020-08-14"/>
+    <compilers>
+        <compiler type="gcc" id="compiler_gcc" name="gcc"/>
+    </compilers>
+    <toolchainSettings>
+        <toolchainSetting id="com.nxp.mcuxpresso" name="mcuxpresso" full_name="MCUXpresso IDE" version="11.2.0" toolchain="mcuxpresso" compiler="compiler_gcc">
+            <option id="gnu.cpp.compiler.option.optimization.flags" type="string" user_name="">
+                <value>-fno-common</value>
+            </option>
+            <option id="gnu.c.compiler.option.optimization.flags" type="string" user_name="">
+                <value>-fno-common</value>
+            </option>
+            <option id="gnu.cpp.link.option.nostdlibs" type="boolean" user_name="">
+                <value>true</value>
+            </option>
+            <option id="com.crt.advproject.link.cpp.flashconfigenable" type="boolean" user_name="">
+                <value>true</value>
+            </option>
+            <option id="com.crt.advproject.link.flashconfigenable" type="boolean" user_name="">
+                <value>true</value>
+            </option>
+            <option id="gnu.c.link.option.nostdlibs" type="boolean" user_name="">
+                <value>true</value>
+            </option>
+        </toolchainSetting>
+    </toolchainSettings>
+    <toolchains>
+        <toolchain type="mcuxpresso" vendor="NXP Semiconductors" vendor_url="http://www.nxp.com" id="mcuxpresso" name="MCUXpresso_IDE" full_name="MCUXpresso IDE" version="11.2.0" compiler="compiler_gcc">
+            <debug>
+                <debug_configuration probe="LinkServer" id="com.crt.advproject.config.exe.release" name="Release Configuration">
+                    <scripts>
+                        <script type="init" silent="false" emulators="${gdb.stub} -mi -info-emu">
+                            <script>
+set remotetimeout 60000
+##target_extended_remote##
+set mem inaccessible-by-default ${mem.access}
+mon ondisconnect ${ondisconnect}
+set arm force-mode thumb
+${load}</script>
+                        </script>
+                        <script type="run" silent="false" emulators="${gdb.stub} -mi -info-emu">
+                            <script>${run}</script>
+                        </script>
+                    </scripts>
+                    <params>
+                        <params value="false" id="vector.catch.release.mcuxpresso" name="vector.catch"/>
+                        <params value="Disable" id="internal.cache.release.mcuxpresso" name="internal.cache"/>
+                    </params>
+                </debug_configuration>
+                <debug_configuration probe="LinkServer" id="com.crt.advproject.config.exe.debug" name="Debug Configuration">
+                    <scripts>
+                        <script type="init" silent="false" emulators="${gdb.stub} -mi -info-emu">
+                            <script>
+set remotetimeout 60000
+##target_extended_remote##
+set mem inaccessible-by-default ${mem.access}
+mon ondisconnect ${ondisconnect}
+set arm force-mode thumb
+${load}</script>
+                        </script>
+                        <script type="run" silent="false" emulators="${gdb.stub} -mi -info-emu">
+                            <script>${run}</script>
+                        </script>
+                    </scripts>
+                    <params>
+                        <params value="false" id="vector.catch.debug.mcuxpresso" name="vector.catch"/>
+                        <params value="Disable" id="internal.cache.debug.mcuxpresso" name="internal.cache"/>
+                    </params>
+                </debug_configuration>
+                <debug_configuration probe="Segger" id="com.nxp.mcuxpresso.core.debug.support.segger.debug" name="Debug Configuration"/>
+                <debug_configuration probe="Segger" id="com.nxp.mcuxpresso.core.debug.support.segger.release" name="Release Configuration"/>
+            </debug>
+        </toolchain>
+    </toolchains>
+    <boards>
+        <board package="JN5189HN" id="jn5189dk6" name="JN5189DK6" href="http://www.nxp.com/products/" version="1.0.0">
+            <description>The LPCXpresso family of boards provides a powerful and flexible development system for NXP®'s Cortex-M MCUs</description>
+            <image path="docs/images" type="image">
+                <files mask="JN5189DK6.gif"/>
+            </image>
+            <metadataSet>
+                <metadata key="html">
+                    <specific>
+                        <content xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The LPCXpresso family of boards provides a powerful and flexible development system for NXP®'s Cortex-M MCUs. The LPCXpresso54114 board has been developed by NXP to enable evaluation of and prototyping with the LPC54110 family of MCUs and its low power features make it as easy as possible to get started with your project.&lt;br/&gt;LPCXpresso™ is a low-cost development platform available from NXP supporting NXP's ARM-based microcontrollers. The platform is comprised of a simplified Eclipse-based IDE and low-cost target boards which include an attached JTAG debugger. LPCXpresso is an end-to-end solution enabling embedded engineers to develop their applications from initial evaluation to final production.</content>
+                    </specific>
+                </metadata>
+            </metadataSet>
+            <total_memory flash_size_kb="0" ram_size_kb="0"/>
+        </board>
+    </boards>
+    <devices>
+        <device family="JN518x" platform="LPC" id="JN5189" name="JN5189" full_name="JN5189" href="http://www.nxp.com/lpc" version="1.0.0">
+            <description>The JN5189 are ARM Cortex-M4 based microcontrollers for embedded applications.</description>
+            <image path="docs/images" type="image">
+                <files mask="device.jpg"/>
+            </image>
+            <metadataSet>
+                <metadata key="compatible_device.segger" value="JN5189"/>
+                <metadata key="html">
+                    <specific>
+                        <content xmlns:ksdk="http://nxp.com/ksdk/2.0/ksdk_manifest_v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">The LPC5411x are ARM Cortex-M4 based microcontrollers for embedded applications. These devices include an ARM Cortex-M0+ coprocessor, up to 192 KB of on-chip SRAM, up to 256 KB on-chip flash, full-speed USB device interface with Crystal-less operation, a DMIC subsystem with PDM microphone interface and I2S, five general-purpose timers, one SCTimer/PWM, one RTC/alarm timer, one 24-bit Multi-Rate Timer (MRT), a Windowed Watchdog Timer (WWDT), eight flexible serial communication peripherals (each of which can be a USART, SPI, or I2C interface), and one 12-bit 5.0 Msamples/sec ADC, and a temperature sensor.&lt;br/&gt;The ARM Cortex-M4 is a 32-bit core that offers system enhancements such as low power consumption, enhanced debug features, and a high level of support block integration. The ARM Cortex-M4 CPU incorporates a 3-stage pipeline, uses a Harvard architecture with separate local instruction and data buses as well as a third bus for peripherals, and includes an internal prefetch unit that supports speculative branching. The ARM Cortex-M4 supports single-cycle digital signal processing and SIMD instructions. A hardware floating-point unit is integrated in the core.&lt;br/&gt;The ARM Cortex-M0+ coprocessor is an energy-efficient and easy-to-use 32-bit core which is code and tool-compatible with the Cortex-M4 core. The Cortex-M0+ coprocessor offers up to 100 MHz performance with a simple instruction set and reduced code size.&lt;br/&gt;</content>
+                    </specific>
+                </metadata>
+                <metadata key="vendor" value="NXP"/>
+            </metadataSet>
+            <core fpu="false" type="cm4" id="core0_JN5189" name="core0"/>
+            <memory>
+                <memoryBlock addr="00000000" size="000A0000" type="Flash" access="RO" id="PROGRAM_FLASH_JN5189" name="PROGRAM_FLASH"/>
+                <memoryBlock addr="04000000" size="00015FE0" type="RAM" access="RW" id="SRAM_JN5189" name="SRAM"/>
+                <memoryBlock addr="04020000" size="00010000" type="RAM" access="RW" id="SRAM1_JN5189" name="SRAM1"/>
+            </memory>
+            <total_memory flash_size_kb="640" ram_size_kb="64"/>
+            <package id="JN5189HN" name="JN5189HN"/>
+            <package id="JN5189THN" name="JN5189THN"/>
+            <evaluation_boards>
+                <evaluation_board name="jn5189dk6"/>
+            </evaluation_boards>
+            <toolchainSettings>
+                <toolchainSetting id_refs="com.nxp.mcuxpresso">
+                    <buildSteps>
+                        <preBuildStep></preBuildStep>
+                        <postBuildStep>arm-none-eabi-size "${BuildArtifactFileName}"; echo "${OsType}" | grep -q win* &amp;&amp; py -3 "../scripts/dk6_image_tool.py" -s 294912 ${ENV_IMAGE_TOOL_OPTS} ${BuildArtifactFileName} || python3 "../scripts/dk6_image_tool.py" -s 294912 ${ENV_IMAGE_TOOL_OPTS} ${BuildArtifactFileName}; arm-none-eabi-objcopy -v -O binary "${BuildArtifactFileName}" "${BuildArtifactFileBaseName}.bin"</postBuildStep>
+                    </buildSteps>
+                </toolchainSetting>
+            </toolchainSettings>
+            <debug_configurations>
+                <debug_configuration id_refs="com.crt.advproject.config.exe.debug com.crt.advproject.config.exe.release">
+                    <params>
+                        <params value="true" id="internal.attach.slave.release.JN5189" name="internal.attach.slave"/>
+                        <params value="true" id="internal.multi.swd.release.JN5189" name="internal.multi.swd"/>
+                        <params value="SWD" id="internal.wiretype.release.JN5189" name="internal.wiretype"/>
+                        <params value="true" id="internal.has_swo.release.JN5189" name="internal.has_swo"/>
+                    </params>
+                    <drivers>
+                        <driver id_refs="PROGRAM_FLASH_JN5189">
+                            <driverBinary path="devices/JN5189/mcuxpresso" type="binary">
+<files mask="JN5189_640K.cfx"/>
+                            </driverBinary>
+                        </driver>
+                    </drivers>
+                </debug_configuration>
+            </debug_configurations>
+            <linkerSettings nature="c_nature">
+                <linker property="start_symbol" value="ResetISR"/>
+                <linker property="text_align" value="4"/>
+                <linker property="data_align" value="4"/>
+                <linker property="bss_align" value="4"/>
+                <linker property="mtb_supported" value="false"/>
+            </linkerSettings>
+            <linkerSettings nature="cpp_nature">
+                <linker property="start_symbol" value="ResetISR"/>
+                <linker property="text_align" value="4"/>
+                <linker property="data_align" value="4"/>
+                <linker property="bss_align" value="4"/>
+                <linker property="mtb_supported" value="false"/>
+            </linkerSettings>
+        </device>
+    </devices>
+    <components>
+        <component user_visible="true" type="debugger" devices="JN5189" id="device.JN5189_debugger.JN5189" name="JN5189_debugger" version="1.0.0"/>
+        <component user_visible="true" type="debugger" devices="JN5189" id="platform.device.JN5189_flash.JN5189" name="JN5189_flash" version="1.0.0">
+            <source path="devices/JN5189/mcuxpresso" target_path="src" type="binary" toolchain="mcuxpresso">
+                <files mask="JN5189_640K.cfx"/>
+            </source>
+        </component>
+    </components>
+</ns2:manifest>

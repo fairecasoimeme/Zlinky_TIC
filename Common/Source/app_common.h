@@ -1,10 +1,10 @@
 /*****************************************************************************
  *
- * MODULE:             JN-AN-1220 ZLO Sensor Demo
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          app_common.h
  *
- * DESCRIPTION:        Application Device Type Includes
+ * DESCRIPTION:        Base Device application - common includes selector
  *
  ****************************************************************************
  *
@@ -36,101 +36,32 @@
 #ifndef APP_COMMON_H_
 #define APP_COMMON_H_
 
-/****************************************************************************/
-/***        Include Files                                                 ***/
-/****************************************************************************/
-
 #include "ZTimer.h"
 #include "ZQueue.h"
-/* Device specific includes
- * As a new light or controller is added it needs an entry here
- *
- */
-#ifdef DimmerSwitch
-    #include "App_DimmerSwitch.h"
-#endif
 
-#ifdef ColorDimmerSwitch
-    #include "App_ColorDimmerSwitch.h"
-#endif
-
-#ifdef DimmableLight
-    #include "App_DimmableLight.h"
-#endif
-
-#ifdef OTAColorDimmableLightWithOccupancy
-    #include "App_OTAColorDimmableLightWithOccupancy.h"
-#endif
-
-#ifdef ColorTempTunableWhiteLight
-    #include "App_ColorTempTunableWhiteLight.h"
-#endif
-
-#ifdef ColorDimmableLight
-    #include "App_ColorDimmableLight.h"
-#endif
-
-#ifdef OccupancySensor
-    #include "App_OccupancySensor.h"
-#endif
-
-#ifdef LightSensor
-    #include "App_LightSensor.h"
-#endif
-
-#ifdef Linky
-    #include "App_Linky.h"
-	//#include "metering_sensor.h"
-#endif
-
-#ifdef LTOSensor
-    #include "App_LTOSensor.h"
-#endif
-
-#ifdef RemoteControl
-    #include "App_RemoteControl.h"
-#endif
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
-
-#define POLL_TIME               ZTIMER_TIME_MSEC(1000)
-#define POLL_TIME_FAST          ZTIMER_TIME_MSEC(100)
-#define TEN_HZ_TICK_TIME        ZTIMER_TIME_MSEC(100)
+#define NETWORK_RESTART_TIME    ZTIMER_TIME_MSEC(1000)
+#define POLL_TIME               ZTIMER_TIME_MSEC(5000)
+#define POLL_TIME_FAST          ZTIMER_TIME_MSEC(250)
+#define GP_ZCL_TICK_TIME        ZTIMER_TIME_MSEC(1)
 #define MAX_PACKET_SIZE         270
 
 /****************************************************************************/
 /***        Type Definitions                                              ***/
 /****************************************************************************/
+
 typedef enum
 {
     E_STARTUP,
-    E_JOINING_NETWORK,
     E_RUNNING
-} teNODE_STATES;
-
-typedef teNODE_STATES teNodeState;
+} teNodeState;
 
 typedef struct
 {
-    teNODE_STATES   eNodeState;
-    teNODE_STATES   eNodePrevState;
-#ifdef CLD_OTA
-    bool        bValid;
-    uint64      u64IeeeAddrOfServer;
-    uint16      u16NwkAddrOfServer;
-    uint8       u8OTAserverEP;
-#endif
+    teNodeState     eNodeState;
 }tsDeviceDesc;
-
-#if (defined JENNIC_CHIP_FAMILY_JN517x)
-#define SDA_PIN    (2)
-#define SCL_PIN    (3)
-#else
-#define SDA_PIN    (15)
-#define SCL_PIN    (14)
-#endif
-#define IIC_MASK    ((1<<SDA_PIN) | (1<<SCL_PIN))
 
 #define ZNC_RTN_U64( BUFFER, i )  ( ( ( uint64 ) ( BUFFER )[ i ]  <<  56) |\
     ( ( uint64 ) ( BUFFER )[ i + 1 ]  << 48) |\
@@ -152,12 +83,14 @@ typedef struct
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
-extern tszQueue                   APP_msgSerialRx;
-extern uint8 APP_vProcessRxDataHisto ( void );
-extern uint8 APP_vProcessRxDataStandard ( void );
+
 /****************************************************************************/
 /***        External Variables                                            ***/
 /****************************************************************************/
+extern tszQueue                   APP_msgSerialRx;
+extern uint8 APP_vProcessRxDataHisto ( void );
+extern uint8 APP_vProcessRxDataStandard ( void );
+extern PUBLIC void vTAM_MLME_RxInCca(bool_t bEnable);
 
 /****************************************************************************/
 /****************************************************************************/

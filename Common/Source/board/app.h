@@ -1,6 +1,6 @@
 /*****************************************************************************
  *
- * MODULE:             JN-AN-1246
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          app.h
  *
@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright NXP B.V. 2017-2018. All rights reserved
+ * Copyright NXP B.V. 2017-2019. All rights reserved
  *
  ***************************************************************************/
 #ifndef _APP_H_
@@ -37,30 +37,11 @@
 #include "fsl_common.h"
 #include "fsl_debug_console.h"
 #include "fsl_gpio.h"
-#include "fsl_ctimer.h"
 
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
 /*${macro:start}*/
-
-#define I2C_MASTER_CLOCK_FREQUENCY      CLOCK_GetFreq(kCLOCK_Fro32M)
-#define I2C_SLAVE_CLOCK_FREQUENCY       CLOCK_GetFreq(kCLOCK_Fro32M)
-#define I2C_MASTER_BASE         I2C0
-
-
-
-
-
-#define CTIMER CTIMER0
-#define CTIMER_MAT0_OUT kCTIMER_Match_0
-#define CTIMER_MAT1_OUT kCTIMER_Match_3
-#define BUS_CLK_FREQ    CLOCK_GetFreq(kCLOCK_BusClk)
-
-void ctimer_match0_callback(uint32_t flags);
-void ctimer_match1_callback(uint32_t flags);
-
-
 /* default to uart 0 */
 #ifndef UART
 #define UART            (USART0)
@@ -69,6 +50,7 @@ void ctimer_match1_callback(uint32_t flags);
 #ifndef UARTLINKY
 #define UARTLINKY            (USART1)
 #endif
+
 
 /* default BAUD rate 9600 */
 #ifndef UART_BAUD_RATE
@@ -89,17 +71,17 @@ void ctimer_match1_callback(uint32_t flags);
 
 #if (defined OM15082)
 
-#define APP_BOARD_SW0_PIN   (1)   /* base board switch */
-/* OM15076-3 Carrier Board */
-#define APP_BOARD_SW1_PIN   (19)   /* expansion bord switch 1 */
-/* OM15076-1 Carrier Board */
-//#define APP_BOARD_SW1_PIN   (5)   /* expansion bord switch 1 */
-#define APP_BOARD_SW2_PIN   (15)  /* expansion bord switch 2 */
-#define APP_BOARD_SW3_PIN   (7)   /* expansion bord switch 3 */
-#define APP_BOARD_SW4_PIN   (4)   /* expansion bord switch 4 */
+/* OM15076 Carrier Board */
+#define APP_BOARD_SW0_PIN   (1)   /* USERINTERFACE */
+#define APP_BOARD_SWISP_PIN (5)   /* ISP */
+/* OM15082 Expansion Board */
+#define APP_BOARD_SW1_PIN   (19)  /* SW1 */
+#define APP_BOARD_SW2_PIN   (15)  /* SW2 */
+#define APP_BOARD_SW3_PIN   (7)   /* SW3 */
+#define APP_BOARD_SW4_PIN   (4)   /* SW4 */
 
 /* expansion board leds Pin High == ON */
-#define APP_BOARD_LED1_PIN  (16)  /* expansion bord led 1 */
+#define APP_BOARD_LED1_PIN  (16) /* expansion bord led 1 */
 #define APP_BOARD_LED2_PIN  (6)  /* expansion bord led 2 */
 #define APP_BOARD_LED3_PIN  (3)  /* expansion bord led 3 */
 
@@ -118,8 +100,9 @@ void ctimer_match1_callback(uint32_t flags);
 
 #endif
 
-#if (defined OM15081)
-#define APP_BOARD_SW0_PIN   (0)
+#if ((defined OM15081) || (defined OM5578))
+#define APP_BOARD_SW0_PIN   (0)   /* USERINTERFACE */
+#define APP_BOARD_SWISP_PIN (5)   /* ISP */
 
 #define ON (1)
 #define OFF (0)
@@ -133,10 +116,7 @@ void ctimer_match1_callback(uint32_t flags);
 
 /* base board leds Pin High == OFF */
 #define APP_BASE_BOARD_LED1_PIN (10)  /* base bord led 1 */
-
-
-/* Output enable pin for PCA9634 I2C PWM Driver IC */
-#define APP_PCA9634_OE_PIN      (16)
+#define APP_BASE_BOARD_LED2_PIN (3)  /* base bord led 2 */
 
 #endif
 
@@ -153,6 +133,7 @@ void ctimer_match1_callback(uint32_t flags);
 #define APP_BASE_BOARD_LED2_PIN (3)  /* base bord led 2 */
 
 #endif
+
 /*${macro:end}*/
 
 /*******************************************************************************

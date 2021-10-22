@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
-		<cconfiguration id="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015">
-			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015" moduleId="org.eclipse.cdt.core.settings" name="linky">
+		<cconfiguration id="com.crt.advproject.config.exe.debug.2009898295.1495669017">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.crt.advproject.config.exe.debug.2009898295.1495669017" moduleId="org.eclipse.cdt.core.settings" name="ZLinky_GpProxy_Ota">
 				<externalSettings/>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -15,61 +15,136 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" id="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015" name="linky" parent="com.crt.advproject.config.exe.release" postannouncebuildStep="Performing post-build steps" postbuildStep="arm-none-eabi-size &quot;${BuildArtifactFileName}&quot;; # arm-none-eabi-objcopy -v -O binary &quot;${BuildArtifactFileName}&quot; &quot;${BuildArtifactFileBaseName}.bin&quot; ; # checksum -p ${TargetChip} -d &quot;${BuildArtifactFileBaseName}.bin&quot;;  ">
-					<folderInfo id="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015." name="/" resourcePath="">
-						<toolChain id="com.crt.advproject.toolchain.exe.release.279376997" name="NXP MCU Tools" superClass="com.crt.advproject.toolchain.exe.release">
-							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.release.2053046994" name="ARM-based MCU (Release)" superClass="com.crt.advproject.platform.exe.release"/>
-							<builder arguments="SENSOR=Linky TRACE=1 DR_REV=2 APP_NTAG_ICODE=0 OTA=0 OTA_ENCRYPTED=0  -r" autoBuildTarget="all" buildPath="${ProjDirPath}/../Linky/Build/mcux" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.crt.advproject.builder.exe.release.763004498" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.crt.advproject.builder.exe.release"/>
-							<tool id="com.crt.advproject.cpp.exe.release.283592752" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.release">
-								<option id="com.crt.advproject.cpp.hdrlib.1070684328" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib" useByScannerDiscovery="false"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.1111989064" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" id="com.crt.advproject.config.exe.debug.2009898295.1495669017" name="ZLinky_GpProxy_Ota" parent="com.crt.advproject.config.exe.debug" postannouncebuildStep="Performing post-build steps" postbuildStep="arm-none-eabi-size &quot;${BuildArtifactFileName}&quot;; # arm-none-eabi-objcopy -v -O binary &quot;${BuildArtifactFileName}&quot; &quot;${BuildArtifactFileBaseName}.bin&quot; ; # checksum -p ${TargetChip} -d &quot;${BuildArtifactFileBaseName}.bin&quot;;  ">
+					<folderInfo id="com.crt.advproject.config.exe.debug.2009898295.1495669017." name="/" resourcePath="">
+						<toolChain id="com.crt.advproject.toolchain.exe.debug.1101120136" name="NXP MCU Tools" superClass="com.crt.advproject.toolchain.exe.debug">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug.206084167" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
+							<builder arguments="APP_NTAG_NWK=0 APP_NTAG_OTA=0 OTA=1 OTA_ENCRYPTED=0" autoBuildTarget="all" buildPath="${ProjDirPath}/../ZLinky/Build/mcux" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.crt.advproject.builder.exe.debug.1178044129" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.crt.advproject.builder.exe.debug"/>
+							<tool id="com.crt.advproject.cpp.exe.debug.292340416" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.debug">
+								<option id="com.crt.advproject.cpp.hdrlib.613115350" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1822599746" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
 							</tool>
-							<tool id="com.crt.advproject.gcc.exe.release.2011205711" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.release">
-								<option id="com.crt.advproject.gcc.arch.1389731537" name="Architecture" superClass="com.crt.advproject.gcc.arch" useByScannerDiscovery="false" value="com.crt.advproject.gcc.target.cm4" valueType="enumerated"/>
-								<option id="com.crt.advproject.gcc.thumb.1394873100" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.preprocessor.def.symbols.1133412077" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+							<tool id="com.crt.advproject.gcc.exe.debug.61556692" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug">
+								<option id="com.crt.advproject.gcc.arch.443834488" name="Architecture" superClass="com.crt.advproject.gcc.arch" useByScannerDiscovery="false" value="com.crt.advproject.gcc.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.gcc.thumb.318651456" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.preprocessor.def.symbols.701809123" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__REDLIB__"/>
-									<listOptionValue builtIn="false" value="NDEBUG"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="__CODE_RED"/>
 								</option>
-								<option id="gnu.c.compiler.option.misc.other.1110322925" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
-								<option id="com.crt.advproject.gcc.hdrlib.99440087" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false"/>
-								<inputType id="com.crt.advproject.compiler.input.861932766" superClass="com.crt.advproject.compiler.input"/>
+								<option id="gnu.c.compiler.option.misc.other.1029848596" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="com.crt.advproject.gcc.hdrlib.1848899894" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false"/>
+								<inputType id="com.crt.advproject.compiler.input.2146810817" superClass="com.crt.advproject.compiler.input"/>
 							</tool>
-							<tool id="com.crt.advproject.gas.exe.release.1162374600" name="MCU Assembler" superClass="com.crt.advproject.gas.exe.release">
-								<option id="com.crt.advproject.gas.arch.436101558" name="Architecture" superClass="com.crt.advproject.gas.arch" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
-								<option id="com.crt.advproject.gas.thumb.738530476" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" value="true" valueType="boolean"/>
-								<option id="gnu.both.asm.option.flags.crt.1909674495" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DNDEBUG -D__CODE_RED" valueType="string"/>
-								<option id="com.crt.advproject.gas.hdrlib.1149592599" name="Library headers" superClass="com.crt.advproject.gas.hdrlib"/>
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.353206558" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-								<inputType id="com.crt.advproject.assembler.input.1012580215" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
+							<tool id="com.crt.advproject.gas.exe.debug.521095758" name="MCU Assembler" superClass="com.crt.advproject.gas.exe.debug">
+								<option id="com.crt.advproject.gas.arch.347704048" name="Architecture" superClass="com.crt.advproject.gas.arch" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.gas.thumb.845224252" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" value="true" valueType="boolean"/>
+								<option id="gnu.both.asm.option.flags.crt.1430257778" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DDEBUG -D__CODE_RED" valueType="string"/>
+								<option id="com.crt.advproject.gas.hdrlib.1378028544" name="Library headers" superClass="com.crt.advproject.gas.hdrlib"/>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.244609238" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.crt.advproject.assembler.input.366816561" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
 							</tool>
-							<tool id="com.crt.advproject.link.cpp.exe.release.1822956825" name="MCU C++ Linker" superClass="com.crt.advproject.link.cpp.exe.release">
-								<option id="com.crt.advproject.link.cpp.hdrlib.1042026532" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib"/>
+							<tool id="com.crt.advproject.link.cpp.exe.debug.804430722" name="MCU C++ Linker" superClass="com.crt.advproject.link.cpp.exe.debug">
+								<option id="com.crt.advproject.link.cpp.hdrlib.515152786" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib"/>
 							</tool>
-							<tool id="com.crt.advproject.link.exe.release.499093843" name="MCU Linker" superClass="com.crt.advproject.link.exe.release">
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.gcc.multicore.master.userobjs.849870969" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.gcc.multicore.master.userobjs" valueType="userObjs"/>
-								<option id="com.crt.advproject.link.arch.126901063" name="Architecture" superClass="com.crt.advproject.link.arch" value="com.crt.advproject.link.target.cm4" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.thumb.812352450" name="Thumb mode" superClass="com.crt.advproject.link.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.script.1818689749" name="Linker script" superClass="com.crt.advproject.link.script" value="&quot;JN-AN-1220-Zigbee-3-0-Sensors_Release.ld&quot;" valueType="string"/>
-								<option id="com.crt.advproject.link.manage.701199745" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
-								<option id="gnu.c.link.option.nostdlibs.2089035240" name="No startup or default libs (-nostdlib)" superClass="gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.1186167036" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
+							<tool id="com.crt.advproject.link.exe.debug.623139870" name="MCU Linker" superClass="com.crt.advproject.link.exe.debug">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.gcc.multicore.master.userobjs.1301850588" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.gcc.multicore.master.userobjs" valueType="userObjs"/>
+								<option id="com.crt.advproject.link.arch.1935176250" name="Architecture" superClass="com.crt.advproject.link.arch" value="com.crt.advproject.link.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.link.thumb.1063184044" name="Thumb mode" superClass="com.crt.advproject.link.thumb" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.script.434057776" name="Linker script" superClass="com.crt.advproject.link.script" value="&quot;JN-AN-1243-Zigbee-3-0-Base-Device_Router.ld&quot;" valueType="string"/>
+								<option id="com.crt.advproject.link.manage.1833840566" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
+								<option id="gnu.c.link.option.nostdlibs.1235746738" name="No startup or default libs (-nostdlib)" superClass="gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.1627270323" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
 									<listOptionValue builtIn="false" value="-Map=&quot;${BuildArtifactFileBaseName}.map&quot;"/>
 									<listOptionValue builtIn="false" value="--gc-sections"/>
 								</option>
-								<option id="com.crt.advproject.link.gcc.hdrlib.775754866" name="Library" superClass="com.crt.advproject.link.gcc.hdrlib"/>
-								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle" id="com.crt.advproject.link.memory.heapAndStack.style.1903210700" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style" value="Default" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.memory.heapAndStack.1743164770" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.load.image.1993424099" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image" value="" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.data.1946837980" name="Global data placement" superClass="com.crt.advproject.link.memory.data" value="" valueType="string"/>
-								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.memory.sections.211833941" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections" valueType="stringList"/>
-								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.993675726" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+								<option id="com.crt.advproject.link.gcc.hdrlib.1215898289" name="Library" superClass="com.crt.advproject.link.gcc.hdrlib"/>
+								<option id="com.crt.advproject.link.memory.heapAndStack.1956079770" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.load.image.685306516" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.data.1527860184" name="Global data placement" superClass="com.crt.advproject.link.memory.data" value="" valueType="string"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.memory.sections.2075591872" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections" valueType="stringList"/>
+								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle" id="com.crt.advproject.link.memory.heapAndStack.style.372179897" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1708986965" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
 								</inputType>
 							</tool>
-							<tool id="com.crt.advproject.tool.debug.release.45173007" name="MCU Debugger" superClass="com.crt.advproject.tool.debug.release"/>
+							<tool id="com.crt.advproject.tool.debug.debug.655799155" name="MCU Debugger" superClass="com.crt.advproject.tool.debug.debug"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.crt.advproject.config.exe.debug.2009898295.1495669017.1285535711">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.crt.advproject.config.exe.debug.2009898295.1495669017.1285535711" moduleId="org.eclipse.cdt.core.settings" name="ZLinky_GpProxy">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="axf" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" errorParsers="org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GASErrorParser" id="com.crt.advproject.config.exe.debug.2009898295.1495669017.1285535711" name="ZLinky_GpProxy" parent="com.crt.advproject.config.exe.debug" postannouncebuildStep="Performing post-build steps" postbuildStep="arm-none-eabi-size &quot;${BuildArtifactFileName}&quot;; # arm-none-eabi-objcopy -v -O binary &quot;${BuildArtifactFileName}&quot; &quot;${BuildArtifactFileBaseName}.bin&quot; ; # checksum -p ${TargetChip} -d &quot;${BuildArtifactFileBaseName}.bin&quot;;  ">
+					<folderInfo id="com.crt.advproject.config.exe.debug.2009898295.1495669017.1285535711." name="/" resourcePath="">
+						<toolChain id="com.crt.advproject.toolchain.exe.debug.571095000" name="NXP MCU Tools" superClass="com.crt.advproject.toolchain.exe.debug">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug.849510071" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
+							<builder arguments="" autoBuildTarget="all" buildPath="${ProjDirPath}/../Router/Build/mcux" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.crt.advproject.builder.exe.debug.726558736" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.crt.advproject.builder.exe.debug"/>
+							<tool id="com.crt.advproject.cpp.exe.debug.689550659" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.debug">
+								<option id="com.crt.advproject.cpp.hdrlib.1252340732" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1365713785" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
+							</tool>
+							<tool id="com.crt.advproject.gcc.exe.debug.164988439" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug">
+								<option id="com.crt.advproject.gcc.arch.1426772747" name="Architecture" superClass="com.crt.advproject.gcc.arch" useByScannerDiscovery="false" value="com.crt.advproject.gcc.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.gcc.thumb.255909568" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.preprocessor.def.symbols.1905766254" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__REDLIB__"/>
+									<listOptionValue builtIn="false" value="DEBUG"/>
+									<listOptionValue builtIn="false" value="__CODE_RED"/>
+								</option>
+								<option id="gnu.c.compiler.option.misc.other.390515968" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="com.crt.advproject.gcc.hdrlib.779092493" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false"/>
+								<inputType id="com.crt.advproject.compiler.input.1060396015" superClass="com.crt.advproject.compiler.input"/>
+							</tool>
+							<tool id="com.crt.advproject.gas.exe.debug.1852480772" name="MCU Assembler" superClass="com.crt.advproject.gas.exe.debug">
+								<option id="com.crt.advproject.gas.arch.1007292314" name="Architecture" superClass="com.crt.advproject.gas.arch" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.gas.thumb.314679058" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" value="true" valueType="boolean"/>
+								<option id="gnu.both.asm.option.flags.crt.828322326" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DDEBUG -D__CODE_RED" valueType="string"/>
+								<option id="com.crt.advproject.gas.hdrlib.157852610" name="Library headers" superClass="com.crt.advproject.gas.hdrlib"/>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1993689286" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.crt.advproject.assembler.input.905039815" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
+							</tool>
+							<tool id="com.crt.advproject.link.cpp.exe.debug.2004124169" name="MCU C++ Linker" superClass="com.crt.advproject.link.cpp.exe.debug">
+								<option id="com.crt.advproject.link.cpp.hdrlib.1799108259" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib"/>
+							</tool>
+							<tool id="com.crt.advproject.link.exe.debug.745750631" name="MCU Linker" superClass="com.crt.advproject.link.exe.debug">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.gcc.multicore.master.userobjs.889789194" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.gcc.multicore.master.userobjs" valueType="userObjs"/>
+								<option id="com.crt.advproject.link.arch.1641671374" name="Architecture" superClass="com.crt.advproject.link.arch" value="com.crt.advproject.link.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.link.thumb.1211293881" name="Thumb mode" superClass="com.crt.advproject.link.thumb" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.script.1565074694" name="Linker script" superClass="com.crt.advproject.link.script" value="&quot;JN-AN-1243-Zigbee-3-0-Base-Device_Router.ld&quot;" valueType="string"/>
+								<option id="com.crt.advproject.link.manage.1948241403" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
+								<option id="gnu.c.link.option.nostdlibs.1437731234" name="No startup or default libs (-nostdlib)" superClass="gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.185961407" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
+									<listOptionValue builtIn="false" value="-Map=&quot;${BuildArtifactFileBaseName}.map&quot;"/>
+									<listOptionValue builtIn="false" value="--gc-sections"/>
+								</option>
+								<option id="com.crt.advproject.link.gcc.hdrlib.334271215" name="Library" superClass="com.crt.advproject.link.gcc.hdrlib"/>
+								<option id="com.crt.advproject.link.memory.heapAndStack.481361696" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.load.image.2098508476" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.data.2014534147" name="Global data placement" superClass="com.crt.advproject.link.memory.data" value="" valueType="string"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.memory.sections.442540986" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections" valueType="stringList"/>
+								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle" id="com.crt.advproject.link.memory.heapAndStack.style.1616297341" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1028726594" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.crt.advproject.tool.debug.debug.2061460722" name="MCU Debugger" superClass="com.crt.advproject.tool.debug.debug"/>
 						</toolChain>
 					</folderInfo>
 				</configuration>
@@ -78,13 +153,13 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="JN-AN-1220-Zigbee-3-0-Sensors.com.crt.advproject.projecttype.exe.334504404" name="Executable" projectType="com.crt.advproject.projecttype.exe"/>
+		<project id="JN-AN-1217-Zigbee-3-0-Base-Device.com.crt.advproject.projecttype.exe.1430913091" name="Executable" projectType="com.crt.advproject.projecttype.exe"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="com.crt.config">
 		<projectStorage>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#13;
 &lt;TargetConfig&gt;&#13;
-&lt;Properties property_3="NXP" property_4="JN5189" property_count="5" version="100300"/&gt;&#13;
+&lt;Properties property_2="JN5189_640K.cfx" property_3="NXP" property_4="JN5189" property_count="5" version="100300"/&gt;&#13;
 &lt;infoList vendor="NXP"&gt;&#13;
 &lt;info chip="JN5189" name="JN5189"&gt;&#13;
 &lt;chip&gt;&#13;
@@ -93,9 +168,9 @@
 &lt;vendor&gt;NXP&lt;/vendor&gt;&#13;
 &lt;memory can_program="true" id="Flash" is_ro="true" size="640" type="Flash"/&gt;&#13;
 &lt;memory id="RAM" size="152" type="RAM"/&gt;&#13;
-&lt;memoryInstance derived_from="Flash" driver="JN5189_640K.cfx" id="PROGRAM_FLASH" location="0x00000000" size="0x000a0000"/&gt;&#13;
-&lt;memoryInstance derived_from="RAM" id="SRAM" location="0x04000000" size="0x00015fe0"/&gt;&#13;
-&lt;memoryInstance derived_from="RAM" id="SRAM1" location="0x04020000" size="0x00010000"/&gt;&#13;
+&lt;memoryInstance derived_from="Flash" driver="K32W061_640K.cfx" edited="true" id="PROGRAM_FLASH" location="0x0" size="0xa0000"/&gt;&#13;
+&lt;memoryInstance derived_from="RAM" edited="true" id="SRAM" location="0x4000000" size="0x15fe0"/&gt;&#13;
+&lt;memoryInstance derived_from="RAM" edited="true" id="SRAM1" location="0x4020000" size="0x10000"/&gt;&#13;
 &lt;/chip&gt;&#13;
 &lt;processor&gt;&#13;
 &lt;name gcc_name="cortex-m4"&gt;Cortex-M4&lt;/name&gt;&#13;
@@ -106,58 +181,73 @@
 &lt;/TargetConfig&gt;</projectStorage>
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="LTOSensor">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="EndDevice">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LightSensor_OM15081R1"/>
-		<configuration configurationName="LightSensor_NtagIcode_Ota_OM15081R2"/>
-		<configuration configurationName="LightSensor_OM15081R2"/>
-		<configuration configurationName="OccupancySensor_NtagIcode_Ota_JN5180_OM15082"/>
-		<configuration configurationName="LightTemperatureOccupancySensor"/>
-		<configuration configurationName="OccupancySensor_NtagIcode_Ota_OM15082"/>
-		<configuration configurationName="All_Devices">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_RamOpt_JN5180_OM15082">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="linky">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_Ota_OM15081"/>
+		<configuration configurationName="EndDevice_JN5180_OM15082"/>
+		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_JN5180_OM15082"/>
+		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_Ota_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LightSensor_NtagIcode_Ota_RamOpt_JN5180_OM15081R2">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Router_NtagIcode_NtaOta_GpProxy_Ota_JN5180_OM15081"/>
+		<configuration configurationName="Everything"/>
+		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_RamOpt_OM15082"/>
+		<configuration configurationName="All_Devices"/>
+		<configuration configurationName="Router_GpProxy_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
+		<configuration configurationName="Ssbl_Router_NtagNwk_GpProxy_OM15081"/>
+		<configuration configurationName="Ssbl_EndDevice_NtagNwk_OM15082"/>
+		<configuration configurationName="Coordinator_GpProxy_JN5180_DONGLE">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		</configuration>
+		<configuration configurationName="Coordinator_GpProxy_JN5180_OM15082">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		</configuration>
+		<configuration configurationName="Coordinator_GpProxy_OM15082"/>
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
 		</configuration>
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LTOSensor_NtagIcode_Ota_JN5180_OM15081R1"/>
-		<configuration configurationName="LTOSensor_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="EndDevice_NtagNwk_K32W_OM15082"/>
+		<configuration configurationName="Router_GpProxy_OM15081"/>
+		<configuration configurationName="Router_NtagIcode_GpProxy_Ota_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="SimpleMeteringSensor_OM15081R2">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Router">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LTOSensor_JN5180_OM15081R2"/>
-		<configuration configurationName="OccupancySensor_OM15082"/>
-		<configuration configurationName="Occupancy Sensor">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Router_NtagNwk_GpProxy_K32W_OM15081"/>
+		<configuration configurationName="EndDevice_NtagNwk_Ota_JN5180_OM15082"/>
+		<configuration configurationName="EndDevice_NtagIcode_Ota_JN5180_OM15082">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LTOSensor_NtagIcode_Ota_OM15081R2"/>
-		<configuration configurationName="LTOSensor_NtagIcode_Ota_JN5180_OM15081"/>
-		<configuration configurationName="LTOSensor_NtagIcode_Ota_OM15081R1"/>
-		<configuration configurationName="LightSensor">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Coordinator_GpProxy_DONGLE"/>
+		<configuration configurationName="Coordinator_GpProxy_K32W_OM15082"/>
+		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_OtaEnc_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LTOSensor_OM15081R2"/>
-		<configuration configurationName="LightSensor_NtagIcode_Ota_JN5180_OM15081R2"/>
-		<configuration configurationName="OccupancySensor_JN5180_OM15082">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Coordinator">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LightSensor_JN5180_OM15081R1"/>
-		<configuration configurationName="LightSensor_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		<configuration configurationName="Coordinator Dongle"/>
+		<configuration configurationName="ZLinky_GpProxy_Ota">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
 		</configuration>
-		<configuration configurationName="LightSensor_NtagIcode_Ota_JN5180_OM15081"/>
+		<configuration configurationName="EndDevice_RamOpt_JN5180_OM15082"/>
+		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		</configuration>
+		<configuration configurationName="Ssbl_Coordinator_GpProxy_OM15082"/>
+		<configuration configurationName="EndDevice_OM15082"/>
+		<configuration configurationName="Coordinator_NciIcode_NciOta_GpProxy_OM5578"/>
+		<configuration configurationName="Router_NtagIcode_NtagOta_GpProxy_Ota_JN5180_OM15081"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="com.nxp.mcuxpresso.core.datamodels">
@@ -166,18 +256,11 @@
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681;com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.;com.crt.advproject.gcc.exe.release.435347582;com.crt.advproject.compiler.input.1870187428">
+		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.2009898295.1495669017;com.crt.advproject.config.exe.debug.2009898295.1495669017.;com.crt.advproject.gcc.exe.debug.61556692;com.crt.advproject.compiler.input.2146810817">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015;com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015.;com.crt.advproject.gas.exe.release.1162374600;com.crt.advproject.assembler.input.1012580215">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015;com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.1770942015.;com.crt.advproject.gcc.exe.release.2011205711;com.crt.advproject.compiler.input.861932766">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.release.1784563645.1706296293.526748681;com.crt.advproject.config.exe.release.1784563645.1706296293.526748681.;com.crt.advproject.gas.exe.release.408837147;com.crt.advproject.assembler.input.434069585">
+		<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.2009898295.1495669017;com.crt.advproject.config.exe.debug.2009898295.1495669017.;com.crt.advproject.gas.exe.debug.521095758;com.crt.advproject.assembler.input.366816561">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

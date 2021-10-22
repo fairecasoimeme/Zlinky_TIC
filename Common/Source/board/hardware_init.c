@@ -1,6 +1,6 @@
-/*****************************************************************************
+/*****************************************************************************
  *
- * MODULE:             JN-AN-1246
+ * MODULE:             JN-AN-1243
  *
  * COMPONENT:          hardware_init.c
  *
@@ -35,8 +35,12 @@
 /*${header:start}*/
 #include "pin_mux.h"
 #include "board.h"
-#include <stdbool.h>
 #include "fsl_power.h"
+#include <stdbool.h>
+#ifdef CPU_K32W041AMK
+#include "Eeprom_User.h"
+#endif
+
 /*${header:end}*/
 
 /*${function:start}*/
@@ -71,37 +75,31 @@ void BOARD_InitClocks(void)
     /* INMUX and IOCON are used by many apps, enable both INMUX and IOCON clock bits here. */
     CLOCK_AttachClk(kOSC32M_to_USART_CLK);
 
-    /* Setup I2C clock */
-    CLOCK_EnableClock(kCLOCK_I2c0);
-    CLOCK_EnableClock(kCLOCK_I2c2); // NTAG
+    CLOCK_EnableClock(kCLOCK_Aes);
+    CLOCK_EnableClock(kCLOCK_I2c0) ;
     CLOCK_AttachClk(kOSC32M_to_I2C_CLK);
 
-    CLOCK_EnableClock(kCLOCK_Aes);
-    CLOCK_AttachClk(kOSC32M_to_I2C_CLK);
+    /* WWDT clock config (32k oscillator, no division) */
+    CLOCK_AttachClk(kOSC32K_to_WDT_CLK);
+    CLOCK_SetClkDiv(kCLOCK_DivWdtClk, 1, true);
 
     /* Attach the ADC clock. */
     CLOCK_AttachClk(kXTAL32M_to_ADC_CLK);
     /* Enable LDO ADC 1v1 */
     PMC -> PDRUNCFG |= PMC_PDRUNCFG_ENA_LDO_ADC_MASK;
-
-    /* WWDT clock config (32k oscillator, no division) */
-    CLOCK_AttachClk(kOSC32K_to_WDT_CLK);
-    CLOCK_SetClkDiv(kCLOCK_DivWdtClk, 1, true);
 }
 
 void BOARD_SetClockForPowerMode(void)
 {
     // Comment line if some PRINTF is still done prior to this step before sleep
     CLOCK_AttachClk(kNONE_to_USART_CLK);
-    CLOCK_DisableClock(kCLOCK_I2c0);
-    CLOCK_DisableClock(kCLOCK_I2c2); // NTAG
     CLOCK_DisableClock(kCLOCK_Iocon);
     CLOCK_DisableClock(kCLOCK_InputMux);
     CLOCK_DisableClock(kCLOCK_Gpio0);
     CLOCK_DisableClock(kCLOCK_Aes);
     CLOCK_DisableClock(kCLOCK_Xtal32M);
     CLOCK_DisableClock(kCLOCK_Fro48M);
-
+    CLOCK_DisableClock(kCLOCK_I2c0);
     /* Disable LDO ADC 1v1 */
     PMC -> PDRUNCFG &= ~PMC_PDRUNCFG_ENA_LDO_ADC_MASK;
     POWER_DisablePD(kPDRUNCFG_PD_LDO_ADC_EN);
@@ -121,9 +119,8 @@ void BOARD_InitHardware(void)
     RESET_PeripheralReset(kUSART0_RST_SHIFT_RSTn);
     RESET_PeripheralReset(kGPIO0_RST_SHIFT_RSTn);
     RESET_PeripheralReset(kI2C0_RST_SHIFT_RSTn);
-#ifndef K32WMCM_APP_BUILD 
-    RESET_PeripheralReset(kI2C2_RST_SHIFT_RSTn); // NTAG
-#endif
+    RESET_PeripheralReset(kADC0_RST_SHIFT_RSTn);
+
     /* enable WDTRESETENABLE bit in PMC CTRL */
     PMC->CTRL |= PMC_CTRL_WDTRESETENABLE_MASK;
 
@@ -132,5 +129,12 @@ void BOARD_InitHardware(void)
     BOARD_InitClocks();
     BOARD_InitDebugConsole();
     BOARD_InitPins();
+	
+   /*Put SPIFI flash to low power*/
+#ifdef CPU_K32W041AMK
+    _EEPROM_Init();
+    _EEPROM_DeInit();
+#endif
+
 }
 /*${function:end}*/

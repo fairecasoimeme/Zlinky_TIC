@@ -70,7 +70,6 @@
 
 #endif
 
-
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
@@ -244,7 +243,7 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 					u8TmpCRC=(u8TmpCRC & 0x3F)+0x20;
 					if (u8TmpCRC==u8CRC)
 					{
-						memcpy(value,date,128);
+						memcpy(value,date,256);
 						DBG_vPrintf(1, "\r\n%s %s",command, value);
 						return(TRUE);
 					}else{

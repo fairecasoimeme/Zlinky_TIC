@@ -1,0 +1,21 @@
+Release Name: JN-AN-1243 Zigbee 3.0 Base Device Template
+Release Version: v2005
+
+Locations shown are after application note has been installed into workspace
+
+JN-AN-1243 Zigbee 3.0      Author: NXP
+Base Device Template       Name: JN-AN-1243 Zigbee 3.0 Base Device Template 
+                           Version: v2005
+                           Location: <workspace>/JN-AN-1243
+                           Description: Example Zigbee 3.0 template
+                           applications
+                           License: Proprietary. See EULA LA_OPT_Base_License
+                           Format: source code, make files, documentation
+                           
+NFC Libraries              Author: NXP
+                           Name: NFC Libraries
+                           Version: v1025
+                           Location: <workspace>/JN-AN-1243/NFC
+                           Description: NFC libraries for NCI and NTAG access
+                           License: Proprietary. See EULA LA_OPT_Base_License
+                           Format: libraries, header files

@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright NXP B.V. 2016-2019. All rights reserved
+ * Copyright NXP B.V. 2018-2019. All rights reserved
  *
  ***************************************************************************/
 
@@ -46,34 +46,27 @@
 #include "zcl_options.h"
 #include "app_ota_client.h"
 #include "OtaSupport.h" /* Comment out to build for JN-SW-4470-v2042 and earlier */
-#include "app_zlo_sensor_node.h"
+#ifdef EndDevice
+#include "app_end_device_node.h"
+#endif
+#ifdef ZLinky
+#include "app_router_node.h"
+#endif
 #include "app_common.h"
 #include "rnd_pub.h"
 #include "fsl_wwdt.h"
 
-#ifdef LTOSensor
-    #include "App_LTOSensor.h"
-#endif
+#include "base_device.h"
+//#include "linky_device.h"
 
-#ifdef LightSensor
-    #include "App_LightSensor.h"
-#endif
-
-#ifdef Linky
-    #include "App_Linky.h"
-#endif
-
-#ifdef OccupancySensor
-    #include "App_OccupancySensor.h"
-    #include "app_zcl_sensor_task.h"
-#endif
+#include "app_leds.h"
+#include "app.h"
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
 #define OTA_LNT  FALSE
 
-//#define DEBUG_APP_OTA
 #ifndef DEBUG_APP_OTA
     #define TRACE_APP_OTA               FALSE
     #define TRACE_APP_OTA_STATE         FALSE
@@ -85,6 +78,17 @@
 /****************************************************************************/
 /***        Type Definitions                                              ***/
 /****************************************************************************/
+typedef enum {
+    OTA_FIND_SERVER,
+    OTA_FIND_SERVER_WAIT,
+    OTA_IEEE_LOOK_UP,
+    OTA_IEEE_WAIT,
+    OTA_QUERYIMAGE,
+    OTA_QUERYIMAGE_WAIT,
+    OTA_DL_PROGRESS,
+    OTA_IDLE,
+} teOTA_State;
+
 /****************************************************************************/
 /***        Local Function Prototypes                                     ***/
 /****************************************************************************/
@@ -103,7 +107,6 @@ PRIVATE ZPS_teStatus eSendOTAMatchDescriptor(uint16 u16ProfileId);
 PRIVATE void         vManageOTAState(void);
 PRIVATE void         vGetIEEEAddress( void);
 PRIVATE void         vOTAPersist(void);
-PRIVATE void         vResetOTADiscovery(void);
 PRIVATE void         vManageDLProgressState(void);
 PRIVATE uint8        u8VerifyLinkKey(tsOTA_CallBackMessage *psCallBackMessage);
 PUBLIC void          vDumpFlashData(uint32 u32FlashByteLocation, uint32 u32EndLocation);
@@ -127,6 +130,11 @@ PRIVATE uint32      u32OTARetry;
 PRIVATE bool_t      bWaitUgradeTime;
 PRIVATE uint32      u32OtaTimerMs;
 PRIVATE uint32      u32OtaTimeoutMs;
+PRIVATE tsPdmOtaApp   sPdmOtaApp;
+PRIVATE bool_t        bWaitOtaString;
+#if (defined SLEEP_MIN_RETENTION) && (defined CLD_OTA) && (defined OTA_CLIENT)
+uint32 U32UTCTimeBeforeSleep;
+#endif
 
 /****************************************************************************/
 /***        Exported Functions                                            ***/
@@ -146,46 +154,29 @@ PRIVATE uint32      u32OtaTimeoutMs;
 PUBLIC void vAppInitOTA(void)
 {
     tsNvmDefs sNvmDefs;
-    teZCL_Status eZCL_Status;
-    uint8 au8CAPublicKey[22];
     uint8 au8CmpNonce[] = { 0x00, 0x00, 0x00, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15,
             0x16, 0x17, 0x18, 0x00, 0x00, 0x00, 0x00 };
-    uint8 u8MaxSectorPerImage = 0;
+
     #if (defined JENNIC_CHIP_FAMILY_JN516x) || (defined JENNIC_CHIP_FAMILY_JN517x)
         uint8 u8CurrentImageSector;
     #endif
-    uint8 u8SrcEp = app_u8GetDeviceEndpoint();
     vInitAndDisplayKeys();
     #if (defined OTA_INTERNAL_STORAGE)
         sNvmDefs.u8FlashDeviceType = E_FL_CHIP_INTERNAL;
         #if (defined JENNIC_CHIP_FAMILY_JN516x) || (defined JENNIC_CHIP_FAMILY_JN517x)
-            uint8 u8StartSector[1] = {8};
-            u8MaxSectorPerImage = 8 ;
             sNvmDefs.u32SectorSize = 32*1024; /* Sector Size = 32K*/
         #else
-            /* Each Page on JN518x is 512 bytes , Flash size is 632K. Taking into account 31.5K for PDM (start page 1153) and 24K for customer data
-             * usable for image is 576K
-             * Split it into 2 sections to support OTA, so 288K becomes Max image size
-             * Each 288K section would be 576 pages. This could be represented as 32K sectors to keep in line with legacy devices.*/
-            uint8 u8StartSector[1] = {9}; /* So next image starts at 9*32*1024 = 288K offset*/
-            u8MaxSectorPerImage = 9 ;  /* 9 *32* 1024 = 288K is the maximum size of the image */
             sNvmDefs.u32SectorSize = 512; /* Sector Size = 512 bytes*/
         #endif
     #else
-        uint8 u8StartSector[1] = {0};
-        sNvmDefs.u32SectorSize = 64*1024; /* Sector Size = 64K*/
-        sNvmDefs.u8FlashDeviceType = E_FL_CHIP_ST_M25P20_A; // E_FL_CHIP_AUTO works in 69
-        u8MaxSectorPerImage = 8;
+       sNvmDefs.u32SectorSize = 64*1024; /* Sector Size = 64K*/
+       sNvmDefs.u8FlashDeviceType = E_FL_CHIP_ST_M25P20_A; // E_FL_CHIP_AUTO works in 69
     #endif
     if(0 == memcmp(au8CmpNonce, s_au8Nonce,16))
     {
         DBG_vPrintf(TRACE_APP_OTA,"** Nonce has been updated **\n");
     }
-    eZCL_Status = eOTA_UpdateClientAttributes(u8SrcEp,0);
-    if (eZCL_Status != E_ZCL_SUCCESS)
-    {
-        DBG_vPrintf(TRACE_APP_OTA, "eOTA_UpdateClientAttributes returned error 0x%x\n", eZCL_Status);
-    }
+
     #if (defined JENNIC_CHIP_FAMILY_JN516x) || (defined JENNIC_CHIP_FAMILY_JN517x)
         u8CurrentImageSector = u32REG_SysRead(REG_SYS_FLASH_REMAP) & 0xf;
 
@@ -198,32 +189,12 @@ PUBLIC void vAppInitOTA(void)
         }
     #endif
     vOTA_FlashInit(NULL,&sNvmDefs);
-    #if (defined OTA_INTERNAL_STORAGE)
-        eZCL_Status = eOTA_AllocateEndpointOTASpace(
-                                u8SrcEp,
-                                u8StartSector,
-                                OTA_MAX_IMAGES_PER_ENDPOINT,
-                                u8MaxSectorPerImage,                                 // max sectors per image
-                                FALSE,
-                                au8CAPublicKey);
-    #else
-        eZCL_Status = eOTA_AllocateEndpointOTASpace(
-                                u8SrcEp,
-                                u8StartSector,
-                                OTA_MAX_IMAGES_PER_ENDPOINT,
-                                4,
-                                FALSE,
-                                au8CAPublicKey);
-    #endif
-    if (eZCL_Status != E_ZCL_SUCCESS)
-    {
-        DBG_vPrintf(TRACE_APP_OTA, "eAllocateEndpointOTASpace returned error 0x%x", eZCL_Status);
-    }
-    else
+
+    if(bInitialiseOTAClusterAndAttributes())
     {
         #if TRACE_APP_OTA
             tsOTA_ImageHeader          sOTAHeader;
-            eOTA_GetCurrentOtaHeader(u8SrcEp,FALSE,&sOTAHeader);
+            eOTA_GetCurrentOtaHeader(app_u8GetDeviceEndpoint(),FALSE,&sOTAHeader);
             DBG_vPrintf(TRACE_APP_OTA,"\n\nCurrent Image Details \n");
             DBG_vPrintf(TRACE_APP_OTA,"File ID = 0x%08x\n",sOTAHeader.u32FileIdentifier);
             DBG_vPrintf(TRACE_APP_OTA,"Header Ver ID = 0x%04x\n",sOTAHeader.u16HeaderVersion);
@@ -235,20 +206,26 @@ PUBLIC void vAppInitOTA(void)
             DBG_vPrintf(TRACE_APP_OTA,"Stack Ver = 0x%04x\n",sOTAHeader.u16StackVersion);
             DBG_vPrintf(TRACE_APP_OTA,"Image Len = 0x%08x\n\n\n",sOTAHeader.u32TotalImage);
         #endif
-        eZCL_Status = eOTA_RestoreClientData( u8SrcEp, &sOTA_PersistedData, 1);
-        DBG_vPrintf(TRACE_APP_OTA,"OTA PDM Status = %d \n",eZCL_Status);
         DBG_vPrintf(TRACE_APP_OTA, "Valid %d Nwk Addr %04x Ieee %016llx\n",
-                sDeviceDesc.bValid, sDeviceDesc.u16NwkAddrOfServer, sDeviceDesc.u64IeeeAddrOfServer);
-        if (sDeviceDesc.bValid == TRUE)
+                sPdmOtaApp.bValid, sPdmOtaApp.u16NwkAddrOfServer, sPdmOtaApp.u64IeeeAddrOfServer);
+        if (sPdmOtaApp.bValid == TRUE)
         {
             if(sOTA_PersistedData.sAttributes.u8ImageUpgradeStatus == E_CLD_OTA_STATUS_DL_IN_PROGRESS)
+            {
                 eOTA_State = OTA_DL_PROGRESS;
+                u32OtaTimerMs = 0;
+                u32OtaTimeoutMs = OTA_INIT_TIME_MS;
+                DBG_vPrintf(TRUE || TRACE_APP_OTA_STATE, "\r\nOTA_STATE: OTA_DL_PROGRESS, %d, vAppInitOTA()", u32OtaTimeoutMs);
+                DBG_vPrintf(TRACE_APP_OTA, "Start With DL\n");
+            }
             else
+            {
                 eOTA_State = OTA_QUERYIMAGE;
-            u32OtaTimerMs = 0;
-            u32OtaTimeoutMs = OTA_INIT_TIME_MS;
-            DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: QUERYIMAGE, %d, vAppInitOTA()", u32OtaTimeoutMs);
-            DBG_vPrintf(TRACE_APP_OTA, "Start With Server\n");
+                u32OtaTimerMs = 0;
+                u32OtaTimeoutMs = OTA_INIT_TIME_MS;
+                DBG_vPrintf(TRUE || TRACE_APP_OTA_STATE, "\r\nOTA_STATE: QUERYIMAGE, %d, vAppInitOTA()", u32OtaTimeoutMs);
+                DBG_vPrintf(TRACE_APP_OTA, "Start With Server\n");
+            }
         }
         else
         {
@@ -265,6 +242,99 @@ PUBLIC void vAppInitOTA(void)
 
 /****************************************************************************
  *
+ * NAME: bInitialiseOTAClusterAndAttributes
+ *
+ * DESCRIPTION:
+ * Universal initialisation of the OTA cluster and Client side attributes
+ *
+ * RETURNS:
+ * void
+ *
+ ****************************************************************************/
+PUBLIC bool bInitialiseOTAClusterAndAttributes ()
+{
+    teZCL_Status eZCL_Status;
+    uint8 au8CAPublicKey[22];
+    uint8 u8MaxSectorPerImage = 0;
+    uint8 u8SrcEp = app_u8GetDeviceEndpoint();
+    eZCL_Status = eOTA_UpdateClientAttributes(u8SrcEp,0);
+#if (defined OTA_INTERNAL_STORAGE)
+    #if (defined JENNIC_CHIP_FAMILY_JN516x) || (defined JENNIC_CHIP_FAMILY_JN517x)
+        uint8 u8StartSector[1] = {8};
+        u8MaxSectorPerImage = 8 ;
+    #else
+        /* Each Page on JN518x is 512 bytes , Flash size is 632K. Taking into account 31.5K for PDM (start page 1153) and 24K for customer data
+         * usable for image is 576K
+         * Split it into 2 sections to support OTA, so 288K becomes Max image size
+         * Each 288K section would be 576 pages. This could be represented as 32K sectors to keep in line with legacy devices.*/
+        uint8 u8StartSector[1] = {9}; /* So next image starts at 9*32*1024 = 288K offset*/
+        u8MaxSectorPerImage = 9 ;  /* 9 *32* 1024 = 288K is the maximum size of the image */
+    #endif
+#else
+    uint8 u8StartSector[1] = {0};
+    u8MaxSectorPerImage = 8;
+#endif
+    if (eZCL_Status != E_ZCL_SUCCESS)
+    {
+        DBG_vPrintf(TRACE_APP_OTA, "eOTA_UpdateClientAttributes returned error 0x%x\n", eZCL_Status);
+        return FALSE;
+    }
+#if (defined OTA_INTERNAL_STORAGE)
+    eZCL_Status = eOTA_AllocateEndpointOTASpace(
+                            u8SrcEp,
+                            u8StartSector,
+                            OTA_MAX_IMAGES_PER_ENDPOINT,
+                            u8MaxSectorPerImage,                                 // max sectors per image
+                            FALSE,
+                            au8CAPublicKey);
+#else
+    eZCL_Status = eOTA_AllocateEndpointOTASpace(
+                            u8SrcEp,
+                            u8StartSector,
+                            OTA_MAX_IMAGES_PER_ENDPOINT,
+                            4,
+                            FALSE,
+                            au8CAPublicKey);
+#endif
+    if (eZCL_Status != E_ZCL_SUCCESS)
+    {
+        DBG_vPrintf(TRACE_APP_OTA, "eAllocateEndpointOTASpace returned error 0x%x", eZCL_Status);
+        return FALSE;
+    }
+    eZCL_Status = eOTA_RestoreClientData( u8SrcEp, &sOTA_PersistedData, 1);
+    if (eZCL_Status != E_ZCL_SUCCESS)
+    {
+        DBG_vPrintf(TRACE_APP_OTA,"OTA PDM Status = %d \n",eZCL_Status);
+        return FALSE;
+    }
+    return TRUE;
+}
+
+#if (defined SLEEP_MIN_RETENTION) && (defined CLD_OTA) && (defined OTA_CLIENT)
+/****************************************************************************
+ *
+ * NAME: vSetOTAPersistedDatForMinRetention
+ *
+ * DESCRIPTION:
+ * Function called before going to sleep with RAM held to align persisted
+ * data which would otherwise be defaulted.
+ *
+ * RETURNS:
+ * void
+ *
+ ****************************************************************************/
+PUBLIC void vSetOTAPersistedDatForMinRetention(void)
+{
+    extern tsZLO_LinkyDevice sBaseDevice;
+    memcpy( &sOTA_PersistedData,
+            &sBaseDevice.sCLD_OTA_CustomDataStruct.sOTACallBackMessage.sPersistedData,
+            sizeof(tsOTA_PersistedData));
+    U32UTCTimeBeforeSleep = u32ZCL_GetUTCTime();
+}
+#endif
+
+/****************************************************************************
+ *
  * NAME: vLoadOTAPersistedData
  *
  * DESCRIPTION:
@@ -276,7 +346,7 @@ PUBLIC void vAppInitOTA(void)
  ****************************************************************************/
 PUBLIC void vLoadOTAPersistedData(void)
 {
-    /*Restore OTA Persistent Data*/
+    /*Restore stack OTA Persistent Data*/
     PDM_teStatus eStatusOTAReload;
     uint16 u16ByteRead;
 
@@ -284,7 +354,7 @@ PUBLIC void vLoadOTAPersistedData(void)
                 &sOTA_PersistedData,
                 sizeof(tsOTA_PersistedData), &u16ByteRead);
 
-    DBG_vPrintf(TRACE_APP_OTA,"eStatusOTAReload=%d size %d\n",eStatusOTAReload, sizeof(tsOTA_PersistedData) );
+    DBG_vPrintf(TRACE_APP_OTA,"PDM_ID_OTA_DATA: eStatusOTAReload=%d size %d\n",eStatusOTAReload, sizeof(tsOTA_PersistedData) );
 
     if(sOTA_PersistedData.u32RequestBlockRequestTime != 0)
     {
@@ -293,6 +363,13 @@ PUBLIC void vLoadOTAPersistedData(void)
     }
     /*Make retries 0*/
     sOTA_PersistedData.u8Retry = 0;
+
+    /* Load app data */
+    eStatusOTAReload = PDM_eReadDataFromRecord(PDM_ID_OTA_APP,
+                &sPdmOtaApp,
+                sizeof(tsPdmOtaApp), &u16ByteRead);
+
+    DBG_vPrintf(TRACE_APP_OTA,"PDM_ID_OTA_APP: eStatusOTAReload=%d size %d\n",eStatusOTAReload, sizeof(tsPdmOtaApp) );
 }
 
 /****************************************************************************
@@ -352,6 +429,33 @@ PUBLIC bool_t bOTADeepSleepAllowed(void)
 
 /****************************************************************************
  *
+ * NAME: bOTASleepAllowed
+ *
+ * DESCRIPTION:
+ * Checks to see if sleep is allowed
+ *
+ * RETURNS:
+ * FALSE - if not allowed to sleep (between accepting image and getting string)
+ * TRUE  - otherwise allowed to sleep
+ *
+ ****************************************************************************/
+PUBLIC bool_t bOTASleepAllowed(void)
+{
+    bool_t bReturn = TRUE;
+
+    /* Waiting for OTA string ? */
+    if((bWaitOtaString)
+    || (eOTA_State == OTA_QUERYIMAGE_WAIT))
+    {
+        /* Don't allow sleep */
+        bReturn = FALSE;
+    }
+
+    return bReturn;
+}
+
+/****************************************************************************
+ *
  * NAME: vHandleAppOtaClient
  *
  * DESCRIPTION:
@@ -374,7 +478,7 @@ PUBLIC void vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage)
     {
         DBG_vPrintf(TRACE_APP_OTA,"\n\n\nQuery Next Image Response \n");
         u32OTARetry = 0;
-        if (sDeviceDesc.bValid)
+        if (sPdmOtaApp.bValid)
         {
             if (psCallBackMessage->uMessage.sQueryImageResponsePayload.u8Status != E_ZCL_SUCCESS)
             {
@@ -429,9 +533,11 @@ PUBLIC void vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage)
         else
         {
             /* down load about to start */
+			EEPROM_Init();
             eOTA_State = OTA_DL_PROGRESS;
             u32OtaTimerMs = 0;
             u32OtaTimeoutMs = OTA_BUSY_TIME_MS;
+            bWaitOtaString = TRUE;
             DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: DL_PROGRESS, %d, vHandleAppOtaClient(verify wanted)", u32OtaTimeoutMs);
             DBG_vPrintf(OTA_LNT, "Accept Image\n");
         }
@@ -459,6 +565,7 @@ PUBLIC void vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage)
                 u32OtaTimeoutMs = OTA_IDLE_TIME_MS;
                 DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: IDLE, %d, vHandleAppOtaClient(string mismatch)", u32OtaTimeoutMs);
             }
+            bWaitOtaString = FALSE;
         }
     #endif
 
@@ -521,7 +628,6 @@ PUBLIC void vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage)
         u32OtaTimeoutMs = OTA_IDLE_TIME_MS;
         /* Reset persistent data so download restarts from beginning */
         vOTAResetPersist();
-		EEPROM_Init();
         DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: IDLE, %d, vHandleAppOtaClient(aborted)", u32OtaTimeoutMs);
     }
     if(psCallBackMessage->eEventId ==  E_CLD_OTA_INTERNAL_COMMAND_RESET_TO_UPGRADE)
@@ -689,12 +795,7 @@ PRIVATE uint8 u8VerifyLinkKey(tsOTA_CallBackMessage *psCallBackMessage)
                 tsReg128 sKey;
 
                 /*Get the downloaded IV from Ext Flash */
-#ifdef _OTA_SUPPORT_H_
-                OTA_PullImageChunk(au8Iv,0x10,&u32IVLocation);
-#else
                 bAHI_FullFlashRead(u32IVLocation,0x10,au8Iv);
-#endif
-
                 DBG_vPrintf(TRACE_APP_OTA,"The Plain IV :\n");
 
                 for (i=0;i<0x10;i++)
@@ -836,11 +937,11 @@ PUBLIC void vHandleMatchDescriptor( ZPS_tsAfEvent  * psStackEvent)
         if(sMatchDescRsp.u8MatchLength != 0)
         {
 
-            sDeviceDesc.u8OTAserverEP = ((pdum_tsAPduInstance*)hAPduInst)->au8Storage[u32Location];
-            sDeviceDesc.u16NwkAddrOfServer = sMatchDescRsp.u16NwkAddrOfInterest;
-            DBG_vPrintf(TRACE_APP_OTA,"\n\nNwk Address oF server = %04x\n", sDeviceDesc.u16NwkAddrOfServer);
+            sPdmOtaApp.u8OTAserverEP = ((pdum_tsAPduInstance*)hAPduInst)->au8Storage[u32Location];
+            sPdmOtaApp.u16NwkAddrOfServer = sMatchDescRsp.u16NwkAddrOfInterest;
+            DBG_vPrintf(TRACE_APP_OTA,"\n\nNwk Address oF server = %04x\n", sPdmOtaApp.u16NwkAddrOfServer);
 
-            DBG_vPrintf(TRACE_APP_OTA|OTA_LNT,"OTA Server EP# = %d\n", sDeviceDesc.u8OTAserverEP);
+            DBG_vPrintf(TRACE_APP_OTA|OTA_LNT,"OTA Server EP# = %d\n", sPdmOtaApp.u8OTAserverEP);
 
             eOTA_State = OTA_IEEE_LOOK_UP;
             u32OtaTimerMs = 0;
@@ -886,20 +987,20 @@ PUBLIC void vHandleIeeeAddressRsp( ZPS_tsAfEvent  * psStackEvent)
         APDU_BUF_READ16_INC(sIeeeAddrRsp.u16NwkAddrRemoteDev,hAPduInst, u32Location);
 
         DBG_vPrintf(TRACE_APP_OTA,  "Addr of sever %04x Addr Rem Dev %04x\n ",
-            sDeviceDesc.u16NwkAddrOfServer,
+            sPdmOtaApp.u16NwkAddrOfServer,
             sIeeeAddrRsp.u16NwkAddrRemoteDev);
-        if( sDeviceDesc.u16NwkAddrOfServer == sIeeeAddrRsp.u16NwkAddrRemoteDev)
+        if( sPdmOtaApp.u16NwkAddrOfServer == sIeeeAddrRsp.u16NwkAddrRemoteDev)
         {
             /*Make an entry in the OTA server tables*/
-            sDeviceDesc.u64IeeeAddrOfServer = sIeeeAddrRsp.u64IeeeAddrRemoteDev;
+            sPdmOtaApp.u64IeeeAddrOfServer = sIeeeAddrRsp.u64IeeeAddrRemoteDev;
             DBG_vPrintf(TRACE_APP_OTA|1,"Entry Added NWK Addr 0x%04x IEEE Addr 0x%016llx",
-                    sDeviceDesc.u16NwkAddrOfServer, sDeviceDesc.u64IeeeAddrOfServer);
-            ZPS_eAplZdoAddAddrMapEntry( sDeviceDesc.u16NwkAddrOfServer,
-                    sDeviceDesc.u64IeeeAddrOfServer,
+                    sPdmOtaApp.u16NwkAddrOfServer, sPdmOtaApp.u64IeeeAddrOfServer);
+            ZPS_eAplZdoAddAddrMapEntry( sPdmOtaApp.u16NwkAddrOfServer,
+                    sPdmOtaApp.u64IeeeAddrOfServer,
                                         FALSE);
-            sDeviceDesc.bValid = TRUE;
-            PDM_eSaveRecordData(PDM_ID_APP_SENSOR,&sDeviceDesc,sizeof(tsDeviceDesc));
-            eOTA_SetServerAddress( app_u8GetDeviceEndpoint(), sDeviceDesc.u64IeeeAddrOfServer, sDeviceDesc.u16NwkAddrOfServer
+            sPdmOtaApp.bValid = TRUE;
+            PDM_eSaveRecordData(PDM_ID_OTA_APP,&sPdmOtaApp,sizeof(tsPdmOtaApp));
+            eOTA_SetServerAddress( app_u8GetDeviceEndpoint(), sPdmOtaApp.u64IeeeAddrOfServer, sPdmOtaApp.u16NwkAddrOfServer
                             );
 
             eOTA_State = OTA_QUERYIMAGE;
@@ -956,9 +1057,9 @@ PRIVATE void vGetIEEEAddress( void)
         ZPS_teStatus eStatus;
         ZPS_tsAplZdpIeeeAddrReq sZdpIeeeAddrReq;
 
-        uDstAddr.u16Addr = sDeviceDesc.u16NwkAddrOfServer;
+        uDstAddr.u16Addr = sPdmOtaApp.u16NwkAddrOfServer;
         bExtAddr = FALSE;
-        sZdpIeeeAddrReq.u16NwkAddrOfInterest = sDeviceDesc.u16NwkAddrOfServer;
+        sZdpIeeeAddrReq.u16NwkAddrOfInterest = sPdmOtaApp.u16NwkAddrOfServer;
         sZdpIeeeAddrReq.u8RequestType = 0;
         sZdpIeeeAddrReq.u8StartIndex = 0;
 
@@ -993,7 +1094,7 @@ PRIVATE void vGetIEEEAddress( void)
  ****************************************************************************/
 PRIVATE bool_t bMatchReceived(void)
 {
-    return (sDeviceDesc.bValid == TRUE)? TRUE: FALSE;
+    return (sPdmOtaApp.bValid == TRUE)? TRUE: FALSE;
 }
 
 /****************************************************************************
@@ -1126,6 +1227,7 @@ PRIVATE ZPS_teStatus eSendOTAMatchDescriptor(uint16 u16ProfileId)
  ****************************************************************************/
 PRIVATE void vManageOTAState(void)
 {
+    ZPS_teStatus eStatus;
     uint8 u8SrcEp = app_u8GetDeviceEndpoint();
 
     switch(eOTA_State)
@@ -1134,7 +1236,7 @@ PRIVATE void vManageOTAState(void)
         {
             if(u32OtaTimerMs >= u32OtaTimeoutMs)
             {
-                if (sDeviceDesc.bValid == TRUE)
+                if (sPdmOtaApp.bValid == TRUE)
                 {
                     eOTA_State = OTA_QUERYIMAGE;
                     u32OtaTimerMs = 0;
@@ -1243,60 +1345,45 @@ PRIVATE void vManageOTAState(void)
         {
             if(u32OtaTimerMs >= u32OtaTimeoutMs)
             {
-                if(sDeviceDesc.bValid)
+                if(sPdmOtaApp.bValid)
                 {
                     tsOTA_ImageHeader          sOTAHeader;
-                    teZCL_Status eStatus;
-                    eStatus = eOTA_GetCurrentOtaHeader( u8SrcEp,FALSE,&sOTAHeader);
-                    /* Got header ? */
-                    if (E_ZCL_SUCCESS == eStatus)
-                    {
-                        DBG_vPrintf(TRACE_APP_OTA,"\n\nFile ID = 0x%08x\n",sOTAHeader.u32FileIdentifier);
-                        DBG_vPrintf(TRACE_APP_OTA,"Header Ver ID = 0x%04x\n",sOTAHeader.u16HeaderVersion);
-                        DBG_vPrintf(TRACE_APP_OTA,"Header Length ID = 0x%04x\n",sOTAHeader.u16HeaderLength);
-                        DBG_vPrintf(TRACE_APP_OTA,"Header Control Filed = 0x%04x\n",sOTAHeader.u16HeaderControlField);
-                        DBG_vPrintf(TRACE_APP_OTA,"Manufac Code = 0x%04x\n",sOTAHeader.u16ManufacturerCode);
-                        DBG_vPrintf(TRACE_APP_OTA,"Image Type = 0x%04x\n",sOTAHeader.u16ImageType);
-                        DBG_vPrintf(TRACE_APP_OTA,"File Ver = 0x%08x\n",sOTAHeader.u32FileVersion);
-                        DBG_vPrintf(TRACE_APP_OTA,"Stack Ver = 0x%04x\n",sOTAHeader.u16StackVersion);
-                        DBG_vPrintf(TRACE_APP_OTA,"Image Len = 0x%08x\n\n",sOTAHeader.u32TotalImage);
+                    eOTA_GetCurrentOtaHeader( u8SrcEp,FALSE,&sOTAHeader);
+                    DBG_vPrintf(TRACE_APP_OTA,"\n\nFile ID = 0x%08x\n",sOTAHeader.u32FileIdentifier);
+                    DBG_vPrintf(TRACE_APP_OTA,"Header Ver ID = 0x%04x\n",sOTAHeader.u16HeaderVersion);
+                    DBG_vPrintf(TRACE_APP_OTA,"Header Length ID = 0x%04x\n",sOTAHeader.u16HeaderLength);
+                    DBG_vPrintf(TRACE_APP_OTA,"Header Control Filed = 0x%04x\n",sOTAHeader.u16HeaderControlField);
+                    DBG_vPrintf(TRACE_APP_OTA,"Manufac Code = 0x%04x\n",sOTAHeader.u16ManufacturerCode);
+                    DBG_vPrintf(TRACE_APP_OTA,"Image Type = 0x%04x\n",sOTAHeader.u16ImageType);
+                    DBG_vPrintf(TRACE_APP_OTA,"File Ver = 0x%08x\n",sOTAHeader.u32FileVersion);
+                    DBG_vPrintf(TRACE_APP_OTA,"Stack Ver = 0x%04x\n",sOTAHeader.u16StackVersion);
+                    DBG_vPrintf(TRACE_APP_OTA,"Image Len = 0x%08x\n\n",sOTAHeader.u32TotalImage);
 
-                        /*Set server address */
-                        eOTA_SetServerAddress(
-                                u8SrcEp,
-                                sDeviceDesc.u64IeeeAddrOfServer,
-                                sDeviceDesc.u16NwkAddrOfServer);
+                    /*Set server address */
+                    eOTA_SetServerAddress(
+                            u8SrcEp,
+                            sPdmOtaApp.u64IeeeAddrOfServer,
+                            sPdmOtaApp.u16NwkAddrOfServer);
 
-                        eStatus = eClientQueryNextImageRequest(
-                                u8SrcEp,
-                                sDeviceDesc.u8OTAserverEP,
-                                sDeviceDesc.u16NwkAddrOfServer,
-                                sOTAHeader.u32FileVersion,
-                                0,
-                                sOTAHeader.u16ImageType,
-                                sOTAHeader.u16ManufacturerCode,
-                                0);
+                    eStatus = eClientQueryNextImageRequest(
+                            u8SrcEp,
+                            sPdmOtaApp.u8OTAserverEP,
+                            sPdmOtaApp.u16NwkAddrOfServer,
+                            sOTAHeader.u32FileVersion,
+                            0,
+                            sOTAHeader.u16ImageType,
+                            sOTAHeader.u16ManufacturerCode,
+                            0);
 
-                        DBG_vPrintf(OTA_LNT, "Query Image Status Send %02x\n", eStatus);
-                        eOTA_State = OTA_QUERYIMAGE_WAIT;
-                        u32OtaTimerMs = 0;
-                        u32OtaTimeoutMs = OTA_BUSY_TIME_MS;
-                        DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: QUERYIMAGE_WAIT, %d, vManageOTAState(QUERYIMAGE to)", u32OtaTimeoutMs);
-                    }
-                    /* Failed to get header ? */
-                    else
-                    {
-                        DBG_vPrintf(TRACE_APP_OTA,"\n\neOTA_GetCurrentOtaHeader() FAILED\n");
-                        u32OTARetry = 0;
-                        eOTA_State = OTA_IDLE;
-                        u32OtaTimerMs = 0;
-                        u32OtaTimeoutMs = OTA_IDLE_TIME_MS;
-                        DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: IDLE, %d, vManageOTAState(QUERYIMAGE to)", u32OtaTimeoutMs);
-                    }
+                    DBG_vPrintf(OTA_LNT, "Query Image Status Send %02x\n", eStatus);
+                    eOTA_State = OTA_QUERYIMAGE_WAIT;
+                    u32OtaTimerMs = 0;
+                    u32OtaTimeoutMs = OTA_BUSY_TIME_MS;
+                    DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: QUERYIMAGE_WAIT, %d, vManageOTAState(QUERYIMAGE to)", u32OtaTimeoutMs);
                 }
                 else
                 {
-                    DBG_vPrintf(TRACE_APP_OTA,  "OTA Server not valid %d\n", sDeviceDesc.bValid);
+                    DBG_vPrintf(TRACE_APP_OTA,  "OTA Server not valid %d\n", sPdmOtaApp.bValid);
                     u32OTARetry = 0;
                     eOTA_State = OTA_IDLE;
                     u32OtaTimerMs = 0;
@@ -1365,12 +1452,24 @@ PRIVATE void vManageOTAState(void)
  ****************************************************************************/
 PRIVATE void vManageDLProgressState(void)
 {
+    static uint32 u32NormalCount = 0;
 
-#ifdef LightSensor
-    u32OtaTimeoutMs = 30000; /* As light sensor state machine will try for block request 5 times */
-#endif
-    DBG_vPrintf(TRACE_APP_OTA,  "OTA in progress %d\n",u32OtaTimerMs);
-    if (((u32OtaTimerMs >= u32OtaTimeoutMs) || (sOTA_PersistedData.sAttributes.u8ImageUpgradeStatus == E_CLD_OTA_STATUS_NORMAL))
+    DBG_vPrintf(TRACE_APP_OTA,  "OTA in progress\n");
+    /* If a block is missed, we need to give the OTA cluster state machine enough time to exhaust it's retries.*/
+    u32OtaTimeoutMs =
+          (uint32)((
+          #if OTA_PAGE_REQUEST_SUPPORT
+              CLD_OTA_MAX_BLOCK_PAGE_REQ_RETRIES
+          #else
+               1
+          #endif
+               * (OTA_TIME_INTERVAL_BETWEEN_RETRIES + 1)) * 1000);
+
+    /* Stack in normal state - increment counter */
+    if (sOTA_PersistedData.sAttributes.u8ImageUpgradeStatus == E_CLD_OTA_STATUS_NORMAL) u32NormalCount++;
+    else u32NormalCount = 0;
+
+    if (((u32OtaTimerMs >= u32OtaTimeoutMs) || (u32NormalCount > 2))
     &&  (bWaitUgradeTime == FALSE))
     {
         eOTA_State = OTA_IDLE;
@@ -1379,17 +1478,6 @@ PRIVATE void vManageDLProgressState(void)
         DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: IDLE, %d, vManageDLProgressState(to)", u32OtaTimeoutMs);
         DBG_vPrintf(TRACE_APP_OTA|OTA_LNT,  "OTA In Progress CLEAR OUT\n");
     }
-#ifdef OccupancySensor
-    else if((u32OtaTimerMs >= ((SENSOR_OTA_SLEEP_IN_SECONDS + 1) * APP_PWRM_TICKS_PER_SECOND)) && (bWaitUgradeTime == FALSE) )
-    {
-        APP_ZCL_OTATick(bWaitUgradeTime);
-    }
-    else if((u32OtaTimerMs >= u32OtaTimeoutMs) && bWaitUgradeTime)
-    {
-        APP_ZCL_OTATick(bWaitUgradeTime);
-        bWaitUgradeTime = FALSE;
-    }
-#endif
 }
 
 /****************************************************************************
@@ -1403,12 +1491,13 @@ PRIVATE void vManageDLProgressState(void)
  * void
  *
  ****************************************************************************/
-PRIVATE void vResetOTADiscovery(void)
+PUBLIC void vResetOTADiscovery(void)
 {
-    sDeviceDesc.u64IeeeAddrOfServer = 0;
-    sDeviceDesc.u16NwkAddrOfServer = 0xffff;
-    sDeviceDesc.bValid = FALSE;
-    PDM_eSaveRecordData(PDM_ID_APP_SENSOR,&sDeviceDesc,sizeof(tsDeviceDesc));
+    sPdmOtaApp.u64IeeeAddrOfServer = 0;
+    sPdmOtaApp.u16NwkAddrOfServer = 0xffff;
+    sPdmOtaApp.u8OTAserverEP = 0xff;
+    sPdmOtaApp.bValid = FALSE;
+    PDM_eSaveRecordData(PDM_ID_OTA_APP,&sPdmOtaApp,sizeof(tsPdmOtaApp));
 }
 
 /****************************************************************************
@@ -1448,16 +1537,6 @@ PUBLIC void vOTAResetPersist(void)
     PDM_eSaveRecordData(PDM_ID_OTA_DATA, &sOTA_PersistedData, sizeof(tsOTA_PersistedData));
 }
 
-
-PUBLIC teOTA_State eOTA_GetState(void)
-{
-   return eOTA_State;
-}
-
-PUBLIC bool_t bOTA_IsWaitToUpgrade(void)
-{
-   return bWaitUgradeTime;
-}
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JN-AN-1246-Zigbee-3-0-Sensors</name>
+	<name>JN-AN-1243-Zigbee-3-0-Base-Device</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -31,19 +31,15 @@
 			<locationURI>copy_PARENT/Common</locationURI>
 		</link>
 		<link>
-			<name>Linky</name>
+			<name>ZLinky</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/Linky</locationURI>
+			<location>C:/NXP/MCUXpressoIDE_11.2.0_4120/workspace/JN-AN-1243/ZLinky</location>
 		</link>
 	</linkedResources>
 	<variableList>
 		<variable>
 			<name>copy_PARENT</name>
 			<value>$%7BPARENT-1-PROJECT_LOC%7D</value>
-		</variable>
-		<variable>
-			<name>copy_PARENT1</name>
-			<value>$%7BPARENT-4-PROJECT_LOC%7D</value>
 		</variable>
 	</variableList>
 </projectDescription>

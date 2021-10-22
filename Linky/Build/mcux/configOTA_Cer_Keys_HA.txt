@@ -1,4 +1,0 @@
-# This is a sample configuration file
-LinkKey_HA.txt,01b0,16
-
-

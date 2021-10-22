@@ -1,0 +1,9 @@
+#sample LinkKey file
+
+#ff112233445566778899aabbccddee00
+5a6967426565416c6c69616e63653039
+
+#a1a2a3a4a5a6a7a8a9b1b2b3b4b5b6b7
+#abcdefabcdefabcdefabcdefabcdefab
+#a1a2a3a4a5a6a7a8a9b1b2b3b4b5b6b7
+#c1c2c3c4c5c6c7c8c9d1d2d3d4d5d6d7

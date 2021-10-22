@@ -1,6 +1,6 @@
 ############################################################################
 #
-# MODULE              JN-AN-1246
+# MODULE              JN-AN-1243
 #
 # DESCRIPTION         All Build Configurations Makefile
 #
@@ -31,10 +31,10 @@
 ############################################################################
 # Build each target in turn
 all:
-	rm -f ../../Doc/size.txt	
-	$(MAKE) -C ../../Linky/Build/mcux SENSOR=Linky TRACE=1 DR_REV=2 APP_NTAG_ICODE=0 OTA=0 OTA_ENCRYPTED=0 clean -r
-	$(MAKE) -C ../../Linky/Build/mcux SENSOR=Linky TRACE=1 DR_REV=2 APP_NTAG_ICODE=0 OTA=0 OTA_ENCRYPTED=0 all -r
-	$(MAKE) -C ../../Linky/Build/mcux SENSOR=Linky TRACE=1 DR_REV=2 APP_NTAG_ICODE=1 OTA=1 OTA_ENCRYPTED=0 clean -r
-	$(MAKE) -C ../../Linky/Build/mcux SENSOR=Linky TRACE=1 DR_REV=2 APP_NTAG_ICODE=1 OTA=1 OTA_ENCRYPTED=0 all -r
-	
-	
+	rm -f ../../Doc/size.txt
+	$(MAKE) -C ../../ZLinky/Build/mcux clean -r
+	$(MAKE) -C ../../ZLinky/Build/mcux all -r
+	$(MAKE) -C ../../ZLinky/Build/mcux APP_NTAG_NWK=1 APP_NTAG_OTA=1 OTA=1 OTA_ENCRYPTED=0 clean -r
+	$(MAKE) -C ../../ZLinky/Build/mcux APP_NTAG_NWK=1 APP_NTAG_OTA=1 OTA=1 OTA_ENCRYPTED=0 all -r
+	$(MAKE) -C ../../ZLinky/Build/mcux APP_NTAG_NWK=1 DUAL_BOOT=1 clean -r
+	$(MAKE) -C ../../ZLinky/Build/mcux APP_NTAG_NWK=1 DUAL_BOOT=1 all -r

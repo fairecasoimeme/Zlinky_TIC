@@ -36,17 +36,19 @@
 #ifndef APP_OTA_CLIENT_H
 #define APP_OTA_CLIENT_H
 
+#include "OTA.h"
+
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
 #ifndef OTA_DEMO_TIMINGS
-#define OTA_INIT_TIME_MS 60000                           /* Time to wait after initialisation */
+#define OTA_INIT_TIME_MS RND_u32GetRand(  2000,    7000) /* Time to wait after initialisation */
 #define OTA_BUSY_TIME_MS RND_u32GetRand(  2000,    3000) /* Time to wait when OTA state machine is busy */
 #define OTA_IDLE_TIME_MS RND_u32GetRand(900000, 1800000) /* Time to wait when OTA state machine is idle (15-30m) */
 #else
-#define OTA_INIT_TIME_MS RND_u32GetRand( 2000,  7000) /* Time to wait after initialisation */
-#define OTA_BUSY_TIME_MS RND_u32GetRand( 2000,  3000) /* Time to wait when OTA state machine is busy */
-#define OTA_IDLE_TIME_MS RND_u32GetRand( 45000, 75000) /* Time to wait when OTA state machine is idle (65-90s) */
+#define OTA_INIT_TIME_MS RND_u32GetRand(  2000,    7000) /* Time to wait after initialisation */
+#define OTA_BUSY_TIME_MS RND_u32GetRand(  2000,    3000) /* Time to wait when OTA state machine is busy */
+#define OTA_IDLE_TIME_MS RND_u32GetRand(120000,  240000) /* Time to wait when OTA state machine is idle (2-4m) */
 #endif
 
 #define MAX_SERVER_EPs 2
@@ -65,33 +67,36 @@ typedef struct {
     uint8 u8MatchList[MAX_SERVER_EPs];
 }tsDiscovedOTAServers;
 
+typedef struct {
+    bool        bValid;
+    uint64      u64IeeeAddrOfServer;
+    uint16      u16NwkAddrOfServer;
+    uint8       u8OTAserverEP;
+}tsPdmOtaApp;
 
-typedef enum {
-    OTA_IDLE,
-    OTA_FIND_SERVER,
-    OTA_FIND_SERVER_WAIT,
-    OTA_IEEE_LOOK_UP,
-    OTA_IEEE_WAIT,
-    OTA_QUERYIMAGE,
-    OTA_QUERYIMAGE_WAIT,
-    OTA_DL_PROGRESS
-} teOTA_State;
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
-PUBLIC void vAppInitOTA(void);
-PUBLIC void vRunAppOTAStateMachine(uint32 u32TimeMs);
+PUBLIC void   vAppInitOTA(void);
+PUBLIC void   vRunAppOTAStateMachine(uint32 u32TimeMs);
 PUBLIC bool_t bOTADeepSleepAllowed(void);
-PUBLIC void vHandleMatchDescriptor( ZPS_tsAfEvent  * psStackEvent);
-PUBLIC void vHandleIeeeAddressRsp( ZPS_tsAfEvent  * psStackEvent);
-PUBLIC void vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage);
-PUBLIC void vLoadOTAPersistedData(void);
-PUBLIC void vOTAResetPersist(void);
-PUBLIC teOTA_State eOTA_GetState(void);
-PUBLIC bool_t bOTA_IsWaitToUpgrade(void);
+PUBLIC bool_t bOTASleepAllowed(void);
+PUBLIC void   vHandleMatchDescriptor( ZPS_tsAfEvent  * psStackEvent);
+PUBLIC void   vHandleIeeeAddressRsp( ZPS_tsAfEvent  * psStackEvent);
+PUBLIC void   vHandleAppOtaClient(tsOTA_CallBackMessage *psCallBackMessage);
+PUBLIC void   vLoadOTAPersistedData(void);
+PUBLIC void   vSetOTAPersistedDatForMinRetention(void);
+PUBLIC void   vOTAResetPersist(void);
+PUBLIC void   vResetOTADiscovery(void);
+PUBLIC bool   bInitialiseOTAClusterAndAttributes (void);
+
 /****************************************************************************/
 /***        External Variables                                            ***/
 /****************************************************************************/
+#if (defined SLEEP_MIN_RETENTION) && (defined CLD_OTA) && (defined OTA_CLIENT)
+extern uint32 U32UTCTimeBeforeSleep;
+#endif
+
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
