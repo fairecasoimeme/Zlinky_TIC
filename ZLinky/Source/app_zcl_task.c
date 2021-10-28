@@ -667,7 +667,7 @@ PRIVATE void APP_vZCL_DeviceSpecific_Init(void)
     memcpy(sBaseDevice.sBasicServerCluster.au8ManufacturerName, "LiXee", CLD_BAS_MANUF_NAME_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "ZLinky_TIC", CLD_BAS_MODEL_ID_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20210401", CLD_BAS_DATE_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0001", CLD_BAS_SW_BUILD_SIZE);
+    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "0001", CLD_BAS_SW_BUILD_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0001", CLD_BAS_PCODE_SIZE);
 
