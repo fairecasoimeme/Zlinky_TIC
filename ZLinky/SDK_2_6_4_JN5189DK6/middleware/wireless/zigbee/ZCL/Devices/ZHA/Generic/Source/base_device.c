@@ -31,10 +31,18 @@
 /****************************************************************************/
 
 #include <jendefs.h>
-#include "base_device.h"
+
 #include <string.h>
 #include "zps_apl.h"
 #include "zcl_heap.h"
+#include "zcl.h"
+#include "zcl_options.h"
+#include "base_device.h"
+/*#include "Basic.h"
+#include "Identify.h"
+#include "Groups.h"
+#include "OnOff.h"
+*/
 
 
 /****************************************************************************/
