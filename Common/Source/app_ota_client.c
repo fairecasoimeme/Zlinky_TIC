@@ -325,7 +325,7 @@ PUBLIC bool bInitialiseOTAClusterAndAttributes ()
  ****************************************************************************/
 PUBLIC void vSetOTAPersistedDatForMinRetention(void)
 {
-    extern tsZLO_LinkyDevice sBaseDevice;
+	extern tsZHA_BaseDevice sBaseDevice;
     memcpy( &sOTA_PersistedData,
             &sBaseDevice.sCLD_OTA_CustomDataStruct.sOTACallBackMessage.sPersistedData,
             sizeof(tsOTA_PersistedData));
