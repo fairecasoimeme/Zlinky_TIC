@@ -9,3 +9,9 @@ ZLinky/Source/pdum_gen.c
 ZLinky/Source/pdum_gen.h
 mcux/.settings/language.settings.xml
 *.bin
+ZLinky/Source/pdum_gen.c
+ZLinky/Source/pdum_gen.h
+ZLinky/Source/pdum_gen.c
+ZLinky/Source/zps_gen.h
+ZLinky/Source/zps_gen.c
+ZLinky/Build/mcux/data.bin
