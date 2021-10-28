@@ -19,7 +19,7 @@
 					<folderInfo id="com.crt.advproject.config.exe.debug.2009898295.1495669017." name="/" resourcePath="">
 						<toolChain id="com.crt.advproject.toolchain.exe.debug.1101120136" name="NXP MCU Tools" superClass="com.crt.advproject.toolchain.exe.debug">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug.206084167" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
-							<builder arguments="APP_NTAG_NWK=0 APP_NTAG_OTA=0 OTA=1 OTA_ENCRYPTED=0" autoBuildTarget="all" buildPath="${ProjDirPath}/../ZLinky/Build/mcux" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.crt.advproject.builder.exe.debug.1178044129" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.crt.advproject.builder.exe.debug"/>
+							<builder arguments="APP_NTAG_NWK=0 APP_NTAG_OTA=0 OTA=1 OTA_ENCRYPTED=0" autoBuildTarget="all" buildPath="${workspace_loc:/JN-AN-1246-Zigbee-3-0-Sensors/ZLinky/Build/mcux}" cleanBuildTarget="clean" command="make" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="com.crt.advproject.builder.exe.debug.1178044129" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="false" superClass="com.crt.advproject.builder.exe.debug"/>
 							<tool id="com.crt.advproject.cpp.exe.debug.292340416" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.debug">
 								<option id="com.crt.advproject.cpp.hdrlib.613115350" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib" useByScannerDiscovery="false"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.1822599746" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false"/>
@@ -153,13 +153,13 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="JN-AN-1217-Zigbee-3-0-Base-Device.com.crt.advproject.projecttype.exe.1430913091" name="Executable" projectType="com.crt.advproject.projecttype.exe"/>
+		<project id="JN-AN-1220-Zigbee-3-0-Sensors.com.crt.advproject.projecttype.exe.334504404" name="Executable" projectType="com.crt.advproject.projecttype.exe"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="com.crt.config">
 		<projectStorage>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#13;
 &lt;TargetConfig&gt;&#13;
-&lt;Properties property_2="JN5189_640K.cfx" property_3="NXP" property_4="JN5189" property_count="5" version="100300"/&gt;&#13;
+&lt;Properties property_3="NXP" property_4="JN5189" property_count="5" version="100300"/&gt;&#13;
 &lt;infoList vendor="NXP"&gt;&#13;
 &lt;info chip="JN5189" name="JN5189"&gt;&#13;
 &lt;chip&gt;&#13;
@@ -168,9 +168,9 @@
 &lt;vendor&gt;NXP&lt;/vendor&gt;&#13;
 &lt;memory can_program="true" id="Flash" is_ro="true" size="640" type="Flash"/&gt;&#13;
 &lt;memory id="RAM" size="152" type="RAM"/&gt;&#13;
-&lt;memoryInstance derived_from="Flash" driver="K32W061_640K.cfx" edited="true" id="PROGRAM_FLASH" location="0x0" size="0xa0000"/&gt;&#13;
-&lt;memoryInstance derived_from="RAM" edited="true" id="SRAM" location="0x4000000" size="0x15fe0"/&gt;&#13;
-&lt;memoryInstance derived_from="RAM" edited="true" id="SRAM1" location="0x4020000" size="0x10000"/&gt;&#13;
+&lt;memoryInstance derived_from="Flash" driver="JN5189_640K.cfx" id="PROGRAM_FLASH" location="0x0" size="0xa0000"/&gt;&#13;
+&lt;memoryInstance derived_from="RAM" id="SRAM" location="0x4000000" size="0x15fe0"/&gt;&#13;
+&lt;memoryInstance derived_from="RAM" id="SRAM1" location="0x4020000" size="0x10000"/&gt;&#13;
 &lt;/chip&gt;&#13;
 &lt;processor&gt;&#13;
 &lt;name gcc_name="cortex-m4"&gt;Cortex-M4&lt;/name&gt;&#13;
@@ -181,73 +181,61 @@
 &lt;/TargetConfig&gt;</projectStorage>
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="EndDevice">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LTOSensor">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_RamOpt_JN5180_OM15082">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LightSensor_OM15081R1"/>
+		<configuration configurationName="LightSensor_NtagIcode_Ota_OM15081R2"/>
+		<configuration configurationName="LightSensor_OM15081R2"/>
+		<configuration configurationName="OccupancySensor_NtagIcode_Ota_JN5180_OM15082"/>
+		<configuration configurationName="LightTemperatureOccupancySensor"/>
+		<configuration configurationName="OccupancySensor_NtagIcode_Ota_OM15082"/>
+		<configuration configurationName="All_Devices">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_Ota_OM15081"/>
-		<configuration configurationName="EndDevice_JN5180_OM15082"/>
-		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_JN5180_OM15082"/>
-		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_Ota_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="linky">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Router_NtagIcode_NtaOta_GpProxy_Ota_JN5180_OM15081"/>
-		<configuration configurationName="Everything"/>
-		<configuration configurationName="EndDevice_NtagNwk_NtagOta_Ota_RamOpt_OM15082"/>
-		<configuration configurationName="All_Devices"/>
-		<configuration configurationName="Router_GpProxy_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LightSensor_NtagIcode_Ota_RamOpt_JN5180_OM15081R2">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Ssbl_Router_NtagNwk_GpProxy_OM15081"/>
-		<configuration configurationName="Ssbl_EndDevice_NtagNwk_OM15082"/>
-		<configuration configurationName="Coordinator_GpProxy_JN5180_DONGLE">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
-		</configuration>
-		<configuration configurationName="Coordinator_GpProxy_JN5180_OM15082">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
-		</configuration>
-		<configuration configurationName="Coordinator_GpProxy_OM15082"/>
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
 		</configuration>
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="EndDevice_NtagNwk_K32W_OM15082"/>
-		<configuration configurationName="Router_GpProxy_OM15081"/>
-		<configuration configurationName="Router_NtagIcode_GpProxy_Ota_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LTOSensor_NtagIcode_Ota_JN5180_OM15081R1"/>
+		<configuration configurationName="LTOSensor_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Router">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="SimpleMeteringSensor_OM15081R2">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Router_NtagNwk_GpProxy_K32W_OM15081"/>
-		<configuration configurationName="EndDevice_NtagNwk_Ota_JN5180_OM15082"/>
-		<configuration configurationName="EndDevice_NtagIcode_Ota_JN5180_OM15082">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LTOSensor_JN5180_OM15081R2"/>
+		<configuration configurationName="OccupancySensor_OM15082"/>
+		<configuration configurationName="Occupancy Sensor">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Coordinator_GpProxy_DONGLE"/>
-		<configuration configurationName="Coordinator_GpProxy_K32W_OM15082"/>
-		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_OtaEnc_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LTOSensor_NtagIcode_Ota_OM15081R2"/>
+		<configuration configurationName="LTOSensor_NtagIcode_Ota_JN5180_OM15081"/>
+		<configuration configurationName="LTOSensor_NtagIcode_Ota_OM15081R1"/>
+		<configuration configurationName="LightSensor">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1220-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Coordinator">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1217-Zigbee-3-0-Base-Device"/>
-		</configuration>
-		<configuration configurationName="Coordinator Dongle"/>
 		<configuration configurationName="ZLinky_GpProxy_Ota">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="EndDevice_RamOpt_JN5180_OM15082"/>
-		<configuration configurationName="Router_NtagNwk_NtagOta_GpProxy_JN5180_OM15081">
-			<resource resourceType="PROJECT" workspacePath="/JN-AN-1243-Zigbee-3-0-Base-Device"/>
+		<configuration configurationName="LTOSensor_OM15081R2"/>
+		<configuration configurationName="LightSensor_NtagIcode_Ota_JN5180_OM15081R2"/>
+		<configuration configurationName="OccupancySensor_JN5180_OM15082">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
 		</configuration>
-		<configuration configurationName="Ssbl_Coordinator_GpProxy_OM15082"/>
-		<configuration configurationName="EndDevice_OM15082"/>
-		<configuration configurationName="Coordinator_NciIcode_NciOta_GpProxy_OM5578"/>
-		<configuration configurationName="Router_NtagIcode_NtagOta_GpProxy_Ota_JN5180_OM15081"/>
+		<configuration configurationName="LightSensor_JN5180_OM15081R1"/>
+		<configuration configurationName="LightSensor_JN5180_OM15081">
+			<resource resourceType="PROJECT" workspacePath="/JN-AN-1246-Zigbee-3-0-Sensors"/>
+		</configuration>
+		<configuration configurationName="LightSensor_NtagIcode_Ota_JN5180_OM15081"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="com.nxp.mcuxpresso.core.datamodels">
@@ -263,4 +251,5 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
