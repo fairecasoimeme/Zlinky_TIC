@@ -297,5 +297,5 @@ Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/document
 
 ## Changelog
 
-### Version 4000-0001
+### Version 0001
 Version initiale
