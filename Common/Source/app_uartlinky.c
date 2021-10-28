@@ -244,7 +244,7 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 					if (u8TmpCRC==u8CRC)
 					{
 						memcpy(value,date,256);
-						DBG_vPrintf(1, "\r\n%s %s",command, value);
+						//DBG_vPrintf(1, "\r\n%s %s",command, value);
 						return(TRUE);
 					}else{
 						DBG_vPrintf(1, "\r\ncommand : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRC,u8CRC);
@@ -257,7 +257,7 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 					u8TmpCRCHorodate=(u8TmpCRCHorodate & 0x3F)+0x20;
 					if (u8TmpCRCHorodate==u8CRC)
 					{
-						DBG_vPrintf(1, "\r\n%s %s %s",command, date, value);
+						//DBG_vPrintf(1, "\r\n%s %s %s",command, date, value);
 						return(TRUE);
 					}else{
 						DBG_vPrintf(1, "\r\nHORODATE - command : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRCHorodate,u8CRC);
