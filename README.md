@@ -1,6 +1,8 @@
 
 # ZLinky_TIC
- Téléinformation Linky autoalimenté communiquant en ZigBee 3.0
+ Téléinformation Linky autoalimenté communiquant en ZigBee 3.0  
+ vous pouvez vous procurer le ZLinky_TIC à l'adresse suivante :  
+ ![Boutique LiXee](https://lixee.fr/)
  
 
 ## Description
