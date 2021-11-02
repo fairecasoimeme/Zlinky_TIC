@@ -15,7 +15,7 @@
 
 **ZLinky_TIC** est un appareil permettant de transmettre toutes les informations du Linky en ZigBee 3.0.  
 **ZLinky_TIC** est alimenté par votre compteur Linky. Il suffit simplement d'enlever le cash (jaune fluo) et de "plugger" l'appareil en pressant sur le bouton orange.  
-Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. L'appareil va clignoter lentement. Ensuite, le bouton relâché, l'appareil est reinitialisé.  
+Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. Ensuite, le bouton relâché, la Led s'éteint puis se mettre à clignoter.  
 Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'un autre coordinateur ZigBee, vous pourrez gérer votre consommation d'électricité.
 
 **Actuellement, l'appareil fonctionne avec le mode Historique et standard du compteur Linky.**  
@@ -32,20 +32,11 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 
 ## Voyant lumineux
 
-L'appareil clignote en bleu toutes les 6-7 secondes correspondant aux phases de réveil.  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_sleep.png" width="200">  
-
-L'appareil clignote 2 fois toutes les 7 secondes : l'appareil n'est pas encore appairé.  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_No_JOIN.png" width="400">  
-
-L'appareil s'allume en bleu pendant 3 secondes correspondant à l'envoi des données au coordinateur.  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
-
 L'appareil clignote 4 fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_error.png" width="200">  
 
-L'appareil clignote lentement : le bouton "link" est actionné sans relachement pour une réinitilisation.  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_Reset.png" width="200">  
+La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
 
 ## Clusters
 
