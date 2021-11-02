@@ -40,6 +40,8 @@
 #include "zps_apl.h"
 #include "zps_apl_af.h"
 
+#include "dbg.h"
+
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -246,12 +248,13 @@ PUBLIC  void vZCL_HandleConfigureReportingCommand(
                 if(psAttributeDefinition != NULL)
                 {
                     //  stream and local attribute types match check
-                    if(((psAttributeDefinition->u8AttributeFlags & E_ZCL_AF_RD) != E_ZCL_AF_RD) ||
-                      (ZCL_IS_BIT_CLEAR(uint8,psClusterInstance->pu8AttributeControlBits[u16attributeIndex],E_ZCL_ACF_RP)) ||
+                    if(((psAttributeDefinition->u8AttributeFlags & E_ZCL_AF_RP) != E_ZCL_AF_RP) ||
+                      //(ZCL_IS_BIT_CLEAR(uint8,psClusterInstance->pu8AttributeControlBits[u16attributeIndex],E_ZCL_ACF_RP)) ||
                       (bZCL_CheckAttributeDirectionFlagMatch(psAttributeDefinition,psClusterInstance->bIsServer) == FALSE)
                     )
                     {
-                        eCommandStatus = E_ZCL_CMDS_UNREPORTABLE_ATTRIBUTE;
+
+                    	eCommandStatus = E_ZCL_CMDS_UNREPORTABLE_ATTRIBUTE;
                         sZCL_CallBackEvent.eZCL_Status = E_ZCL_ERR_ATTRIBUTE_NOT_REPORTABLE;
                     }
                 }
@@ -412,7 +415,7 @@ PUBLIC  void vZCL_HandleConfigureReportingCommand(
     // user command terminate callback
     sZCL_CallBackEvent.eEventType = E_ZCL_CBET_REPORT_ATTRIBUTES_CONFIGURE;
     psEndPointDefinition->pCallBackFunctions(&sZCL_CallBackEvent);
-
+    DBG_vPrintf(1,"\r\nsZCL_CallBackEvent.eZCL_Status: %d",sZCL_CallBackEvent.eZCL_Status);
     // transmit
     if((sZCL_CallBackEvent.eZCL_Status == E_ZCL_SUCCESS)                        ||
        (sZCL_CallBackEvent.eZCL_Status == E_ZCL_ERR_INVALID_VALUE)              ||
