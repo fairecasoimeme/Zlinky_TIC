@@ -49,14 +49,14 @@
 #include "zcl.h"
 #include "app.h"
 #include "zcl_options.h"
-#include "app_leds.h"
+#include "app_blink_led.h"
 #include "app_zcl_task.h"
 #include "app_router_node.h"
 #include "app_common.h"
 #include "app_main.h"
 
 #include "base_device.h"
-//#include "linky_device.h"
+
 
 #include "app_events.h"
 #ifdef CLD_GREENPOWER
@@ -440,8 +440,10 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
             DBG_vPrintf(TRACE_ZCL,"psEvent->eZCL_Status = %d\r\n", psEvent->eZCL_Status );
             if(SE_CLUSTER_ID_SIMPLE_METERING == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
 			{
-				DBG_vPrintf(TRACE_ZCL,"\r\npsEvent->eZCL_Status = %d",psEvent->eZCL_Status);
-				vSaveReportableRecord(SE_CLUSTER_ID_SIMPLE_METERING,psAttributeReportingRecord);
+            	if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
+            	{
+            		vSaveReportableRecord(SE_CLUSTER_ID_SIMPLE_METERING,psAttributeReportingRecord);
+            	}
 
 				if(E_ZCL_RESTORE_DEFAULT_REPORT_CONFIGURATION == psEvent->eZCL_Status)
 				{
@@ -463,11 +465,11 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
 			}else if(LIXEE_CLUSTER_ID_LINKY == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
 			{
 				DBG_vPrintf(TRACE_ZCL,"\r\npsEvent->eZCL_Status = %d",psEvent->eZCL_Status);
-				//if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
-				//{
+				if (E_ZCL_SUCCESS == psEvent->eZCL_Status)
+				{
 
 					vSaveReportableRecord(LIXEE_CLUSTER_ID_LINKY,psAttributeReportingRecord);
-				//}
+				}
 
 			}
         }
@@ -506,7 +508,8 @@ PUBLIC void APP_vHandleIdentify(uint16 u16Time)
             /*
              * Restore to off/off state
              */
-        //APP_vSetLed(LED1, sBaseDevice.sOnOffServerCluster.bOnOff);
+    	vStartAwakeTimer(5);
+    	vStartBlinkTimer(50);
         bActive = FALSE;
     }
     else
@@ -516,7 +519,8 @@ PUBLIC void APP_vHandleIdentify(uint16 u16Time)
             bActive = TRUE;
             u8IdentifyCount = 5;
             bIdentifyState = TRUE;
-            //APP_vSetLed(LED1, TRUE );
+            vStartAwakeTimer(u8IdentifyCount);
+            vStartBlinkTimer(50);
         }
     }
 }
