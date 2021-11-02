@@ -35,7 +35,7 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 L'appareil clignote 4 fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_error.png" width="200">  
 
-La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky
+La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
 
 ## Clusters
