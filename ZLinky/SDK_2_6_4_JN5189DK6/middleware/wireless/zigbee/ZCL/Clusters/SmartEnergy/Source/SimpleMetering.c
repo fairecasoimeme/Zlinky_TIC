@@ -646,8 +646,9 @@ const tsZCL_AttributeDefinition asCLD_SimpleMeteringClusterAttributeDefinitions[
 #define CLD_SM_ATTR_NUM_OF_CURRENT_SUMMATION_DELIVERED         0
 #endif
 
-#define SM_NUM_OF_ATTRIBUTES      sizeof(asCLD_SimpleMeteringClusterAttributeDefinitions) / sizeof(tsZCL_AttributeDefinition) + \
-                                  CLD_SM_ATTR_NUM_OF_CURRENT_SUMMATION_DELIVERED
+#define SM_NUM_OF_ATTRIBUTES      sizeof(asCLD_SimpleMeteringClusterAttributeDefinitions) / sizeof(tsZCL_AttributeDefinition)
+/*#define SM_NUM_OF_ATTRIBUTES      sizeof(asCLD_SimpleMeteringClusterAttributeDefinitions) / sizeof(tsZCL_AttributeDefinition) + \
+                                  CLD_SM_ATTR_NUM_OF_CURRENT_SUMMATION_DELIVERED*/
 
 #ifdef ZCL_COMMAND_DISCOVERY_SUPPORTED
 const tsZCL_CommandDefinition asCLD_SimpleMeteringClusterCommandDefinitions[] = {
