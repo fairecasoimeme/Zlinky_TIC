@@ -319,3 +319,33 @@
 10/22/21 17:58:58
    text	   data	    bss	    dec	    hex	filename
  236024	   2976	  33400	 272400	  42810	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/25/21 16:58:21
+   text	   data	    bss	    dec	    hex	filename
+ 236024	   2976	  33368	 272368	  427f0	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 11:36:55
+   text	   data	    bss	    dec	    hex	filename
+ 236040	   2976	  33368	 272384	  42800	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 15:03:34
+   text	   data	    bss	    dec	    hex	filename
+ 236020	   2976	  33368	 272364	  427ec	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 15:13:35
+   text	   data	    bss	    dec	    hex	filename
+ 236020	   2976	  33368	 272364	  427ec	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 15:21:24
+   text	   data	    bss	    dec	    hex	filename
+ 236020	   2976	  33368	 272364	  427ec	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 16:01:26
+   text	   data	    bss	    dec	    hex	filename
+ 236020	   2976	  33368	 272364	  427ec	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 16:05:28
+   text	   data	    bss	    dec	    hex	filename
+ 236016	   2976	  33368	 272360	  427e8	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 16:12:52
+   text	   data	    bss	    dec	    hex	filename
+ 236016	   2976	  33368	 272360	  427e8	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 16:26:28
+   text	   data	    bss	    dec	    hex	filename
+ 236016	   2976	  33368	 272360	  427e8	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf
+10/28/21 17:42:09
+   text	   data	    bss	    dec	    hex	filename
+ 236016	   2976	  33368	 272360	  427e8	../../../Binaries/ZLinky_GpProxy_Ota_OM15081/ZLinky_GpProxy_Ota_OM15081.axf

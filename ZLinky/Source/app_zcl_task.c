@@ -670,9 +670,9 @@ PRIVATE void APP_vZCL_DeviceSpecific_Init(void)
     memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "0001", CLD_BAS_SW_BUILD_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0001", CLD_BAS_PCODE_SIZE);
-
     memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
 
+    sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x01;
     sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
 }
 
