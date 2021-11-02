@@ -203,7 +203,7 @@ PUBLIC teZCL_Status eZHA_RegisterBaseDeviceEndPoint(uint8 u8EndPointIdentifier,
 							TRUE,
 							&sCLD_ElectricalMeasurement,
 							&psDeviceInfo->sElectricalMeasurement,
-							au8ElectricalMeasurementAttributeControlBits)!= E_ZCL_SUCCESS)
+							&au8ElectricalMeasurementAttributeControlBits)!= E_ZCL_SUCCESS)
 	{
 		return E_ZCL_FAIL;
 	}
