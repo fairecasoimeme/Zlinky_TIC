@@ -64,6 +64,7 @@ La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appar
 0x0005 | ModelIdentifier|ZLinky_TIC|
 0x0006 | DateCode|20210401|
 0x0007 | PowerSource|0x03|
+0x4000 | SWBuildID|4000-0001|
 
 ### Subscription (OPTARIF Values)
 
