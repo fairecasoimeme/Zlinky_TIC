@@ -121,7 +121,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |LTARF|0xFF66|	0x0200|		RO||String|16 car|-| Libellé tarif fournisseur en cours|-|	
 |NTARF|0xFF66|	0x0201|		RO||Uint8|2 car|-| Numéro de l’index tarifaire en cours|-|	
 |VTIC|0xB01|	0x000A|		RO||Uint16|2 car|-| Version de la TIC|-|	
-|DATE|0xFF66|	0x000A|		RO||String|10 car|-| Date et heure courant|EX: E211022162000 |	
+|DATE|0xFF66|	0x0202|		RO||String|10 car|-| Date et heure courant|EX: E211022162000 |	
 |EAST|0x702|	0x0000|		RP||Uint32|9 car|Wh| Energie active soutirée totale|0 |	
 |EASF01|0x702|	0x0100|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 01|0 |	
 |EASF02|0x702|	0x0102|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 02|0 |	
