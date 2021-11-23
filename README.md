@@ -252,11 +252,12 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Standard : CCAIN (Production)|0xFF66|0x0210|
 |Standard : CCAIN-1 (Production)|0xFF66|0x0211|
 |Standard : <br>- SMAXN-1 (Monophasé)<br>- SMAXN1-1 (Triphasé)|0xFF66|0x0212|
-|Standard : SMAXN1-1 (Triphasé)|0xFF66|0x0213|
-|Standard : SMAXN2-1 (Triphasé)|0xFF66|0x0214|
-|Standard : SMAXN3-1 (Triphasé)|0xFF66|0x0215|
-|Standard : MSG1|0xFF66|0x0216|
-|Standard : MSG2|0xFF66|0x0217|
+|Standard : SMAXN1-1 (Triphasé)|0xFF66|0x0212|
+|Standard : SMAXN2-1 (Triphasé)|0xFF66|0x0213|
+|Standard : SMAXN3-1 (Triphasé)|0xFF66|0x0214|
+|Standard : MSG1|0xFF66|0x0215|
+|Standard : MSG2|0xFF66|0x0216|
+|Standard : STGE|0xFF66|0x0217|
 |Standard : DPM1|0xFF66|0x0218|
 |Standard : FPM1|0xFF66|0x0219|
 |Standard : DPM2|0xFF66|0x0220|
