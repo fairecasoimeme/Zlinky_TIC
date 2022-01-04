@@ -292,5 +292,14 @@ Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/document
 
 ## Changelog
 
+### Version 0003
+
+* Fix data type for 0x702 cluster attribut consumption. uint32 to uint48 (For ZiGate v3.21)
+* Fix config report bug on cluster 0x702
+* Fix PIN Led error
+* Fix differents data type value (DATE, HHPHC, VTIC, PREF)
+* Fix version size 0x0000 | 0x4000
+
+
 ### Version 0001
 Version initiale
