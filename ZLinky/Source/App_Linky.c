@@ -146,12 +146,12 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"VTIC",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nVTIC : %s",au8Value);
-					sBaseDevice.sMeterIdentification.au16LinkyMISoftwareRevision=atoi(au8Value);
+					sBaseDevice.sMeterIdentification.au8LinkyMISoftwareRevision=atoi(au8Value);
 
 				}else if(memcmp(au8Command,"DATE",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nDATE : %s",au8Date);
-					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyDATE, au8Date,10);
+					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyDATE, au8Date,13);
 
 				}else if(memcmp(au8Command,"EAST",4)==0)
 				{
@@ -260,7 +260,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"PREF",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPREF : %s",au8Value);
-					sBaseDevice.sMeterIdentification.au16LinkyMIAvailablePower=atol(au8Value);
+					sBaseDevice.sMeterIdentification.au8LinkyMIAvailablePower=atol(au8Value);
 				}else if(memcmp(au8Command,"STGE",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nSTGE : %s",au8Value);
@@ -479,7 +479,7 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"ISOUSC",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nISOUSC : %s",au8Value);
-					sBaseDevice.sMeterIdentification.au16LinkyMIAvailablePower=atol(au8Value);
+					sBaseDevice.sMeterIdentification.au8LinkyMIAvailablePower=atol(au8Value);
 
 				}else if(memcmp(au8Command,"HCHC",4)==0)
 				{
@@ -600,7 +600,7 @@ uint8 APP_vProcessRxDataHisto ( void )
 					sBaseDevice.sLinkyServerCluster.au8LinkyPEJP=atoi(au8Value);
 				}else if(memcmp(au8Command,"HHPHC",4)==0)
 				{
-					sBaseDevice.sLinkyServerCluster.au8LinkyHHPHC=au8Value;
+					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyHHPHC, au8Value,1);
 				}
 		    }
 	}else{
@@ -643,7 +643,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 	}
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
-    GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 0); // ON
+    GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 0); // ON
 
     u32Timeout=0;
     while(TRUE)
@@ -682,13 +682,13 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	}
     	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1);
     	//GPIO_PinInit(GPIO, APP_BASE_BOARD_LED1_PIN, 10, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 1}));
-    	GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 1); // ON
+    	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); // ON
     	vStartAwakeTimer(5);
     	vStartBlinkTimer(250);
 
     	DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");
     }else{
-    	GPIO_PinWrite(GPIO, APP_BASE_BOARD_LED1_PIN, 10, 1); //OFF
+    	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); //OFF
     }
     //u16ALSResult = random();
    // sSensor.sIlluminanceMeasurementServerCluster.u16MeasuredValue = u16ALSResult;
