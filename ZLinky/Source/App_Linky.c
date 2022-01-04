@@ -643,7 +643,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 	}
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
-    GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 0); // ON
+    //GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 0); // ON
 
     u32Timeout=0;
     while(TRUE)
