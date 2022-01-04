@@ -146,7 +146,7 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMSG2.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMSG2;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDATE.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDATE);
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDATE.u8Length = 10;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDATE.u8Length = 13;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDATE.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDATE;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkySTGE.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkySTGE);

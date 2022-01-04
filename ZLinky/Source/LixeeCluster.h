@@ -89,7 +89,7 @@ typedef struct
 	 uint8                       au8LinkyLTARF[16];
 	 uint8						 au8LinkyNTARF;
 	 tsZCL_CharacterString       sLinkyDATE;
-	 uint8                       au8LinkyDATE[10];
+	 uint8                       au8LinkyDATE[13];
 	 uint32						 u32LinkyEASD01;
 	 uint32						 u32LinkyEASD02;
 	 uint32						 u32LinkyEASD03;
