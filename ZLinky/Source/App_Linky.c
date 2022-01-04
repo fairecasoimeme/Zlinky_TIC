@@ -151,7 +151,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"DATE",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nDATE : %s",au8Date);
-					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyDATE, au8Date,13);
+					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyDATE, au8Value,13);
 
 				}else if(memcmp(au8Command,"EAST",4)==0)
 				{
