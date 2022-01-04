@@ -144,10 +144,10 @@ PUBLIC void vAppMain(void)
             volatile uint32 u32Delay;
 
             for (u32Delay = 0; u32Delay < 100000; u32Delay++);
-            GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, APP_BASE_BOARD_LED1_PIN, 0);
+            GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 0);
 
             for (u32Delay = 0; u32Delay < 100000; u32Delay++);
-            GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, APP_BASE_BOARD_LED1_PIN, 1);
+            GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1);
 
         }
     }
@@ -197,7 +197,7 @@ PUBLIC void vAppMain(void)
     SystemCoreClockUpdate();
     OSA_TimeInit();
 
-    GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, APP_BASE_BOARD_LED1_PIN, 1);
+    GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1);
 }
 
 /****************************************************************************
