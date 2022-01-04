@@ -17,3 +17,10 @@ ZLinky/Source/zps_gen.c
 mcux/.settings/language.settings.xml
 Doc/size.txt
 Doc/size.txt
+Doc/size.txt
+mcux/.settings/language.settings.xml
+ZLinky/Build/mcux/data.bin
+ZLinky/Source/pdum_gen.c
+ZLinky/Source/pdum_gen.h
+ZLinky/Source/zps_gen.c
+ZLinky/Source/zps_gen.h
