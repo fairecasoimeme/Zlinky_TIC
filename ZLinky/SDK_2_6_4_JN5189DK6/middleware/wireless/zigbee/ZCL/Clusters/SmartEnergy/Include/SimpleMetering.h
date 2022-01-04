@@ -676,10 +676,12 @@ typedef struct
 {
 
     /* Reading information attribute set attribute ID's (D.3.2.2.1) */
-    uint32                   u32CurrentSummationDelivered;        /* Mandatory */
+    //uint32                   u32CurrentSummationDelivered;        /* Mandatory */
+	zuint48	                   u48CurrentSummationDelivered;
 
 #ifdef CLD_SM_ATTR_CURRENT_SUMMATION_RECEIVED
-    uint32                    u32CurrentSummationReceived;
+    //uint32                    u32CurrentSummationReceived;
+	zuint48                     u48CurrentSummationReceived;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_MAX_DEMAND_DELIVERED
@@ -801,7 +803,8 @@ typedef struct
 
     /* Time Of Use Information attribute attribute ID's set (D.3.2.2.2) */
 #ifdef CLD_SM_ATTR_CURRENT_TIER_1_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier1SummationDelivered;
+    //uint32                    u32CurrentTier1SummationDelivered;
+    zuint48                   u48CurrentTier1SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_1_SUMMATION_RECEIVED
@@ -809,8 +812,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_2_SUMMATION_DELIVERED
-   // zuint48                    u48CurrentTier2SummationDelivered;
-    uint32                    u32CurrentTier2SummationDelivered;
+    zuint48                    u48CurrentTier2SummationDelivered;
+   // uint32                    u32CurrentTier2SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_2_SUMMATION_RECEIVED
@@ -818,7 +821,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_3_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier3SummationDelivered;
+    //uint32                    u32CurrentTier3SummationDelivered;
+    zuint48                   u48CurrentTier3SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_3_SUMMATION_RECEIVED
@@ -826,7 +830,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_4_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier4SummationDelivered;
+    //uint32                    u32CurrentTier4SummationDelivered;
+    zuint48                   u48CurrentTier4SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_4_SUMMATION_RECEIVED
@@ -834,7 +839,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_5_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier5SummationDelivered;
+    //uint32                    u32CurrentTier5SummationDelivered;
+    zuint48                   u48CurrentTier5SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_5_SUMMATION_RECEIVED
@@ -842,7 +848,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_6_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier6SummationDelivered;
+    //uint32                    u32CurrentTier6SummationDelivered;
+    zuint48                   u48CurrentTier6SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_6_SUMMATION_RECEIVED
@@ -850,7 +857,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier7SummationDelivered;
+    //uint32                    u32CurrentTier7SummationDelivered;
+    zuint48                   u48CurrentTier7SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_7_SUMMATION_RECEIVED
@@ -858,7 +866,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier8SummationDelivered;
+    //uint32                    u32CurrentTier8SummationDelivered;
+    zuint48                   u48CurrentTier8SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_8_SUMMATION_RECEIVED
@@ -866,7 +875,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier9SummationDelivered;
+    //uint32                    u32CurrentTier9SummationDelivered;
+    zuint48                   u48CurrentTier9SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_9_SUMMATION_RECEIVED
@@ -874,7 +884,8 @@ typedef struct
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_DELIVERED
-    uint32                    u32CurrentTier10SummationDelivered;
+   // uint32                    u32CurrentTier10SummationDelivered;
+    zuint48                   u48CurrentTier10SummationDelivered;
 #endif
 
 #ifdef CLD_SM_ATTR_CURRENT_TIER_10_SUMMATION_RECEIVED

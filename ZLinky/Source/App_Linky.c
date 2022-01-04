@@ -156,47 +156,47 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"EAST",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nEAST : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentSummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF01",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF01 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF02",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF02 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF03",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF03 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier3SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier3SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF04",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF04 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier4SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier4SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF05",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF05 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier5SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier5SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF06",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF06 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier6SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier6SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF07",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF07 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier7SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier7SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF08",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF08 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier8SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier8SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF09",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF09 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier9SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier9SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASF10",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASF10 : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier10SummationDelivered = atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier10SummationDelivered = atol(au8Value);
 				}else if(memcmp(au8Command,"EASD01",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nEASD01 : %s",au8Value);
@@ -216,7 +216,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"EAIT",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nEAIT : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentSummationReceived= atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationReceived= atol(au8Value);
 				}else if(memcmp(au8Command,"ERQ1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ1 : %s",au8Value);
@@ -467,8 +467,8 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"BASE",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nBASE : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentSummationDelivered=atol(au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"HHPHC",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nHHPHC : %s",au8Value);
@@ -484,46 +484,46 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"HCHC",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nHCHC : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered=atol(au8Value);
 					//DBG_vPrintf(1, "\r\nHCHC : %d",sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered);
 				}else if(memcmp(au8Command,"HCHP",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nHCHP : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered=atol(au8Value);
 					//DBG_vPrintf(1, "\r\nHCHP : %d",sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered);
 
 				}else if(memcmp(au8Command,"EJPHN",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nEJPHN : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"EJPHPM",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nEJPHPM : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHCJB",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHCJB : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier1SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHPJB",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHPJB : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier2SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHCJW",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHCJW : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier3SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier3SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHPJW",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHPJW : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier4SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier4SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHCJR",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHCJR : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier5SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier5SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"BBRHPJR",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nBBRHPJR : %s",au8Value);
-					sBaseDevice.sSimpleMeteringServerCluster.u32CurrentTier6SummationDelivered=atol(au8Value);
+					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier6SummationDelivered=atol(au8Value);
 				}else if(memcmp(au8Command,"IINST1",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST1 : %s",au8Value);
@@ -643,7 +643,6 @@ PUBLIC void vAPP_LinkySensorSample(void)
 	}
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
-    //GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 0); // ON
 
     u32Timeout=0;
     while(TRUE)
