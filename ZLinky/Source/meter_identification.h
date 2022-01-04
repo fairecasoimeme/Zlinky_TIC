@@ -32,9 +32,9 @@ typedef enum
 typedef struct
 {
 	 uint8                       au8LinkyMIPowerThreshold;
-	 uint16 					 au16LinkyMISoftwareRevision;
+	 uint8 			    		 au8LinkyMISoftwareRevision;
 	 uint16 					 au16LinkyMIPOD;
-	 uint16 					 au16LinkyMIAvailablePower;
+	 uint8 			    		 au8LinkyMIAvailablePower;
 
 } tsCLD_MeterIdentification;
 
