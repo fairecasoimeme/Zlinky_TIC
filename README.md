@@ -112,6 +112,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |ADIR1			|0xFF66	|0x0006		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
 |ADIR2			|0xFF66	|0x0007		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
 |ADIR3			|0xFF66	|0x0008		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
+|-			|0xFF66	|0x0300		|RO||Uint8|1 car|-|Protocole linky|0|
 
 #### Mode standard
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
@@ -187,6 +188,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |NJOURF+1|0xFF66|	0x0226|		RO||Uint8|2 car|-| Numéro du prochain jour calendrier fournisseur|0 |	
 |PJOURF+1|0xFF66|	0x0227|		RO||String|98 car|-|Profil du prochain jour calendrier fournisseur|0 |	
 |PPOINTE1|0xFF66|	0x0228|		RO||String|98 car|-|Profil du prochain jour de pointe|0 |	
+|-			    |0xFF66	|0x0300|RO||Uint8|1 car|-|Protocole linky|0|
 
 ### Synthèse développeur
 |Fonctions|CLUSTER|Attribut|
@@ -269,6 +271,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Standard : NJOURF+1|0xFF66|0x0226|
 |Standard : PJOURF+1|0xFF66|0x0227|
 |Standard : PPOINTE1|0xFF66|0x0228|
+
 
 
 ## Mise à jour du Firmware (non OTA)
