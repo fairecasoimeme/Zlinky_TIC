@@ -71,7 +71,7 @@ La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appar
 ### values
 |Cluster|Attribut|Value|
 |-------|--------|------|
-|0xFF66|0x0300| 0 - Mode historique monophasé<br> 1 - Mode standard monophasé <br> 2 - Mode historique triphasé<br> 3 - Mode standard triphasé<br> 5 - Mode standard monophasé producteur<br> 6 - Mode standard triphasé producteur|
+|0xFF66|0x0300| 0 - Mode historique monophasé<br> 1 - Mode standard monophasé <br> 2 - Mode historique triphasé<br> 3 - Mode standard triphasé<br> 5 - Mode standard monophasé producteur<br> 7 - Mode standard triphasé producteur|
 
 ### bit values
 bit 0 - Mode historique / standard  
