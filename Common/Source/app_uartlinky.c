@@ -257,6 +257,11 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 					u8TmpCRCHorodate=(u8TmpCRCHorodate & 0x3F)+0x20;
 					if (u8TmpCRCHorodate==u8CRC)
 					{
+						//Specif for DATE
+						if (memcmp(command,"DATE",4)==0)
+						{
+							memcpy(value,date,256);
+						}
 						//DBG_vPrintf(1, "\r\n%s %s %s",command, date, value);
 						return(TRUE);
 					}else{
