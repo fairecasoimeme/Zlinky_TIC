@@ -66,6 +66,18 @@ La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appar
 0x0007 | PowerSource|0x03|
 0x4000 | SWBuildID|4000-0001|
 
+### Linky Mode ( From V4)
+
+### values
+|Cluster|Attribut|Value|
+|-------|--------|------|
+|0xFF66|0x0300| 0 - Mode historique monophasé<br> 1 - Mode standard monophasé <br> 2 - Mode historique triphasé<br> 3 - Mode standard triphasé<br> 5 - Mode standard monophasé producteur<br> 6 - Mode standard triphasé producteur|
+
+### bit values
+bit 0 - Mode historique / standard  
+bit 1 - Triphasé / Monophasé   
+bit 2 - Production / non production  
+
 ### Subscription (OPTARIF Values)
 
 #### Mode historique  
