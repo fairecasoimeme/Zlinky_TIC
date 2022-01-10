@@ -69,6 +69,8 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_STANDARD_PJOURF1,       (E_ZCL_AF_RD),       E_ZCL_LOSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPJOURF1),0},
 		{E_CLD_LINKY_STANDARD_PPOINTE,       (E_ZCL_AF_RD),       E_ZCL_LOSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPPOINTE),0},
 
+		{E_CLD_LINKY_MODE,      			(E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->au8LinkyMode),0},
+
 };
 
 tsZCL_ClusterDefinition sCLD_Linky = {

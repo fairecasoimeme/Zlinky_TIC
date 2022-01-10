@@ -69,6 +69,8 @@ typedef enum
 	E_CLD_LINKY_STANDARD_PJOURF1			   	= 0x0227,
 	E_CLD_LINKY_STANDARD_PPOINTE			   	= 0x0228,
 
+	E_CLD_LINKY_MODE						   	= 0x0300,
+
 } teCLD_Linky_ClusterID;
 
 typedef struct
@@ -121,6 +123,7 @@ typedef struct
 	 uint8                       au8LinkyPJOURF1[48];
 	 tsZCL_CharacterString       sLinkyPPOINTE;
 	 uint8                       au8LinkyPPOINTE[48];
+	 uint8                       au8LinkyMode;
 
 } tsCLD_Linky;
 

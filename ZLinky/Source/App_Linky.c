@@ -217,6 +217,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nEAIT : %s",au8Value);
 					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationReceived= atol(au8Value);
+					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 2) ;
 				}else if(memcmp(au8Command,"ERQ1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ1 : %s",au8Value);
@@ -241,6 +242,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nIRMS2 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
 				}else if(memcmp(au8Command,"IRMS3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS3 : %s",au8Value);
@@ -528,6 +530,7 @@ uint8 APP_vProcessRxDataHisto ( void )
 				{
 					DBG_vPrintf(1, "\r\nIINST1 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
 				}else if(memcmp(au8Command,"IINST2",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST2 : %s",au8Value);
@@ -637,9 +640,11 @@ PUBLIC void vAPP_LinkySensorSample(void)
     if (u8ModeLinky==1)
 	{
 		UARTLINKY_vSetBaudRate ( 9600 );
+		sBaseDevice.sLinkyServerCluster.au8LinkyMode = 1;
 	}else if (u8ModeLinky==0)
 	{
 		UARTLINKY_vSetBaudRate ( 1200 );
+		sBaseDevice.sLinkyServerCluster.au8LinkyMode = 0;
 	}
 
     DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
@@ -660,11 +665,12 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	if (u8StatusLinky>0)
     		break;
 
+
     	WWDT_Refresh(WWDT);
     	wdt_update_count = 0;
 
     }
-
+    DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
     UARTLINKY_vDeInit();
 
     if (u8StatusLinky == 2)
@@ -679,6 +685,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
     		u8ModeLinky=1;
     		DBG_vPrintf(TRACE_LINKY, "\r\nmode Standard");
     	}
+
     	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1);
     	//GPIO_PinInit(GPIO, APP_BASE_BOARD_LED1_PIN, 10, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 1}));
     	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); // ON
