@@ -280,7 +280,7 @@ const tsZCL_AttributeDefinition asCLD_ElectricalMeasurementClusterAttributeDefin
     #endif
         
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD
-        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD,    (E_ZCL_AF_RD|E_ZCL_AF_WR),      E_ZCL_UINT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriod),        0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD,    (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_UINT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriod),        0},   /* Optional */
     #endif
 
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_OVER_VOLTAGE_COUNTER
@@ -448,7 +448,7 @@ const tsZCL_AttributeDefinition asCLD_ElectricalMeasurementClusterAttributeDefin
     #endif    
     
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHB
-        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHB,  (E_ZCL_AF_RD|E_ZCL_AF_WR),    E_ZCL_UINT16,    (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriodPhB),     0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHB,  (E_ZCL_AF_RD|E_ZCL_AF_RP),    E_ZCL_UINT16,    (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriodPhB),     0},   /* Optional */
     #endif    
     
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_OVER_VOLTAGE_COUNTER_PHB 
@@ -536,7 +536,7 @@ const tsZCL_AttributeDefinition asCLD_ElectricalMeasurementClusterAttributeDefin
     #endif    
     
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHC
-        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHC,  (E_ZCL_AF_RD|E_ZCL_AF_WR),    E_ZCL_UINT16,    (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriodPhC),     0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_AVG_RMS_VOLTAGE_MEASUREMENT_PERIOD_PHC,  (E_ZCL_AF_RD|E_ZCL_AF_RP),    E_ZCL_UINT16,    (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16AverageRMSVoltageMeasurementPeriodPhC),     0},   /* Optional */
     #endif    
     
     #ifdef CLD_ELECTMEAS_ATTR_AVG_RMS_OVER_VOLTAGE_COUNTER_PHC 
