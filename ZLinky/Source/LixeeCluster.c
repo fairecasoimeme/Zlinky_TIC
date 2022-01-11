@@ -53,7 +53,7 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_STANDARD_MSG1,       (E_ZCL_AF_RD),       E_ZCL_CSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyMSG1),0},
 		{E_CLD_LINKY_STANDARD_MSG2,       (E_ZCL_AF_RD),       E_ZCL_CSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyMSG2),0},
 
-		{E_CLD_LINKY_STANDARD_STGE,       (E_ZCL_AF_RD),       E_ZCL_OSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkySTGE),0},
+		{E_CLD_LINKY_STANDARD_STGE,       (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_OSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkySTGE),0},
 		{E_CLD_LINKY_STANDARD_DPM1,       (E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->u8LinkyDPM1),0},
 		{E_CLD_LINKY_STANDARD_FPM1,       (E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->u8LinkyFPM1),0},
 		{E_CLD_LINKY_STANDARD_DPM2,       (E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->u8LinkyDPM2),0},
