@@ -264,7 +264,7 @@ const tsZCL_AttributeDefinition asCLD_ElectricalMeasurementClusterAttributeDefin
     #endif
 
     #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MAX
-        {E_CLD_ELECTMEAS_ATTR_ID_ACTIVE_POWER_MAX,                      E_ZCL_AF_RD,                    E_ZCL_INT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i16ActivePowerMax),       0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_ACTIVE_POWER_MAX,                      (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_INT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i16ActivePowerMax),       0},   /* Optional */
     #endif
         
     #ifdef CLD_ELECTMEAS_ATTR_REACTIVE_POWER
