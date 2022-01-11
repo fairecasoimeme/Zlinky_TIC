@@ -72,6 +72,9 @@ uint8              au8Date[128];
 uint8              au8Value[256];
 uint8              loopOK;
 uint32  		   u32Timeout=0;
+
+uint8              au8oldSTGE[8];
+bool  			   alarmLinky=false;
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
@@ -267,6 +270,17 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nSTGE : %s",au8Value);
 					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkySTGE, au8Value,8);
+					if (loopOK==1)
+					{
+						if (memcmp(au8Value,au8oldSTGE,8)!=0)
+						{
+							alarmLinky=TRUE;
+							memcpy(au8oldSTGE, au8Value,8);
+						}else{
+							alarmLinky=FALSE;
+						}
+					}
+
 				}else if(memcmp(au8Command,"PCOUP",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nPCOUP : %s",au8Value);
@@ -458,7 +472,8 @@ uint8 APP_vProcessRxDataHisto ( void )
 				if (memcmp(au8Command,"ADCO",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nADCO : %s",au8Value);
-
+					//RAZ ADPS alarm
+					sBaseDevice.sLinkyServerCluster.au16LinkyADPS=0;
 					memcpy(sBaseDevice.sSimpleMeteringServerCluster.sMeterSerialNumber.pu8Data,au8Value,12);
 					sBaseDevice.sSimpleMeteringServerCluster.sMeterSerialNumber.u8Length=12;
 					loopOK++;
@@ -696,9 +711,15 @@ PUBLIC void vAPP_LinkySensorSample(void)
     }else{
     	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); //OFF
     }
-    //u16ALSResult = random();
-   // sSensor.sIlluminanceMeasurementServerCluster.u16MeasuredValue = u16ALSResult;
+
     DBG_vPrintf(TRACE_LINKY, "ZTIMER_eStart\r\n");
+    //only for standard mode
+    if (alarmLinky)
+    {
+    	 //send STGE
+    	vSendImmediateReport(0xff66,0x217);
+    }
+
     /* Start sample timer so that you keep on sampling if KEEPALIVE_TIME is too high*/
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
     ZTIMER_eStart(u8TimerLinky, ZTIMER_TIME_MSEC(7000));
