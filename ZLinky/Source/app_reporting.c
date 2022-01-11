@@ -302,6 +302,54 @@ PUBLIC void vSaveReportableRecord(  uint16 u16ClusterID,
 
 }
 
+
+PUBLIC void vSendImmediateReport(uint16 cluster, uint16 attribute)
+{
+	PDUM_thAPduInstance myPDUM_thAPduInstance;
+	tsZCL_Address sDestinationAddress;
+	teZCL_Status eStatus;
+
+	DBG_vPrintf(1, "\r\nREPORT: vSendImmediateReport()");
+
+	/* get buffer to write the response in*/
+	myPDUM_thAPduInstance = hZCL_AllocateAPduInstance();
+	/* no buffers - return*/
+	if(myPDUM_thAPduInstance == PDUM_INVALID_HANDLE)
+	{
+		DBG_vPrintf(1, "\r\nREPORT: hZCL_AllocateAPduInstance() == PDUM_INVALID_HANDLE, ERROR!");
+	}
+
+	/* Got buffer ? */
+	else
+	{
+		DBG_vPrintf(1, "\r\nmyPDUM_thAPduInstance : %d",myPDUM_thAPduInstance);
+		/* Set the address mode to send to all bound device and don't wait for an ACK*/
+		sDestinationAddress.eAddressMode = E_ZCL_AM_BOUND_NO_ACK; //MJL: was E_ZCL_AM_BOUND_NO_ACK;
+		sDestinationAddress.uAddress.u16DestinationAddress = 0;
+
+		/* Attempt to send */
+		eStatus = eZCL_ReportAttribute(    &sDestinationAddress,
+											cluster,
+											attribute,
+											1,
+										    1,
+										    myPDUM_thAPduInstance);
+
+		DBG_vPrintf(1, "\r\nREPORT: eZCL_ReportAllAttributes() = 0x%02x", eStatus);
+		/* Sent the report with all attributes ? */
+		if (E_ZCL_SUCCESS == eStatus)
+		{
+			DBG_vPrintf(1, ", SUCCESS");
+		}
+		else
+		{
+			DBG_vPrintf(1, ", FAILED");
+			/* free buffer for failed send */
+			PDUM_eAPduFreeAPduInstance(myPDUM_thAPduInstance);
+		}
+	}
+}
+
 /****************************************************************************/
 /***        END OF FILE                                                   ***/
 /****************************************************************************/
