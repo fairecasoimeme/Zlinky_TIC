@@ -685,7 +685,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	wdt_update_count = 0;
 
     }
-    DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
+    //DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
     UARTLINKY_vDeInit();
 
     if (u8StatusLinky == 2)
