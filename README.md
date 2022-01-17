@@ -307,6 +307,15 @@ Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/document
 
 ## Changelog
 
+### Version 0004
+
+* Add LinkyMode property (cluster 0xFF66 / property : 0x0300)
+* Add Alarm reportable function
+* Add Alarm when STGE was updated
+* Fix reportable value (UMOY1, UMOY2, UMOY2, SMAXN, STGE)
+* Fix ADPS value (RAZ when no appear)
+
+
 ### Version 0003
 
 * Fix data type for 0x702 cluster attribut consumption. uint32 to uint48 (For ZiGate v3.21)
