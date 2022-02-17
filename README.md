@@ -309,7 +309,7 @@ Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/document
 
 ### Version 0005
 
-* Add bintable in debug view
+* Add bindtable in debug view
 * Add compatibility with new hardware
 * Fix ADPS RAZ bug
 
