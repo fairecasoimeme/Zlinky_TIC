@@ -102,6 +102,7 @@
 
 #if ((defined OM15081) || (defined OM5578))
 #define APP_BOARD_SW0_PIN   (0)   /* USERINTERFACE */
+#define APP_BOARD_SW1_PIN   (2)   /* USERINTERFACE */
 #define APP_BOARD_SWISP_PIN (5)   /* ISP */
 
 #define ON (1)

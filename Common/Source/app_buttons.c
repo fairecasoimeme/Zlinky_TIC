@@ -88,8 +88,8 @@ PRIVATE uint8       s_u8ButtonState[APP_BUTTONS_NUM];
 PRIVATE const uint8 s_u8ButtonDIOLine[APP_BUTTONS_NUM] =
 {
       APP_BOARD_SW0_PIN
-#if (defined BUTTON_MAP_OM15082)
     , APP_BOARD_SW1_PIN
+#if (defined BUTTON_MAP_OM15082)
     , APP_BOARD_SW2_PIN
     , APP_BOARD_SW3_PIN
     , APP_BOARD_SW4_PIN
