@@ -472,8 +472,11 @@ uint8 APP_vProcessRxDataHisto ( void )
 				if (memcmp(au8Command,"ADCO",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nADCO : %s",au8Value);
-					//RAZ ADPS alarm
-					sBaseDevice.sLinkyServerCluster.au16LinkyADPS=0;
+					//RAZ ADPS alarm on first ADCO
+					if (loopOK==0)
+					{
+						sBaseDevice.sLinkyServerCluster.au16LinkyADPS=0;
+					}
 					memcpy(sBaseDevice.sSimpleMeteringServerCluster.sMeterSerialNumber.pu8Data,au8Value,12);
 					sBaseDevice.sSimpleMeteringServerCluster.sMeterSerialNumber.u8Length=12;
 					loopOK++;
@@ -591,6 +594,7 @@ uint8 APP_vProcessRxDataHisto ( void )
 					sBaseDevice.sSimpleMeteringServerCluster.sActiveRegisterTierDelivered.u8Length=4;
 				}else if(memcmp(au8Command,"ADPS",4)==0)
 				{
+					DBG_vPrintf(1, "\r\nADPS: %s",au8Value);
 					sBaseDevice.sLinkyServerCluster.au16LinkyADPS=atoi(au8Value);
 
 				}else if(memcmp(au8Command,"ADIR1",5)==0)
