@@ -290,6 +290,9 @@ PUBLIC void APP_vInitialiseRouter(void)
     /*Make the reportable attributes */
     vMakeSupportedAttributesReportable();
 
+    //Bind table
+    vDisplayBindingTable();
+
 #if 0
 // TODO Remove once sdk catches up
  uint8 au8ByteCopy[16] = { 0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff };
