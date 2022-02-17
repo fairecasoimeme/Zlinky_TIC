@@ -307,6 +307,13 @@ Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/document
 
 ## Changelog
 
+### Version 0005
+
+* Add bintable in debug view
+* Add compatibility with new hardware
+* Fix ADPS RAZ bug
+
+
 ### Version 0004
 
 * Add LinkyMode property (cluster 0xFF66 / property : 0x0300)
