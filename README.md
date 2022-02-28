@@ -92,19 +92,19 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
 |------------|-------|--------|-----|--------------|---------|-------|----|-----------|------------|				
 |ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|NULL|
-|![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint32|9 car|Wh| Index Base|0|
+|![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48|9 car|Wh| Index Base|0|
 |OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
 |ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index HCHC|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index HCHP|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index EJPHN|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index EJPHPM|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RO			||Uint32|9 car|Wh|Index BBRHCJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJB			|0x0702	|0x0102		|RO			||Uint32|9 car|Wh|Index BBRHPJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJW			|0x0702	|0x0104		|RO			||Uint32|9 car|Wh|Index BBRHCJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJW			|0x0702	|0x0106		|RO			||Uint32|9 car|Wh|Index BBRHPJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJR			|0x0702	|0x0108		|RO			||Uint32|9 car|Wh|Index BBRHCJR|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJR			|0x0702	|0x010A		|RO			||Uint32|9 car|Wh|Index BBRHPJR|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index HCHC|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index HCHP|0|
+|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index EJPHN|0|
+|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index EJPHPM|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index BBRHCJB|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJB			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index BBRHPJB|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJW			|0x0702	|0x0104		|RO			||Uint48|9 car|Wh|Index BBRHCJW|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJW			|0x0702	|0x0106		|RO			||Uint48|9 car|Wh|Index BBRHPJW|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJR			|0x0702	|0x0108		|RO			||Uint48|9 car|Wh|Index BBRHCJR|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJR			|0x0702	|0x010A		|RO			||Uint48|9 car|Wh|Index BBRHPJR|0|
 |IINST			|0x0B04	|0x0508		|RP			||Uint16|3 car|A|Courant efficace|0xFFFF|
 |IINST1			|0x0B04	|0x0508		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 1|0xFFFF|
 |IINST2			|0x0B04	|0x0908		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 2|0xFFFF|
@@ -135,22 +135,22 @@ RO= READ only RP= Reportable / RW = Read/Write
 |NTARF|0xFF66|	0x0201|		RO||Uint8|2 car|-| Numéro de l’index tarifaire en cours|-|	
 |VTIC|0xB01|	0x000A|		RO||Uint16|2 car|-| Version de la TIC|-|	
 |DATE|0xFF66|	0x0202|		RO||String|10 car|-| Date et heure courant|EX: E211022162000 |	
-|EAST|0x702|	0x0000|		RP||Uint32|9 car|Wh| Energie active soutirée totale|0 |	
-|EASF01|0x702|	0x0100|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 01|0 |	
-|EASF02|0x702|	0x0102|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 02|0 |	
-|EASF03|0x702|	0x0104|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 03|0 |	
-|EASF04|0x702|	0x0106|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 04|0 |	
-|EASF05|0x702|	0x0108|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 05|0 |	
-|EASF06|0x702|	0x010A|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 06|0 |	
-|EASF07|0x702|	0x010C|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 07|0 |	
-|EASF08|0x702|	0x010E|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 08|0 |	
-|EASF09|0x702|	0x0110|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index 09|0 |	
-|EASF10|0x702|	0x0112|		RP||Uint32|9 car|Wh| Energie active soutirée Fournisseur, index10|0 |	
+|EAST|0x702|	0x0000|		RP||Uint48|9 car|Wh| Energie active soutirée totale|0 |	
+|EASF01|0x702|	0x0100|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 01|0 |	
+|EASF02|0x702|	0x0102|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 02|0 |	
+|EASF03|0x702|	0x0104|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 03|0 |	
+|EASF04|0x702|	0x0106|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 04|0 |	
+|EASF05|0x702|	0x0108|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 05|0 |	
+|EASF06|0x702|	0x010A|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 06|0 |	
+|EASF07|0x702|	0x010C|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 07|0 |	
+|EASF08|0x702|	0x010E|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 08|0 |	
+|EASF09|0x702|	0x0110|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 09|0 |	
+|EASF10|0x702|	0x0112|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index10|0 |	
 |EASD01|0xFF66|	0x0203|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 01|0 |	
 |EASD02|0xFF66|	0x0204|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 02|0 |	
 |EASD03|0xFF66|	0x0205|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 03|0 |	
 |EASD04|0xFF66|	0x0206|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 04|0 |	
-|EAIT|0x702|	0x0001|		RP|Production|Uint32|9 car|Wh| Energie active injectée totale|0 |	
+|EAIT|0x702|	0x0001|		RP|Production|Uint48|9 car|Wh| Energie active injectée totale|0 |	
 |ERQ1|0xB04|	0x0305|		RP|Production|int16|9 car|VArh| Energie réactive Q1 total|0 |	
 |ERQ2|0xB04|	0x050E|		RP|Production|int16|9 car|VArh| Energie réactive Q2 total|0 |	
 |ERQ3|0xB04|	0x090E|		RP|Production|int16|9 car|VArh| Energie réactive Q3 total|0 |	
