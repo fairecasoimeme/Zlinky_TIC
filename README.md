@@ -19,7 +19,9 @@ Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez ré
 Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'un autre coordinateur ZigBee, vous pourrez gérer votre consommation d'électricité.
 
 **Actuellement, l'appareil fonctionne avec le mode Historique et standard du compteur Linky.**  
-**Il permet de gérer tous les abonnements en mono ou triphasé et le mode production (uniquement en mode standard)**  
+**Il permet de gérer tous les abonnements en mono ou triphasé et le mode production (uniquement en mode standard)** 
+
+⚠️ **le mode historique ne fonctionne qu'avec les abonnements classique (BASE, heures pleines/creuses, bleu blanc rouge). Pour tous les abonnements particuliers (ex heures super creuses), il est obligatoire de passer le Linky en mode standard.**  
 
 ## Installation
 Suivre les instructions suivantes :
@@ -294,6 +296,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 
 ## Mise à jour du Firmware (non OTA)
 
+⚠️ **Pour les nouveaux achats, le connecteur noir pour la mise à jour physique n'est plus disponible. Pour autant, il est tout de même possible de procéder à la mise à jour physique mais en maintenant le module USB sur les pastilles. Pour les dernières versions, le hardware et le software permettent d'effectuer des mises à jour OTA au travers de votre box domotique. **
 
 Tout d'abord, il faut dévisser le boitier afin de sortir la carte électronique.
 Ensuite, il faut brancher le module USB TTL sur le ZLinky_TIC comme sur la photo. 
@@ -310,6 +313,11 @@ Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur
 
 Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/documentation/mise-a-jour-de-la-zigate-2/) (similaire à la mise à jour d'une ZiGate+ (V2))
 
+## Errata (hardware)
+
+Sur les premières versions hardware, il n'y a pas de condensateur (voir la photo) engendrant quelques fois, sur certains Linky et en fonction du nombre de requêtes, des coupures ou déconnexion. Si c'est le cas, il convient de contacter par mail le fabricant contact[at]lixee.fr pour effectuer la modification.
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_face_without_capa.jpg" width="800">
 
 ## Changelog
 
