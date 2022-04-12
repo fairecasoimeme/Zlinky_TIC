@@ -15,7 +15,7 @@
 
 **ZLinky_TIC** est un appareil permettant de transmettre toutes les informations du Linky en ZigBee 3.0.  
 **ZLinky_TIC** est alimenté par votre compteur Linky. Il suffit simplement d'enlever le cash (jaune fluo) et de "plugger" l'appareil en pressant sur le bouton orange.  
-Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. Ensuite, le bouton relâché, la Led s'éteint puis se mettre à clignoter.  
+Au départ, **ZLinky_TIC** est en attente d'appairage mais si vous souhaitez réinitialiser l'appareil, il suffit de rester appuyer sur le bouton "link" pendant 10 secondes. Ensuite, le bouton relâché, la Led s'éteint puis se met à clignoter.  
 Une fois appairé à votre box domotique par l'intermédiaire d'une ZiGate ou d'un autre coordinateur ZigBee, vous pourrez gérer votre consommation d'électricité.
 
 **Actuellement, l'appareil fonctionne avec le mode Historique et standard du compteur Linky.**  
@@ -32,11 +32,17 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 
 ## Voyant lumineux
 
-L'appareil clignote 4 fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
+Le voyant lumineux permet de connaître l'état de décodage du Linky.
+
+L'appareil clignote plusieurs fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_error.png" width="200">  
 
 La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
+
+⚠️ **Attention, le voyant lumineux n'a aucun lien avec le mode appairage ou la communication zigbee**  
+
+
 
 ## Clusters
 
