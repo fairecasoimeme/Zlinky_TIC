@@ -319,6 +319,14 @@ Sur les premières versions hardware, il n'y a pas de condensateur (voir la phot
 
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_face_without_capa.jpg" width="800">
 
+Si vous souhaitez faire la modification vous même, vous pouvez le faire à vos risques. Cependant, pour ceux qui maîtrisent le fer à souder, vous pouvez rajouter le condensateur avec la référence suivante ou équivalente :  
+**Ref : 293D107X06R3D2TE3  
+Descriptif : 100uF 6.3Volts format: 293D**  
+
+PS : Si vous n'avez pas exactement la bonne valeur, vous pouvez mettre plus que 100uF)  
+Voici à quoi ressemble la modification:  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
+
 ## Changelog
 
 ### Version 0005
