@@ -172,7 +172,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |PREF|0xB01|	0x000D|		RO||Uint16|2 car|kVA| Puissance app. de référence (PREF)|0 |	
 |STGE|0xFF66|	0x0217|		RO||String|8 car|-| Registre de Statuts|0 |	
 |PCOUP|0xB01|	0x000E|		RO||Uint8|2 car|kVA| Puissance app. de coupure (PCOUP)|0 |	
-|SINSTI|0xFF66|	0x0207|		RP|Production|Uint16|5 car|VA| Puissance app. Instantanée injectée|0 |	
+|SINSTI|0xFF66|	0x0207|		RP|Production|int16|5 car|VA| Puissance app. Instantanée injectée|0 |	
 |SMAXIN|0xFF66|	0x0208|		RP|Production|int16|5 car|VA| Puissance app max. injectée n|0 |	
 |SMAXIN-1|0xFF66|	0x0209|		RO|Production|int16|5 car|VA| Puissance app max. injectée n-1|0 |	
 |CCASN|0xB04|	0x050B|		RP||int16|5 car|W| Point n de la courbe de charge active soutirée|0 |	
