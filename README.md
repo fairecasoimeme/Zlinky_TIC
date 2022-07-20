@@ -103,16 +103,16 @@ RO= READ only RP= Reportable / RW = Read/Write
 |![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48|9 car|Wh| Index Base|0|
 |OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
 |ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index HCHC|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index HCHP|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index EJPHN|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index EJPHPM|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RO			||Uint48|9 car|Wh|Index BBRHCJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJB			|0x0702	|0x0102		|RO			||Uint48|9 car|Wh|Index BBRHPJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJW			|0x0702	|0x0104		|RO			||Uint48|9 car|Wh|Index BBRHCJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJW			|0x0702	|0x0106		|RO			||Uint48|9 car|Wh|Index BBRHPJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJR			|0x0702	|0x0108		|RO			||Uint48|9 car|Wh|Index BBRHCJR|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJR			|0x0702	|0x010A		|RO			||Uint48|9 car|Wh|Index BBRHPJR|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index HCHC|0|
+|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index HCHP|0|
+|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index EJPHN|0|
+|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index EJPHPM|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index BBRHCJB|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJB			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index BBRHPJB|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJW			|0x0702	|0x0104		|RP			||Uint48|9 car|Wh|Index BBRHCJW|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJW			|0x0702	|0x0106		|RP			||Uint48|9 car|Wh|Index BBRHPJW|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJR			|0x0702	|0x0108		|RP			||Uint48|9 car|Wh|Index BBRHCJR|0|
+|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJR			|0x0702	|0x010A		|RP			||Uint48|9 car|Wh|Index BBRHPJR|0|
 |IINST			|0x0B04	|0x0508		|RP			||Uint16|3 car|A|Courant efficace|0xFFFF|
 |IINST1			|0x0B04	|0x0508		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 1|0xFFFF|
 |IINST2			|0x0B04	|0x0908		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 2|0xFFFF|
