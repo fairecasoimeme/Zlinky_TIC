@@ -430,11 +430,13 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"PJOURF+1",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nPJOURF+1 : %s",au8Value);
-					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyPJOURF1, au8Value,48);;
+					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyPJOURF1.pu8Data, au8Value,98);
+					sBaseDevice.sLinkyServerCluster.sLinkyPJOURF1.u8Length=72;
 				}else if(memcmp(au8Command,"PPOINTE",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nPPOINTE : %s",au8Value);
-					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyPPOINTE, au8Value,48);
+					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyPPOINTE.pu8Data, au8Value,98);
+					sBaseDevice.sLinkyServerCluster.sLinkyPPOINTE.u8Length=72;
 				}
 			}
 	}else{
