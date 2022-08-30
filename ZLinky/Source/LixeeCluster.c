@@ -66,8 +66,8 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_STANDARD_NJOURF,       (E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->u8LinkyNJOURF),0},
 		{E_CLD_LINKY_STANDARD_NJOURF1,      (E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->u8LinkyNJOURF1),0},
 
-		{E_CLD_LINKY_STANDARD_PJOURF1,       (E_ZCL_AF_RD),       E_ZCL_LOSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPJOURF1),0},
-		{E_CLD_LINKY_STANDARD_PPOINTE,       (E_ZCL_AF_RD),       E_ZCL_LOSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPPOINTE),0},
+		{E_CLD_LINKY_STANDARD_PJOURF1,       (E_ZCL_AF_RD),       E_ZCL_CSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPJOURF1),0},
+		{E_CLD_LINKY_STANDARD_PPOINTE,       (E_ZCL_AF_RD),       E_ZCL_CSTRING,   (uint32)(&((tsCLD_Linky*)(0))->sLinkyPPOINTE),0},
 
 		{E_CLD_LINKY_MODE,      			(E_ZCL_AF_RD),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->au8LinkyMode),0},
 
@@ -156,11 +156,11 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkySTGE.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkySTGE;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPJOURF1.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPJOURF1);
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPJOURF1.u8Length = 48;
+            ((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPJOURF1.u8Length = 1;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPJOURF1.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPJOURF1;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPPOINTE);
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.u8Length = 48;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.u8Length = 1;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPPOINTE;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->au16LinkyPeriodicSend = 1;

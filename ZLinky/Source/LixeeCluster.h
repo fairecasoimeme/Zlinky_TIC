@@ -119,10 +119,10 @@ typedef struct
 	 uint16						 u16LinkyRELAIS;
 	 uint8						 u8LinkyNJOURF;
 	 uint8						 u8LinkyNJOURF1;
-	 tsZCL_CharacterString       sLinkyPJOURF1;
-	 uint8                       au8LinkyPJOURF1[48];
-	 tsZCL_CharacterString       sLinkyPPOINTE;
-	 uint8                       au8LinkyPPOINTE[48];
+	 tsZCL_CharacterString   sLinkyPJOURF1;
+	 uint8                       au8LinkyPJOURF1[127];
+	 tsZCL_CharacterString   sLinkyPPOINTE;
+	 uint8                       au8LinkyPPOINTE[127];
 	 uint8                       au8LinkyMode;
 
 } tsCLD_Linky;
