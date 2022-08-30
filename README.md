@@ -164,7 +164,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |ERQ3|0xB04|	0x090E|		RP|Production|int16|9 car|VArh| Energie réactive Q3 total|0 |	
 |ERQ4|0xB04|	0x0A0E|		RP|Production|int16|9 car|VArh| Energie réactive Q4 total|0 |	
 |IRMS1|0xB04|	0x0508|		RP|mono / triphasé|Uint16|3 car|A| Courant efficace, phase 1|0 |	
-|IRMS2|0xB04|	0x0908|		RP|Triphasé|Uint16|3 car|A| Courant efficace, phase 21|0 |	
+|IRMS2|0xB04|	0x0908|		RP|Triphasé|Uint16|3 car|A| Courant efficace, phase 2|0 |	
 |IRMS3|0xB04|	0x0A08|		RP|Triphasé|Uint16|3 car|A| Courant efficace, phase 3|0 |	
 |URMS1|0xB04|	0x0505|		RP|mono / triphasé|Uint16|3 car|V|Tension efficace, phase 1|0 |	
 |URMS2|0xB04|	0x0905|		RP|Triphasé|Uint16|3 car|V| Tension efficace, phase 2|0 |	
