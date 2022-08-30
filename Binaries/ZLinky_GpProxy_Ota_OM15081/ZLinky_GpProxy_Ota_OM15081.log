@@ -272,5 +272,3 @@ Source Files
 ../../../Binaries/ZLinky_GpProxy_Ota_OM15081/obj/bdb_nf.o ../../../ZLinky/SDK_2_6_4_JN5189DK6/middleware/wireless/zigbee/BDB/Source/NwkFormation/bdb_nf.c
 ../../../Binaries/ZLinky_GpProxy_Ota_OM15081/obj/bdb_fb_common.o ../../../ZLinky/SDK_2_6_4_JN5189DK6/middleware/wireless/zigbee/BDB/Source/FindAndBind/bdb_fb_common.c
 ../../../Binaries/ZLinky_GpProxy_Ota_OM15081/obj/bdb_fb_target.o ../../../ZLinky/SDK_2_6_4_JN5189DK6/middleware/wireless/zigbee/BDB/Source/FindAndBind/bdb_fb_target.c
-../../../Binaries/ZLinky_GpProxy_Ota_OM15081/obj/app_zcl_task.o ../../../ZLinky/Source/app_zcl_task.c
-../../../Binaries/ZLinky_GpProxy_Ota_OM15081/obj/app_zcl_task.o ../../../ZLinky/Source/app_zcl_task.c

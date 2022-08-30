@@ -80,7 +80,7 @@ enum
  NUMBER_OF_REPORTS
 };
 
-#define ZCL_NUMBER_OF_REPORTS     20
+#define ZCL_NUMBER_OF_REPORTS     50
 #define MIN_REPORT_INTERVAL       1
 #define MAX_REPORT_INTERVAL       0x3d
 
