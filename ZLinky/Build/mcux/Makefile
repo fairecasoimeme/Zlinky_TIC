@@ -38,6 +38,7 @@ TARGET = ZLinky
 #User definable make parameters that may be overwritten from the command line
 
 ZBPRO_DEVICE_TYPE       = ZCR
+#ZBPRO_DEVICE_TYPE       = ZED
 PDM_BUILD_TYPE         ?= _EEPROM
 BAUD                   ?= 115200
 DEBUG                  ?= NONE
@@ -228,6 +229,7 @@ CFLAGS += -DAPP_LOW_POWER_API
 ###############################################################################
 # ZBPro Stack specific options
 ZBPRO_DEVICE_TYPE ?= ZCR
+#ZBPRO_DEVICE_TYPE ?= ZED
 #PDM_BUILD_TYPE ?= _EXTERNAL_FLASH
 PDM_BUILD_TYPE ?=_EEPROM
 
@@ -580,20 +582,20 @@ ifeq ($(OTA_ENCRYPTED),0)
 	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c outputffffffffffffffff.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -v $(JET_VERSION) -n 1 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 2 
-	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n 2 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n 6 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 	# Wrap the Image with OTA header with version 2
-	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.ota -p 1 -v $(JET_VERSION) -n 2 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V6.ota -p 1 -v $(JET_VERSION) -n 6 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 3 
-	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	#$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 	# Wrap the Image with OTA header with version 3
-	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.ota -p 1 -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	#$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.ota -p 1 -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Remove intermediate files
 	rm $(APP_OUT_DIR)/$(TARGET_FULL).bin
 	rm outputffffffffffffffff.bin
 	rm $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin
-	rm $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin
+	rm $(APP_OUT_DIR)/$(TARGET_FULL)_V5.bin
 
 # Encrypted OTA?
 else
@@ -644,7 +646,7 @@ clean:
 ifeq ($(OTA),1)
 	rm -f $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin
 	rm -f $(APP_OUT_DIR)/$(TARGET_FULL)_V2.ota
-	rm -f $(APP_OUT_DIR)/$(TARGET_FULL)_V3.ota
+	rm -f $(APP_OUT_DIR)/$(TARGET_FULL)_V4.ota
 endif
 	rm -f $(APP_SRC_DIR)/pdum_gen.* $(APP_SRC_DIR)/zps_gen*.* $(APP_SRC_DIR)/pdum_apdu.S
 
