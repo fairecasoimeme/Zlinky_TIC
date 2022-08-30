@@ -329,6 +329,14 @@ Voici à quoi ressemble la modification:
 
 ## Changelog
 
+### Version 0006
+
+* Add Route limitation to 1. (Save energy)
+* Add fragmented packet capacity
+* Increase size of config report table (max 50)
+* Increase PDU size
+* Fix data type (0x42) and length (max 72 for the moment) of Standard PJOUR+1 and PPONTE
+
 ### Version 0005
 
 * Add bindtable in debug view
