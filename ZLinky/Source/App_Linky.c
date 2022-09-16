@@ -40,6 +40,8 @@
 
 #include <jendefs.h>
 #include "zps_gen.h"
+#include "PDM.h"
+#include "PDM_IDs.h"
 #include "fsl_wwdt.h"
 #include "App_Linky.h"
 #include "dbg.h"
@@ -75,6 +77,8 @@ uint32  		   u32Timeout=0;
 
 uint8              au8oldSTGE[8];
 bool  			   alarmLinky=false;
+
+PRIVATE tsLinkyParams sLinkyParams;
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
@@ -673,6 +677,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
     u32Timeout=0;
     while(TRUE)
     {
+
     	if (u8ModeLinky == 1)
     	{
 
@@ -728,9 +733,52 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     /* Start sample timer so that you keep on sampling if KEEPALIVE_TIME is too high*/
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
-    ZTIMER_eStart(u8TimerLinky, ZTIMER_TIME_MSEC(7000));
+
+    //SaveLinkyParams();
+
+
+    ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
 }
 
+
+PUBLIC void LoadLinkyParams()
+{
+	uint16 u16ByteRead;
+	PDM_teStatus eStatusLoad = PDM_eReadDataFromRecord(PDM_ID_APP_LINKY_PARAM,
+															  &sLinkyParams,
+															  sizeof(tsLinkyParams),
+															  &u16ByteRead);
+	if (sLinkyParams.u8LinkySendPeriod == 0)
+	{
+		SaveLinkyParams();
+	}else{
+		sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend=sLinkyParams.u8LinkySendPeriod;
+	}
+	DBG_vPrintf(1,"\r\neStatusLinkyParamsLoad = %d - sLinkyParams.u8LinkySendPeriod = %d\n", eStatusLoad, sLinkyParams.u8LinkySendPeriod);
+
+}
+
+PUBLIC void SaveLinkyParams()
+{
+	if (sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend < 7)
+	{
+		sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend=7;
+	}
+	else if (sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend > 60)
+	{
+			sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend=60;
+	}
+	if (sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend != sLinkyParams.u8LinkySendPeriod)
+	{
+		sLinkyParams.u8LinkySendPeriod = sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend;
+
+		PDM_eSaveRecordData(PDM_ID_APP_LINKY_PARAM,
+								&sLinkyParams,
+								sizeof(tsLinkyParams));
+	}
+
+	DBG_vPrintf(1,"\r\nSaveLinkyParams - sLinkyParams.u8LinkySendPeriod = %d\n", sLinkyParams.u8LinkySendPeriod);
+}
 /****************************************************************************
  *
  * NAME: app_u8GetDeviceEndpoint

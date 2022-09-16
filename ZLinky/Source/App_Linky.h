@@ -65,6 +65,12 @@
 
 #define SENSOR_OTA_SLEEP_IN_SECONDS                                    1
 /****************************************************************************/
+/***        Type Definitions                                              ***/
+/****************************************************************************/
+typedef struct {
+    uint8 u8LinkySendPeriod;
+}tsLinkyParams;
+/****************************************************************************/
 /***        External Variables                                            ***/
 /****************************************************************************/
 //extern tsZLO_LinkyDevice sSensor;
@@ -73,6 +79,8 @@ extern tsReports asDefaultReports[ZCL_NUMBER_OF_REPORTS];
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 
+PUBLIC void LoadLinkyParams();
+PUBLIC void SaveLinkyParams();
 //void vAPP_ZCL_DeviceSpecific_Init(void);
 //teZCL_Status eApp_ZCL_RegisterEndpoint(tfpZCL_ZCLCallBackFunction fptr);
 //PUBLIC void vAPP_ZCL_DeviceSpecific_UpdateIdentify(void);
