@@ -99,7 +99,7 @@
 #include "rom_api.h"
 #include "rom_psector.h"
 #endif
-
+#include "app_blink_led.h"
 #include "App_Linky.h"
 
 /****************************************************************************/
@@ -292,6 +292,9 @@ PUBLIC void APP_vInitialiseRouter(void)
 
     //Bind table
     vDisplayBindingTable();
+
+    //LinkyParams
+    LoadLinkyParams();
 
 #if 0
 // TODO Remove once sdk catches up
@@ -685,6 +688,8 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
         case ZPS_EVENT_NWK_DISCOVERY_COMPLETE:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: Discovery Complete %02x\r\n",
                     psAfEvent->uEvent.sNwkDiscoveryEvent.eStatus);
+            vStartAwakeTimer(2);
+            vStartBlinkTimer(50);
             break;
 
         case ZPS_EVENT_NWK_LEAVE_INDICATION:
