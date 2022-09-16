@@ -55,6 +55,8 @@ extern "C" {
 #define PDM_ID_APP_ROUTER                            (0x7)
 #define PDM_ID_APP_END_DEVICE                        (0x8)
 #define PDM_ID_APP_REPORTS                           (0x9)
+#define PDM_ID_APP_LINKY_PARAM                       (0xA)
+
 #define PDM_ID_APP_NFC_OTA                          (0x32)
 #define PDM_ID_APP_MAC_FILTERING					(0xAA)
 
