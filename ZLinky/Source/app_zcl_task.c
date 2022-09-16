@@ -56,6 +56,7 @@
 #include "app_main.h"
 
 #include "base_device.h"
+#include "App_Linky.h"
 
 
 #include "app_events.h"
@@ -99,7 +100,6 @@ PRIVATE void APP_vZCL_DeviceSpecific_Init(void);
 /****************************************************************************/
 /***        Exported Variables                                            ***/
 /****************************************************************************/
-
 //tsZLO_LinkyDevice sBaseDevice;
 tsZHA_BaseDevice sBaseDevice;
 
@@ -185,6 +185,7 @@ PUBLIC void APP_cbTimerLinky(void *pvParam)
 {
 
 	APP_tsEvent sAppEvent;
+
 	sAppEvent.eType = APP_E_EVENT_PERIODIC_REPORT;
 	if(ZQ_bQueueSend(&APP_msgAppEvents, &sAppEvent) == FALSE)
 	{
@@ -477,15 +478,30 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
 
         case E_ZCL_CBET_CLUSTER_UPDATE:
             DBG_vPrintf(TRACE_ZCL, "Update Id %04x\r\n", psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum);
-            APP_vHandleClusterUpdate(psEvent);
+            //APP_vHandleClusterUpdate(psEvent);
             break;
         case E_ZCL_CBET_REPORT_REQUEST:
+            break;
+
+        case E_ZCL_CBET_WRITE_ATTRIBUTES:
+        	if(LIXEE_CLUSTER_ID_LINKY == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
+			{
+        		if (psEvent->psClusterInstance->psClusterDefinition->psAttributeDefinition->u16AttributeEnum = 0x0100)
+        		{
+        			DBG_vPrintf(TRACE_ZCL, "\r\nEP EVT: E_ZCL_CBET_WRITE_ATTRIBUTES type 0x%x", (uint8)psEvent->eEventType);
+        			SaveLinkyParams();
+
+				}
+
+			}
+
             break;
 
         default:
             DBG_vPrintf(TRACE_ZCL, "\r\nEP EVT: Invalid evt type 0x%x", (uint8)psEvent->eEventType);
             break;
     }
+
 }
 
 /****************************************************************************
@@ -670,13 +686,13 @@ PRIVATE void APP_vZCL_DeviceSpecific_Init(void)
 {
     memcpy(sBaseDevice.sBasicServerCluster.au8ManufacturerName, "LiXee", CLD_BAS_MANUF_NAME_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "ZLinky_TIC", CLD_BAS_MODEL_ID_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20220830", CLD_BAS_DATE_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0006", CLD_BAS_SW_BUILD_SIZE);
+    memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20220909", CLD_BAS_DATE_SIZE);
+    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0007", CLD_BAS_SW_BUILD_SIZE);
     memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0006", CLD_BAS_PCODE_SIZE);
+    memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0007", CLD_BAS_PCODE_SIZE);
     memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
 
-    sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x06;
+    sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x07;
     sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
 }
 
