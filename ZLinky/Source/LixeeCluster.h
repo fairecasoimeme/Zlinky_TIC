@@ -86,7 +86,7 @@ typedef struct
 	 uint16   					 au16LinkyADIR1;
 	 uint16   					 au16LinkyADIR2;
 	 uint16   					 au16LinkyADIR3;
-	 uint16						 au16LinkyPeriodicSend;
+	 uint8						 au8LinkyPeriodicSend;
 	 tsZCL_CharacterString       sLinkyLTARF;
 	 uint8                       au8LinkyLTARF[16];
 	 uint8						 au8LinkyNTARF;
