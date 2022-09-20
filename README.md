@@ -34,16 +34,16 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 
 ## Voyant lumineux
 
-Le voyant lumineux permet de connaître l'état de décodage du Linky.
+Le voyant lumineux permet de connaître l'état de l'appareil.
 
-L'appareil clignote plusieurs fois. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
+L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage.  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_Join_Mode.png" width="200">  
+
+L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_cycle_error.png" width="200">  
 
 La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
-
-⚠️ **Attention, le voyant lumineux n'a aucun lien avec le mode appairage ou la communication zigbee**  
-
 
 
 ## Clusters
@@ -85,6 +85,13 @@ La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appar
 bit 0 - Mode historique / standard  
 bit 1 - Triphasé / Monophasé   
 bit 2 - Production / non production  
+
+### Linky acquisition time (From V7)
+Now you can modify the time to do a Linky acquisition. 
+|Cluster|Attribut|Value|Type|Min|Max|
+|-------|--------|------|-----|----|----|
+|0xFF66|0x0100| 10 (by default)|Uint8 (0x20)|0x07|0x3C|
+
 
 ### Subscription (OPTARIF Values)
 
@@ -328,6 +335,14 @@ Voici à quoi ressemble la modification:
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
 
 ## Changelog
+
+### Version 0007
+
+* Add Linky acquisition timer parameter.(Readable/Writable and in PDM memory) Cluster : 0xff66 - attribut : 0x0100 (par defaut : 0x0A)
+* Add Blinking LED (fast) for permit join mode
+* Add 2 config files. With or without childs routing function
+* Fix blocking timer when Linky Acquisition.
+* Fix Reportable Attribut. SMAXN2 Cluster : 0x0b04 - attribut : 0x090D / SMAXN3 Cluster : 0x0b04 - attribut : 0x0A0D
 
 ### Version 0006
 
