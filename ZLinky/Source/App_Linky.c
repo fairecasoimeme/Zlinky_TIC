@@ -52,6 +52,7 @@
 #include "app.h"
 #include "fsl_usart.h"
 #include "app_uartlinky.h"
+#include "ZTimer.h"
 
 #include "base_device.h"
 //#include "linky_device.h"
@@ -691,7 +692,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	if (u8StatusLinky>0)
     		break;
 
-
+    	ZTIMER_vTask();
     	WWDT_Refresh(WWDT);
     	wdt_update_count = 0;
 
