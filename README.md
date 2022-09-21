@@ -45,6 +45,18 @@ L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs l
 La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
 
+## Route or not route (From V7)
+
+À partir de la version 7 du firmware, il existe 2 versions de fichier de mise à jour (OTA)  
+  
+Par défaut, le ZLinky_TIC est en mode routeur. Il permet à des capteurs Zigbee tierces de se connecter au Zlinky_TIC et de faire le lien vers un autre routeur ou coordinateur. Ce principe permet d'augmenter, fiabiliser le maillage ou d'élargir le réseau Zigbee.  
+  
+Cependant, comme le Zlinky_TIC est alimenté par le Linky avec très peu d'énergie (dépendant aussi des marques de Linky) et que le routage intensif consomme de l'énergie (émission / réception des paquets permanents), une version no_route a été développé afin de limiter le trafic des autres appareils sur le Zlinky_TIC.  
+  
+La version no_route est destiné aux utilisateurs qui ont des réseaux énormément maillés et qui entrainent un trafic trop important pour que le Zlinky_TIC soit stable énergétiquement.  
+
+⚠️ **le firmware "no_route" ne concerne uniquement que le routage des enfants, pas son propre routage avec le coordinateur !**
+
 
 ## Clusters
 
