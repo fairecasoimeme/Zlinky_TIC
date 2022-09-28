@@ -348,6 +348,10 @@ Voici à quoi ressemble la modification:
 
 ## Changelog
 
+### Version 0008
+
+* Fix inconsistent app.zpscfg for router mode. https://github.com/fairecasoimeme/Zlinky_TIC/issues/99 
+
 ### Version 0007
 
 * Add Linky acquisition timer parameter.(Readable/Writable and in PDM memory) Cluster : 0xff66 - attribut : 0x0100 (par defaut : 0x0A)
