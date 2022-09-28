@@ -582,9 +582,9 @@ ifeq ($(OTA_ENCRYPTED),0)
 	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c outputffffffffffffffff.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -v $(JET_VERSION) -n 1 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 2 
-	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n 6 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n 8 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 	# Wrap the Image with OTA header with version 2
-	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V6.ota -p 1 -v $(JET_VERSION) -n 6 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V8.ota -p 1 -v $(JET_VERSION) -n 8 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 3 
 	#$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
