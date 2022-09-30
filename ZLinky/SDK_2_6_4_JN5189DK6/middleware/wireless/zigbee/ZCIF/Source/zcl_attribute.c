@@ -476,7 +476,7 @@ PUBLIC bool_t bZCL_CheckManufacturerSpecificAttributeFlagMatch(
                     bool_t                      bManufacturerSpecificAttributeFlag)
 {
 
-    bool_t bLocalManufacturerSpecificAttributeFlag = FALSE;
+   /*bool_t bLocalManufacturerSpecificAttributeFlag = FALSE;
 
     if(psAttributeDefinition==NULL)
     {
@@ -492,7 +492,8 @@ PUBLIC bool_t bZCL_CheckManufacturerSpecificAttributeFlagMatch(
     {
         return(TRUE);
     }
-    return(FALSE);
+    return(FALSE);*/
+	return TRUE;
 }
 
 /****************************************************************************
