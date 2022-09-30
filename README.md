@@ -348,6 +348,12 @@ Voici à quoi ressemble la modification:
 
 ## Changelog
 
+### Version 0009
+
+* Fix Manufacturer specific issue. to fix the manufacturer Specific request error, The check of the flag has been deactivated. This method has been chosen to give compatibility with all plugins.
+https://github.com/zigpy/zha-device-handlers/pull/1165
+
+
 ### Version 0008
 
 * Fix inconsistent app.zpscfg for router mode. https://github.com/fairecasoimeme/Zlinky_TIC/issues/99 
