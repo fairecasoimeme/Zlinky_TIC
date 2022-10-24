@@ -197,7 +197,9 @@ PUBLIC void vAppMain(void)
     SystemCoreClockUpdate();
     OSA_TimeInit();
 
-    GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1);
+    //GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1);
+    //vStartAwakeTimer(5);
+    //vStartBlinkTimer(1);
 }
 
 /****************************************************************************
