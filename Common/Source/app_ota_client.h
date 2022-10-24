@@ -46,9 +46,9 @@
 #define OTA_BUSY_TIME_MS RND_u32GetRand(  2000,    3000) /* Time to wait when OTA state machine is busy */
 #define OTA_IDLE_TIME_MS RND_u32GetRand(900000, 1800000) /* Time to wait when OTA state machine is idle (15-30m) */
 #else
-#define OTA_INIT_TIME_MS RND_u32GetRand(  2000,    7000) /* Time to wait after initialisation */
-#define OTA_BUSY_TIME_MS RND_u32GetRand(  2000,    3000) /* Time to wait when OTA state machine is busy */
-#define OTA_IDLE_TIME_MS RND_u32GetRand(120000,  240000) /* Time to wait when OTA state machine is idle (2-4m) */
+#define OTA_INIT_TIME_MS RND_u32GetRand(   2000,      7000) /* Time to wait after initialisation */
+#define OTA_BUSY_TIME_MS RND_u32GetRand(   2000,      3000) /* Time to wait when OTA state machine is busy */
+#define OTA_IDLE_TIME_MS RND_u32GetRand(7200000, 14400000) /* Time to wait when OTA state machine is idle (2h-4h) */
 #endif
 
 #define MAX_SERVER_EPs 2
