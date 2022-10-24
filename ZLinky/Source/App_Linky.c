@@ -346,15 +346,15 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SINSTS",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+					sBaseDevice.sElectricalMeasurement.u32TotalApparentPower=atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN-1 : %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
+					sBaseDevice.sLinkyServerCluster.u32LinkySMAXSN_1 = atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN1-1",9)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN1-1 : %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 =atol(au8Value);
+					sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN1_1 =atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN2-1",9)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN2-1 : %s",au8Value);
@@ -378,7 +378,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SMAXSN",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i32TotalActivePower=atoi(au8Value);
 				}else if(memcmp(au8Command,"MSG1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nMSG1 : %s",trim(au8Value));
@@ -715,13 +715,15 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     	//GPIO_PinWrite(GPIO, 0, APP_BASE_BOARD_LED1_PIN, 1);
     	//GPIO_PinInit(GPIO, APP_BASE_BOARD_LED1_PIN, 10, &((const gpio_pin_config_t){kGPIO_DigitalOutput, 1}));
-    	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); // ON
+    	//GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); // ON
     	vStartAwakeTimer(5);
     	vStartBlinkTimer(250);
 
     	DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");
     }else{
-    	GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); //OFF
+    	//GPIO_PinWrite(GPIO, APP_BOARD_GPIO_PORT, 10, 1); //ON
+    	vStartAwakeTimer(15);
+    	vStartBlinkTimer(12);
     }
 
     DBG_vPrintf(TRACE_LINKY, "ZTIMER_eStart\r\n");
