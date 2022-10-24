@@ -36,7 +36,7 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 
 Le voyant lumineux permet de connaître l'état de l'appareil.
 
-L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage.  
+L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage. (⚠️ Uniquement à partir de la version 9)
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_Join_Mode.png" width="200">  
 
 L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
