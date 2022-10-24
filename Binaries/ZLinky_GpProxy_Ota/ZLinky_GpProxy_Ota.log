@@ -1,0 +1,3 @@
+../../../Binaries/ZLinky_GpProxy_Ota/obj/pdum_gen.o ../../../ZLinky/Source/pdum_gen.c
+../../../Binaries/ZLinky_GpProxy_Ota/obj/zps_gen.o ../../../ZLinky/Source/zps_gen.c
+../../../Binaries/ZLinky_GpProxy_Ota/obj/pdum_apdu.o ../../../ZLinky/Source/pdum_apdu.S
