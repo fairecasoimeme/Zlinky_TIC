@@ -36,7 +36,7 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 
 Le voyant lumineux permet de connaître l'état de l'appareil.
 
-L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage. (⚠️ Uniquement à partir de la V7)
+L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage. (⚠️ Uniquement à partir de la V7)  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_Join_Mode.png" width="200">  
 
 L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
@@ -314,16 +314,16 @@ RO= READ only RP= Reportable / RW = Read/Write
 ## Mise à jour du Firmware (OTA)
 
 Il existe deux types de Firmware :  
-Legacy : Mode routeur (possibilité de gérer le routage de 5 enfants)
-Limited : Mode routeur (1 seul routage autorisé)
-
-La mise à jour OTA ne peut se faire que si le mode du fichier OTA est le même que le précédent.  
+* Legacy : Mode routeur (possibilité de gérer le routage de 5 enfants)  
+* Limited : Mode routeur (1 seul routage autorisé)  
   
-Pour changer de mode, veuillez suivre la mise à jour (non OTA)
+⚠️ **La mise à jour OTA ne peut se faire que si le mode du fichier OTA est le même que le précédent.**  
+  
+Pour changer de mode, veuillez suivre la mise à jour (non OTA)  
 
 ## Mise à jour du Firmware (non OTA)
 
-⚠️ **Pour les nouveaux achats, le connecteur noir pour la mise à jour physique n'est plus disponible. Pour autant, il est tout de même possible de procéder à la mise à jour physique mais en maintenant le module USB sur les pastilles. Pour les dernières versions, le hardware et le software permettent d'effectuer des mises à jour OTA au travers de votre box domotique. **
+⚠️ **Pour les nouveaux achats, le connecteur noir pour la mise à jour physique n'est plus disponible. Pour autant, il est tout de même possible de procéder à la mise à jour physique mais en maintenant le module USB sur les pastilles. Pour les dernières versions, le hardware et le software permettent d'effectuer des mises à jour OTA au travers de votre box domotique.**  
 
 Tout d'abord, il faut dévisser le boitier afin de sortir la carte électronique.
 Ensuite, il faut brancher le module USB TTL sur le ZLinky_TIC comme sur la photo. 
