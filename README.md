@@ -45,17 +45,17 @@ L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs l
 La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
 
-## Route or not route (From V7)
+## Route or limited route (From V7)
 
 À partir de la version 7 du firmware, il existe 2 versions de fichier de mise à jour (OTA)  
   
-Par défaut, le ZLinky_TIC est en mode routeur. Il permet à des capteurs Zigbee tierces de se connecter au Zlinky_TIC et de faire le lien vers un autre routeur ou coordinateur. Ce principe permet d'augmenter, fiabiliser le maillage ou d'élargir le réseau Zigbee.  
+Par défaut, le ZLinky_TIC est en mode routeur (legacy). Il permet à des capteurs Zigbee tierces (max 5) de se connecter au Zlinky_TIC et de faire le lien vers un autre routeur ou coordinateur. Ce principe permet d'augmenter, fiabiliser le maillage ou d'élargir le réseau Zigbee.  
   
-Cependant, comme le Zlinky_TIC est alimenté par le Linky avec très peu d'énergie (dépendant aussi des marques de Linky) et que le routage intensif consomme de l'énergie (émission / réception des paquets permanents), une version no_route a été développé afin de limiter le trafic des autres appareils sur le Zlinky_TIC.  
+Cependant, comme le Zlinky_TIC est alimenté par le Linky avec très peu d'énergie (dépendant aussi des marques de Linky) et que le routage intensif consomme de l'énergie (émission / réception des paquets permanents), une version "Limited" a été développé afin de limiter le trafic des autres appareils sur le Zlinky_TIC.  
   
-La version no_route est destiné aux utilisateurs qui ont des réseaux énormément maillés et qui entrainent un trafic trop important pour que le Zlinky_TIC soit stable énergétiquement.  
+La version "Limited" est destiné aux utilisateurs qui ont des réseaux énormément maillés et qui entrainent un trafic trop important pour que le Zlinky_TIC soit stable énergétiquement.  
 
-⚠️ **le firmware "no_route" ne concerne uniquement que le routage des enfants, pas son propre routage avec le coordinateur !**
+⚠️ **le firmware "Limited" ne concerne uniquement que le routage des enfants, pas son propre routage avec le coordinateur !**
 
 
 ## Clusters
@@ -84,7 +84,7 @@ La version no_route est destiné aux utilisateurs qui ont des réseaux énormém
 0x0005 | ModelIdentifier|ZLinky_TIC|
 0x0006 | DateCode|20210401|
 0x0007 | PowerSource|0x03|
-0x4000 | SWBuildID|4000-0001|
+0x4000 | SWBuildID| < V9: 4000-XXXX <br> > V9: 4000-XXXX (Legacy firmware) - 4001-XXXX (LIMITED firmware)|
 
 ### Linky Mode ( From V4)
 
@@ -201,15 +201,15 @@ RO= READ only RP= Reportable / RW = Read/Write
 |UMOY1|0xB04|	0x0511|		RP|mono / triphasé|Uint16|3 car|V|Tension moy. ph. 1|0 |	
 |UMOY2|0xB04|	0x0911|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 2|0 |	
 |UMOY3|0xB04|	0x0A11|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 3|0 |	
-|SINSTS|0xB04|	0x050F|		RP||Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
+|SINSTS|0xB04|	0x0305|		RP|(Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
 |SINSTS1|0xB04|	0x050F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph.1|0 |	
 |SINSTS2|0xB04|	0x090F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 2|0 |	
 |SINSTS3|0xB04|	0x0A0F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 3|0 |	
-|SMAXN|0xB04|	0x050D|		RP||int16|5 car|VA|Puissance app. max. soutirée n|0 |	
+|SMAXN|0xB04|	0x0304|		RP|(Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n|0 |	
 |SMAXN1|0xB04|	0x050D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph.1|0 |	
 |SMAXN2|0xB04|	0x090D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 2|0 |	
 |SMAXN3|0xB04|	0x0A0D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 3|0 |	
-|SMAXN-1|0xFF66|	0x0212|		RO||int16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
+|SMAXN-1|0xFF66|	0x0229|		RO|(Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
 |SMAXN1-1|0xFF66|	0x0212|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
 |SMAXN2-1|0xFF66|	0x0213|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph. 2|0 |	
 |SMAXN3-1|0xFF66|	0x0214|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph. 3|0 |	
@@ -311,7 +311,15 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Standard : PJOURF+1|0xFF66|0x0227|
 |Standard : PPOINTE1|0xFF66|0x0228|
 
+## Mise à jour du Firmware (OTA)
 
+Il existe deux types de Firmware :  
+Legacy : Mode routeur (possibilité de gérer le routage de 5 enfants)
+Limited : Mode routeur (1 seul routage autorisé)
+
+La mise à jour OTA ne peut se faire que si le mode du fichier OTA est le même que le précédent.  
+  
+Pour changer de mode, veuillez suivre la mise à jour (non OTA)
 
 ## Mise à jour du Firmware (non OTA)
 
@@ -347,6 +355,14 @@ Voici à quoi ressemble la modification:
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
 
 ## Changelog
+
+### Version 0010
+
+* Update LED management to reduce consumption when all is ok (LED ON)
+* Add new cluster/ attr SINSTS, SMAXN and SMAXN-1 because these values are unique in "mode triphasé" https://github.com/fairecasoimeme/Zlinky_TIC/issues/112
+* Update MCUXpresso config files and Makefile to manage limited and legacy firmware
+* Update OTA time wait. Verify update OTA between 2 hours and 4 hours instead of 2m-4m
+* Rename the limited version configuration file
 
 ### Version 0009
 
