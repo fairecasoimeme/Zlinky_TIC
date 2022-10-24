@@ -48,7 +48,8 @@ typedef enum
 	E_CLD_LINKY_STANDARD_CCAIN			       = 0x0210,
 	E_CLD_LINKY_STANDARD_CCAIN_1			   = 0x0211,
 
-	E_CLD_LINKY_STANDARD_SMAXSN_1   		   = 0x0212,
+	E_CLD_LINKY_STANDARD_SMAXSN_1   		   = 0x0229,
+	E_CLD_LINKY_STANDARD_SMAXSN1_1   		   = 0x0212,
 	E_CLD_LINKY_STANDARD_SMAXSN2_1			   = 0x0213,
 	E_CLD_LINKY_STANDARD_SMAXSN3_1			   = 0x0214,
 
@@ -101,7 +102,8 @@ typedef struct
 	 int16						 u16LinkySMAXIN_1;
 	 int16						 u16LinkyCCAIN;
 	 int16						 u16LinkyCCAIN_1;
-	 uint16						 u16LinkySMAXSN_1;
+	 uint32						 u32LinkySMAXSN_1;
+	 uint16						 u16LinkySMAXSN1_1;
 	 uint16						 u16LinkySMAXSN2_1;
 	 uint16						 u16LinkySMAXSN3_1;
 	 tsZCL_CharacterString       sLinkyMSG1;
