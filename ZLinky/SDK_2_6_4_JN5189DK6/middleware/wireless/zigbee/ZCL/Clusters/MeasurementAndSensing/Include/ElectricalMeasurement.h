@@ -376,15 +376,15 @@ typedef struct
 #endif
     
 #ifdef CLD_ELECTMEAS_ATTR_TOTAL_ACTIVE_POWER 
-    zint32                 i32TotalActivePower;
+    zint16               i16TotalActivePower;
 #endif
     
 #ifdef CLD_ELECTMEAS_ATTR_TOTAL_REACTIVE_POWER
-    zint32                 i32TotalReactivePower;
+    zint16                 i16TotalReactivePower;
 #endif
     
 #ifdef CLD_ELECTMEAS_ATTR_TOTAL_APPARENT_POWER 
-    zuint32                 u32TotalApparentPower;
+    zuint16                 u16TotalApparentPower;
 #endif
     
 #ifdef CLD_ELECTMEAS_ATTR_MEASURED_1_HARMONIC_CURRENT  

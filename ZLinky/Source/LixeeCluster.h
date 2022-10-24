@@ -102,7 +102,7 @@ typedef struct
 	 int16						 u16LinkySMAXIN_1;
 	 int16						 u16LinkyCCAIN;
 	 int16						 u16LinkyCCAIN_1;
-	 uint32						 u32LinkySMAXSN_1;
+	 uint16						 u16LinkySMAXSN_1;
 	 uint16						 u16LinkySMAXSN1_1;
 	 uint16						 u16LinkySMAXSN2_1;
 	 uint16						 u16LinkySMAXSN3_1;

@@ -46,7 +46,7 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_STANDARD_CCAIN ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN),0},
 		{E_CLD_LINKY_STANDARD_CCAIN_1 ,     (E_ZCL_AF_RD),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN_1),0},
 
-		{E_CLD_LINKY_STANDARD_SMAXSN_1 ,     (E_ZCL_AF_RD),        E_ZCL_UINT32,   (uint32)(&((tsCLD_Linky*)(0))->u32LinkySMAXSN_1),0},
+		{E_CLD_LINKY_STANDARD_SMAXSN_1 ,     (E_ZCL_AF_RD),        E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN_1),0},
 		{E_CLD_LINKY_STANDARD_SMAXSN1_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN1_1),0},
 		{E_CLD_LINKY_STANDARD_SMAXSN2_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN2_1),0},
 		{E_CLD_LINKY_STANDARD_SMAXSN3_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN3_1),0},

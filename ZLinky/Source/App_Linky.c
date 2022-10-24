@@ -229,7 +229,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"ERQ1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i32TotalReactivePower = atol(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16TotalReactivePower = atol(au8Value);
 				}else if(memcmp(au8Command,"ERQ2",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ2 : %s",au8Value);
@@ -346,11 +346,11 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SINSTS",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u32TotalApparentPower=atol(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN-1 : %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.u32LinkySMAXSN_1 = atol(au8Value);
+					sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN1-1",9)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN1-1 : %s",au8Value);
@@ -378,7 +378,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SMAXSN",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i32TotalActivePower=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atoi(au8Value);
 				}else if(memcmp(au8Command,"MSG1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nMSG1 : %s",trim(au8Value));
