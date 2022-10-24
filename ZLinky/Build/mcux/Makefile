@@ -124,7 +124,8 @@ DISABLE_LTO            = 1
 
 OTA ?= 0 
 OTA_ENCRYPTED ?= 0
-
+LIMITED ?= 0
+VERSION = 10
 ###############################################################################
 # Network settings
 
@@ -146,8 +147,14 @@ endif
 
 MANUFACTURER_CODE = 0x1037
 ifeq ($(OTA_ENCRYPTED),0)
-    OTA_DEVICE_ID = 0x0001
-    OTA_STRING = $(OTA_HW)-RTR-$(OTA_CHIP_STRING)0000000000000
+	ifeq ($(LIMITED),0)
+	    OTA_DEVICE_ID = 0x0001
+	    OTA_STRING = $(OTA_HW)-RTR-$(OTA_CHIP_STRING)0000000000000
+    else
+	    OTA_DEVICE_ID = 0x0002
+	    OTA_STRING = $(OTA_HW)-RTR-LIMITED-$(OTA_CHIP_STRING)00000
+    endif
+    
 else
     OTA_DEVICE_ID = 0x8001
     OTA_STRING = $(OTA_HW)-RTR-$(OTA_CHIP_STRING)--ENCRYPTED00
@@ -289,10 +296,11 @@ CFLAGS += -DDEBUG_APP_NTAG
 CFLAGS += -DDEBUG_RF_COMMANDS
 CFLAGS += -DDEBUG_LINKY
 CFLAGS += -DDEBUG_REPORT
-
-
 endif
 
+ifeq ($(LIMITED), 1)
+	CFLAGS += -DLIMITED
+endif
 CFLAGS += -D$(TARGET)
 
 ICODES ?= 0
@@ -375,7 +383,11 @@ APPSRC += fsl_spifi.c
 APPSRC += Eeprom_MX25R8035F_User.c
 endif
 
-APP_ZPSCFG = app.zpscfg
+ifeq ($(LIMITED),0)
+	APP_ZPSCFG = app.zpscfg
+else
+	APP_ZPSCFG = app_limited.zpscfg	
+endif
 
 OPTIONAL_STACK_FEATURES = $(shell $(ZPSCONFIG) -n $(TARGET) -f $(APP_COMMON_SRC_DIR)/$(APP_ZPSCFG) -y )
 
@@ -455,7 +467,13 @@ ifneq ($(SINGLE_CHANNEL), 0)
 TARGET_HARDWARE:=$(TARGET_HARDWARE)_CH$(SINGLE_CHANNEL)
 endif
 
-TARGET_FULL=$(TARGET)$(TARGET_FEATURES)$(TARGET_HARDWARE)
+ifeq ($(LIMITED),0)
+	TARGET_FULL=$(TARGET)$(TARGET_FEATURES)
+else
+	TARGET_FULL=$(TARGET)$(TARGET_FEATURES)_LIMITED
+endif
+
+#TARGET_FULL=$(TARGET)$(TARGET_FEATURES)$(TARGET_HARDWARE)
 ifeq ($(DUAL_BOOT),1)
 TARGET_FULL:=Ssbl_$(TARGET_FULL)
 endif
@@ -465,6 +483,7 @@ APP_OUT_DIR = $(APP_BASE)/Binaries/$(TARGET_FULL)
 APP_OBJ_DIR = $(APP_BASE)/Binaries/$(TARGET_FULL)/obj
 $(info $(shell mkdir -p $(APP_OUT_DIR)))
 $(info $(shell mkdir -p $(APP_OBJ_DIR)))
+
 
 ###############################################################################
 
@@ -582,9 +601,9 @@ ifeq ($(OTA_ENCRYPTED),0)
 	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c outputffffffffffffffff.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -v $(JET_VERSION) -n 1 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 2 
-	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n 9 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -v $(JET_VERSION) -n $(VERSION) -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 	# Wrap the Image with OTA header with version 2
-	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V9.ota -p 1 -v $(JET_VERSION) -n 9 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
+	$(JET_BASE)/JET.exe -m otamerge --ota -c $(APP_OUT_DIR)/$(TARGET_FULL)_V2.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V$(VERSION).ota -p 1 -v $(JET_VERSION) -n $(VERSION) -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
 
 	# Modify Embedded Header to reflect version 3 
 	#$(JET_BASE)/JET.exe -m otamerge --embed_hdr -c $(APP_OUT_DIR)/$(TARGET_FULL)_V1.bin -o $(APP_OUT_DIR)/$(TARGET_FULL)_V3.bin -v $(JET_VERSION) -n 3 -u $(MANUFACTURER_CODE) -t $(OTA_DEVICE_ID) -j $(OTA_STRING) --sector_size=512
