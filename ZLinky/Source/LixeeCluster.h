@@ -48,7 +48,6 @@ typedef enum
 	E_CLD_LINKY_STANDARD_CCAIN			       = 0x0210,
 	E_CLD_LINKY_STANDARD_CCAIN_1			   = 0x0211,
 
-	E_CLD_LINKY_STANDARD_SMAXSN_1   		   = 0x0229,
 	E_CLD_LINKY_STANDARD_SMAXSN1_1   		   = 0x0212,
 	E_CLD_LINKY_STANDARD_SMAXSN2_1			   = 0x0213,
 	E_CLD_LINKY_STANDARD_SMAXSN3_1			   = 0x0214,
@@ -71,6 +70,8 @@ typedef enum
 	E_CLD_LINKY_STANDARD_PPOINTE			   	= 0x0228,
 
 	E_CLD_LINKY_MODE						   	= 0x0300,
+
+	E_CLD_LINKY_STANDARD_SMAXSN_1   		    = 0x0400,
 
 } teCLD_Linky_ClusterID;
 
@@ -102,7 +103,6 @@ typedef struct
 	 int16						 u16LinkySMAXIN_1;
 	 int16						 u16LinkyCCAIN;
 	 int16						 u16LinkyCCAIN_1;
-	 uint16						 u16LinkySMAXSN_1;
 	 uint16						 u16LinkySMAXSN1_1;
 	 uint16						 u16LinkySMAXSN2_1;
 	 uint16						 u16LinkySMAXSN3_1;
@@ -126,6 +126,7 @@ typedef struct
 	 tsZCL_CharacterString   sLinkyPPOINTE;
 	 uint8                       au8LinkyPPOINTE[127];
 	 uint8                       au8LinkyMode;
+	 uint16						 u16LinkySMAXSN_1;
 
 } tsCLD_Linky;
 
