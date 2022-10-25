@@ -209,10 +209,10 @@ RO= READ only RP= Reportable / RW = Read/Write
 |SMAXN1|0xB04|	0x050D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph.1|0 |	
 |SMAXN2|0xB04|	0x090D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 2|0 |	
 |SMAXN3|0xB04|	0x0A0D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 3|0 |	
-|SMAXN-1|0xFF66|	0x0229|		RO|(Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
-|SMAXN1-1|0xFF66|	0x0212|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
-|SMAXN2-1|0xFF66|	0x0213|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph. 2|0 |	
-|SMAXN3-1|0xFF66|	0x0214|		RO|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n-1 ph. 3|0 |	
+|SMAXN-1|0xFF66|	0x0400|		RO|(Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
+|SMAXN1-1|0xFF66|	0x0212|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
+|SMAXN2-1|0xFF66|	0x0213|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.2|0 |	
+|SMAXN3-1|0xFF66|	0x0214|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.3|0 |	
 |MSG1|0xFF66|	0x0215|		RO||String|32 car|-| Message court|0 |	
 |MSG2|0xFF66|	0x0216|		RO||String|16 car|-| Message ultra court|0 |	
 |PRM|0x702|	0x0307|		RO||String|14 car|-| PRM|0 |	
