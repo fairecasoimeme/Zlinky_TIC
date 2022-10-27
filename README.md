@@ -201,7 +201,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |UMOY1|0xB04|	0x0511|		RP|Mono / triphasé|Uint16|3 car|V|Tension moy. ph. 1|0 |	
 |UMOY2|0xB04|	0x0911|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 2|0 |	
 |UMOY3|0xB04|	0x0A11|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 3|0 |	
-|SINSTS|0xB04|	0x0305|		RP|(Mono /Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
+|SINSTS|0xB04|	0x0306|		RP|(Mono /Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
 |SINSTS1|0xB04|	0x050F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph.1|0 |	
 |SINSTS2|0xB04|	0x090F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 2|0 |	
 |SINSTS3|0xB04|	0x0A0F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 3|0 |	
