@@ -351,6 +351,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 						sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
 					}else{
 						sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
 					}
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
@@ -360,6 +361,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 						sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
 					}else{
 						sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN1_1 =atol(au8Value);
+						sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
 					}
 				}else if(memcmp(au8Command,"SMAXSN1-1",9)==0)
 				{
@@ -393,6 +395,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 						sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atol(au8Value);
 					}else{
 						sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atol(au8Value);
 					}
 				}else if(memcmp(au8Command,"MSG1",4)==0)
 				{
