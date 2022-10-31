@@ -245,28 +245,28 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"IRMS1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
 				}else if(memcmp(au8Command,"IRMS2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atol(au8Value);
 					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
 				}else if(memcmp(au8Command,"IRMS3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atol(au8Value);
 				}else if(memcmp(au8Command,"URMS1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSVoltage=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSVoltage=atol(au8Value);
 				}else if(memcmp(au8Command,"URMS2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhB=atol(au8Value);
 				}else if(memcmp(au8Command,"URMS3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhC=atol(au8Value);
 				}else if(memcmp(au8Command,"PREF",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPREF : %s",au8Value);
@@ -305,11 +305,11 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"CCASN-1",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nCCASN-1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePowerPhB=atol(au8Value);
 				}else if(memcmp(au8Command,"CCASN",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nCCASN : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePower=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePower=atol(au8Value);
 				}else if(memcmp(au8Command,"CCAIN-1",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nCCAIN-1 : %s",au8Value);
@@ -322,15 +322,15 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"UMOY1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nUMOY1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriod=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriod=atol(au8Value);
 				}else if(memcmp(au8Command,"UMOY2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nUMOY2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriodPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriodPhB=atol(au8Value);
 				}else if(memcmp(au8Command,"UMOY3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nUMOY3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriodPhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16AverageRMSVoltageMeasurementPeriodPhC=atol(au8Value);
 				}else if(memcmp(au8Command,"SINSTS1",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS1 : %s",au8Value);
@@ -346,11 +346,21 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SINSTS",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
+					if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode & 2) == 2 )
+					{
+						sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
+					}else{
+						sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+					}
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN-1 : %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
+					if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode & 2) == 2 )
+					{
+						sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN_1 = atol(au8Value);
+					}else{
+						sBaseDevice.sLinkyServerCluster.u16LinkySMAXSN1_1 =atol(au8Value);
+					}
 				}else if(memcmp(au8Command,"SMAXSN1-1",9)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN1-1 : %s",au8Value);
@@ -366,19 +376,24 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"SMAXSN1",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN2",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerMaxPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePowerMaxPhB=atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN3",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerMaxPhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePowerMaxPhC=atol(au8Value);
 				}else if(memcmp(au8Command,"SMAXSN",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSMAXSN : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atoi(au8Value);
+					if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode & 2) == 2 )
+					{
+						sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atol(au8Value);
+					}else{
+						sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atol(au8Value);
+					}
 				}else if(memcmp(au8Command,"MSG1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nMSG1 : %s",trim(au8Value));
@@ -423,7 +438,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"RELAIS",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nRELAIS : %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.u16LinkyRELAIS = atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.u16LinkyRELAIS = atol(au8Value);
 				}else if(memcmp(au8Command,"NJOURF+1",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nNJOURF+1 : %s",au8Value);
@@ -554,45 +569,45 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"IINST1",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
 					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
 				}else if(memcmp(au8Command,"IINST2",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atol(au8Value);
 				}else if(memcmp(au8Command,"IINST3",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atol(au8Value);
 				}else if(memcmp(au8Command,"IINST",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
 					DBG_vPrintf(1, "\r\nIINST : %ld",sBaseDevice.sElectricalMeasurement.u16RMSCurrent);
 				}else if(memcmp(au8Command,"IMAX1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIMAX1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMax=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMax=atol(au8Value);
 				}else if(memcmp(au8Command,"IMAX2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIMAX2 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMaxPhB=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMaxPhB=atol(au8Value);
 				}else if(memcmp(au8Command,"IMAX3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIMAX3 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMaxPhC=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMaxPhC=atol(au8Value);
 				}else if(memcmp(au8Command,"IMAX",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nIMAX : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMax=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16RMSCurrentMax=atol(au8Value);
 				}else if(memcmp(au8Command,"PMAX",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPMAX : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atol(au8Value);
 				}else if(memcmp(au8Command,"PAPP",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPAPP : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.u16ApparentPower=atoi(au8Value);
+					sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
 
 				}else if(memcmp(au8Command,"PTEC",4)==0)
 				{
@@ -602,19 +617,19 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"ADPS",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nADPS: %s",au8Value);
-					sBaseDevice.sLinkyServerCluster.au16LinkyADPS=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au16LinkyADPS=atol(au8Value);
 
 				}else if(memcmp(au8Command,"ADIR1",5)==0)
 				{
-					sBaseDevice.sLinkyServerCluster.au16LinkyADIR1=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au16LinkyADIR1=atol(au8Value);
 
 				}else if(memcmp(au8Command,"ADIR2",5)==0)
 				{
-					sBaseDevice.sLinkyServerCluster.au16LinkyADIR2=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au16LinkyADIR2=atol(au8Value);
 
 				}else if(memcmp(au8Command,"ADIR3",5)==0)
 				{
-					sBaseDevice.sLinkyServerCluster.au16LinkyADIR3=atoi(au8Value);
+					sBaseDevice.sLinkyServerCluster.au16LinkyADIR3=atol(au8Value);
 
 				}else if(memcmp(au8Command,"DEMAIN",6)==0)
 				{
