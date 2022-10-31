@@ -356,6 +356,10 @@ Voici à quoi ressemble la modification:
 
 ## Changelog
 
+### Version 0011
+
+* Add SINST SMAXN SMAXN-1 "monophasé" compatibility to all plugins
+
 ### Version 0010
 
 * Update LED management to reduce consumption when all is ok (LED ON)
