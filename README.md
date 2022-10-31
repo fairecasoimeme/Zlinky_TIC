@@ -201,15 +201,15 @@ RO= READ only RP= Reportable / RW = Read/Write
 |UMOY1|0xB04|	0x0511|		RP|Mono / triphasé|Uint16|3 car|V|Tension moy. ph. 1|0 |	
 |UMOY2|0xB04|	0x0911|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 2|0 |	
 |UMOY3|0xB04|	0x0A11|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 3|0 |	
-|SINSTS|0xB04|	0x0306|		RP|(Mono /Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
+|SINSTS|0xB04|	0x0306 (Triphasé) <br>0x050F (Monophasé)|		RP|(Mono /Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
 |SINSTS1|0xB04|	0x050F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph.1|0 |	
 |SINSTS2|0xB04|	0x090F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 2|0 |	
 |SINSTS3|0xB04|	0x0A0F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 3|0 |	
-|SMAXN|0xB04|	0x0304|		RP|(Mono / Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n|0 |	
+|SMAXN|0xB04|	0x0304 (Triphasé) <br>0x050D (Monophasé)|		RP|(Mono / Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n|0 |	
 |SMAXN1|0xB04|	0x050D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph.1|0 |	
 |SMAXN2|0xB04|	0x090D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 2|0 |	
 |SMAXN3|0xB04|	0x0A0D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 3|0 |	
-|SMAXN-1|0xFF66|	0x0400|		RO|(Mono / Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
+|SMAXN-1|0xFF66|	0x0400 (Triphasé) <br>0x0212 (Monophasé)|		RO|(Mono / Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
 |SMAXN1-1|0xFF66|	0x0212|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
 |SMAXN2-1|0xFF66|	0x0213|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.2|0 |	
 |SMAXN3-1|0xFF66|	0x0214|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.3|0 |	
