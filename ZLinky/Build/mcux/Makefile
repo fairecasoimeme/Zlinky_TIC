@@ -125,7 +125,7 @@ DISABLE_LTO            = 1
 OTA ?= 0 
 OTA_ENCRYPTED ?= 0
 LIMITED ?= 0
-VERSION = 10
+VERSION = 12
 ###############################################################################
 # Network settings
 
@@ -353,6 +353,7 @@ APPSRC += fsl_gint.c
 APPSRC += pdum_apdu.S
 APPSRC += app_power_on_counter.c
 APPSRC += temp_sensor_drv.c
+APPSRC += voltage_drv.c
 APPSRC += fsl_adc.c
 APPSRC += app_reporting.c
 APPSRC += board_utility.c
