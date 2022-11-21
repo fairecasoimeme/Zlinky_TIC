@@ -911,6 +911,23 @@ PRIVATE void vPrintAPSTable(void)
     }
 }
 
+/****************************************************************************
+ *
+ * NAME: app_u8GetDeviceEndpoint
+ *
+ * DESCRIPTION:
+ * Return the application endpoint
+ *
+ * PARAMETER: void
+ *
+ * RETURNS: uint8
+ *
+ ****************************************************************************/
+PUBLIC uint8 app_u8GetDeviceEndpoint( void)
+{
+    return ZLINKY_APPLICATION_ENDPOINT;
+}
+
 #ifdef CLD_OTA
 /****************************************************************************
  *
@@ -943,22 +960,7 @@ PUBLIC tsOTA_PersistedData sGetOTACallBackPersistdata(void)
 {
     return sBaseDevice.sCLD_OTA_CustomDataStruct.sOTACallBackMessage.sPersistedData;
 }
-/****************************************************************************
- *
- * NAME: app_u8GetDeviceEndpoint
- *
- * DESCRIPTION:
- * Return the application endpoint
- *
- * PARAMETER: void
- *
- * RETURNS: uint8
- *
- ****************************************************************************/
-PUBLIC uint8 app_u8GetDeviceEndpoint( void)
-{
-    return ZLINKY_APPLICATION_ENDPOINT;
-}
+
 #endif
 
 #if (defined DUAL_BOOT)
