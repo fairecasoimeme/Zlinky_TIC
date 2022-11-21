@@ -87,6 +87,7 @@
   </Profiles>
   <Profiles Name="HA" Id="0x0104">
     <Clusters Name="Basic" Id="0x0000"/>
+    <Clusters Name="Power_configuration" Id="0x0001"/>
     <Clusters Name="Identify" Id="0x0003"/>
     <Clusters Name="Groups" Id="0x0004"/>
     <Clusters Name="Scenes" Id="0x0005"/>
@@ -501,6 +502,7 @@
       <InputClusters Cluster="ElectricalMeasurement" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="MeterIdentification" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="Lixee" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
+      <InputClusters Cluster="Power_configuration" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <OutputClusters Cluster="OTA" TxAPDUs="ZLinky->apduZCL" Discoverable="true"/>
       <OutputClusters Cluster="Groups" TxAPDUs="ZLinky->apduZCL" Discoverable="false"/>
       <OutputClusters Cluster="Identify" TxAPDUs="ZLinky->apduZCL" Discoverable="false"/>
