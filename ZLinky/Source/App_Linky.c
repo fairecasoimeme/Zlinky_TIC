@@ -53,6 +53,7 @@
 #include "fsl_usart.h"
 #include "app_uartlinky.h"
 #include "ZTimer.h"
+#include "voltage_drv.h"
 
 #include "base_device.h"
 //#include "linky_device.h"
@@ -708,9 +709,14 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	}
 
     	if (u8StatusLinky>0)
+    	{
     		break;
+    	}
 
+		zps_taskZPS();
+		bdb_taskBDB();
     	ZTIMER_vTask();
+
     	WWDT_Refresh(WWDT);
     	wdt_update_count = 0;
 
@@ -752,11 +758,14 @@ PUBLIC void vAPP_LinkySensorSample(void)
     	vSendImmediateReport(0xff66,0x217);
     }
 
+
+    //DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n", Get_BattVolt());
     /* Start sample timer so that you keep on sampling if KEEPALIVE_TIME is too high*/
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
 
     //SaveLinkyParams();
-
+    DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n", Get_BattVolt());
+    sBaseDevice.sPowerConfigServerCluster.u16MainsVoltage = Get_BattVolt();
 
     ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
 }
