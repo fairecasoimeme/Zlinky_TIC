@@ -410,6 +410,10 @@ PUBLIC  teZCL_Status eCLD_PowerConfigurationCreatePowerConfiguration(
         ((tsCLD_PowerConfiguration*)psClusterInstance->pvEndPointSharedStructPtr)->u16ClusterRevision = CLD_PWRCFG_CLUSTER_REVISION;
     }
 
+    ((tsCLD_PowerConfiguration*)psClusterInstance->pvEndPointSharedStructPtr)->u16MainsVoltageMinThreshold = 2600;
+    ((tsCLD_PowerConfiguration*)psClusterInstance->pvEndPointSharedStructPtr)->u16MainsVoltageMaxThreshold = 3600;
+    ((tsCLD_PowerConfiguration*)psClusterInstance->pvEndPointSharedStructPtr)->u16MainsVoltage = 0;
+
     /* As this cluster has reportable attributes enable default reporting */
     vZCL_SetDefaultReporting(psClusterInstance);
     

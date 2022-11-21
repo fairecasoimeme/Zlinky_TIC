@@ -48,6 +48,7 @@ extern "C" {
 #include "LixeeCluster.h"
 #include "ElectricalMeasurement.h"
 #include "meter_identification.h"
+#include "PowerConfiguration.h"
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -109,6 +110,10 @@ typedef struct
 /* OTA Cluster Instance */
 #if (defined CLD_OTA) && (defined OTA_CLIENT)
     tsZCL_ClusterInstance sOTAClient;
+#endif
+
+#if (defined CLD_POWER_CONFIGURATION) && (defined POWER_CONFIGURATION_SERVER)
+    tsZCL_ClusterInstance sPowerConfigurationServer;
 #endif
 
 #if (defined CLD_OTA) && (defined OTA_SERVER)
@@ -191,6 +196,11 @@ typedef struct
      /* OTA cluster - Client */
      tsCLD_AS_Ota sCLD_OTA;
      tsOTA_Common sCLD_OTA_CustomDataStruct;
+#endif
+
+#if (defined CLD_POWER_CONFIGURATION) && (defined POWER_CONFIGURATION_SERVER)
+    /* Power Configuration Cluster - Server */
+    tsCLD_PowerConfiguration sPowerConfigServerCluster;
 #endif
 
 #if (defined CLD_OTA) && (defined OTA_SERVER)

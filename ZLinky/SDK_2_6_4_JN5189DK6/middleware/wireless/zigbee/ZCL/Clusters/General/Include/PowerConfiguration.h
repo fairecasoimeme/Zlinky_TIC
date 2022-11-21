@@ -45,7 +45,7 @@
 /****************************************************************************/
 
 /* Enable the optional Mains Voltage attribute */
-//#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE
+#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE
 
 /* Enable the optional Mains Frequency attribute */
 //#define CLD_PWRCFG_ATTR_MAINS_FREQUENCY
@@ -54,10 +54,10 @@
 //#define CLD_PWRCFG_ATTR_MAINS_ALARM_MASK
 
 /* Enable the optional Mains Voltage Min Threshold attribute */
-//#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE_MIN_THRESHOLD
+#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE_MIN_THRESHOLD
 
 /* Enable the optional Mains Voltage Max Threshold attribute */
-//#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE_MAX_THRESHOLD
+#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE_MAX_THRESHOLD
 
 /* Enable the optional Mains Voltage Dwell Trip Point attribute */
 //#define CLD_PWRCFG_ATTR_MAINS_VOLTAGE_DWELL_TRIP_POINT

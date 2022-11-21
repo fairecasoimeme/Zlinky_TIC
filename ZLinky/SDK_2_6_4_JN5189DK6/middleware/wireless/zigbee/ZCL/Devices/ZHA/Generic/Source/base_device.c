@@ -272,6 +272,18 @@ PUBLIC teZCL_Status eZHA_RegisterBaseDeviceEndPoint(uint8 u8EndPointIdentifier,
 		return E_ZCL_FAIL;
 	}
 
+#if (defined CLD_POWER_CONFIGURATION) && (defined POWER_CONFIGURATION_SERVER)
+    /* Create an instance of a Power Configuration cluster as a server */
+    if(eCLD_PowerConfigurationCreatePowerConfiguration(&psDeviceInfo->sClusterInstance.sPowerConfigurationServer,
+                          TRUE,
+                          &sCLD_PowerConfiguration,
+                          &psDeviceInfo->sPowerConfigServerCluster,
+                          &au8PowerConfigurationAttributeControlBits[0]) != E_ZCL_SUCCESS)
+    {
+        return E_ZCL_FAIL;
+    }
+#endif
+
 #if (defined CLD_OTA) && (defined OTA_SERVER)
     /* Create an instance of an OTA cluster as a client */
     if(eOTA_Create(&psDeviceInfo->sClusterInstance.sOTAServer,
