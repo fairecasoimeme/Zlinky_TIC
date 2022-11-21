@@ -65,6 +65,7 @@ La version "Limited" est destiné aux utilisateurs qui ont des réseaux énormé
 |Num (Hexa)|Name|I/O| Comment|
 |----------|----|---|--------|  
 |0x0000|Basic|I||
+|0x0001|PowerConfiguration|I|(From v12)|
 |0x0003|Identify|I||
 |0x0702|Simple Metering|I||
 |0x0B01|Meter Identification|I||
@@ -85,6 +86,13 @@ La version "Limited" est destiné aux utilisateurs qui ont des réseaux énormé
 0x0006 | DateCode|20210401|
 0x0007 | PowerSource|0x03|
 0x4000 | SWBuildID| < V9: 4000-XXXX <br> > V9: 4000-XXXX (Legacy firmware) - 4001-XXXX (LIMITED firmware)|
+
+### PowerConfiguration Cluster (0x0001) --> (From v12)
+|attribut|Name|Right|Value|
+|------|----------|------|------|
+|0x0000| MainsVoltage|RO|| 
+|0x0011 | MainsVoltageMinThreshold|RW|2600|  
+|0x0012 | MainsVoltageMaxThreshold|RW|3600|
 
 ### Linky Mode ( From V4)
 
@@ -355,6 +363,16 @@ Voici à quoi ressemble la modification:
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
 
 ## Changelog
+
+### Version 0012
+* Add voltage driver
+* Add main voltage infos
+Clusters 0x0001 :
+- Attribut 0x0000 (mains voltage)
+- Attribut 0x0011 (mains voltage min threshold)
+- Attribut 0x0012 (mains voltage max threshold)
+* Add more zigbee radio reactivity - Now you can send and receive zigbee requests during Linky acquisition
+
 
 ### Version 0011
 
