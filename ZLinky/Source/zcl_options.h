@@ -111,13 +111,16 @@ enum
 #define CLD_GROUPS
 #define GROUPS_SERVER
 
+#define CLD_POWER_CONFIGURATION
+#define POWER_CONFIGURATION_SERVER
+
 /*#define CLD_ONOFF
 #define ONOFF_SERVER*/
 
-//#ifdef BUILD_OTA
+#ifdef BUILD_OTA
 #define CLD_OTA
 #define OTA_CLIENT
-//#endif
+#endif
 
 /****************************************************************************/
 /*             Basic Cluster - Optional Attributes                          */
