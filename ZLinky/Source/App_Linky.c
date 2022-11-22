@@ -764,8 +764,9 @@ PUBLIC void vAPP_LinkySensorSample(void)
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
 
     //SaveLinkyParams();
-    DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n", Get_BattVolt());
-    sBaseDevice.sPowerConfigServerCluster.u16MainsVoltage = Get_BattVolt();
+    uint16 voltage = Get_BattVolt();
+    DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n",voltage );
+    sBaseDevice.sPowerConfigServerCluster.u16MainsVoltage = voltage;
 
     ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
 }
