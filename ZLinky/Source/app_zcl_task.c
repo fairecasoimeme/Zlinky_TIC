@@ -329,7 +329,7 @@ PRIVATE void APP_ZCL_cbGeneralCallback(tsZCL_CallBackEvent *psEvent)
         break;
 
     case E_ZCL_CBET_ERROR:
-        DBG_vPrintf(TRACE_ZCL, "\r\nEVT: Error");
+        DBG_vPrintf(TRACE_ZCL, "\r\nEVT: Error : %d", psEvent->eZCL_Status);
         break;
 
     case E_ZCL_CBET_TIMER:
@@ -489,7 +489,7 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
         case E_ZCL_CBET_WRITE_ATTRIBUTES:
         	if(LIXEE_CLUSTER_ID_LINKY == psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum)
 			{
-        		if (psEvent->psClusterInstance->psClusterDefinition->psAttributeDefinition->u16AttributeEnum = 0x0100)
+        		if (psEvent->psClusterInstance->psClusterDefinition->psAttributeDefinition->u16AttributeEnum == 0x0100)
         		{
         			DBG_vPrintf(TRACE_ZCL, "\r\nEP EVT: E_ZCL_CBET_WRITE_ATTRIBUTES type 0x%x", (uint8)psEvent->eEventType);
         			SaveLinkyParams();
