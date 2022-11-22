@@ -366,11 +366,11 @@ Voici à quoi ressemble la modification:
 
 ### Version 0012
 * Add voltage driver
-* Add main voltage infos
+* Add main voltage infos  
 Clusters 0x0001 :
-- Attribut 0x0000 (mains voltage)
-- Attribut 0x0011 (mains voltage min threshold)
-- Attribut 0x0012 (mains voltage max threshold)
+  - Attribut 0x0000 (mains voltage)
+  - Attribut 0x0011 (mains voltage min threshold)
+  - Attribut 0x0012 (mains voltage max threshold)
 * Add more zigbee radio reactivity - Now you can send and receive zigbee requests during Linky acquisition
 
 
