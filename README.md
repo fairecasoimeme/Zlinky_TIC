@@ -362,6 +362,39 @@ PS : Si vous n'avez pas exactement la bonne valeur, vous pouvez mettre plus que 
 Voici à quoi ressemble la modification:  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
 
+## Intégrations 
+
+Voici les différentes possibilités d'intégrations du ZLinky
+
+### Jeedom
+Afin d'intégrer le ZLinky à Jeedom, il suffit d'utiliser le [plugin officiel Zigbee](https://market.jeedom.com/index.php?v=d&p=market_display&id=4050).
+le ZLinky est directement reconnu et les commandes sont automatiquements créés.
+
+### Home assistant
+il existe 2 méthodes pour intégrer le ZLinky. Soit en utilisant Zigbee2Mqtt, soit en utilisant ZHA  
+
+#### Z2M
+Vous pouvez installer Z2M en suivant le tutoriel suivant :  
+* [Site officiel](https://www.zigbee2mqtt.io/guide/installation/03_ha_addon.html)  
+* [Tutoriel domo-blog](https://www.domo-blog.fr/installer-mqtt-zigbee2mqtt-home-assistant-en-mode-supervision-guide-domotique-all-inclusive/)  
+* [Tutoriel les alexiens](https://www.lesalexiens.fr/actualites/installer-serveur-zigbee2mqtt-home-assistant/)  
+
+Une fois installé, Vous pourrez intégrer le ZLinky en lançant un appairage classique car il est nativement compatible
+
+#### ZHA
+Pour ZHA, l'installation est un peu plus complexe car le ZLinky n'est pas nativement compatible.  
+
+* [Site officiel](https://www.home-assistant.io/integrations/zha/)  
+
+Une fois installé, il faut suivre les conseils et tutoriel suivants :  
+
+* [Tutoriel intégration](https://github.com/fairecasoimeme/Zlinky_TIC/issues/18#issuecomment-1285215566)
+
+### EEdomus
+
+Pour la Box Eedomus, il suffit de suivre le [tutoriel officiel](https://doc.eedomus.com/view/Eedomus_et_ZLinky_TIC)  
+
+
 ## Changelog
 
 ### Version 0012
