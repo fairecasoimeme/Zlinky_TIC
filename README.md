@@ -394,6 +394,10 @@ Une fois installé, il faut suivre les conseils et tutoriel suivants :
 
 Pour la Box Eedomus, il suffit de suivre le [tutoriel officiel](https://doc.eedomus.com/view/Eedomus_et_ZLinky_TIC)  
 
+### Homey pro
+
+Lien vers l'application : [App](https://homey.app/fr-fr/app/com.lixee/liXee/)  
+Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/t/app-pro-lixee/74924)  
 
 ## Changelog
 
