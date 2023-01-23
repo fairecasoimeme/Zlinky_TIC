@@ -125,7 +125,7 @@ Now you can modify the time to do a Linky acquisition.
 RO= READ only RP= Reportable / RW = Read/Write	
 
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
-|------------|-------|--------|-----|--------------|---------|-------|----|-----------|------------|				
+|------------|-------|--------|-----|-------|---------|--------|----|-----------|-----------------|				
 |ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|NULL|
 |![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48|9 car|Wh| Index Base|0|
 |OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
