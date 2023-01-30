@@ -366,6 +366,11 @@ Voici à quoi ressemble la modification:
 
 Voici les différentes possibilités d'intégrations du ZLinky
 
+### Domoticz
+
+Intégration avec le [plugin Zigbee for Domoticz (gratuit)](https://github.com/zigbeefordomoticz/Domoticz-Zigbee#zigbeefordomoticz-plugin--connect-all-your-zigbee-devices-to-domoticz), il suffit d'appairer le ZLinky en version V12 avec le plugin.
+Les modes Historique et Standard sont supportés. Nous avons effectués des tests avec des compteurs Linky Historique Base, Standard Base, Historique Tri
+
 ### Jeedom
 Afin d'intégrer le ZLinky à Jeedom, il suffit d'utiliser le [plugin officiel Zigbee](https://market.jeedom.com/index.php?v=d&p=market_display&id=4050).
 le ZLinky est directement reconnu et les commandes sont automatiquements créés.
