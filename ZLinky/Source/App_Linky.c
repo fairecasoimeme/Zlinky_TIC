@@ -510,6 +510,8 @@ uint8 APP_vProcessRxDataHisto ( void )
 				}else if(memcmp(au8Command,"MOTDETAT",8)==0)
 				{
 					DBG_vPrintf(1, "\r\nMOTDETAT : %s",au8Value);
+					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyMOTDETAT.pu8Data,au8Value,6);
+					sBaseDevice.sLinkyServerCluster.sLinkyMOTDETAT.u8Length=6;
 				}else if(memcmp(au8Command,"BASE",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nBASE : %s",au8Value);

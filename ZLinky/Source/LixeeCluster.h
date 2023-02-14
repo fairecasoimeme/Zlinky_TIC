@@ -31,6 +31,7 @@ typedef enum
 	E_CLD_LINKY_ADIR1                          = 0x0006,
 	E_CLD_LINKY_ADIR2                          = 0x0007,
 	E_CLD_LINKY_ADIR3                          = 0x0008,
+	E_CLD_LINKY_MOTDETAT                       = 0x0009,
 
 	E_CLD_LINKY_PERIODIC_SEND                  = 0x0100,
 
@@ -127,6 +128,8 @@ typedef struct
 	 uint8                       au8LinkyPPOINTE[127];
 	 uint8                       au8LinkyMode;
 	 uint16						 u16LinkySMAXSN_1;
+	 tsZCL_CharacterString		 sLinkyMOTDETAT;
+	 uint8                       au8LinkyMOTDETAT[6];
 
 } tsCLD_Linky;
 

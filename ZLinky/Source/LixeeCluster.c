@@ -27,6 +27,7 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_ADIR1,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR1),0},
 		{E_CLD_LINKY_ADIR2,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR2),0},
 		{E_CLD_LINKY_ADIR3,               (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->au16LinkyADIR3),0},
+		{E_CLD_LINKY_MOTDETAT,            (E_ZCL_AF_RD),                   E_ZCL_CSTRING,    (uint32)(&((tsCLD_Linky*)(0))->sLinkyMOTDETAT),0},
 
 		{E_CLD_LINKY_PERIODIC_SEND,       (E_ZCL_AF_RD|E_ZCL_AF_WR),       E_ZCL_UINT8,   (uint32)(&((tsCLD_Linky*)(0))->au8LinkyPeriodicSend),0},
 
@@ -137,6 +138,10 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDemain);
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.u8Length = 4;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDemain;
+
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMode);
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.u8Length = 6;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMode;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyLTARF.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyLTARF);
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyLTARF.u8Length = 16;
