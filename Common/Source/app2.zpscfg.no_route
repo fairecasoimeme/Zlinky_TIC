@@ -87,7 +87,6 @@
   </Profiles>
   <Profiles Name="HA" Id="0x0104">
     <Clusters Name="Basic" Id="0x0000"/>
-    <Clusters Name="Power_configuration" Id="0x0001"/>
     <Clusters Name="Identify" Id="0x0003"/>
     <Clusters Name="Groups" Id="0x0004"/>
     <Clusters Name="Scenes" Id="0x0005"/>
@@ -326,7 +325,7 @@
       <ParentAnnceServer OutputAPdu="Coordinator->apduZDP"/>
     </ZDOServers>
   </Coordinator>
-  <ChildNodes xsi:type="zpscfg:Router" Name="ZLinky" DiscoveryNeighbourTableSize="16" ActiveNeighbourTableSize="26" RouteDiscoveryTableSize="4" RoutingTableSize="70" BroadcastTransactionTableSize="25" RouteRecordTableSize="1" AddressMapTableSize="10" SecurityMaterialSets="2" MaxNumSimultaneousApsdeReq="5" MaxNumSimultaneousApsdeAckReq="3" MACMutexName="mutexMAC" ZPSMutexName="" FragmentationMaxNumSimulRx="3" FragmentationMaxNumSimulTx="3" DefaultEventMessageName="APP_vZpsEventHandler" MACDcfmIndMessage="zps_msgDcfmInd" MACTimeEventMessage="zps_msgTimeEvents" apsNonMemberRadius="2" apsDesignatedCoordinator="false" apsUseInsecureJoin="true" apsMaxWindowSize="8" apsInterframeDelay="10" APSDuplicateTableSize="3" apsSecurityTimeoutPeriod="6000" apsUseExtPANId="0x0000000000000000" SecurityEnabled="true" MACMlmeDcfmIndMessage="zps_msgMlmeDcfmInd" MACMcpsDcfmIndMessage="zps_msgMcpsDcfmInd" APSPersistenceTime="100" NumAPSMESimulCommands="4" StackProfile="2" InterPAN="true" GreenPowerSupport="true" NwkFcSaveCountBitShift="10" ApsFcSaveCountBitShift="10" MacTableSize="36" DefaultCallbackName="APP_vGenCallback" PermitJoiningTime="0" ChildTableSize="5" ScanDuration="3" NetworkSelection="User Selected">
+  <ChildNodes xsi:type="zpscfg:Router" Name="ZLinky" DiscoveryNeighbourTableSize="16" ActiveNeighbourTableSize="2" RouteDiscoveryTableSize="1" RoutingTableSize="1" BroadcastTransactionTableSize="2" RouteRecordTableSize="1" AddressMapTableSize="16" SecurityMaterialSets="2" MaxNumSimultaneousApsdeReq="5" MaxNumSimultaneousApsdeAckReq="3" MACMutexName="mutexMAC" ZPSMutexName="" FragmentationMaxNumSimulRx="3" FragmentationMaxNumSimulTx="3" DefaultEventMessageName="APP_vZpsEventHandler" MACDcfmIndMessage="zps_msgDcfmInd" MACTimeEventMessage="zps_msgTimeEvents" apsNonMemberRadius="2" apsDesignatedCoordinator="false" apsUseInsecureJoin="true" apsMaxWindowSize="8" apsInterframeDelay="10" APSDuplicateTableSize="3" apsSecurityTimeoutPeriod="6000" apsUseExtPANId="0x0000000000000000" SecurityEnabled="true" MACMlmeDcfmIndMessage="zps_msgMlmeDcfmInd" MACMcpsDcfmIndMessage="zps_msgMcpsDcfmInd" APSPersistenceTime="100" NumAPSMESimulCommands="4" StackProfile="2" InterPAN="true" GreenPowerSupport="true" NwkFcSaveCountBitShift="10" ApsFcSaveCountBitShift="10" MacTableSize="16" DefaultCallbackName="APP_vGenCallback" PermitJoiningTime="0" ChildTableSize="1" ScanDuration="3" NetworkSelection="User Selected">
     <Endpoints Id="0" Enabled="true" ApplicationDeviceId="0" ApplicationDeviceVersion="0" Profile="ZDP" Message="" Name="ZDO">
       <InputClusters Cluster="NWK_addr_req" RxAPDU="ZLinky->apduZDP" Discoverable="false"/>
       <InputClusters Cluster="IEEE_addr_req" RxAPDU="ZLinky->apduZDP" Discoverable="false"/>
@@ -495,7 +494,6 @@
     </Endpoints>
     <Endpoints Id="1" Enabled="true" ApplicationDeviceId="83" ApplicationDeviceVersion="1" Profile="HA" Message="APP_ZCL_vEventHandler" Name="Application">
       <InputClusters Cluster="Basic" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
-      <InputClusters Cluster="Power_configuration" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="Groups" RxAPDU="ZLinky->apduZCL" Discoverable="false"/>
       <InputClusters Cluster="Identify" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="SimpleMetering" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
