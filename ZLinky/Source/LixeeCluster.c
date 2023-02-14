@@ -139,9 +139,9 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.u8Length = 4;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyDemain.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyDemain;
 
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMode);
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMOTDETAT);
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.u8Length = 6;
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMode;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyMOTDETAT;
 
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyLTARF.u8MaxLength = sizeof(((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyLTARF);
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyLTARF.u8Length = 16;
