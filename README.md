@@ -125,7 +125,7 @@ Now you can modify the time to do a Linky acquisition.
 RO= READ only RP= Reportable / RW = Read/Write	
 
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
-|------------|-------|--------|-----|--------------|---------|-------|----|-----------|------------|				
+|------------|-------|--------|-----|-------|---------|--------|----|-----------|-----------------|				
 |ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|NULL|
 |![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48|9 car|Wh| Index Base|0|
 |OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
@@ -361,6 +361,53 @@ Descriptif : 100uF 6.3Volts format: 293D**
 PS : Si vous n'avez pas exactement la bonne valeur, vous pouvez mettre plus que 100uF)  
 Voici à quoi ressemble la modification:  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_condensateur.jpg" width="800">
+
+## Intégrations 
+
+Voici les différentes possibilités d'intégrations du ZLinky
+
+### Jeedom
+Afin d'intégrer le ZLinky à Jeedom, il suffit d'utiliser le [plugin officiel Zigbee](https://market.jeedom.com/index.php?v=d&p=market_display&id=4050).
+le ZLinky est directement reconnu et les commandes sont automatiquements créés.
+
+### Home assistant
+il existe 2 méthodes pour intégrer le ZLinky. Soit en utilisant Zigbee2Mqtt, soit en utilisant ZHA  
+
+#### Z2M
+Vous pouvez installer Z2M en suivant le tutoriel suivant :  
+* [Site officiel](https://www.zigbee2mqtt.io/guide/installation/03_ha_addon.html)  
+* [Tutoriel domo-blog](https://www.domo-blog.fr/installer-mqtt-zigbee2mqtt-home-assistant-en-mode-supervision-guide-domotique-all-inclusive/)  
+* [Tutoriel les alexiens](https://www.lesalexiens.fr/actualites/installer-serveur-zigbee2mqtt-home-assistant/)  
+
+Une fois installé, Vous pourrez intégrer le ZLinky en lançant un appairage classique car il est nativement compatible
+
+#### ZHA
+Pour ZHA, l'installation est un peu plus complexe car le ZLinky n'est pas nativement compatible.  
+
+* [Site officiel](https://www.home-assistant.io/integrations/zha/)  
+
+Une fois installé, il faut suivre les conseils et tutoriel suivants :  
+
+* [Tutoriel intégration](https://github.com/fairecasoimeme/Zlinky_TIC/issues/18#issuecomment-1285215566)
+
+### EEdomus
+
+Pour la Box Eedomus, il suffit de suivre le [tutoriel officiel](https://doc.eedomus.com/view/Eedomus_et_ZLinky_TIC)  
+
+### Domoticz
+
+Intégration avec le [plugin Zigbee for Domoticz (gratuit)](https://github.com/zigbeefordomoticz/Domoticz-Zigbee#zigbeefordomoticz-plugin--connect-all-your-zigbee-devices-to-domoticz), il suffit d'appairer le ZLinky en version V12 avec le plugin.
+Les modes Historique et Standard sont supportés. Nous avons effectués des tests avec des compteurs Linky Historique Base, Standard Base, Historique Tri
+
+### Homey pro
+
+Lien vers l'application : [App](https://homey.app/fr-fr/app/com.lixee/liXee/)  
+Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/t/app-pro-lixee/74924)  
+
+### SmartThing
+
+Lien vers l'application : [Sources](https://github.com/sdalu/EdgeLinkyTIC)  
+Lien vers l'installation : [Installation](https://community.smartthings.com/t/st-edge-zlinky-tic/254857)  
 
 ## Changelog
 
