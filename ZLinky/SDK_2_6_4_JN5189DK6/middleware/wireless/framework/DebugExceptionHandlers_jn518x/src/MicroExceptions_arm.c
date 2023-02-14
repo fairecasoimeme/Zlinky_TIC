@@ -248,7 +248,8 @@ void vDebugHardFaultHandler(uint32_t *pu32ExceptionArgs)
 
     // enter endless loop or reset
 #if (defined MICRO_EXCEPTION_RESET)
-    vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
+    RESET_SystemReset();
+    //vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
 #else
     ExceptionUnwindStack((uint32_t *) __get_MSP());
 #endif
@@ -335,7 +336,8 @@ void vDebugBusFaultHandler(uint32_t *pu32ExceptionArgs)
 
     // enter endless loop or reset
 #if (defined MICRO_EXCEPTION_RESET)
-    vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
+    RESET_SystemReset();
+    //vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
 #else
     ExceptionUnwindStack((uint32_t *) __get_MSP());
 #endif
@@ -413,7 +415,8 @@ void vDebugUsageFaultHandler(uint32_t *pu32ExceptionArgs)
 
     // enter endless loop or reset
 #if (defined MICRO_EXCEPTION_RESET)
-    vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
+    RESET_SystemReset();
+    //vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
 #else
     ExceptionUnwindStack((uint32_t *) __get_MSP());
 #endif
@@ -497,7 +500,8 @@ void vDebugMemoryFaultHandler(uint32_t *pu32ExceptionArgs)
 
     // enter endless loop or reset
 #if (defined MICRO_EXCEPTION_RESET)
-    vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
+    RESET_SystemReset();
+    //vREG_SysWrite(REG_SYS_RSTCTRL, 0x2);
 #else
     ExceptionUnwindStack((uint32_t *) __get_MSP());
 #endif
