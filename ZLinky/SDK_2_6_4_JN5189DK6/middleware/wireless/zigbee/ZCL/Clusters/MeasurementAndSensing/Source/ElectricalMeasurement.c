@@ -825,7 +825,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
                 ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactiveCurrent = 0x8000;
             #endif         
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltage = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltage = 0; //0xFFFF;
             #endif
 
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE_MIN
@@ -837,7 +837,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif
                 
             #ifdef CLD_ELECTMEAS_ATTR_RMS_CURRENT
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrent = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrent = 0; //0xFFFF;
             #endif
 
             #ifdef CLD_ELECTMEAS_ATTR_RMS_CURRENT_MIN
@@ -845,11 +845,11 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif
 
             #ifdef CLD_ELECTMEAS_ATTR_RMS_CURRENT_MAX
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMax = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMax = 0; //0xFFFF;
             #endif
                 
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePower = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePower = 0; //0x8000;
             #endif
 
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MIN
@@ -857,15 +857,15 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif
 
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MAX
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMax = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMax = 0; //0x8000;
             #endif
                 
             #ifdef CLD_ELECTMEAS_ATTR_REACTIVE_POWER
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePower = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePower = 0; //0x8000;
             #endif
             
             #ifdef CLD_ELECTMEAS_ATTR_APPARENT_POWER
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPower = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPower = 0; //0xFFFF;
             #endif
             
             #ifdef CLD_ELECTMEAS_ATTR_POWER_FACTOR
@@ -969,7 +969,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltagePhB = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltagePhB = 0; //0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE_MIN_PHB
@@ -981,7 +981,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_CURRENT_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentPhB = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentPhB = 0;// 0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_CURRENT_MIN_PHB
@@ -989,11 +989,11 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_CURRENT_MAX_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMaxPhB = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMaxPhB =0; // 0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerPhB = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerPhB = 0; //0x8000;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MIN_PHB
@@ -1001,15 +1001,15 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MAX_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMaxPhB = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMaxPhB = 0; //0x8000;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_REACTIVE_POWER_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePowerPhB = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePowerPhB = 0; //0x8000;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_APPARENT_POWER_PHB
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPowerPhB = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPowerPhB = 0; // 0xFFFF;
             #endif    
 
             #ifdef CLD_ELECTMEAS_ATTR_POWER_FACTOR_PHB
@@ -1057,7 +1057,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltagePhC = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSVoltagePhC = 0; //0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_VOLTAGE_MIN_PHC
@@ -1069,7 +1069,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_RMS_CURRENT_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentPhC = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentPhC = 0; //0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_CURRENT_MIN_PHC
@@ -1077,7 +1077,7 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_CURRENT_MAX_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMaxPhC = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16RMSCurrentMaxPhC = 0; //0xFFFF;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_PHC
@@ -1089,15 +1089,15 @@ PUBLIC  teZCL_Status eCLD_ElectricalMeasurementCreateElectricalMeasurement(
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_ACTIVE_POWER_MAX_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMaxPhC = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ActivePowerMaxPhC = 0; //0x8000;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_REACTIVE_POWER_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePowerPhC = 0x8000;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->i16ReactivePowerPhC = 0; //0x8000;
             #endif    
             
             #ifdef CLD_ELECTMEAS_ATTR_APPARENT_POWER_PHC
-                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPowerPhC = 0xFFFF;
+                ((tsCLD_ElectricalMeasurement*)pvEndPointSharedStructPtr)->u16ApparentPowerPhC = 0;// 0xFFFF;
             #endif   
 
             #ifdef CLD_ELECTMEAS_ATTR_POWER_FACTOR_PHC
