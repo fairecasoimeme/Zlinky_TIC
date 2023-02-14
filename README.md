@@ -411,6 +411,13 @@ Lien vers l'installation : [Installation](https://community.smartthings.com/t/st
 
 ## Changelog
 
+### Version 0013
+* Add MOTDETAT value (from historic mode) --> Cluster : 0xFF66 - Attribut : 0x0009
+* Add null value for all of default metering properties
+* Add watchdog reset process when hardfault error
+* Fix duplicate voltage acquisition
+* Fix operator error for comparison
+
 ### Version 0012
 * Add voltage driver
 * Add main voltage infos  
