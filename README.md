@@ -189,7 +189,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |ADIR1			|0xFF66	|0x0006		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
 |ADIR2			|0xFF66	|0x0007		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
 |ADIR3			|0xFF66	|0x0008		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
-|MOTDETAT|0xFF66	|0x0009	|RO|-|Uint32|6 car||Etat du Linky (From V13)|0|
+|MOTDETAT|0xFF66	|0x0009	|RO|-|String|6 car||Etat du Linky (From V13)|"000000"|
 |-			|0xFF66	|0x0300		|RO||Uint8|1 car|-|Protocole linky|0|
 
 #### Mode standard
