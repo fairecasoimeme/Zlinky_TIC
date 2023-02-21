@@ -40,8 +40,14 @@
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_prototype.jpg" width="400">
 
 ## PCB
+
+### Version 1.0
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_face.jpg" width="800">
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_pile.jpg" width="800">
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_PCB_pile.jpg" width="800">  
+
+### Version 1.2  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/PCB_ZLinky_v1.2_face.jpg" width="800">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/PCB_ZLinky_v1.2_pile.jpg" width="800">  
 
 **ZLinky_TIC** est un appareil permettant de transmettre toutes les informations du Linky en ZigBee 3.0.  
 **ZLinky_TIC** est alimenté par votre compteur Linky. Il suffit simplement d'enlever le cash (jaune fluo) et de "plugger" l'appareil en pressant sur le bouton orange.  
