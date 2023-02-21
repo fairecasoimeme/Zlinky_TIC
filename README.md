@@ -4,6 +4,36 @@
  vous pouvez vous procurer le ZLinky_TIC à l'adresse suivante :  
  [Boutique LiXee](https://lixee.fr/)
  
+# Sommaire  
+
+* [Description](#description)  
+* [PCB](#pcb)  
+* [Installation](#installation)  
+* [Voyant lumineux](#voyant-lumineux)  
+* [Route or limited route (From V7)](#route-or-limited-route-from-v7)
+* [Clusters](#clusters)
+   * [Clusters List](#clusters-list)
+   * [Basic Cluster (0x0000)](#basic-cluster-0x0000)
+   * [PowerConfiguration Cluster (0x0001) --> (From v12)](#powerconfiguration-cluster-0x0001----from-v12)
+* [Linky Mode ( From V4)](#linky-mode--from-v4)
+* [Linky acquisition time (From V7)](#linky-acquisition-time-from-v7)
+* [Subscription (OPTARIF Values)](#subscription-optarif-values)
+   * [Mode historique](#mode-historique)
+   * [Mode standard](#mode-standard)
+* [Synthèse développeur](#synth%C3%A8se-d%C3%A9veloppeur)
+* [Mise à jour](#mise-%C3%A0-jour) 
+    * [OTA](#ota)
+    * [Non OTA](#non-ota)
+* [Errata (hardware)](#errata-hardware)
+* [Intégrations](#intégrations)
+   * [Jeedom](#jeedom)
+   * [Home-Asssitant](#home-assistant)
+   * [Eedomus](#eedomus)
+   * [Domoticz](#domoticz)
+   * [Homey Pro](#homey-pro)
+   * [SmartThing](#smartthing)
+* [ChangeLog](#changelog)
+ 
 
 ## Description
 ![Description ZLinky_TIC](https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_description.JPG)
@@ -94,7 +124,7 @@ La version "Limited" est destiné aux utilisateurs qui ont des réseaux énormé
 |0x0011 | MainsVoltageMinThreshold|RW|2600|  
 |0x0012 | MainsVoltageMaxThreshold|RW|3600|
 
-### Linky Mode ( From V4)
+## Linky Mode ( From V4)
 
 ### values
 |Cluster|Attribut|Value|
@@ -106,16 +136,16 @@ bit 0 - Mode historique / standard
 bit 1 - Triphasé / Monophasé   
 bit 2 - Production / non production  
 
-### Linky acquisition time (From V7)
+## Linky acquisition time (From V7)
 Now you can modify the time to do a Linky acquisition. 
 |Cluster|Attribut|Value|Type|Min|Max|
 |-------|--------|------|-----|----|----|
 |0xFF66|0x0100| 10 (by default)|Uint8 (0x20)|0x07|0x3C|
 
 
-### Subscription (OPTARIF Values)
+## Subscription (OPTARIF Values)
 
-#### Mode historique  
+### Mode historique  
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE  
 ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HC..  
 ![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJP.  
@@ -159,7 +189,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |ADIR1			|0xFF66	|0x0006		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
 |ADIR2			|0xFF66	|0x0007		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
 |ADIR3			|0xFF66	|0x0008		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
-|MOTDETAT|0xFF66	|0x0009	|RO|-|Uint32|6 car||Etat du Linky (From V13)|0|
+|MOTDETAT|0xFF66	|0x0009	|RO|-|String|6 car||Etat du Linky (From V13)|"000000"|
 |-			|0xFF66	|0x0300		|RO||Uint8|1 car|-|Protocole linky|0|
 
 #### Mode standard
@@ -320,7 +350,9 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Standard : PJOURF+1|0xFF66|0x0227|
 |Standard : PPOINTE1|0xFF66|0x0228|
 
-## Mise à jour du Firmware (OTA)
+## Mise à jour
+
+### OTA
 
 Il existe deux types de Firmware :  
 * Legacy : Mode routeur (possibilité de gérer le routage de 5 enfants)  
@@ -330,7 +362,7 @@ Il existe deux types de Firmware :
   
 Pour changer de mode, veuillez suivre la mise à jour (non OTA)  
 
-## Mise à jour du Firmware (non OTA)
+### Non OTA
 
 ⚠️ **Pour les nouveaux achats, le connecteur noir pour la mise à jour physique n'est plus disponible. Pour autant, il est tout de même possible de procéder à la mise à jour physique mais en maintenant le module USB sur les pastilles. Pour les dernières versions, le hardware et le software permettent d'effectuer des mises à jour OTA au travers de votre box domotique.**  
 
