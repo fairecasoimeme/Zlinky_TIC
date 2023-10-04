@@ -425,9 +425,9 @@ Pour ZHA, l'installation est un peu plus complexe car le ZLinky n'est pas native
 
 * [Site officiel](https://www.home-assistant.io/integrations/zha/)  
 
-Une fois installé, il faut suivre les conseils et tutoriel suivants :  
+La compatibilité du ZLinky_TIC est désormais native sur ZHA. Pour une configuration plus avancée et personnaliser les entités, vous pouvez suivre le lien suivant:  
 
-* [Tutoriel intégration](https://github.com/fairecasoimeme/Zlinky_TIC/issues/18#issuecomment-1285215566)
+* [Configuration avancée](https://github.com/fairecasoimeme/Zlinky_TIC/issues/18#issuecomment-1285215566)
 
 ### EEdomus
 
