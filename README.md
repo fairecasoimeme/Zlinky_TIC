@@ -377,9 +377,11 @@ Ensuite, il faut brancher le module USB TTL sur le ZLinky_TIC comme sur la photo
 
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_1.jpg" width="400">  
 
-Pour ceux qui n'ont pas ce modèle, voici la correspondance des 5 PINs : 
-
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_4.jpg" width="400"> 
+Pour ceux qui n'ont pas ce modèle, voici la correspondance des 5 PINs :  
+V1:  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_4.jpg" width="400">  
+V1.2:  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/PCB_ZLinky_v1.2_flash.jpg" width="400">  
 
 Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur la clef USB en maintenant le bouton **Flash** puis relacher.
 
