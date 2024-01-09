@@ -27,7 +27,7 @@
 * [Errata (hardware)](#errata-hardware)
 * [Intégrations](#intégrations)
    * [Jeedom](#jeedom)
-   * [Home-Asssitant](#home-assistant)
+   * [Home-Assistant](#home-assistant)
    * [Eedomus](#eedomus)
    * [Domoticz](#domoticz)
    * [Homey Pro](#homey-pro)
