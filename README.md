@@ -32,6 +32,7 @@
    * [Domoticz](#domoticz)
    * [Homey Pro](#homey-pro)
    * [SmartThing](#smartthing)
+* [FAQ](#faq)
 * [ChangeLog](#changelog)
  
 
@@ -449,6 +450,44 @@ Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/
 
 Lien vers l'application : [Sources](https://github.com/sdalu/EdgeLinkyTIC)  
 Lien vers l'installation : [Installation](https://community.smartthings.com/t/st-edge-zlinky-tic/254857)  
+
+## F.A.Q
+
+### 1. J'ai changé d'abonnement et je ne retrouve plus mes index dans mon dashboard domotique
+Le fait de changer d'abonnement historique (comme base ou heure creuse par exemple) vers un nouvel abonnement (super heures creuses, zenflex, heures creuses WE par exemple) implique un changement de gestion structurel du Linky.  
+Par défaut, le Linky est installé en mode historique (ce mode gère uniquement les anciens contrats). Lors du changement d'abonnement, le Linky ne sait alors plus gérer les index car son mode n'est plus compatible.  
+Pour retrouver les index correspondant aux différents tarifs, il suffit de demander le changement de mode à son fournisseur d'électricité. Il faut demander le mode standard.  
+Pour passer son compteur Linky du mode historique au mode standard :  
+   * si vous êtes chez EDF, vous pouvez effectuer la demande à travers ce formulaire de votre espace en ligne, en choisissant ensuite "Modifier le statut de la Télé Information Client (TIC)" puis en précisant que vous souhaitez passer en mode standard dans le champ commentaire.  
+   * si vous n'êtes pas chez EDF, il faut appeler votre Fournisseur d'Electricité, et demander le passage de votre compteur Linky en mode standard, en précisant qu’il s’agit de la prestation F185 auprès d'Enedis.  
+Cette opération est gratuite et en général, le changement est effectué dans les 24 heures ouvrées.  
+
+### 2. Qu'apporte le mode standard par rapport au mode historique ?
+* La principale différence est qu'en mode standard, vous pourrez mieux gérer les nouveaux abonnements
+* Vous aurez plus d'informations comme la tension par exemple [(voir le tableau des données)](#mode-historique)
+* C'est une condition nécessaire pour gérer l'injection de vos panneaux photovoltaïques
+* Vous aurez une meilleure précision sur la puissance apparente (10VA --> 1VA)
+
+### 3. J'ai installé des panneaux photovoltaïques et j'aimerai récupérer les infos d'injections
+Pour avoir les données d'injection, il faut remplir les 2 conditions suivantes:  
+* Etre en mode standard  
+* Avoir un contrat CRAE avec EDF OA. (Dans un futur proche, il suffira d'avoir un contrat CACSI mais à ma connaissance, ce n'est pas encore le cas)  
+
+### 4. Je ne comprends pas, la puissance affichée par le Linky ne correspond pas à la puissance mesurée
+Attention, le Linky ne mesure que la puissance apparente (en VA). Cette puissance est dans certains cas différente de la puissance active (en W). Tout dépend du déphasage (cos Phi) des appareils qui consomment dans votre maison.  
+Pour mieux comprendre la différence, il existe énormément de tuto sur Internet mais j'aime bien celle-ci : [(video)](https://www.youtube.com/watch?v=buRaVQ5NKFs)  
+⚠️ **Même si le Linky affiche la puissance apparente, votre fournisseur d'électricité ne facturera que la consommation réellement consommée (en Wh) basé sur la puissance active (en W)**   
+
+### 5. La LED (bleue) de mon ZLinky reste éteinte, que faire ?
+Si la LED bleu reste éteinte, ce type de phénomène arrive parfois lors d’une mise à jour du Linky, une coupure générale ou une mauvaise manipulation. L’alimentation de la téléinformation se met en protection. Pour régler le problème, il faut débrancher le ZLinky pendant au moins 30 min puis rebrancher (attention la LED peut mettre plusieurs secondes à s’allumer).  
+
+### 6. Quelle est la distance maximale entre le ZLinky et le coordinateur Zigbee ?
+Difficile de répondre préciséement à la question car cela dépend beaucoup de votre environnement. (obstacle et/ou perturbation radio)  
+En général, la distance max pour un ZLinky avec l'antenne interne est de 15-20 mètres maximum et de 20-25 mètre avec l'antenne externe.  
+Pour palier le problème de distance, il existe plusieurs solution :  
+* Le zigbee permet de "mailler" le réseau. Grâce à des équipements zigbee qui ont la fonction de routeur, il est possible d'augmenter les distances en plaçant stratégiquement les appareils zigbee routeur qui joueront le rôle de relai et ainsi augmenter la portée ou fiabiliser les échanges.
+* Utiliser la version du ZLinky avec antenne externe. En effet, grâce à cette version, vous pourrez utiliser une rallonge SMA [(exemple de rallonge compatible)](https://amzn.to/3PUPA4J) afin de déporter l'antenne à un endroit plus optimisé. Vous pourrez aussi utiliser une antenne avec un gain plus important que celle par défaut (2dBi). [(exemple d'antenne avec un meilleur gain)](https://amzn.to/4cPQDwA)
+* Corriger les perturbation radios liés au WiFi. En effet, certains paramétrage WiFi peut polluer le réseau zigbee. Il convient parfois de limiter la bande passante de votre borne WiFi (passer en 20Mhz plutôt que 40Mhz) et/ou de changer de canal WiFi(il faut éloigner au maximum le canal WiFi du canal Zigbee. Je vous conseille de lire cet article qui rentrera plus dans les détails. [(Tutoriel)](https://haade.fr/fr/blog/interference-zigbee-wifi-2-4ghz-a-savoir)
 
 ## Changelog
 
