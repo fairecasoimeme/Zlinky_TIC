@@ -459,7 +459,8 @@ Par défaut, le Linky est installé en mode historique (ce mode gère uniquement
 Pour retrouver les index correspondant aux différents tarifs, il suffit de demander le changement de mode à son fournisseur d'électricité. Il faut demander le mode standard.  
 Pour passer son compteur Linky du mode historique au mode standard :  
    * si vous êtes chez EDF, vous pouvez effectuer la demande à travers ce [formulaire](https://particulier.edf.fr/fr/accueil/espace-client/contact/demande/formulaire/decret-conso.html#/selection-droit-exerce) de votre espace en ligne, en choisissant ensuite "Modifier le statut de la Télé Information Client (TIC)" puis en précisant que vous souhaitez passer en mode standard dans le champ commentaire.  
-   * si vous n'êtes pas chez EDF, il faut appeler votre Fournisseur d'Electricité, et demander le passage de votre compteur Linky en mode standard, en précisant qu’il s’agit de la prestation F185 auprès d'Enedis.  
+   * si vous n'êtes pas chez EDF, il faut appeler votre Fournisseur d'Electricité, et demander le passage de votre compteur Linky en mode standard, en précisant qu’il s’agit de la prestation F185 auprès d'Enedis.
+
 Cette opération est gratuite et en général, le changement est effectué dans les 24 heures ouvrées.  
 
 ### 2. Qu'apporte le mode standard par rapport au mode historique ?
@@ -468,7 +469,7 @@ Cette opération est gratuite et en général, le changement est effectué dans 
 * C'est une condition nécessaire pour gérer l'injection de vos panneaux photovoltaïques
 * Vous aurez une meilleure précision sur la puissance apparente (10VA --> 1VA)
 
-### 3. J'ai installé des panneaux photovoltaïques et j'aimerai récupérer les infos d'injections
+### 3. J'ai installé des panneaux photovoltaïques et j'aimerai récupérer les infos d'injection
 Pour avoir les données d'injection, il faut remplir les 2 conditions suivantes:  
 * Etre en mode standard  
 * Avoir un contrat CRAE avec EDF OA. (Dans un futur proche, il suffira d'avoir un contrat CACSI mais à ma connaissance, ce n'est pas encore le cas)  
