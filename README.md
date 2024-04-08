@@ -458,7 +458,7 @@ Le fait de changer d'abonnement historique (comme base ou heure creuse par exemp
 Par défaut, le Linky est installé en mode historique (ce mode gère uniquement les anciens contrats). Lors du changement d'abonnement, le Linky ne sait alors plus gérer les index car son mode n'est plus compatible.  
 Pour retrouver les index correspondant aux différents tarifs, il suffit de demander le changement de mode à son fournisseur d'électricité. Il faut demander le mode standard.  
 Pour passer son compteur Linky du mode historique au mode standard :  
-   * si vous êtes chez EDF, vous pouvez effectuer la demande à travers ce formulaire de votre espace en ligne, en choisissant ensuite "Modifier le statut de la Télé Information Client (TIC)" puis en précisant que vous souhaitez passer en mode standard dans le champ commentaire.  
+   * si vous êtes chez EDF, vous pouvez effectuer la demande à travers ce [formulaire](https://particulier.edf.fr/fr/accueil/espace-client/contact/demande/formulaire/decret-conso.html#/selection-droit-exerce) de votre espace en ligne, en choisissant ensuite "Modifier le statut de la Télé Information Client (TIC)" puis en précisant que vous souhaitez passer en mode standard dans le champ commentaire.  
    * si vous n'êtes pas chez EDF, il faut appeler votre Fournisseur d'Electricité, et demander le passage de votre compteur Linky en mode standard, en précisant qu’il s’agit de la prestation F185 auprès d'Enedis.  
 Cette opération est gratuite et en général, le changement est effectué dans les 24 heures ouvrées.  
 
