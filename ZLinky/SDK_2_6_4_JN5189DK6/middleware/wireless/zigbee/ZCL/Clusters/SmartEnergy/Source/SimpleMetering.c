@@ -1011,7 +1011,17 @@ PUBLIC  teZCL_Status eSE_SMCreate(uint8                               u8Endpoint
         psCLD_SimpleMetering->sActiveRegisterTierDelivered.u8Length = 0;
         psCLD_SimpleMetering->sActiveRegisterTierDelivered.pu8Data = psCLD_SimpleMetering->au8ActiveRegisterTierDelivered;
 #endif
-
+        psCLD_SimpleMetering->u48CurrentSummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier1SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier2SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier3SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier4SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier5SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier6SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier7SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier8SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier9SummationDelivered=0;
+        psCLD_SimpleMetering->u48CurrentTier10SummationDelivered=0;
     }
     //psCLD_SimpleMetering->u8MeterStatus=1;
 
