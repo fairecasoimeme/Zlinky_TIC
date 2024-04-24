@@ -72,8 +72,8 @@ PUBLIC void UARTLINKY_vInit(void);
 PUBLIC void UARTLINKY_vSetBaudRate(uint32 u32BaudRate);
 PUBLIC void UARTLINKY_vDeInit(void);
 
-PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 u8Data);
-PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *date, uint8 *value,uint8 u8Data);
+PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 *error,uint8 u8Data, bool *lf);
+PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *date, uint8 *value,uint8 *error, uint8 *posFinal,uint8 u8Data, bool *lf);
 
 /****************************************************************************/
 /***        Exported Variables                                            ***/

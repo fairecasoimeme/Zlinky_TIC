@@ -128,13 +128,15 @@ PUBLIC void UARTLINKY_vInit(void)
     config.enableRx = true;
     config.bitCountPerChar = kUSART_7BitsPerChar;
     config.parityMode      = kUSART_ParityEven;
+    config.rxWatermark = kUSART_RxFifo8;
+
 
 
     USART_Init(UARTLINKY, &config, CLOCK_GetFreq(kCLOCK_Fro32M));
 
     /* Enable RX interrupt. */
-    USART_EnableInterrupts(UARTLINKY, kUSART_RxLevelInterruptEnable | kUSART_RxErrorInterruptEnable );
-    EnableIRQ(UARTLINKY_IRQ);
+   /* USART_EnableInterrupts(UARTLINKY, kUSART_RxLevelInterruptEnable | kUSART_RxErrorInterruptEnable );
+    EnableIRQ(UARTLINKY_IRQ);*/
 
 
 
@@ -142,8 +144,9 @@ PUBLIC void UARTLINKY_vInit(void)
 
  PUBLIC void UARTLINKY_vDeInit(void)
  {
+
 	 USART_Deinit(UARTLINKY);
-	 USART_DisableInterrupts(UARTLINKY, kUSART_RxLevelInterruptEnable | kUSART_RxErrorInterruptEnable);
+	// USART_DisableInterrupts(UARTLINKY, kUSART_RxLevelInterruptEnable | kUSART_RxErrorInterruptEnable);
  }
 
 /****************************************************************************
@@ -192,24 +195,25 @@ PUBLIC void UARTLINKY_vSetBaudRate ( uint32    u32BaudRate )
 
 void APP_isrUartLinky ( void )
 {
-    if ((kUSART_RxFifoNotEmptyFlag | kUSART_RxError) & USART_GetStatusFlags(UARTLINKY)) {
+    if ((kUSART_RxFifoNotEmptyFlag | kUSART_RxError ) & USART_GetStatusFlags(UARTLINKY)) {
             USART_ClearStatusFlags(UARTLINKY, kUSART_RxError);
             uint8 u8Byte = USART_ReadByte(UARTLINKY);
             ZQ_bQueueSend(&APP_msgSerialRx, &u8Byte);
     }
 }
-PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *date, uint8 *value,uint8 u8Data)
+PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *date, uint8 *value,uint8 *error, uint8 *posFinal,uint8 u8Data, bool *lf)
 {
 	static uint8 u8CRC;
 	static uint8 u8TmpCRCHorodate;
 	static uint8 u8TmpCRC;
 	static uint16 i;
 	static uint8 pos;
-	static bool start;
 
 	switch(u8Data)
 	{
+
 		case 0x0A:
+
 			u8TmpCRC=0;
 			u8TmpCRCHorodate=0;
 			memset(command,0,0);
@@ -218,39 +222,57 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 			command=0;
 			value=0;
 			date=0;
-			start=TRUE;
+			*error=0;
+			*posFinal=0;
 			pos=0;
 			i=0;
-
 			break;
 		case 0x09:
-			if (start)
+			if (*lf)
 			{
 				pos++;
+				*posFinal = pos;
 				i=0;
 				u8TmpCRCHorodate+=0x09;
 				u8TmpCRC=u8TmpCRCHorodate;
-
+			}else{
+				*error=1;
+				DBG_vPrintf(1, "\r\nError sperator");
+				return(FALSE);
 			}
 			break;
 		case 0x0D:
-			if (start)
+			if (*lf)
 			{
+				*lf=FALSE;
 				if (pos==2)
 				{
 					//Calcul CRC
 
 					u8TmpCRC=(u8TmpCRC & 0x3F)+0x20;
-					if (u8TmpCRC==u8CRC)
+
+					if ((memcmp(command,"SMAX",4)!=0) &&
+							(memcmp(command,"CCA",3)!=0) &&
+							(memcmp(command,"UMOY",4)!=0) &&
+							(memcmp(command,"DMP",3)!=0) &&
+							(memcmp(command,"FPM",3)!=0)
+						)
 					{
-						memcpy(value,date,256);
-						//DBG_vPrintf(1, "\r\n%s %s",command, value);
-						return(TRUE);
+						if (u8TmpCRC==u8CRC)
+						{
+							memcpy(value,date,256);
+							return(TRUE);
+						}else{
+							DBG_vPrintf(1, "\r\ncommand : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRC,u8CRC);
+							*error=1;
+							return(FALSE);
+						}
 					}else{
-						DBG_vPrintf(1, "\r\ncommand : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRC,u8CRC);
+						*error=1; // Datas miss
+						DBG_vPrintf(1, "\r\nDatas miss");
+						return(FALSE);
 					}
 
-					start=false;
 				}else if(pos==3)
 				{
 					//Calcul CRC
@@ -262,18 +284,30 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 						{
 							memcpy(value,date,256);
 						}
-						//DBG_vPrintf(1, "\r\n%s %s %s",command, date, value);
 						return(TRUE);
 					}else{
+						*error=1;
 						DBG_vPrintf(1, "\r\nHORODATE - command : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRCHorodate,u8CRC);
-					}
+						return(FALSE);
 
-					start=false;
+					}
+				}else if(pos==0){
+					*error=1;
+					DBG_vPrintf(1, "\r\nincorrect position : %d",pos);
+					return(FALSE);
 				}
+			}else{
+				*error=1;
+				DBG_vPrintf(1, "\r\nLF Missing ");
+				return(FALSE);
 			}
 			break;
+		case 0x02:
+		case 0x03:
+		case 0x04:
+			break;
 		default:
-			if (start)
+			if (*lf)
 			{
 				if (pos==0)
 				{
@@ -301,20 +335,24 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 				}else{
 					u8CRC = u8Data;
 				}
+			}else{
+				*error=1;
+				DBG_vPrintf(1, "\r\nLF Missing : No valid data ");
+				return(FALSE);
 			}
 			break;
 	}
+	*error=0;
 	return(FALSE);
 }
 
-PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 u8Data)
+PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *value,uint8 *error,uint8 u8Data, bool *lf)
 {
 
     static uint8 u8CRC;
     static uint8 u8TmpCRC;
     static uint16 i;
     static uint8 pos;
-    static bool start;
 
     switch(u8Data)
     {
@@ -324,14 +362,14 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
     		memset(value,0,0);
     		command=0;
     		value=0;
-    		start=TRUE;
     		pos=0;
     		i=0;
-
+    		*error=0;
     		break;
     	case 0x0D:
-    		if (start)
+    		if (*lf)
     		{
+    			*lf=false;
 				if (pos>=2)
 				{
 					//Calcul CRC
@@ -340,15 +378,23 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
 					{
 						return(TRUE);
 					}else{
+						*error=1;
 						DBG_vPrintf(1, "\r\nError CRC : tmp=%d - reçu=%d", u8TmpCRC,u8CRC);
+						return(FALSE);
 					}
-
-					start=false;
+				}else if(pos==0){
+					*error=1;
+					DBG_vPrintf(1, "\r\nEtiquettes / données / séparateur non attendu nb != 2 --> %d", pos);
+					return(FALSE);
 				}
+    		}else{
+    			*error=1;
+				DBG_vPrintf(1, "\r\nLF Missing ");
+				return(FALSE);
     		}
     		break;
     	case 0x20:
-    		if (start)
+    		if (*lf)
     		{
 				pos++;
 				i=0;
@@ -360,9 +406,12 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
 
     		}
     		break;
-
+    	case 0x02:
+		case 0x03:
+		case 0x04:
+			break;
     	default:
-    		if (start)
+    		if (*lf)
     		{
     			if (pos==0)
 				{
@@ -380,10 +429,14 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
 					u8CRC = u8Data;
 
 				}
-    		}
+    		}else{
+				*error=1;
+				DBG_vPrintf(1, "\r\nLF Missing : No valid data ");
+				return(FALSE);
+			}
     		break;
     }
-
+    *error = 0;
     return(FALSE);
 }
 /****************************************************************************/

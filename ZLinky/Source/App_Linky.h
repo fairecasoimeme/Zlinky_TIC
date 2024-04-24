@@ -69,11 +69,14 @@
 /****************************************************************************/
 typedef struct {
     uint8 u8LinkySendPeriod;
+    /* TUYA */
+    uint8 u8LinkyModeTuya;
+    zuint48 u48StartTotalConsumption;
 }tsLinkyParams;
 /****************************************************************************/
 /***        External Variables                                            ***/
 /****************************************************************************/
-//extern tsZLO_LinkyDevice sSensor;
+
 extern tsReports asDefaultReports[ZCL_NUMBER_OF_REPORTS];
 /****************************************************************************/
 /***        Exported Functions                                            ***/
@@ -88,6 +91,9 @@ PUBLIC void SaveLinkyParams();
 //PUBLIC void vAPP_ZCL_DeviceSpecific_IdentifyOff(void);
 //PUBLIC void APP_cbTimerLinkySample(void *pvParam);
 PUBLIC void vAPP_LinkySensorSample(void);
+
+/*TUYA*/
+PUBLIC void vAPP_TuyaAllReport(void);
 //PUBLIC uint8 app_u8GetDeviceEndpoint( void);
 
 
