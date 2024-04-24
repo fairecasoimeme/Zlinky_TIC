@@ -54,7 +54,7 @@ typedef struct {
 /***        Exported Functions                                            ***/
 /****************************************************************************/
 PUBLIC void vSendImmediateReport(uint16 cluster, uint16 attribute);
-
+PUBLIC void vSendTuyaSpecificReport(uint16 cluster, uint16 attribute);
 PUBLIC PDM_teStatus eRestoreReports(void);
 PUBLIC void vMakeSupportedAttributesReportable(void);
 PUBLIC void vLoadDefaultConfigForReportable(void);

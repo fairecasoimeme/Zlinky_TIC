@@ -146,11 +146,18 @@ const tsZCL_AttributeDefinition asCLD_BasicClusterAttributeDefinitions[] = {
     #ifdef CLD_BAS_ATTR_SW_BUILD_ID
         {E_CLD_BAS_ATTR_ID_SW_BUILD_ID,             (E_ZCL_AF_RD),              E_ZCL_CSTRING,   (uint32)(&((tsCLD_Basic*)(0))->sSWBuildID),0},
     #endif
+
+	#ifdef CLD_BAS_ATTR_TUYA_ID
+       {E_CLD_BAS_ATTR_ID_TUYA_MAGICID,                 (E_ZCL_AF_RD|E_ZCL_AF_WR),   E_ZCL_UINT8,   (uint32)(&((tsCLD_Basic*)(0))->u8TuyaMagicID),0},
+
+
+   #endif
 #endif    
 
         {E_CLD_GLOBAL_ATTR_ID_FEATURE_MAP,           (E_ZCL_AF_RD|E_ZCL_AF_GA),  E_ZCL_BMAP32,   (uint32)(&((tsCLD_Basic*)(0))->u32FeatureMap),0},   /* Mandatory  */ 
         
         {E_CLD_GLOBAL_ATTR_ID_CLUSTER_REVISION,      (E_ZCL_AF_RD|E_ZCL_AF_GA),  E_ZCL_UINT16,    (uint32)(&((tsCLD_Basic*)(0))->u16ClusterRevision),0},   /* Mandatory  */
+		{E_CLD_GLOBAL_ATTR_ID_ATTRIBUTE_REPORTING_STATUS,         (E_ZCL_AF_RD|E_ZCL_AF_GA|E_ZCL_AF_RP),                E_ZCL_ENUM8,             (uint32)(&((tsCLD_Basic*)(0))->u8AttributeReportingStatus), 0},  /* Optional */
 };
 
 tsZCL_ClusterDefinition sCLD_Basic = {

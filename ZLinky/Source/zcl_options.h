@@ -114,13 +114,16 @@ enum
 #define CLD_POWER_CONFIGURATION
 #define POWER_CONFIGURATION_SERVER
 
-/*#define CLD_ONOFF
-#define ONOFF_SERVER*/
+#define CLD_TIME
+#define TIME_CLIENT
 
-#ifdef BUILD_OTA
+#define CLD_TUYASPECIFIC
+
+//#ifdef BUILD_OTA
 #define CLD_OTA
 #define OTA_CLIENT
-#endif
+#define OTA_CLD_ATTR_CURRENT_FILE_VERSION
+//#endif
 
 /****************************************************************************/
 /*             Basic Cluster - Optional Attributes                          */
@@ -140,11 +143,14 @@ enum
 #define   CLD_BAS_ATTR_PRODUCT_CODE
 #define   CLD_BAS_ATTR_PRODUCT_URL
 
+/* Tuya */
+#define CLD_BAS_ATTR_TUYA_ID
+
 #define CLD_BAS_APP_VERSION         (1)
 #define CLD_BAS_STACK_VERSION       (2)
 #define CLD_BAS_HARDWARE_VERSION    (1)
-#define CLD_BAS_MANUF_NAME_SIZE     (5)
-#define CLD_BAS_MODEL_ID_SIZE       (11)
+#define CLD_BAS_MANUF_NAME_SIZE     (16) //(5)
+#define CLD_BAS_MODEL_ID_SIZE       (6) //(6)
 #define CLD_BAS_DATE_SIZE           (8)
 #define CLD_BAS_POWER_SOURCE        E_CLD_BAS_PS_SINGLE_PHASE_MAINS
 #define CLD_BAS_SW_BUILD_SIZE       (9)

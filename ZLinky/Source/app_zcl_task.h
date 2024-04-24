@@ -76,9 +76,11 @@ PUBLIC void APP_cbTimerZclTick(void *pvParam);
 PUBLIC void APP_cbTimerLinky(void *pvParam);
 PUBLIC void APP_ZCL_vTask(void);
 PUBLIC void APP_ZCL_vEventHandler(ZPS_tsAfEvent *psStackEvent);
+PUBLIC void APP_vZCL_DeviceSpecific_Init(void);
 #ifdef CLD_IDENTIFY_10HZ_TICK
     PUBLIC void vIdEffectTick(uint8 u8Endpoint);
 #endif
+
 
 /****************************************************************************/
 /***        Exported Variables                                            ***/

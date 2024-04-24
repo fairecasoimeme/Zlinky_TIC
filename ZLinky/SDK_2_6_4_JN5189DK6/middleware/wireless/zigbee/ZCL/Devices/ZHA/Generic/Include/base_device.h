@@ -38,6 +38,7 @@ extern "C" {
 #include "zcl_options.h"
 #include "Basic.h"
 #include "Identify.h"
+#include "Time.h"
 #include "Groups.h"
 #include "OnOff.h"
 #ifdef CLD_OTA
@@ -46,6 +47,7 @@ extern "C" {
 
 #include "SimpleMetering.h"
 #include "LixeeCluster.h"
+#include "TuyaSpecific.h"
 #include "ElectricalMeasurement.h"
 #include "meter_identification.h"
 #include "PowerConfiguration.h"
@@ -78,6 +80,10 @@ typedef struct
     tsZCL_ClusterInstance sIdentifyClient;
 #endif
 
+#if (defined CLD_TIME) && (defined TIME_CLIENT)
+	tsZCL_ClusterInstance sTimeClient;
+#endif
+
 #if (defined CLD_GROUPS) && (defined GROUPS_SERVER)
     tsZCL_ClusterInstance sGroupsServer;
 #endif
@@ -97,6 +103,7 @@ typedef struct
 #if (defined CLD_METER_IDENTIFICATION) && (defined METER_IDENTIFICATION_SERVER)
    tsZCL_ClusterInstance sMeterIdentificationServer;
 #endif
+
 
     /* optional cluster */
 #if (defined CLD_ONOFF) && (defined ONOFF_SERVER)
@@ -121,6 +128,10 @@ typedef struct
 #endif
 
     tsZCL_ClusterInstance sLinkyServer;
+
+#if (defined CLD_TUYASPECIFIC)
+   tsZCL_ClusterInstance sTuyaSpecificServer;
+#endif
 
 } tsZHA_BaseDeviceClusterInstances __attribute__ ((aligned(4)));
 
@@ -154,6 +165,10 @@ typedef struct
     /* Identify Cluster - Client */
     tsCLD_Identify sIdentifyClientCluster;
     tsCLD_IdentifyCustomDataStructure sIdentifyClientCustomDataStructure;
+#endif
+
+#if (defined CLD_TIME) && (defined TIME_CLIENT)
+	tsCLD_Time sTimeClientCluster;
 #endif
 
 #if (defined CLD_GROUPS) && (defined GROUPS_SERVER)
@@ -198,6 +213,8 @@ typedef struct
      tsOTA_Common sCLD_OTA_CustomDataStruct;
 #endif
 
+
+
 #if (defined CLD_POWER_CONFIGURATION) && (defined POWER_CONFIGURATION_SERVER)
     /* Power Configuration Cluster - Server */
     tsCLD_PowerConfiguration sPowerConfigServerCluster;
@@ -210,6 +227,11 @@ typedef struct
 #endif
 
      tsCLD_Linky sLinkyServerCluster;
+
+#if (defined CLD_TUYASPECIFIC)
+    /* TuyaSpecific Cluster - Server */
+    tsCLD_TuyaSpecific sTuyaSpecificServerCluster;
+#endif
 
 
 } tsZHA_BaseDevice;

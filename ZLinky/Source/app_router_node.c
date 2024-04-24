@@ -99,8 +99,10 @@
 #include "rom_api.h"
 #include "rom_psector.h"
 #endif
+
 #include "app_blink_led.h"
 #include "App_Linky.h"
+#include "TuyaSpecific.h"
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -147,6 +149,8 @@ PRIVATE void vImageSwitch(void);
 /***        Exported Variables                                            ***/
 /****************************************************************************/
 PUBLIC tsDeviceDesc sDeviceDesc;
+extern PUBLIC tsLinkyParams sLinkyParams;
+
 #ifdef RF_COMMANDS
 extern PUBLIC tsMacFilteringDataType tsMacFilteringData;
 #endif
@@ -264,6 +268,8 @@ PUBLIC void APP_vInitialiseRouter(void)
 #endif
     /* Initialise LEDs and buttons */
     APP_vLedInitialise();
+    //GPIO_PinWrite(GPIO, 0, 10, 0);
+
     APP_bButtonInitialise();
     /* Delete PDM if required */
 #ifndef DONGLE
@@ -296,6 +302,10 @@ PUBLIC void APP_vInitialiseRouter(void)
     //LinkyParams
     LoadLinkyParams();
 
+    APP_vZCL_DeviceSpecific_Init();
+
+
+
 #if 0
 // TODO Remove once sdk catches up
  uint8 au8ByteCopy[16] = { 0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff };
@@ -304,6 +314,8 @@ PUBLIC void APP_vInitialiseRouter(void)
 
     vPrintAPSTable();
     vAPP_LinkySensorSample();
+
+    vAPP_TuyaAllReport();
 
 #ifdef CLD_GREENPOWER
     vManagePowerOnCountInit();
@@ -356,6 +368,7 @@ PUBLIC void APP_vBdbCallback(BDB_tsBdbEvent *psBdbEvent)
 
 	   case BDB_EVENT_REJOIN_SUCCESS: // only for ZED
 		   DBG_vPrintf(TRACE_APP, "\r\nNODE: APP_vBdbCallback(REJOIN_SUCCESS)");
+
 		   break;
         case BDB_EVENT_NWK_FORMATION_SUCCESS:
             DBG_vPrintf(TRACE_APP,"APP: NwkFormation Success \r\n");
@@ -501,7 +514,12 @@ PUBLIC void APP_taskRouter(void)
         }else if (sAppEvent.eType == APP_E_EVENT_PERIODIC_REPORT)
         {
         	vAPP_LinkySensorSample();
+        	/*TUYA*/
+
+        	vAPP_TuyaAllReport();
+
         }
+
 #ifdef CLD_GREENPOWER
         else if(sAppEvent.eType == APP_EVENT_POR_RESET_GP_TABLES)
             vAPP_GP_ResetData();
@@ -515,6 +533,20 @@ PUBLIC void APP_taskRouter(void)
         vZCL_EventHandler(&sZCL_CallBackEvent);
     }
 #endif
+}
+
+
+PUBLIC void APP_LeaveAndResetForTuya(void)
+{
+	if (sDeviceDesc.eNodeState == E_RUNNING)
+	{
+		if (ZPS_eAplZdoLeaveNetwork( 0UL, FALSE, FALSE) != ZPS_E_SUCCESS )
+		 {
+			APP_vFactoryResetRecords();
+			MICRO_DISABLE_INTERRUPTS();
+			RESET_SystemReset();
+		}
+	}
 }
 
 /****************************************************************************
@@ -669,6 +701,9 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
                 }
             }
             #endif
+            u8OldStatusLinky=99;
+            u48StartTuyaTotalConsumption = 0;
+            DBG_vPrintf(1, "\r\n ----------TUYA u48StartTuyaTotalConsumption : %d\r\n", u48StartTuyaTotalConsumption );
             break;
         case ZPS_EVENT_NWK_FAILED_TO_START:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: Network Failed To start\r\n");
@@ -683,13 +718,20 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
         case ZPS_EVENT_NWK_NEW_NODE_HAS_JOINED:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: New Node %04x Has Joined\r\n",
                     psAfEvent->uEvent.sNwkJoinIndicationEvent.u16NwkAddr);
+            u8OldStatusLinky=99;
+            u48StartTuyaTotalConsumption = 0;
+            DBG_vPrintf(1, "\r\n ----------TUYA u48StartTuyaTotalConsumption : %d\r\n", u48StartTuyaTotalConsumption );
             break;
 
         case ZPS_EVENT_NWK_DISCOVERY_COMPLETE:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: Discovery Complete %02x\r\n",
                     psAfEvent->uEvent.sNwkDiscoveryEvent.eStatus);
-            vStartAwakeTimer(2);
-            vStartBlinkTimer(50);
+            //vStartAwakeTimer(2);
+            //vStartBlinkTimer(50);
+           // vStartAwakeTimer(15);
+            vStartBlinkTimer(200);
+            //GPIO_PinWrite(GPIO, 0, 10, 1); //ON
+
             break;
 
         case ZPS_EVENT_NWK_LEAVE_INDICATION:

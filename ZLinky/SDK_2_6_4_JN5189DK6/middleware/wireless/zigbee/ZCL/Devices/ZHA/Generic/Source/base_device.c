@@ -38,6 +38,8 @@
 #include "zcl.h"
 #include "zcl_options.h"
 #include "base_device.h"
+
+#include "dbg.h"
 /*#include "Basic.h"
 #include "Identify.h"
 #include "Groups.h"
@@ -137,6 +139,18 @@ PUBLIC teZCL_Status eZHA_RegisterBaseDeviceEndPoint(uint8 u8EndPointIdentifier,
     {
         return E_ZCL_FAIL;
     } 
+#endif
+
+#if (defined CLD_TIME && defined TIME_CLIENT)
+		if (eCLD_TimeCreateTime(
+						&psDeviceInfo->sClusterInstance.sTimeClient,
+						FALSE,
+						&sCLD_Time,
+						&psDeviceInfo->sTimeClientCluster,
+						&au8TimeClusterAttributeControlBits[0]) != E_ZCL_SUCCESS)
+		{
+			return E_ZCL_FAIL;
+		}
 #endif
 
 #if (defined CLD_IDENTIFY) && (defined IDENTIFY_CLIENT)
@@ -271,6 +285,19 @@ PUBLIC teZCL_Status eZHA_RegisterBaseDeviceEndPoint(uint8 u8EndPointIdentifier,
 		// Need to convert from cluster specific to ZCL return type so we lose the extra information of the return code
 		return E_ZCL_FAIL;
 	}
+
+	#if (defined CLD_TUYASPECIFIC)
+        /* Create an instance of a Basic cluster as a server */
+        if(eCLD_TuyaSpecificCreateLinky(&psDeviceInfo->sClusterInstance.sTuyaSpecificServer,
+                              TRUE,
+                              &sCLD_TuyaSpecific,
+                              &psDeviceInfo->sTuyaSpecificServerCluster,
+                              NULL) != E_ZCL_SUCCESS)
+        {
+            // Need to convert from cluster specific to ZCL return type so we lose the extra information of the return code
+            return E_ZCL_FAIL;
+        }
+    #endif
 
 #if (defined CLD_POWER_CONFIGURATION) && (defined POWER_CONFIGURATION_SERVER)
     /* Create an instance of a Power Configuration cluster as a server */

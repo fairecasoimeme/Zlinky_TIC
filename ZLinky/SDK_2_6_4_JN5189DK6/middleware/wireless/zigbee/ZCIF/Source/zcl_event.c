@@ -572,7 +572,11 @@ PRIVATE void vZCL_HandleDataIndication(ZPS_tsAfEvent *pZPSevent)
            )
         {
             u8Error=0;
-        }        
+        }
+
+        /* tuya */
+
+
     } else if (
         #ifdef ZCL_ALLOW_WILD_CARD_PROFILE
             (pZPSevent->uEvent.sApsDataIndEvent.u16ProfileId != 0xFFFF) &&
@@ -583,9 +587,8 @@ PRIVATE void vZCL_HandleDataIndication(ZPS_tsAfEvent *pZPSevent)
         PDUM_eAPduFreeAPduInstance(pZPSevent->uEvent.sApsDataIndEvent.hAPduInst);
         return;
     }
-
-
     
+
     if (u8Error != 0)
     {
         // send response if possible/required
@@ -766,6 +769,7 @@ PRIVATE void vZCL_HandleDataIndication(ZPS_tsAfEvent *pZPSevent)
     }
 #endif
     // Is command cluster specicfic or general
+
     switch (sZCL_HeaderParams.eFrameType)
     {
     case eFRAME_TYPE_COMMAND_ACTS_ACCROSS_ENTIRE_PROFILE:
@@ -812,6 +816,7 @@ PRIVATE void vZCL_HandleDataIndication(ZPS_tsAfEvent *pZPSevent)
             // check whether cluster is present on endpoint
             if (psClusterInstance == NULL)
             {
+
 #ifdef CLD_GREENPOWER
                 /* Check if the cluster is supported as  client*/
                 eCallbackReturn = eZCL_SearchForClusterEntry(pZPSevent->uEvent.sApsDataIndEvent.u8DstEndpoint,
@@ -831,7 +836,7 @@ PRIVATE void vZCL_HandleDataIndication(ZPS_tsAfEvent *pZPSevent)
             }
             else
             {
-    
+
                 /* Input parameter checks & only interested in data indication events from here down */
                 if( (psZCL_EndPointDefinition==NULL) || \
                     ( pZPSevent->eType != ZPS_EVENT_APS_DATA_INDICATION )  || \

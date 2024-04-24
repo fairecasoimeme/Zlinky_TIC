@@ -37,6 +37,7 @@
 
 #include "Basic.h"
 #include "Basic_internal.h"
+#include "app_reporting.h"
 
 #include "zcl_options.h"
 
@@ -67,6 +68,7 @@ PRIVATE teZCL_Status eCLD_BasicHandleResetToFactoryDefaultsCommand(
                             tsZCL_ClusterInstance       *psClusterInstance);
 #endif
 #endif
+
 
 /****************************************************************************/
 /***        Exported Variables                                            ***/
@@ -136,6 +138,16 @@ PUBLIC teZCL_Status eCLD_BasicCommandHandler(
                 break;
             }
         #endif
+        /* tuya */
+		case(E_CLD_BASIC_CMD_TUYA):
+		{
+			/* tuya */
+			DBG_vPrintf(1,"\r\n----------------------TUYA E_CLD_BASIC_CMD_TUYA");
+			vSendTuyaSpecificReport(GENERAL_CLUSTER_ID_BASIC, E_CLD_GLOBAL_ATTR_ID_ATTRIBUTE_REPORTING_STATUS);
+
+			eReturnStatus = E_ZCL_SUCCESS;
+			break;
+		}
             default:
             {
                 eReturnStatus = E_ZCL_ERR_CUSTOM_COMMAND_HANDLER_NULL_OR_RETURNED_ERROR;

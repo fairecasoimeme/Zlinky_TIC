@@ -57,8 +57,7 @@
 
 #include "base_device.h"
 #include "App_Linky.h"
-
-
+#include "MicroSpecific.h"
 #include "app_events.h"
 #ifdef CLD_GREENPOWER
 #include "GreenPower.h"
@@ -70,7 +69,7 @@
     #include "app_ota_client.h"
 #endif
 
-
+extern PUBLIC tsLinkyParams sLinkyParams;
 
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -98,7 +97,6 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent);
 PUBLIC  void APP_vHandleIdentify(uint16 u16Time);
 PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent);
 PRIVATE void APP_vHandleClusterUpdate(tsZCL_CallBackEvent *psEvent);
-PRIVATE void APP_vZCL_DeviceSpecific_Init(void);
 /****************************************************************************/
 /***        Exported Variables                                            ***/
 /****************************************************************************/
@@ -191,9 +189,11 @@ PUBLIC void APP_cbTimerLinky(void *pvParam)
 	sAppEvent.eType = APP_E_EVENT_PERIODIC_REPORT;
 	if(ZQ_bQueueSend(&APP_msgAppEvents, &sAppEvent) == FALSE)
 	{
-		DBG_vPrintf(TRACE_ZCL, "/r/nEVENT PERIODIC SEND ERROR : %d", sAppEvent.eType);
+		DBG_vPrintf(TRACE_ZCL, "\r\EVENT PERIODIC SEND ERROR : %d", sAppEvent.eType);
 	}
 }
+
+
 /****************************************************************************
  *
  * NAME: APP_cbTimerZclTick
@@ -496,6 +496,12 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
 
 				}
 
+			}else if(psEvent->psClusterInstance->psClusterDefinition->u16ClusterEnum == GENERAL_CLUSTER_ID_BASIC)
+			{
+				DBG_vPrintf(TRACE_ZCL, "\r\n-----------------TUYA ------ EP EVT: E_ZCL_CBET_WRITE_ATTRIBUTES type 0x%x", (uint8)psEvent->eEventType);
+				SaveLinkyParams();
+
+
 			}
 
             break;
@@ -527,8 +533,8 @@ PUBLIC void APP_vHandleIdentify(uint16 u16Time)
             /*
              * Restore to off/off state
              */
-    	vStartAwakeTimer(5);
-    	vStartBlinkTimer(50);
+    	//vStartAwakeTimer(5);
+    	//vStartBlinkTimer(50);
         bActive = FALSE;
     }
     else
@@ -538,8 +544,8 @@ PUBLIC void APP_vHandleIdentify(uint16 u16Time)
             bActive = TRUE;
             u8IdentifyCount = 5;
             bIdentifyState = TRUE;
-            vStartAwakeTimer(u8IdentifyCount);
-            vStartBlinkTimer(50);
+            //vStartAwakeTimer(u8IdentifyCount);
+            //vStartBlinkTimer(50);
         }
     }
 }
@@ -599,6 +605,16 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
         }
         break;
 
+        case TUYA_SPECIFIC_ID_LINKY:
+        {
+        	tsCLD_TuyaSpecificCallBackMessage *psCallBackMessage = (tsCLD_TuyaSpecificCallBackMessage*)psEvent->uMessage.sClusterCustomMessage.pvCustomData;
+        	DBG_vPrintf(TRACE_ZCL, "\r\n--------------------------------TUYA_SPECIFIC_ID_LINKY");
+        	if (psCallBackMessage->u8CommandId == E_CLD_TUYA_MCU_VERSION_REQ )
+        	{
+        		DBG_vPrintf(TRACE_ZCL, "\r\n--------------------------------E_CLD_TUYA_MCU_VERSION_REQ");
+        	}
+        }
+        break;
         case GENERAL_CLUSTER_ID_BASIC:
         {
             tsCLD_BasicCallBackMessage *psCallBackMessage = (tsCLD_BasicCallBackMessage*)psEvent->uMessage.sClusterCustomMessage.pvCustomData;
@@ -685,23 +701,59 @@ PRIVATE void APP_vHandleClusterUpdate(tsZCL_CallBackEvent *psEvent)
  * void
  *
  ****************************************************************************/
-PRIVATE void APP_vZCL_DeviceSpecific_Init(void)
+PUBLIC void APP_vZCL_DeviceSpecific_Init(void)
 {
-    memcpy(sBaseDevice.sBasicServerCluster.au8ManufacturerName, "LiXee", CLD_BAS_MANUF_NAME_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "ZLinky_TIC", CLD_BAS_MODEL_ID_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20230214", CLD_BAS_DATE_SIZE);
-#ifdef LIMITED
-    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4001-0013", CLD_BAS_SW_BUILD_SIZE);
-#else
-    memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0013", CLD_BAS_SW_BUILD_SIZE);
-#endif
+	 DBG_vPrintf(TRACE_ZCL, "\r\n ------ TUYA sLinkyParams.u8LinkyModeTuya : %d",sLinkyParams.u8LinkyModeTuya);
+	if (sLinkyParams.u8LinkyModeTuya == 0x0d)
+	{
+		/* TUYA */
 
-    memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
-    memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0013", CLD_BAS_PCODE_SIZE);
-    memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
+		memcpy(sBaseDevice.sBasicServerCluster.au8ManufacturerName, "_TZE200_nslr42tt", CLD_BAS_MANUF_NAME_SIZE);
+		sBaseDevice.sBasicServerCluster.sManufacturerName.u8Length = CLD_BAS_MANUF_NAME_SIZE  ;
+		sBaseDevice.sBasicServerCluster.sManufacturerName.pu8Data = sBaseDevice.sBasicServerCluster.au8ManufacturerName;
 
-    sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x0C;
-    sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
+		memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "TS0601", CLD_BAS_MODEL_ID_SIZE);
+		sBaseDevice.sBasicServerCluster.sModelIdentifier.u8Length = CLD_BAS_MODEL_ID_SIZE ;
+		sBaseDevice.sBasicServerCluster.sModelIdentifier.pu8Data = sBaseDevice.sBasicServerCluster.au8ModelIdentifier;
+		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20230214", CLD_BAS_DATE_SIZE);
+
+		memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "6000-0014", CLD_BAS_SW_BUILD_SIZE);
+
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0014", CLD_BAS_PCODE_SIZE);
+		memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
+		sBaseDevice.sBasicServerCluster.ePowerSource=1;
+		sBaseDevice.sBasicServerCluster.u8ZCLVersion=3;
+		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0xff;
+		sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
+
+	}else{
+		memcpy(sBaseDevice.sBasicServerCluster.au8ManufacturerName, "LiXee", 5);
+		sBaseDevice.sBasicServerCluster.sManufacturerName.u8Length = 5  ;
+		sBaseDevice.sBasicServerCluster.sManufacturerName.pu8Data = sBaseDevice.sBasicServerCluster.au8ManufacturerName;
+
+		memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "ZLinky_TIC", 10);
+		sBaseDevice.sBasicServerCluster.sModelIdentifier.u8Length = 10 ;
+		sBaseDevice.sBasicServerCluster.sModelIdentifier.pu8Data = sBaseDevice.sBasicServerCluster.au8ModelIdentifier;
+
+		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20240422", CLD_BAS_DATE_SIZE);
+		#ifdef LIMITED
+			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4001-0014", CLD_BAS_SW_BUILD_SIZE);
+		#else
+			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0014", CLD_BAS_SW_BUILD_SIZE);
+		#endif
+
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0014", CLD_BAS_PCODE_SIZE);
+		memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
+
+		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x0E;
+		sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
+		sBaseDevice.sCLD_OTA.u32CurrentFileVersion = 0x0E;
+
+	}
+
+
 }
 
 /****************************************************************************/

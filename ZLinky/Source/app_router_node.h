@@ -56,6 +56,7 @@ PUBLIC void APP_vInitialiseRouter(void);
 PUBLIC void APP_vFactoryResetRecords(void);
 PUBLIC void APP_taskRouter(void);
 PUBLIC void APP_vOobcSetRunning(void);
+PUBLIC void APP_LeaveAndResetForTuya(void);
 #ifdef CLD_OTA
 PUBLIC teNodeState eGetNodeState(void);
 PUBLIC tsOTA_PersistedData sGetOTACallBackPersistdata(void);

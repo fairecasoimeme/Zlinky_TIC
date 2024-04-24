@@ -573,7 +573,11 @@ PRIVATE  teZCL_Status eZCL_CheckClusterStructureIntegrity(tsZCL_EndPointDefiniti
             (psEndPointDefinition->psClusterInstance[i].psClusterDefinition->u16ClusterEnum < MIN_MAN_CLUSTER_ID))
         )
         {
-            return(E_ZCL_ERR_CLUSTER_ID_RANGE);
+        	/*TUYA*/
+        	if (psEndPointDefinition->psClusterInstance[i].psClusterDefinition->u16ClusterEnum != 0xEF00)
+        	{
+        		return(E_ZCL_ERR_CLUSTER_ID_RANGE);
+        	}
         }
 
         // if cluster in manufacturer specific - Id should be in a certain range

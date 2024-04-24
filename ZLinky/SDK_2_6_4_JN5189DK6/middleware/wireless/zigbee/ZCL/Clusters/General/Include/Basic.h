@@ -315,7 +315,9 @@
 /* Command codes */
 typedef enum 
 {
-    E_CLD_BASIC_CMD_RESET_TO_FACTORY_DEFAULTS    = 0x00
+    E_CLD_BASIC_CMD_RESET_TO_FACTORY_DEFAULTS    = 0x00,
+	/* TUYA COMMAND */
+	E_CLD_BASIC_CMD_TUYA    = 0xF0
 } teCLD_Basic_Command;
 
 typedef enum 
@@ -346,6 +348,10 @@ typedef enum
     E_CLD_BAS_ATTR_ID_ALARM_MASK,
     E_CLD_BAS_ATTR_ID_DISABLE_LOCAL_CONFIG,
     E_CLD_BAS_ATTR_ID_SW_BUILD_ID               = 0x4000,
+
+	/* Tuya */
+	E_CLD_BAS_ATTR_ID_TUYA_MAGICID               = 0xFFDE,
+
 } teCLD_BAS_ClusterID;
 
 
@@ -609,6 +615,12 @@ typedef struct
     tsZCL_CharacterString       sSWBuildID;
     uint8                       au8SWBuildID[16];
 #endif
+
+#ifdef CLD_BAS_ATTR_TUYA_ID
+    zuint8                      u8TuyaMagicID;
+    zenum8                      u8AttributeReportingStatus;
+#endif
+
 #endif
 
     zbmap32                      u32FeatureMap;
