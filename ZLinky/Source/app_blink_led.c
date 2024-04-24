@@ -69,6 +69,7 @@
 PRIVATE bool_t bDIO1State = FALSE;
 PRIVATE uint32 u32BlinkTickTime = 0;
 PRIVATE uint32 u32LoopTime = 0;
+
 /****************************************************************************/
 /***        Exported Functions                                            ***/
 /****************************************************************************/
@@ -83,6 +84,7 @@ PUBLIC void vAPP_cbTimerAwake( void *pvParams)
 
 PUBLIC void vStartAwakeTimer(uint32 u32Loop)
 {
+	ZTIMER_eStop(u8TimerAwake);
 	u32LoopTime=u32Loop;
 	ZTIMER_eStart(u8TimerAwake, ZTIMER_TIME_MSEC(1000 * u32LoopTime));
 }
@@ -100,15 +102,14 @@ PUBLIC void vStartAwakeTimer(uint32 u32Loop)
  ****************************************************************************/
 PUBLIC void vAPP_cbBlinkLED( void *pvParams)
 {
-    if (0 != u32BlinkTickTime)
-    {
         DBG_vPrintf(TRACE_BLINK_LED, "\r\nAPP Blink LED: Task Started");
-        vToggleLED();
-        ZTIMER_eStart(u8TimerBlink, u32BlinkTickTime);
-
-    }
+        vStartBlinkTimer(u32BlinkTickTime);
 }
 
+PUBLIC void vAPP_cbLedON( void *pvParams)
+{
+	vToggleLED();
+}
 
 
 /****************************************************************************
@@ -124,10 +125,14 @@ PUBLIC void vAPP_cbBlinkLED( void *pvParams)
  ****************************************************************************/
 PUBLIC void vStartBlinkTimer(uint32 u32Ticks)
 {
-    DBG_vPrintf(TRACE_BLINK_LED, "\r\nAPP Blink LED: Starting Blink Timer value = %d", u32Ticks);
+	ZTIMER_eStop(u8TimerBlink);
+	DBG_vPrintf(TRACE_BLINK_LED, "\r\nAPP Blink LED: Starting Blink Timer value = %d", u32Ticks);
     u32BlinkTickTime = u32Ticks;
-    GPIO_PinWrite(GPIO, 0, 10, 0); // On
-    ZTIMER_eStart(u8TimerBlink, u32Ticks);
+    GPIO_PinWrite(GPIO, 0, 10, 1); //ON
+    bDIO1State=FALSE;
+    ZTIMER_eStop(u8TimerLedON);
+    ZTIMER_eStart(u8TimerLedON, ZTIMER_TIME_MSEC(100));
+    ZTIMER_eStart(u8TimerBlink, ZTIMER_TIME_MSEC(u32Ticks));
 }
 
 /****************************************************************************
@@ -145,7 +150,9 @@ PUBLIC void vStopBlinkTimer(void)
     DBG_vPrintf(TRACE_BLINK_LED, "\r\nAPP Blink LED: Stopping Blink Timer");
     ZTIMER_eStop(u8TimerBlink);
     u32BlinkTickTime = 0;
-    GPIO_PinWrite(GPIO, 0, 10, 1); // Off
+    //GPIO_PinWrite(GPIO, 0, 10, 1); // Off
+    //GPIO_PinWrite(GPIO, 0, 10, 0); // ON
+
 }
 
 /****************************************************************************/
@@ -168,11 +175,11 @@ PUBLIC void vToggleLED(void)
     bDIO1State = !bDIO1State;
     if (bDIO1State)
     {
-        GPIO_PinWrite(GPIO, 0, 10, 0); // On
+        GPIO_PinWrite(GPIO, 0, 10, 0); // Off
     }
     else
     {
-        GPIO_PinWrite(GPIO, 0, 10, 1); // Off
+        GPIO_PinWrite(GPIO, 0, 10, 1); // On
     }
 }
 /****************************************************************************/
