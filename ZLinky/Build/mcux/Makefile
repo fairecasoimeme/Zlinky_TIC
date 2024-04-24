@@ -125,7 +125,7 @@ DISABLE_LTO            = 1
 OTA ?= 0 
 OTA_ENCRYPTED ?= 0
 LIMITED ?= 0
-VERSION = 12
+VERSION = 13
 ###############################################################################
 # Network settings
 
@@ -361,6 +361,8 @@ APPSRC += app_blink_led.c
 APPSRC += app_uartlinky.c
 APPSRC += App_Linky.c
 APPSRC += LixeeCluster.c
+APPSRC += TuyaSpecific.c
+APPSRC += TuyaSpecificCommandHandler.c
 APPSRC += meter_identification.c
 
 
@@ -410,6 +412,10 @@ else
 include $(SDK2_BASE_DIR)/middleware/wireless/zigbee3.0/BuildConfig/ZCL/Build/config_ZCL.mk
 include $(SDK2_BASE_DIR)/middleware/wireless/zigbee3.0/BDB/Build/config.mk
 endif
+
+# compatibility for SDK 2.6.8 and newer verions
+ZPSCONFIG           = $(TOOL_BASE_DIR)/ZPSConfig/bin/ZPSConfig.exe
+PDUMCONFIG          = $(TOOL_BASE_DIR)/PDUMConfig/bin/PDUMConfig.exe
 
 ###############################################################################
 # Standard Application header search paths
