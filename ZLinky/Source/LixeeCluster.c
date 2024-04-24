@@ -172,7 +172,7 @@ PUBLIC  teZCL_Status eCLD_LixeeCreateLinky(
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.u8Length = 1;
 			((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyPPOINTE.pu8Data = ((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPPOINTE;
 
-			((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPeriodicSend = 10;
+			((tsCLD_Linky*)pvEndPointSharedStructPtr)->au8LinkyPeriodicSend = 5;
 
 			memcpy(((tsCLD_Linky*)pvEndPointSharedStructPtr)->sLinkyMOTDETAT.pu8Data,"000000",6);
 
