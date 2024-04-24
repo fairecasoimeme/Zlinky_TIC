@@ -138,7 +138,7 @@ PUBLIC uint8 u8TimerPowerOn;
 #define TRACE_MAIN_RADIO                   TRUE
 #define RADIO_TEMP_UPDATE                  TRUE
 
-#define RX_QUEUE_SIZE                270
+#define RX_QUEUE_SIZE                8
 
 /****************************************************************************/
 /***        Type Definitions                                              ***/
@@ -155,7 +155,9 @@ PUBLIC uint8 u8TimerButtonScan;
 PUBLIC uint8 u8TimerZCL;
 PUBLIC uint8 u8TimerLinky;
 PUBLIC uint8 u8TimerBlink;
+PUBLIC uint8 u8TimerLedON;
 PUBLIC uint8 u8TimerAwake;
+
 
 #if (defined APP_NTAG_NWK)
 PUBLIC uint8 u8TimerNtag;
@@ -169,6 +171,8 @@ PUBLIC tszQueue APP_msgSerialRx;
 
 uint8  au8AtRxBuffer [ RX_QUEUE_SIZE ];
 PUBLIC uint8 u8ModeLinky=0;
+PUBLIC uint8 u8OldStatusLinky=0;
+PUBLIC zuint48 u48StartTuyaTotalConsumption=0;
 
 /****************************************************************************/
 /***        Local Variables                                               ***/
@@ -440,7 +444,9 @@ PUBLIC void APP_vInitResources(void)
     ZTIMER_eOpen(&u8TimerZCL,        APP_cbTimerZclTick,    NULL, ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerLinky,      APP_cbTimerLinky,      NULL, ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerBlink,      vAPP_cbBlinkLED,      NULL, ZTIMER_FLAG_PREVENT_SLEEP);
+    ZTIMER_eOpen(&u8TimerLedON,      vAPP_cbLedON,         NULL, ZTIMER_FLAG_PREVENT_SLEEP);
     ZTIMER_eOpen(&u8TimerAwake,      vAPP_cbTimerAwake,      NULL, ZTIMER_FLAG_PREVENT_SLEEP);
+
 
 
 #if (defined APP_NTAG_NWK)

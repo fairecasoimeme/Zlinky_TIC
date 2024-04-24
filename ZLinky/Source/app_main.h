@@ -68,7 +68,9 @@ extern PUBLIC uint8 u8TimerButtonScan;
 extern PUBLIC uint8 u8TimerZCL;
 extern PUBLIC uint8 u8TimerLinky;
 extern PUBLIC uint8 u8TimerBlink;
+extern PUBLIC uint8 u8TimerLedON;
 extern PUBLIC uint8 u8TimerAwake;
+
 
 #if (defined APP_NTAG_NWK)
 extern PUBLIC uint8 u8TimerNtag;
@@ -86,6 +88,8 @@ extern PUBLIC tszQueue APP_msgBdbEvents;
 extern PUBLIC tszQueue APP_msgAppEvents;
 
 extern PUBLIC uint8 u8ModeLinky;
+extern PUBLIC uint8 u8OldStatusLinky;
+extern PUBLIC zuint48 u48StartTuyaTotalConsumption;
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
