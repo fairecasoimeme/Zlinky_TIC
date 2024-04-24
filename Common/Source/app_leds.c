@@ -121,8 +121,8 @@ PUBLIC void APP_vLedInitialise(void)
             kGPIO_DigitalOutput, OFF,
     };
 
-    APP_vInitWhiteLed();
-    APP_vWhiteLedOff();
+    //APP_vInitWhiteLed();
+    //APP_vWhiteLedOff();
 
     GPIO_PinInit(GPIO, APP_BOARD_GPIO_PORT, APP_BASE_BOARD_LED1_PIN, &led_config);
 
