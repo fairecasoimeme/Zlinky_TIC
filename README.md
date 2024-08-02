@@ -32,6 +32,7 @@
    * [Domoticz](#domoticz)
    * [Homey Pro](#homey-pro)
    * [SmartThing](#smartthing)
+   * [Tuya](#tuya-from-v14)
 * [FAQ](#faq)
 * [ChangeLog](#changelog)
  
@@ -450,6 +451,42 @@ Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/
 
 Lien vers l'application : [Sources](https://github.com/sdalu/EdgeLinkyTIC)  
 Lien vers l'installation : [Installation](https://community.smartthings.com/t/st-edge-zlinky-tic/254857)  
+
+### Tuya (From v14)
+
+Depuis la version v4000-0014, il est possible d'intégrer le ZLinky_TIC sur une passerelle zigbee Tuya. Pour cela, il suffit de passer la passerelle zigbee en mode "appairage".  
+   * Cliquer sur la passerelle zigbee
+   * Cliquer sur "Ajouter un sous-appareil"
+   * Mettre le ZLinky en mode appairage - Appui long sur le bouton "link" (clignotement rapide de la LED bleue)
+   * Cliquer sur "La LED clignote déjà"
+   * Attendre que "Power Clamp" apparaisse dans la découverte des appareils zigbee à proximité
+
+Voici les données exploitables sur la plateforme Tuya :
+   * Mode historique:
+     * Consommation totale (en kWh)
+     * Consommation horaire (en kWh)
+     * Intensité par phase (en A)
+     * Puissance apparente totale (en kVA affiché kW)
+     * Graphes consommation journalier / mensuel / annuel
+     * 1 trigger sur la puissance apparente totale
+     * 1 trigger sur la consommation totale     
+    
+   * Mode standard (mode conseillé):
+     * Consommation totale (en kWh)
+     * Consommation horaire (en kWh)
+     * Intensité par phase (en A)
+     * Tension par phase (en V)
+     * Puissance apparente par phase (en kVA marqué kW)
+     * Puissance apparente totale (en kVA affiché kW)
+     * Graphes consommation journalier / mensuel / annuel
+     * 1 trigger sur la puissance apparente totale
+     * 1 trigger sur la consommation totale
+    
+Screenshots  
+
+|Mode Historique|Mode Standard|Exemple graphique|
+|---------------|-------------|-----------------|
+|<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_dashboard_tuya_smart.jpg" width="200">|<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_dashboard_standard_tuya_smart.jpg" width="200">|<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_graphe_tuya_smart.jpg" width="200">|
 
 ## F.A.Q
 
