@@ -94,18 +94,18 @@ const uint8_t dataPoint[] = {
 						//0x66, //PowerFactor_1
 						//0x70, //PowerFactor_2
 						//0x7A, //PowerFactor_3
-						0x83, //Current (mA)
+						//0x83, //Current (mA)
 						//0x84, //AC_Frequency
 						//0x85, //Temperature
-						0x86, //Device status
+						//0x86, //Device status
 						0x06, //Phase 1
 						0x07, //Phase 2
 						0x08, //Phase 3
 						0x09, //TotalPower
 						0x01, //Active power
-						0x65, //Energy 1
-						0x6F, //Energy 2
-						0x79, //Energy 3
+						//0x65, //Energy 1
+						//0x6F, //Energy 2
+						//0x79, //Energy 3
 					};
 
 
@@ -1049,7 +1049,7 @@ uint8 APP_vProcessRxDataHisto ( void )
 
 PUBLIC void vAPP_TuyaAllReport(void)
 {
-	if (sLinkyParams.u8LinkyModeTuya == 0x0d)
+	if ((sLinkyParams.u8LinkyModeTuya == 0x0d) || (sLinkyParams.u8LinkyModeTuya == 0x13))
 	{
 		for (int i=0;i<5;i++)
 		{
@@ -1211,38 +1211,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     DBG_vPrintf(TRACE_LINKY, "\r\n ----------ZTIMER_eStart Next time : %d\r\n", sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend );
 
-    /* TUYA */
-    /*if (sLinkyParams.u8LinkyModeTuya == 0x0d)
-    {
 
-    	if (u8ModeLinky == 0)
-    	{
-    		if (u48StartTuyaTotalConsumption==0)
-    		{
-    			u48StartTuyaTotalConsumption = sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered +
-    														sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier3SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier4SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier5SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier6SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier7SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier8SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier9SummationDelivered +
-															sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier10SummationDelivered ;
-    			SaveLinkyParams();
-    		}
-    	}else{
-    		if (u48StartTuyaTotalConsumption==0)
-    		{
-
-    			u48StartTuyaTotalConsumption = sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered;
-    			DBG_vPrintf(TRACE_LINKY, "\r\n ----------TUYA Applinky u48CurrentSummationDelivered : %d\r\n",sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered);
-    			DBG_vPrintf(TRACE_LINKY, "\r\n ----------TUYA Applinky u48StartTuyaTotalConsumption : %d\r\n",u48StartTuyaTotalConsumption);
-    			SaveLinkyParams();
-    		}
-    	}
-    }*/
     //ZTIMER_eStart(u8TimerLinky, 13* 1000 );
     //ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
     ZTIMER_eStop(u8TimerLinky);
@@ -1265,7 +1234,7 @@ PUBLIC void LoadLinkyParams()
 	}
 
 	/* Tuya Mode */
-	if (sLinkyParams.u8LinkyModeTuya == 0x0d)
+	if ((sLinkyParams.u8LinkyModeTuya == 0x0d) || (sLinkyParams.u8LinkyModeTuya == 0x13))
 	{
 		sBaseDevice.sBasicServerCluster.u8TuyaMagicID = sLinkyParams.u8LinkyModeTuya;
 	}

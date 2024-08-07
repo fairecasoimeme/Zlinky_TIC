@@ -703,8 +703,8 @@ PRIVATE void APP_vHandleClusterUpdate(tsZCL_CallBackEvent *psEvent)
  ****************************************************************************/
 PUBLIC void APP_vZCL_DeviceSpecific_Init(void)
 {
-	 DBG_vPrintf(TRACE_ZCL, "\r\n ------ TUYA sLinkyParams.u8LinkyModeTuya : %d",sLinkyParams.u8LinkyModeTuya);
-	if (sLinkyParams.u8LinkyModeTuya == 0x0d)
+	DBG_vPrintf(TRACE_ZCL, "\r\n ------ TUYA sLinkyParams.u8LinkyModeTuya : %d",sLinkyParams.u8LinkyModeTuya);
+	if ((sLinkyParams.u8LinkyModeTuya == 0x0d) || (sLinkyParams.u8LinkyModeTuya == 0x13))
 	{
 		/* TUYA */
 
