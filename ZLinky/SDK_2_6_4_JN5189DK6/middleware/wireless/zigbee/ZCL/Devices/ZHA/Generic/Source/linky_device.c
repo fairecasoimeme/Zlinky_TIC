@@ -121,6 +121,18 @@ PUBLIC teZCL_Status eZLO_RegisterSimpleMeteringEndPoint(uint8 u8EndPointIdentifi
         }    
     #endif
 
+	#if (defined CLD_TIME && defined TIME_CLIENT)
+		if (eCLD_TimeCreateTime(
+						&psDeviceInfo->sClusterInstance.sTimeClient,
+						FALSE,
+						&sCLD_Time,
+						&psDeviceInfo->sTimeClientCluster,
+						&au8TimeClusterAttributeControlBits[0]) != E_ZCL_SUCCESS)
+		{
+			return E_ZCL_FAIL;
+		}
+	#endif
+
 	#if (defined CLD_ALARMS) && (defined ALARMS_SERVER)
 		/* Create an instance of an Alarms cluster as a server */
 		if(eCLD_AlarmsCreateAlarms(&psDeviceInfo->sClusterInstance.sAlarmsServer,
@@ -235,6 +247,20 @@ PUBLIC teZCL_Status eZLO_RegisterSimpleMeteringEndPoint(uint8 u8EndPointIdentifi
 			// Need to convert from cluster specific to ZCL return type so we lose the extra information of the return code
 			return E_ZCL_FAIL;
 		}
+    #endif
+
+
+	#if (defined CLD_TUYASPECIFIC)
+        /* Create an instance of a Basic cluster as a server */
+        if(eCLD_TuyaSpecificCreateLinky(&psDeviceInfo->sClusterInstance.sTuyaSpecificServer,
+                              TRUE,
+                              &sCLD_TuyaSpecific,
+                              &psDeviceInfo->sTuyaSpecificServerCluster,
+                              NULL) != E_ZCL_SUCCESS)
+        {
+            // Need to convert from cluster specific to ZCL return type so we lose the extra information of the return code
+            return E_ZCL_FAIL;
+        }
     #endif
 
     return eZCL_Register(&psDeviceInfo->sEndPoint);

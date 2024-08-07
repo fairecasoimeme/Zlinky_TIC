@@ -38,6 +38,7 @@ extern "C" {
 #include "zcl_options.h"
 #include "Basic.h"
 #include "Identify.h"
+#include "Time.h"
 #include "Groups.h"
 
 #ifdef CLD_OTA
@@ -50,6 +51,7 @@ extern "C" {
 #include "SimpleMetering.h"
 #include "ElectricalMeasurement.h"
 #include "LixeeCluster.h"
+#include "TuyaSpecific.h"
 #include "meter_identification.h"
 /****************************************************************************/
 /***        Macro Definitions                                             ***/
@@ -71,6 +73,10 @@ typedef struct
         tsZCL_ClusterInstance sIdentifyServer;
     #endif
 
+	#if (defined CLD_TIME) && (defined TIME_CLIENT)
+		tsZCL_ClusterInstance sTimeClient;
+	#endif
+
 	#if (defined CLD_ALARMS) && (defined ALARMS_SERVER)
 		tsZCL_ClusterInstance sAlarmsServer;
 	#endif
@@ -85,6 +91,10 @@ typedef struct
 
 	#if (defined CLD_METER_IDENTIFICATION) && (defined METER_IDENTIFICATION_SERVER)
        tsZCL_ClusterInstance sMeterIdentificationServer;
+    #endif
+
+	#if (defined CLD_TUYASPECIFIC)
+       tsZCL_ClusterInstance sTuyaSpecificServer;
     #endif
 
     /* Recommended Optional client clusters */
@@ -124,6 +134,10 @@ typedef struct
         tsCLD_IdentifyCustomDataStructure sIdentifyServerCustomDataStructure;
     #endif
 
+	#if (defined CLD_TIME) && (defined TIME_CLIENT)
+		tsCLD_Time sTimeClientCluster;
+	#endif
+
 	#if (defined CLD_ALARMS) && (defined ALARMS_SERVER)
 		/* Alarms Cluster - Server */
 		tsCLD_Alarms sAlarmsServerCluster;
@@ -143,6 +157,11 @@ typedef struct
 	#if (defined CLD_METER_IDENTIFICATION) && (defined METER_IDENTIFICATION_SERVER)
 		tsCLD_MeterIdentification sMeterIdentification;
 	#endif
+
+	#if (defined CLD_TUYASPECIFIC)
+        /* TuyaSpecific Cluster - Server */
+        tsCLD_TuyaSpecific sTuyaSpecificServerCluster;
+    #endif
 
     /* Optional server clusters */
     #if (defined CLD_POLL_CONTROL) && (defined POLL_CONTROL_SERVER)

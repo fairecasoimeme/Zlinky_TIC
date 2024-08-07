@@ -102,7 +102,11 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 		{
 
 			teZCL_Status e_status;
-			e_status = eCLD_TuyaCommandTotalPowerSend(sBaseDevice.sElectricalMeasurement.u16ApparentPower);
+			uint16 totalApparentPower =0;
+			totalApparentPower = sBaseDevice.sElectricalMeasurement.u16ApparentPower +
+						sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhB +
+						sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC;
+			e_status = eCLD_TuyaCommandTotalPowerSend(totalApparentPower);
 		}
 		break;
 		case 0x01:
@@ -110,8 +114,7 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 			uint32_t totalConsumption;
 			if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode == 0) || (sBaseDevice.sLinkyServerCluster.au8LinkyMode == 2) )
 			{
-				totalConsumption = ((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationDelivered / 10) +
-											((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered / 10) +
+				totalConsumption =         	((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier1SummationDelivered / 10) +
 											((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier2SummationDelivered / 10) +
 											((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier3SummationDelivered / 10) +
 											((uint32_t)sBaseDevice.sSimpleMeteringServerCluster.u48CurrentTier4SummationDelivered / 10) +
@@ -145,11 +148,14 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 			{
 				voltage=0;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrent * 1000;
-				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPower;
+				Power = 0;
 			}else{
 				voltage = sBaseDevice.sElectricalMeasurement.u16RMSVoltage*10;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrent * 1000;
 				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPower;
+				//calcul de l'intensité'
+				if (voltage>0)
+					Current = (Power*1000) / sBaseDevice.sElectricalMeasurement.u16RMSVoltage  ;
 			}
 		    eCLD_TuyaCommandPhaseSend(0x06,voltage,Current,Power);
 			DBG_vPrintf(1,"\r\n----------------------TUYA eCLD_TuyaCommandPhase1Send Voltage : %d - Current : %d - Power : %d",voltage,Current,Power);
@@ -165,11 +171,14 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 			{
 				voltage=0;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB * 1000;
-				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhB;
+				Power = 0;
 			}else{
 				voltage = sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhB*10;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB * 1000;
 				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhB;
+				//calcul de l'intensité'
+				if (voltage>0)
+					Current = (Power*1000) / sBaseDevice.sElectricalMeasurement.u16RMSVoltage  ;
 			}
 			eCLD_TuyaCommandPhaseSend(0x07,voltage,Current,Power);
 
@@ -184,11 +193,13 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 			{
 				voltage=0;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC * 1000;
-				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC;
+				Power = 0;
 			}else{
 				voltage = sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhC*10;
 				Current = sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC * 1000;
 				Power = sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC;
+				if (voltage>0)
+					Current = (Power*1000) / sBaseDevice.sElectricalMeasurement.u16RMSVoltage  ;
 			}
 			eCLD_TuyaCommandPhaseSend(0x08,voltage,Current,Power);
 
