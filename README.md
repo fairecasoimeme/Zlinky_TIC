@@ -529,6 +529,15 @@ Pour palier le problème de distance, il existe plusieurs solution :
 
 ## Changelog
 
+### Version 0014
+* Add Tuya zigbee compatibility (see datas management [here](#tuya-from-v14)
+* Add ENEDIS Labellisation software "Linky Ready"
+  - Better data consistency
+  - Better error management
+  - Change LED blinking
+  - Change UART decoding
+
+
 ### Version 0013
 * Add MOTDETAT value (from historic mode) --> Cluster : 0xFF66 - Attribut : 0x0009
 * Add null value for all of default metering properties
