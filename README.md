@@ -81,7 +81,7 @@ L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs l
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_NOK.gif" width="100">  
 
 La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_OK.gif" width="100">  
 
 ## Route or limited route (From V7)
 
