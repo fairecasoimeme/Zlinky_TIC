@@ -394,7 +394,7 @@ Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur
 * Télécharger et installer [l'outil de flashage](https://github.com/fairecasoimeme/ZiGatev2/raw/master/Tools/JN-SW-4407-DK6-Flash-Programmer.zip).
 * Télécharger le firmware souhaité : (https://github.com/fairecasoimeme/Zlinky_TIC/releases)
 * Ouvrir une console
-* Aller dans le retpertoir d'outil de flash
+* Aller dans le répertoire de l'outil de flash
 * Lancer la commande suivante :
   
 Sans remise à zéro (Conserve les appareils déjà appairés):  
