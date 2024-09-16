@@ -391,8 +391,8 @@ Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur
 
 **Sous Windows**  
 * Télécharger et installer (si nécessaire) les pilotes du module USB TTL [ici](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
-* Télécharger et installer (l'outil de flashage)[https://github.com/fairecasoimeme/ZiGatev2/raw/master/Tools/JN-SW-4407-DK6-Flash-Programmer.zip].
-* Télécharger le firmware souhaité : https://github.com/fairecasoimeme/Zlinky_TIC/releases
+* Télécharger et installer [l'outil de flashage](https://github.com/fairecasoimeme/ZiGatev2/raw/master/Tools/JN-SW-4407-DK6-Flash-Programmer.zip).
+* Télécharger le firmware souhaité : (https://github.com/fairecasoimeme/Zlinky_TIC/releases)
 * Ouvrir une console
 * Aller dans le retpertoir d'outil de flash
 * Lancer la commande suivante :
