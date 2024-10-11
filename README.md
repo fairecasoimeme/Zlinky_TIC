@@ -80,8 +80,8 @@ L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'
 L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_NOK.gif" width="100">  
 
-La LED de l'appareil reste fixe : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/manuel_LED_send_datas.png" width="200">  
+La LED de l'appareil clignote une fois toutes les 3 secondes : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_OK.gif" width="100">  
 
 ## Route or limited route (From V7)
 
@@ -375,7 +375,7 @@ Pour changer de mode, veuillez suivre la mise à jour (non OTA)
 ⚠️ **Pour les nouveaux achats, le connecteur noir pour la mise à jour physique n'est plus disponible. Pour autant, il est tout de même possible de procéder à la mise à jour physique mais en maintenant le module USB sur les pastilles. Pour les dernières versions, le hardware et le software permettent d'effectuer des mises à jour OTA au travers de votre box domotique.**  
 
 Tout d'abord, il faut dévisser le boitier afin de sortir la carte électronique.
-Ensuite, il faut brancher le module USB TTL sur le ZLinky_TIC comme sur la photo. 
+Ensuite, il faut brancher le module USB TTL (vous pouvez vous en procurer un [ici](https://lixee.fr/produits/25-module-usb-ttl-cp2102.html) ou [ici](https://www.amazon.fr/s?k=CP2102)) sur le ZLinky_TIC comme sur la photo. 
 
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_1.jpg" width="400">  
 
@@ -389,7 +389,19 @@ Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur
 
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_2.jpg" width="400"> 
 
-Enfin vous pouvez suivre les [instructions suivantes](https://zigate.fr/documentation/mise-a-jour-de-la-zigate-2/) (similaire à la mise à jour d'une ZiGate+ (V2))
+**Sous Windows**  
+* Télécharger et installer (si nécessaire) les pilotes du module USB TTL [ici](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
+* Télécharger et installer [l'outil de flashage](https://github.com/fairecasoimeme/ZiGatev2/raw/master/Tools/JN-SW-4407-DK6-Flash-Programmer.zip).
+* Télécharger le firmware souhaité : (https://github.com/fairecasoimeme/Zlinky_TIC/releases)
+* Ouvrir une console
+* Aller dans le répertoire de l'outil de flash
+* Lancer la commande suivante :
+  
+Sans remise à zéro (Conserve les appareils déjà appairés):  
+`DK6Programmer -s COMXX -P 500000 -Y -p <NOM_DU_FIRMWARE.bin>`  
+
+Avec remise à zéro (Efface toutes les données (appairages compris)):  
+`DK6Programmer -s COMXX -P 500000 -e FLASH -Y -p <NOM_DU_FIRMWARE.bin>`  
 
 ## Errata (hardware)
 
