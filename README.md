@@ -38,8 +38,17 @@
  
 
 ## Description
+
+### Version 1.x
 ![Description ZLinky_TIC](https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_description.JPG)
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_prototype.jpg" width="400">
+
+### Version 2.x
+![Description ZLinky_TIC_v2](https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Description_ZLinky_v2.png)
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinkyv2_onsite.jpg" width="400">
+
+Cette version hardware + la version firmware v14 a été labellisée <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/1_Linky_Ready_Logo_Noir.jpg" width="100">  par le laboratoire Enedis.
+
 
 ## PCB
 
@@ -66,7 +75,7 @@ Suivre les instructions suivantes :
 * Retirer le capot vert du Linky
 * Insérer le *ZLinky_TIC* en appuyant sur le bouton au-dessus
 
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/installation_ZLinky_TIC.png" width="600">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Installation_ZLinky_v2.png" width="600">  
 
 PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de la marque du Linky
 
@@ -403,7 +412,7 @@ Sans remise à zéro (Conserve les appareils déjà appairés):
 Avec remise à zéro (Efface toutes les données (appairages compris)):  
 `DK6Programmer -s COMXX -P 500000 -e FLASH -Y -p <NOM_DU_FIRMWARE.bin>`  
 
-## Errata (hardware)
+## Errata (hardware v1.0)
 
 Sur les premières versions hardware, il n'y a pas de condensateur (voir la photo) engendrant quelques fois, sur certains Linky et en fonction du nombre de requêtes, des coupures ou déconnexion. Si c'est le cas, il convient de contacter par mail le fabricant contact[at]lixee.fr pour effectuer la modification.
 
