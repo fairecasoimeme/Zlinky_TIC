@@ -84,13 +84,13 @@ PS: L'image et l'emplacement des bornes I1 I2 et A peuvent varier en fonction de
 Le voyant lumineux permet de connaître l'état de l'appareil.
 
 L'appareil clignote rapidement plusieurs fois. ZLinky_TIC est en mode attente d'appairage. (⚠️ Uniquement à partir de la V7)  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_Permit_join.gif" width="100">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_Permit_join.gif" width="100"><img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_v2_pair.gif" width="150">    
 
 L'appareil clignote plusieurs fois lentement. Zlinky_TIC rencontre des erreurs lors de l'acquisition des données du Linky.  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_NOK.gif" width="100">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_NOK.gif" width="100"><img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_v2_blink_off.gif" width="150">    
 
 La LED de l'appareil clignote une fois toutes les 3 secondes : Le ZLinky_TIC fonctionne correctement. L'appareil décode correctement le Linky  
-<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_OK.gif" width="100">  
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_Blink_OK.gif" width="100"><img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_v2_Blink_ok.gif" width="150">   
 
 ## Route or limited route (From V7)
 
