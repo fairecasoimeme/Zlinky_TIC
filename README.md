@@ -47,7 +47,11 @@
 ![Description ZLinky_TIC_v2](https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Description_ZLinky_v2.png)
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinkyv2_onsite.jpg" width="400">
 
-Cette version hardware + la version firmware v14 a été labellisée <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/1_Linky_Ready_Logo_Noir.jpg" width="100">  par le laboratoire Enedis.
+#### Améliorations hardware
+* Cette version hardware + la version firmware v14 a été labellisée <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/1_Linky_Ready_Logo_Noir.jpg" width="50">  par le laboratoire Enedis.
+* Déport T.I.C permettant de chaîner différents appareils compatibles avec la téléinformation (I1 et I2)
+* Boitier ABS personnalisé plus adapté au Linky
+  
 
 
 ## PCB
