@@ -125,7 +125,7 @@ DISABLE_LTO            = 1
 OTA ?= 0 
 OTA_ENCRYPTED ?= 0
 LIMITED ?= 0
-VERSION = 13
+VERSION = 15
 ###############################################################################
 # Network settings
 
@@ -280,7 +280,7 @@ CFLAGS += -DPRINTF_ADVANCED_ENABLE
 CFLAGS += -DDEBUG_APP
 #CFLAGS += -DDEBUG_APP_BDB
 CFLAGS += -DDEBUG_APP_EVENT
-#CFLAGS += -DDEBUG_BDB
+CFLAGS += -DDEBUG_BDB
 CFLAGS += -DNXP_HARDWARE
 CFLAGS += -DDEBUG_ZCL
 CFLAGS +=  -DDEBUG_EXCEPTIONS
