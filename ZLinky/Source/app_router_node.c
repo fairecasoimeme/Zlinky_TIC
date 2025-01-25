@@ -225,6 +225,7 @@ PUBLIC void APP_vInitialiseRouter(void)
 #endif
 
     sDeviceDesc.eNodeState = E_STARTUP;
+    sDeviceDesc.networkState = 0;
     PDM_eReadDataFromRecord(PDM_ID_APP_ROUTER,
                             &sDeviceDesc,
                             sizeof(tsDeviceDesc),
@@ -386,7 +387,7 @@ PUBLIC void APP_vBdbCallback(BDB_tsBdbEvent *psBdbEvent)
                 //{
                 //    u8AssociatuionAttempts--;
                     eStatus = BDB_eNsStartNwkSteering();
-                    DBG_vPrintf(TRACE_APP, "BDB rery Steering status %d\r\n",eStatus);
+                    DBG_vPrintf(TRACE_APP, "BDB retry Steering status %d\r\n",eStatus);
               //  }
             }
             break;
@@ -688,6 +689,7 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
 
             /* Save to PDM */
             sDeviceDesc.eNodeState = E_RUNNING;
+            sDeviceDesc.networkState = 1;
             PDM_eSaveRecordData(PDM_ID_APP_ROUTER,&sDeviceDesc,sizeof(tsDeviceDesc));
 
             ZPS_eAplAibSetApsUseExtendedPanId( ZPS_u64NwkNibGetEpid(ZPS_pvAplZdoGetNwkHandle()) );
@@ -718,12 +720,16 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
         case ZPS_EVENT_NWK_NEW_NODE_HAS_JOINED:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: New Node %04x Has Joined\r\n",
                     psAfEvent->uEvent.sNwkJoinIndicationEvent.u16NwkAddr);
+            sDeviceDesc.networkState=1;
+            PDM_eSaveRecordData(PDM_ID_APP_ROUTER,&sDeviceDesc,sizeof(tsDeviceDesc));
+
             u8OldStatusLinky=99;
             u48StartTuyaTotalConsumption = 0;
             DBG_vPrintf(1, "\r\n ----------TUYA u48StartTuyaTotalConsumption : %d\r\n", u48StartTuyaTotalConsumption );
             break;
 
         case ZPS_EVENT_NWK_DISCOVERY_COMPLETE:
+        	sDeviceDesc.networkState=0;
             DBG_vPrintf(TRACE_APP, "APP-ZDO: Discovery Complete %02x\r\n",
                     psAfEvent->uEvent.sNwkDiscoveryEvent.eStatus);
             //vStartAwakeTimer(2);
