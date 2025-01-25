@@ -494,7 +494,7 @@
       <OutputClusters Cluster="Mgmt_NWK_Update_rsp" TxAPDUs="ZLinky->apduZDP" Discoverable="false"/>
       <OutputClusters Cluster="Parent_Annce_rsp" TxAPDUs="ZLinky->apduZDP" Discoverable="true"/>
     </Endpoints>
-    <Endpoints Id="1" Enabled="true" ApplicationDeviceId="83" ApplicationDeviceVersion="1" Profile="HA" Message="APP_ZCL_vEventHandler" Name="Application">
+    <Endpoints Id="1" Enabled="true" ApplicationDeviceId="257" ApplicationDeviceVersion="1" Profile="HA" Message="APP_ZCL_vEventHandler" Name="Application">
       <InputClusters Cluster="Basic" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="Power_configuration" RxAPDU="ZLinky->apduZCL" Discoverable="true"/>
       <InputClusters Cluster="Groups" RxAPDU="ZLinky->apduZCL" Discoverable="false"/>
