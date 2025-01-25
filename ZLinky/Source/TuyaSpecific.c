@@ -103,9 +103,12 @@ PUBLIC void SendTuyaReportCommand(uint8_t DP)
 
 			teZCL_Status e_status;
 			uint16 totalApparentPower =0;
-			totalApparentPower = sBaseDevice.sElectricalMeasurement.u16ApparentPower +
+			/*totalApparentPower = sBaseDevice.sElectricalMeasurement.u16ApparentPower +
 						sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhB +
-						sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC;
+						sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC;*/
+
+			totalApparentPower = sBaseDevice.sElectricalMeasurement.u16TotalApparentPower;
+
 			e_status = eCLD_TuyaCommandTotalPowerSend(totalApparentPower);
 		}
 		break;
