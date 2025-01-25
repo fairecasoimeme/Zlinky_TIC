@@ -60,7 +60,7 @@
 
 #include "app_blink_led.h"
 
-
+#include "app_router_node.h"
 
 extern uint8_t wdt_update_count;
 
@@ -81,7 +81,9 @@ uint32  		   u32Timeout=0;
 uint8			   u8NbError=0;
 
 uint8              au8oldSTGE[8];
+uint8              au8oldTarifPeriod[16];
 bool  			   alarmLinky=false;
+bool 			   alarmTarifPeriod = false;
 
 PUBLIC tsLinkyParams sLinkyParams;
 
@@ -269,6 +271,15 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nLTARF : %s",trim(au8Value));
 					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyLTARF, au8Value,16);
+					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.pu8Data,au8Value,16);
+					sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.u8Length=16;
+					if (memcmp(au8Value,au8oldTarifPeriod,16)!=0)
+					{
+						alarmTarifPeriod=TRUE;
+						memcpy(au8oldTarifPeriod, au8Value,16);
+					}else{
+						alarmTarifPeriod=FALSE;
+					}
 
 				}else if(memcmp(au8Command,"NTARF",5)==0)
 				{
@@ -988,6 +999,15 @@ uint8 APP_vProcessRxDataHisto ( void )
 					DBG_vPrintf(1, "\r\nPTEC : %s",au8Value);
 					memcpy(sBaseDevice.sSimpleMeteringServerCluster.sActiveRegisterTierDelivered.pu8Data,au8Value,4);
 					sBaseDevice.sSimpleMeteringServerCluster.sActiveRegisterTierDelivered.u8Length=4;
+					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.pu8Data,au8Value,4);
+					sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.u8Length=4;
+					if (memcmp(au8Value,au8oldTarifPeriod,4)!=0)
+					{
+						alarmTarifPeriod=TRUE;
+						memcpy(au8oldTarifPeriod, au8Value,4);
+					}else{
+						alarmTarifPeriod=FALSE;
+					}
 				}else if(memcmp(au8Command,"ADPS",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nADPS: %s",au8Value);
@@ -1087,119 +1107,126 @@ PUBLIC void vAPP_LinkySensorSample(void)
 	bool bChangeState;
     loopOK=0;
 
-
-    //UARTLINKY_vInit();
-    UARTLINKY_vInit();
-    DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
-    if (u8ModeLinky==1)
-	{
-    	DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 9600\r\n");
-		UARTLINKY_vSetBaudRate (9600);
-		sBaseDevice.sLinkyServerCluster.au8LinkyMode = 1;
-	}else if (u8ModeLinky==0)
-	{
-		DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 1200\r\n");
-		UARTLINKY_vSetBaudRate (1200);
-		sBaseDevice.sLinkyServerCluster.au8LinkyMode = 0;
-	}
-
-
-
-    u32Timeout=0;
-    u8StatusLinky=0;
-
-    while(TRUE)
+    if (sDeviceDesc.networkState != 0)
     {
-
-    	if (u8ModeLinky == 1)
-    	{
-
-    		u8StatusLinky=APP_vProcessRxDataStandard();
-
-    	}else if (u8ModeLinky == 0)
-    	{
-
-    		u8StatusLinky=APP_vProcessRxDataHisto();
-    	}
-
-    	if (u8StatusLinky>0)
-    	{
-    		break;
-    	}
-
-		zps_taskZPS();
-		bdb_taskBDB();
-    	ZTIMER_vTask();
-
-    	WWDT_Refresh(WWDT);
-    	wdt_update_count = 0;
-
-    }
-    DBG_vPrintf(TRACE_LINKY, "\r\nu8StatusLinky : %d\r\n",u8StatusLinky);
-    DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
-    UARTLINKY_vDeInit();
-
-    if (u8StatusLinky == 1)
-	{
-		u8NbError=0;
-	}
-
-    if (u8NbError>=2)
-    {
-    	DBG_vPrintf(TRACE_LINKY, "\r\nTOO ERRORS\r\n");
-    	u8StatusLinky=2;
-    	u8NbError=0;
-    }
-
-    if (u8OldStatusLinky!= u8StatusLinky)
-    {
-    	bChangeState=TRUE;
-    	u8OldStatusLinky=u8StatusLinky;
-    }else{
-    	bChangeState=FALSE;
-    }
-
-	if (u8StatusLinky == 2)
-    {
-    	DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");
-    	if (u8ModeLinky==1)
-    	{
-    		u8ModeLinky=0;
-    		DBG_vPrintf(TRACE_LINKY, "\r\n--> mode Historique");
-    	}else if (u8ModeLinky==0)
-    	{
-    		u8ModeLinky=1;
-    		DBG_vPrintf(TRACE_LINKY, "\r\n--> mode Standard");
-    	}
-
-    	if (bChangeState)
-    	{
-    		vStartBlinkTimer(1000);
-    	}
-
-    }else if (u8StatusLinky == 3)
-    {
-    	u8NbError++;
-    	if (bChangeState)
+		//UARTLINKY_vInit();
+		UARTLINKY_vInit();
+		DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
+		if (u8ModeLinky==1)
 		{
-			vStartBlinkTimer(1000);
+			DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 9600\r\n");
+			UARTLINKY_vSetBaudRate (9600);
+			sBaseDevice.sLinkyServerCluster.au8LinkyMode = 1;
+		}else if (u8ModeLinky==0)
+		{
+			DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 1200\r\n");
+			UARTLINKY_vSetBaudRate (1200);
+			sBaseDevice.sLinkyServerCluster.au8LinkyMode = 0;
 		}
-	}else{
-    	if (bChangeState)
-    	{
-    		vStartBlinkTimer(3000);
-    	}
+
+
+
+		u32Timeout=0;
+		u8StatusLinky=0;
+
+		while(TRUE)
+		{
+
+			if (u8ModeLinky == 1)
+			{
+
+				u8StatusLinky=APP_vProcessRxDataStandard();
+
+			}else if (u8ModeLinky == 0)
+			{
+
+				u8StatusLinky=APP_vProcessRxDataHisto();
+			}
+
+			if (u8StatusLinky>0)
+			{
+				break;
+			}
+
+			zps_taskZPS();
+			bdb_taskBDB();
+			ZTIMER_vTask();
+
+			WWDT_Refresh(WWDT);
+			wdt_update_count = 0;
+
+		}
+		DBG_vPrintf(TRACE_LINKY, "\r\nu8StatusLinky : %d\r\n",u8StatusLinky);
+		DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
+		UARTLINKY_vDeInit();
+
+		if (u8StatusLinky == 1)
+		{
+			u8NbError=0;
+		}
+
+		if (u8NbError>=2)
+		{
+			DBG_vPrintf(TRACE_LINKY, "\r\nTOO ERRORS\r\n");
+			u8StatusLinky=2;
+			u8NbError=0;
+		}
+
+		if (u8OldStatusLinky!= u8StatusLinky)
+		{
+			bChangeState=TRUE;
+			u8OldStatusLinky=u8StatusLinky;
+		}else{
+			bChangeState=FALSE;
+		}
+
+		if (u8StatusLinky == 2)
+		{
+			DBG_vPrintf(TRACE_LINKY, "\r\nLINKY Timeout\r\n");
+			if (u8ModeLinky==1)
+			{
+				u8ModeLinky=0;
+				DBG_vPrintf(TRACE_LINKY, "\r\n--> mode Historique");
+			}else if (u8ModeLinky==0)
+			{
+				u8ModeLinky=1;
+				DBG_vPrintf(TRACE_LINKY, "\r\n--> mode Standard");
+			}
+
+			if (bChangeState)
+			{
+				vStartBlinkTimer(1000);
+			}
+
+		}else if (u8StatusLinky == 3)
+		{
+			u8NbError++;
+			if (bChangeState)
+			{
+				vStartBlinkTimer(1000);
+			}
+		}else{
+			if (bChangeState)
+			{
+				vStartBlinkTimer(3000);
+			}
+		}
+
+
+		//only for standard mode
+		if (alarmLinky)
+		{
+			 //send STGE
+			vSendImmediateReport(0xff66,0x217);
+		}
+
+		if (alarmTarifPeriod)
+		{
+			 //send TarifPeriod
+			vSendImmediateReport(0xff66,0xA);
+		}
+
     }
-
-
-    //only for standard mode
-    if (alarmLinky)
-    {
-    	 //send STGE
-    	vSendImmediateReport(0xff66,0x217);
-    }
-
-
     //DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n", Get_BattVolt());
     /* Start sample timer so that you keep on sampling if KEEPALIVE_TIME is too high*/
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
@@ -1214,7 +1241,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
     //ZTIMER_eStart(u8TimerLinky, 13* 1000 );
     //ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
-    ZTIMER_eStop(u8TimerLinky);
+    //ZTIMER_eStop(u8TimerLinky);
     ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000);
 }
 
