@@ -82,7 +82,8 @@ enum
 
 #define ZCL_NUMBER_OF_REPORTS     50
 #define MIN_REPORT_INTERVAL       1
-#define MAX_REPORT_INTERVAL       0x3d
+#define MAX_REPORT_INTERVAL       0x14
+#define ZCL_SYSTEM_MAX_REPORT_INTERVAL 0x0014
 
 /* Enable wild card profile */
 #define ZCL_ALLOW_WILD_CARD_PROFILE
