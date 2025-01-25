@@ -61,6 +61,7 @@ typedef enum
 typedef struct
 {
     teNodeState     eNodeState;
+    uint8 networkState;
 }tsDeviceDesc;
 
 #define ZNC_RTN_U64( BUFFER, i )  ( ( ( uint64 ) ( BUFFER )[ i ]  <<  56) |\
