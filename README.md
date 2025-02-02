@@ -554,6 +554,16 @@ Pour palier le problème de distance, il existe plusieurs solution :
 
 ## Changelog
 
+### Version 0015
+
+* Add Silvercrest / Livarno compatibility with Tuya (change the device id to Dimming ligth)
+* Add tariffPeriod (0x10) attribute with Lixee cluster (0xff66).
+   - Add alarm (reporting) on value update
+* Decreasing MAX Report interval to 20 seconds (in aim to enhance reporting time)
+* Fix Total apparent power for Tuya
+* Enhance netwrok management
+ 
+
 ### Version 0014
 * Add Tuya zigbee compatibility (see datas management [here](#tuya-from-v14)
 * Add ENEDIS Labellisation software "Linky Ready"
