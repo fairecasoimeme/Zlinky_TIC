@@ -402,6 +402,14 @@ Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur
 
 <img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/update_ZLinky_TIC_2.jpg" width="400"> 
 
+V2.0:  
+
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_v2_debug.jpg" width="800"> 
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/ZLinky_v2_flash.jpg" width="800"> 
+<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Zlinky_v2_illustration.jpg" width="400"> 
+
+Une fois que les branchements sont OK, il suffit d'insérer sur votre ordinateur la clef USB en maintenant le bouton **Flash** puis relacher.
+
 **Sous Windows**  
 * Télécharger et installer (si nécessaire) les pilotes du module USB TTL [ici](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)
 * Télécharger et installer [l'outil de flashage](https://github.com/fairecasoimeme/ZiGatev2/raw/master/Tools/JN-SW-4407-DK6-Flash-Programmer.zip).
