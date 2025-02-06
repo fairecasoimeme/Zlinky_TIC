@@ -271,6 +271,8 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nLTARF : %s",trim(au8Value));
 					memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyLTARF, au8Value,16);
+					sBaseDevice.sLinkyServerCluster.sLinkyLTARF.u8Length=16;
+
 					memcpy(sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.pu8Data,au8Value,16);
 					sBaseDevice.sLinkyServerCluster.sLinkyTarifPeriod.u8Length=16;
 					if (memcmp(au8Value,au8oldTarifPeriod,16)!=0)
@@ -364,7 +366,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 				}else if(memcmp(au8Command,"ERQ1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ1 : %s",au8Value);
-					sBaseDevice.sElectricalMeasurement.i16TotalReactivePower = atol(au8Value);
+					sBaseDevice.sElectricalMeasurement.i32TotalReactivePower = atol(au8Value);
 				}else if(memcmp(au8Command,"ERQ2",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ2 : %s",au8Value);
@@ -527,10 +529,10 @@ uint8 APP_vProcessRxDataStandard ( void )
 					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
 					if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode & 2) == 2 )
 					{
-						sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.u32TotalApparentPower=atol(au8Value);
 					}else{
 						sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
-						sBaseDevice.sElectricalMeasurement.u16TotalApparentPower=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.u32TotalApparentPower=atol(au8Value);
 					}
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
@@ -606,10 +608,10 @@ uint8 APP_vProcessRxDataStandard ( void )
 					DBG_vPrintf(1, "\r\nSMAXSN : %s",au8Value);
 					if ((sBaseDevice.sLinkyServerCluster.au8LinkyMode & 2) == 2 )
 					{
-						sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.i32TotalActivePower=atol(au8Value);
 					}else{
 						sBaseDevice.sElectricalMeasurement.i16ActivePowerMax=atol(au8Value);
-						sBaseDevice.sElectricalMeasurement.i16TotalActivePower=atol(au8Value);
+						sBaseDevice.sElectricalMeasurement.i32TotalActivePower=atol(au8Value);
 					}
 					if (au8Pos!=3)
 					{
@@ -1107,8 +1109,10 @@ PUBLIC void vAPP_LinkySensorSample(void)
 	bool bChangeState;
     loopOK=0;
 
-    if (sDeviceDesc.networkState != 0)
-    {
+    DBG_vPrintf(TRACE_LINKY, "\r\nsDeviceDesc.networkState : %d\r\n",sDeviceDesc.networkState);
+    DBG_vPrintf(TRACE_LINKY, "\r\nsDeviceDesc.eNodeState : %d\r\n",sDeviceDesc.eNodeState);
+    //if (sDeviceDesc.eNodeState != E_STARTUP)
+    //{
 		//UARTLINKY_vInit();
 		UARTLINKY_vInit();
 		DBG_vPrintf(TRACE_LINKY, "\r\n\r\n\r\nUARTLINKY_vInit\r\n\r\n\r\n");
@@ -1226,7 +1230,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 			vSendImmediateReport(0xff66,0xA);
 		}
 
-    }
+    //}
     //DBG_vPrintf(TRACE_LINKY, "\r\n ----------VOLTAGE : %d\r\n", Get_BattVolt());
     /* Start sample timer so that you keep on sampling if KEEPALIVE_TIME is too high*/
    // ZTIMER_eStart(u8TimerLightSensorSample, ZTIMER_TIME_MSEC(1000 * LINKY_SAMPLING_TIME_IN_SECONDS));
@@ -1278,7 +1282,7 @@ PUBLIC void SaveLinkyParams()
 	}
 	else if (sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend > 60)
 	{
-			sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend=60;
+			sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend=5;
 	}
 	if (sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend != sLinkyParams.u8LinkySendPeriod)
 	{
