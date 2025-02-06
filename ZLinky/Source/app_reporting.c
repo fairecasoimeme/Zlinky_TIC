@@ -335,7 +335,7 @@ PUBLIC void vSendImmediateReport(uint16 cluster, uint16 attribute)
 										    1,
 										    myPDUM_thAPduInstance);
 
-		DBG_vPrintf(1, "\r\nREPORT: eZCL_ReportAllAttributes() = 0x%02x", eStatus);
+		DBG_vPrintf(1, "\r\nREPORT: eZCL_ReportAllAttributes() = 0x%02x _ cluster :%d / attr :%d", eStatus,cluster,attribute);
 		/* Sent the report with all attributes ? */
 		if (E_ZCL_SUCCESS == eStatus)
 		{

@@ -269,7 +269,7 @@ PUBLIC void APP_vInitialiseRouter(void)
 #endif
     /* Initialise LEDs and buttons */
     APP_vLedInitialise();
-    //GPIO_PinWrite(GPIO, 0, 10, 0);
+    //GPIO_PinWrite(GPIO, 0, 10, 1);
 
     APP_bButtonInitialise();
     /* Delete PDM if required */
@@ -720,7 +720,8 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
         case ZPS_EVENT_NWK_NEW_NODE_HAS_JOINED:
             DBG_vPrintf(TRACE_APP, "APP-ZDO: New Node %04x Has Joined\r\n",
                     psAfEvent->uEvent.sNwkJoinIndicationEvent.u16NwkAddr);
-            sDeviceDesc.networkState=1;
+            sDeviceDesc.eNodeState = E_RUNNING;
+            sDeviceDesc.networkState = 1;
             PDM_eSaveRecordData(PDM_ID_APP_ROUTER,&sDeviceDesc,sizeof(tsDeviceDesc));
 
             u8OldStatusLinky=99;
@@ -729,9 +730,8 @@ PRIVATE void vAppHandleZdoEvents( BDB_tsZpsAfEvent *psZpsAfEvent)
             break;
 
         case ZPS_EVENT_NWK_DISCOVERY_COMPLETE:
-        	sDeviceDesc.networkState=0;
             DBG_vPrintf(TRACE_APP, "APP-ZDO: Discovery Complete %02x\r\n",
-                    psAfEvent->uEvent.sNwkDiscoveryEvent.eStatus);
+            psAfEvent->uEvent.sNwkDiscoveryEvent.eStatus);
             //vStartAwakeTimer(2);
             //vStartBlinkTimer(50);
            // vStartAwakeTimer(15);
@@ -845,6 +845,7 @@ PUBLIC void APP_vFactoryResetRecords(void)
 
     /* save everything */
     sDeviceDesc.eNodeState = E_STARTUP;
+    sDeviceDesc.networkState = 0 ;
 
 #ifdef CLD_OTA
     vResetOTADiscovery();
