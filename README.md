@@ -562,6 +562,13 @@ Pour palier le problème de distance, il existe plusieurs solution :
 
 ## Changelog
 
+### Version 0016
+
+* Fix dataType for SINSTS ERQ1 and SMAXN for the reporting
+* Fix acquisition after update
+* Delete some debug to free UART
+
+
 ### Version 0015
 
 * Add Silvercrest / Livarno compatibility with Tuya (change the device id to Dimming ligth)
