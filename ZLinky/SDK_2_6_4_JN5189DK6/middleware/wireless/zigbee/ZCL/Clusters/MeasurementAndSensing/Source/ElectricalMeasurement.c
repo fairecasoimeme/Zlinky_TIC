@@ -136,15 +136,15 @@ const tsZCL_AttributeDefinition asCLD_ElectricalMeasurementClusterAttributeDefin
     #endif        
 
     #ifdef CLD_ELECTMEAS_ATTR_TOTAL_ACTIVE_POWER
-        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_ACTIVE_POWER,                    (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_INT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i16TotalActivePower),     0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_ACTIVE_POWER,                    (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_INT32,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i32TotalActivePower),     0},   /* Optional */
     #endif 
 
     #ifdef CLD_ELECTMEAS_ATTR_TOTAL_REACTIVE_POWER
-        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_REACTIVE_POWER,                  (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_INT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i16TotalReactivePower),    0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_REACTIVE_POWER,                  (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_INT32,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->i32TotalReactivePower),    0},   /* Optional */
     #endif
 
     #ifdef CLD_ELECTMEAS_ATTR_TOTAL_APPARENT_POWER
-        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_APPARENT_POWER,                  (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_UINT16,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u16TotalApparentPower),  0},   /* Optional */
+        {E_CLD_ELECTMEAS_ATTR_ID_TOTAL_APPARENT_POWER,                  (E_ZCL_AF_RD|E_ZCL_AF_RP),      E_ZCL_UINT32,     (uint32)(&((tsCLD_ElectricalMeasurement*)(0))->u32TotalApparentPower),  0},   /* Optional */
     #endif  
         
     #ifdef CLD_ELECTMEAS_ATTR_MEASURED_1_HARMONIC_CURRENT 
