@@ -411,6 +411,7 @@ PRIVATE void APP_ZCL_cbEndpointCallback(tsZCL_CallBackEvent *psEvent)
 
         case E_ZCL_CBET_CLUSTER_CUSTOM:
             DBG_vPrintf(TRACE_ZCL, "\r\nEP EVT: Custom Cl %04x\r\n", psEvent->uMessage.sClusterCustomMessage.u16ClusterId);
+            GPIO_PinWrite(GPIO, 0, 10, 1);
             APP_vHandleClusterCustomCommands(psEvent);
 
         break;
@@ -715,17 +716,18 @@ PUBLIC void APP_vZCL_DeviceSpecific_Init(void)
 		memcpy(sBaseDevice.sBasicServerCluster.au8ModelIdentifier, "TS0601", CLD_BAS_MODEL_ID_SIZE);
 		sBaseDevice.sBasicServerCluster.sModelIdentifier.u8Length = CLD_BAS_MODEL_ID_SIZE ;
 		sBaseDevice.sBasicServerCluster.sModelIdentifier.pu8Data = sBaseDevice.sBasicServerCluster.au8ModelIdentifier;
-		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20250125", CLD_BAS_DATE_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20250206", CLD_BAS_DATE_SIZE);
 
-		memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "6000-1015", CLD_BAS_SW_BUILD_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "6000-1016", CLD_BAS_SW_BUILD_SIZE);
 
 		memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
-		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0015", CLD_BAS_PCODE_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0016", CLD_BAS_PCODE_SIZE);
 		memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
 		sBaseDevice.sBasicServerCluster.ePowerSource=1;
 		sBaseDevice.sBasicServerCluster.u8ZCLVersion=3;
 		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0xff;
 		sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
+
 
 
 	}else{
@@ -737,20 +739,20 @@ PUBLIC void APP_vZCL_DeviceSpecific_Init(void)
 		sBaseDevice.sBasicServerCluster.sModelIdentifier.u8Length = 10 ;
 		sBaseDevice.sBasicServerCluster.sModelIdentifier.pu8Data = sBaseDevice.sBasicServerCluster.au8ModelIdentifier;
 
-		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20250125", CLD_BAS_DATE_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8DateCode, "20250206", CLD_BAS_DATE_SIZE);
 		#ifdef LIMITED
-			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4001-0015", CLD_BAS_SW_BUILD_SIZE);
+			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4001-0016", CLD_BAS_SW_BUILD_SIZE);
 		#else
-			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4100-0015", CLD_BAS_SW_BUILD_SIZE);
+			memcpy(sBaseDevice.sBasicServerCluster.au8SWBuildID, "4000-0016", CLD_BAS_SW_BUILD_SIZE);
 		#endif
 
 		memcpy(sBaseDevice.sBasicServerCluster.au8ProductURL, "LiXee.fr", CLD_BAS_URL_SIZE);
-		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0015", CLD_BAS_PCODE_SIZE);
+		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0016", CLD_BAS_PCODE_SIZE);
 		memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
 
-		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x0E;
+		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x10;
 		sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
-		sBaseDevice.sCLD_OTA.u32CurrentFileVersion = 0x0E;
+		sBaseDevice.sCLD_OTA.u32CurrentFileVersion = 0x10;
 
 	}
 
