@@ -479,6 +479,8 @@ Les modes Historique et Standard sont supportés. Nous avons effectués des test
 
 Lien vers l'application : [App](https://homey.app/fr-fr/app/com.lixee/liXee/)  
 Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/t/app-pro-lixee/74924)  
+⚠️ Avec certaines versions du logiciel LiXee sur HomeyPro 2023, il est parfois nécessaire d'avoir un routeur zigbee déjà jumelé avec la box pour que le ZLinky puisse s'appairer avec la box.
+
 
 ### SmartThing
 
@@ -559,6 +561,9 @@ Pour palier le problème de distance, il existe plusieurs solution :
 * Le zigbee permet de "mailler" le réseau. Grâce à des équipements zigbee qui ont la fonction de routeur, il est possible d'augmenter les distances en plaçant stratégiquement les appareils zigbee routeur qui joueront le rôle de relai et ainsi augmenter la portée ou fiabiliser les échanges.
 * Utiliser la version du ZLinky avec antenne externe. En effet, grâce à cette version, vous pourrez utiliser une rallonge SMA [(exemple de rallonge compatible)](https://amzn.to/3PUPA4J) afin de déporter l'antenne à un endroit plus optimisé. Vous pourrez aussi utiliser une antenne avec un gain plus important que celle par défaut (2dBi). [(exemple d'antenne avec un meilleur gain)](https://amzn.to/4cPQDwA)
 * Corriger les perturbation radios liés au WiFi. En effet, certains paramétrage WiFi peut polluer le réseau zigbee. Il convient parfois de limiter la bande passante de votre borne WiFi (passer en 20Mhz plutôt que 40Mhz) et/ou de changer de canal WiFi(il faut éloigner au maximum le canal WiFi du canal Zigbee. Je vous conseille de lire cet article qui rentrera plus dans les détails. [(Tutoriel)](https://haade.fr/fr/blog/interference-zigbee-wifi-2-4ghz-a-savoir)
+
+### 7. Malgré le maillage de mon réseau zigbee, la portée n'est pas suffisante. Existe t-il une autre solution ?
+Il est possible d'utiliser la solution suivante pour [augmenter la portée du ZLinky](https://faire-ca-soi-meme.fr/domotique/2025/03/29/augmenter-la-portee-du-zlinky_tic-v2/)
 
 ## Changelog
 
