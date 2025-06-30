@@ -179,8 +179,8 @@ RO= READ only RP= Reportable / RW = Read/Write
 |------------|-------|--------|-----|-------|---------|--------|----|-----------|-----------------|				
 |ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|NULL|
 |![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48 (0x25)|9 car|Wh| Index Base|0|
-|OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
-|ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|0|
+|OPTARIF			|0xFF66|	0x0000|		RO||String (0x42)|4 car|-| Option tarifaire|BASE|	
+|ISOUSC			|0x0B01	|0x000D		|RO		||Uint16 (0x21)|2 car|A| Intensité souscrite|0|
 |![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RP			||Uint48 (0x25)|9 car|Wh|Index HCHC|0|
 |![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RP			||Uint48 (0x25)|9 car|Wh|Index HCHP|0|
 |![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RP			||Uint48 (0x25)|9 car|Wh|Index EJPHN|0|
@@ -216,7 +216,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 #### Mode standard
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
 |------------|-------|--------|-----|--------------|---------|-------|----|-----------|------------|				
-|ADSC|0x0702|0x0308|RO||String|12 car|-|	Adresse Secondaire du Compteur|NULL|
+|ADSC|0x0702|0x0308|RO||String (0x41)|12 car|-|	Adresse Secondaire du Compteur|NULL|
 |NGTF|0xFF66|	0x0000|		RO||String (0x42)|16 car|-| Nom du calendrier tarifaire fournisseur|-|	
 |LTARF|0xFF66|	0x0200|		RO||String (0x42)|16 car|-| Libellé tarif fournisseur en cours|-|	
 |NTARF|0xFF66|	0x0201|		RO||Uint8 (0x20)|2 car|-| Numéro de l’index tarifaire en cours|-|	
@@ -249,8 +249,8 @@ RO= READ only RP= Reportable / RW = Read/Write
 |URMS2|0xB04|	0x0905|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension efficace, phase 2|0 |	
 |URMS3|0xB04|	0x0A05|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension efficace, phase 3|0 |	
 |PREF|0xB01|	0x000D|		RO||Uint16 (0x21)|2 car|kVA| Puissance app. de référence (PREF)|0 |	
-|STGE|0xFF66|	0x0217|		RO||String|8 car|-| Registre de Statuts|0 |	
-|PCOUP|0xB01|	0x000E|		RO||Uint8|2 car|kVA| Puissance app. de coupure (PCOUP)|0 |	
+|STGE|0xFF66|	0x0217|		RO||String (0x41)|8 car|-| Registre de Statuts|0 |	
+|PCOUP|0xB01|	0x000E|		RO||Uint8 (0x20)|2 car|kVA| Puissance app. de coupure (PCOUP)|0 |	
 |SINSTI|0xFF66|	0x0207|		RP|Production|Uint16 (0x21)|5 car|VA| Puissance app. Instantanée injectée|0 |	
 |SMAXIN|0xFF66|	0x0208|		RP|Production|Uint16 (0x21)|5 car|VA| Puissance app max. injectée n|0 |	
 |SMAXIN-1|0xFF66|	0x0209|		RO|Production|Uint16 (0x21)|5 car|VA| Puissance app max. injectée n-1|0 |	
