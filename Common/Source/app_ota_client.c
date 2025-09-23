@@ -1408,6 +1408,7 @@ PRIVATE void vManageOTAState(void)
                     u32OtaTimeoutMs = OTA_IDLE_TIME_MS;
                     DBG_vPrintf(TRACE_APP_OTA_STATE, "\r\nOTA_STATE: IDLE, %d, vManageOTAState(QUERYIMAGE_WAIT to)", u32OtaTimeoutMs);
                     u32OTARetry = 0;
+                    DBG_vPrintf(TRUE, "vResetOTADiscovery \r\n");
                     vResetOTADiscovery();
                     DBG_vPrintf(TRACE_APP_OTA|OTA_LNT,  "CLEAR OUT\n");
                 }
@@ -1491,13 +1492,25 @@ PRIVATE void vManageDLProgressState(void)
  * void
  *
  ****************************************************************************/
+
 PUBLIC void vResetOTADiscovery(void)
 {
+	// Vérifier que la structure est valide
+	if (sizeof(tsPdmOtaApp) == 0 || sizeof(tsPdmOtaApp) > 256)
+	{
+		DBG_vPrintf(TRUE, "ERROR: Invalid tsPdmOtaApp size: %d", sizeof(tsPdmOtaApp));
+		return;
+	}
+
     sPdmOtaApp.u64IeeeAddrOfServer = 0;
     sPdmOtaApp.u16NwkAddrOfServer = 0xffff;
     sPdmOtaApp.u8OTAserverEP = 0xff;
     sPdmOtaApp.bValid = FALSE;
-    PDM_eSaveRecordData(PDM_ID_OTA_APP,&sPdmOtaApp,sizeof(tsPdmOtaApp));
+
+    PDM_teStatus tmp;
+    tmp =PDM_eSaveRecordDataInIdleTask(PDM_ID_OTA_APP,&sPdmOtaApp,sizeof(tsPdmOtaApp));
+
+    DBG_vPrintf(TRUE, "PDM_eSaveRecordDataInIdleTask: %d", tmp);
 }
 
 /****************************************************************************
