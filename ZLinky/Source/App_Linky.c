@@ -79,6 +79,9 @@ uint8 			   au8Pos;
 uint8              loopOK;
 uint32  		   u32Timeout=0;
 uint8			   u8NbError=0;
+uint8 			   LinkyModeTmp;
+uint16			   TuyaAlarmRegistry;
+uint16			   OldTuyaAlarmRegistry;
 
 uint8              au8oldSTGE[8];
 uint8              au8oldTarifPeriod[16];
@@ -92,22 +95,49 @@ PUBLIC tsLinkyParams sLinkyParams;
 /* TUYA*/
 uint8_t indexFunction =0;
 
+bool_t bHighPowerAlarm;
+uint16_t u16HighPowerValue;
+bool_t bOverCurrentAlarm;
+uint16_t u16OverCurrentValue;
+bool_t bOverVoltageAlarm;
+uint16_t u16OverVoltageValue;
+bool_t bUnderVoltageAlarm;
+uint16_t u16UnderVoltageValue;
+
 const uint8_t dataPoint[] = {
-						//0x66, //PowerFactor_1
-						//0x70, //PowerFactor_2
-						//0x7A, //PowerFactor_3
-						//0x83, //Current (mA)
-						//0x84, //AC_Frequency
-						//0x85, //Temperature
-						//0x86, //Device status
-						0x06, //Phase 1
-						0x07, //Phase 2
-						0x08, //Phase 3
-						0x09, //TotalPower
 						0x01, //Active power
-						//0x65, //Energy 1
-						//0x6F, //Energy 2
-						//0x79, //Energy 3
+						//0x06, //Phase 1
+						//0x07, //Phase 2
+						//0x08, //Phase 3
+						0x09, // ALARM
+						0x11, // ??
+						0x12, // ??
+						0x13, // breaker ID
+						0x17, //Reverse Total Energy*/
+						//0x1d, //Total active power
+						0x20, //AC_Frequency
+						0x32, //overall power factor
+						0x65, // ?
+						0x66, // Data report Duration
+						0x67, //voltage ph1
+						0x68, //Current ph1
+						0x69, //Power ph1
+						0x6c, //power factor
+						0x6d, //forward energy
+						//0x6e, // reverse energy
+						0x70, //voltage ph2,
+						0x71, //Current ph2
+						0x72, //Power ph2
+						0x75, //factor ph2
+						0x76, // forward ph2
+						//0x77, // ? reverse ph2
+						0x79, //voltage ph3
+						0x7a, //Current ph3
+						0x7b, //Power ph3
+						0x7e, // factor ph3
+						0x7f, // forward ph3
+						//0x80, // reverse ph3
+
 					};
 
 
@@ -362,7 +392,8 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nEAIT : %s",au8Value);
 					sBaseDevice.sSimpleMeteringServerCluster.u48CurrentSummationReceived= atol(au8Value);
-					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 2) ;
+					//sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 2) ;
+					LinkyModeTmp |= (1 << 2 );
 				}else if(memcmp(au8Command,"ERQ1",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nERQ1 : %s",au8Value);
@@ -383,27 +414,91 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nIRMS1 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue)
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 				}else if(memcmp(au8Command,"IRMS2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS2 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atol(au8Value);
-					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
+					//sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
+					LinkyModeTmp |= (1 << 1 );
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue)
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 				}else if(memcmp(au8Command,"IRMS3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIRMS3 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atol(au8Value);
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue)
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 				}else if(memcmp(au8Command,"URMS1",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS1 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSVoltage=atol(au8Value);
+					if (sLinkyParams.bOverVoltageAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 10);
+						}
+					}
+					if (sLinkyParams.bUnderVoltageAlarm)
+					{
+						if (atol(au8Value) <= sLinkyParams.u16UnderVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 11);
+						}
+					}
 				}else if(memcmp(au8Command,"URMS2",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS2 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhB=atol(au8Value);
+					if (sLinkyParams.bOverVoltageAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 10);
+						}
+					}
+					if (sLinkyParams.bUnderVoltageAlarm)
+					{
+						if (atol(au8Value) <= sLinkyParams.u16UnderVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 11);
+						}
+					}
 				}else if(memcmp(au8Command,"URMS3",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nURMS3 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSVoltagePhC=atol(au8Value);
+					if (sLinkyParams.bOverVoltageAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 10);
+						}
+					}
+					if (sLinkyParams.bUnderVoltageAlarm)
+					{
+						if (atol(au8Value) <= sLinkyParams.u16UnderVoltageValue)
+						{
+							TuyaAlarmRegistry |= (1 << 11);
+						}
+					}
 				}else if(memcmp(au8Command,"PREF",4)==0)
 				{
 					DBG_vPrintf(1, "\r\nPREF : %s",au8Value);
@@ -516,14 +611,35 @@ uint8 APP_vProcessRxDataStandard ( void )
 				{
 					DBG_vPrintf(1, "\r\nSINSTS1 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
+					if (sLinkyParams.bHighPowerAlarm)
+					{
+						if (atol(au8Value) >= (sLinkyParams.u16HighPowerValue * 1000))
+						{
+							TuyaAlarmRegistry |= (1 << 6);
+						}
+					}
 				}else if(memcmp(au8Command,"SINSTS2",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS2 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhB=atol(au8Value);
+					if (sLinkyParams.bHighPowerAlarm)
+					{
+						if (atol(au8Value) >= (sLinkyParams.u16HighPowerValue * 1000))
+						{
+							TuyaAlarmRegistry |= (1 << 6);
+						}
+					}
 				}else if(memcmp(au8Command,"SINSTS3",7)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS3 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16ApparentPowerPhC=atol(au8Value);
+					if (sLinkyParams.bHighPowerAlarm)
+					{
+						if (atol(au8Value) >=(sLinkyParams.u16HighPowerValue * 1000))
+						{
+							TuyaAlarmRegistry |= (1 << 6);
+						}
+					}
 				}else if(memcmp(au8Command,"SINSTS",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nSINSTS : %s",au8Value);
@@ -533,6 +649,13 @@ uint8 APP_vProcessRxDataStandard ( void )
 					}else{
 						sBaseDevice.sElectricalMeasurement.u16ApparentPower=atol(au8Value);
 						sBaseDevice.sElectricalMeasurement.u32TotalApparentPower=atol(au8Value);
+					}
+					if (sLinkyParams.bHighPowerAlarm)
+					{
+						if (atol(au8Value) >= (sLinkyParams.u16HighPowerValue * 1000))
+						{
+							TuyaAlarmRegistry |= (1 << 6);
+						}
 					}
 				}else if(memcmp(au8Command,"SMAXSN-1",8)==0)
 				{
@@ -957,19 +1080,49 @@ uint8 APP_vProcessRxDataHisto ( void )
 				{
 					DBG_vPrintf(1, "\r\nIINST1 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
-					sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
+					//sBaseDevice.sLinkyServerCluster.au8LinkyMode |= (1 << 1) ;
+					LinkyModeTmp |= (1 << 1 );
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue)
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
+
 				}else if(memcmp(au8Command,"IINST2",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST2 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhB=atol(au8Value);
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue)
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 				}else if(memcmp(au8Command,"IINST3",6)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST3 : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrentPhC=atol(au8Value);
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue )
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 				}else if(memcmp(au8Command,"IINST",5)==0)
 				{
 					DBG_vPrintf(1, "\r\nIINST : %s",au8Value);
 					sBaseDevice.sElectricalMeasurement.u16RMSCurrent=atol(au8Value);
+					if (sLinkyParams.bOverCurrentAlarm)
+					{
+						if (atol(au8Value) >= sLinkyParams.u16OverCurrentValue )
+						{
+							TuyaAlarmRegistry |= (1 << 8);
+						}
+					}
 
 				}else if(memcmp(au8Command,"IMAX1",5)==0)
 				{
@@ -1069,22 +1222,51 @@ uint8 APP_vProcessRxDataHisto ( void )
 	return 0;
 }
 
+
 PUBLIC void vAPP_TuyaAllReport(void)
 {
 	if ((sLinkyParams.u8LinkyModeTuya == 0x0d) || (sLinkyParams.u8LinkyModeTuya == 0x13))
 	{
-		for (int i=0;i<5;i++)
+		DBG_vPrintf(1, "\r\n---------------ALARM registry : 0x%04X ",TuyaAlarmRegistry);
+		if (TuyaAlarmRegistry>0)
 		{
-			DBG_vPrintf(1, "\r\n---------------TUYA  vAPP_TuyaAllReport- index : %d / DP: %x", indexFunction, dataPoint[indexFunction]);
+			teZCL_Status e_status;
+			uint8_t payload_data[] = {(TuyaAlarmRegistry >> 8) & 0xFF,TuyaAlarmRegistry  & 0xFF};
+			uint16_t payload_size = sizeof(payload_data);
+			e_status = eCLD_TuyaCommandUniversalSend(0x05,0x09, payload_data ,payload_size);
+		}else{
+			teZCL_Status e_status;
+			uint8_t payload_data[] = {0x00,0x00};
+			uint16_t payload_size = sizeof(payload_data);
+			e_status = eCLD_TuyaCommandUniversalSend(0x05,0x09, payload_data ,payload_size);
+		}
 
-			/*TUYA Send command */
-			SendTuyaReportCommand(dataPoint[indexFunction]);
+		OldTuyaAlarmRegistry = TuyaAlarmRegistry;
 
-			indexFunction++;
-			if (indexFunction >= sizeof(dataPoint))
-			{
-				indexFunction=0;
-			}
+		SendTuyaReportCommand(0x1d); //Total active power
+		SendTuyaReportCommand(0x06); // apparent power 1
+		SendTuyaReportCommand(0x07); // apparent power 2
+		SendTuyaReportCommand(0x08); // apparent power 3
+		for (int i = 0; i < 6; i++)
+		{
+			zps_taskZPS();
+			bdb_taskBDB();
+			ZTIMER_vTask();
+
+		    DBG_vPrintf(1, "\r\n---------------TUYA vAPP_TuyaAllReport- index : %d / DP: %x",
+		                indexFunction, dataPoint[indexFunction]);
+
+
+		    SendTuyaReportCommand(dataPoint[indexFunction]);
+
+		    // Délai de 10ms avec reset watchdog
+		    //SDK_DelayAtLeastUs(200000, CLOCK_GetFreq(kCLOCK_CoreSysClk));
+
+		    indexFunction++;
+		    if (indexFunction >= sizeof(dataPoint))
+		    {
+		        indexFunction = 0;
+		    }
 		}
 	}
 
@@ -1120,14 +1302,14 @@ PUBLIC void vAPP_LinkySensorSample(void)
 		{
 			DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 9600\r\n");
 			UARTLINKY_vSetBaudRate (9600);
-			sBaseDevice.sLinkyServerCluster.au8LinkyMode = 1;
+			LinkyModeTmp = 1;
 		}else if (u8ModeLinky==0)
 		{
 			DBG_vPrintf(TRACE_LINKY, "\r\nSpeed 1200\r\n");
 			UARTLINKY_vSetBaudRate (1200);
-			sBaseDevice.sLinkyServerCluster.au8LinkyMode = 0;
+			LinkyModeTmp = 0;
 		}
-
+		TuyaAlarmRegistry = 0;
 
 
 		u32Timeout=0;
@@ -1161,7 +1343,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 
 		}
 		DBG_vPrintf(TRACE_LINKY, "\r\nu8StatusLinky : %d\r\n",u8StatusLinky);
-		DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",sBaseDevice.sLinkyServerCluster.au8LinkyMode);
+		DBG_vPrintf(TRACE_LINKY, "\r\n au8LinkyMode : %d\r\n",LinkyModeTmp);
 		UARTLINKY_vDeInit();
 
 		if (u8StatusLinky == 1)
@@ -1214,6 +1396,7 @@ PUBLIC void vAPP_LinkySensorSample(void)
 			{
 				vStartBlinkTimer(3000);
 			}
+			sBaseDevice.sLinkyServerCluster.au8LinkyMode = LinkyModeTmp;
 		}
 
 
@@ -1243,6 +1426,10 @@ PUBLIC void vAPP_LinkySensorSample(void)
     DBG_vPrintf(TRACE_LINKY, "\r\n ----------ZTIMER_eStart Next time : %d\r\n", sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend );
 
 
+    /*TUYA*/
+    if (u8StatusLinky == 1)
+    	vAPP_TuyaAllReport();
+
     //ZTIMER_eStart(u8TimerLinky, 13* 1000 );
     //ZTIMER_eStart(u8TimerLinky, sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend * 1000 );
     //ZTIMER_eStop(u8TimerLinky);
@@ -1268,6 +1455,17 @@ PUBLIC void LoadLinkyParams()
 	if ((sLinkyParams.u8LinkyModeTuya == 0x0d) || (sLinkyParams.u8LinkyModeTuya == 0x13))
 	{
 		sBaseDevice.sBasicServerCluster.u8TuyaMagicID = sLinkyParams.u8LinkyModeTuya;
+
+		bHighPowerAlarm = sLinkyParams.bHighPowerAlarm;
+		u16HighPowerValue = (sLinkyParams.u16HighPowerValue != 0) ? sLinkyParams.u16HighPowerValue : 25;
+		bOverCurrentAlarm = sLinkyParams.bOverCurrentAlarm;
+		u16OverCurrentValue = (sLinkyParams.u16OverCurrentValue != 0) ? sLinkyParams.u16OverCurrentValue : 63;
+		bOverVoltageAlarm = sLinkyParams.bOverVoltageAlarm;
+		u16OverVoltageValue = (sLinkyParams.u16OverVoltageValue !=0) ? sLinkyParams.u16OverVoltageValue : 250;
+		bUnderVoltageAlarm = sLinkyParams.bUnderVoltageAlarm;
+		u16UnderVoltageValue = (sLinkyParams.u16UnderVoltageValue !=0) ? sLinkyParams.u16UnderVoltageValue : 180;
+
+
 	}
 
 	DBG_vPrintf(1,"\r\neStatusLinkyParamsLoad = %d - sLinkyParams.u8LinkySendPeriod = %d\n", eStatusLoad, sLinkyParams.u8LinkySendPeriod);
@@ -1288,7 +1486,7 @@ PUBLIC void SaveLinkyParams()
 	{
 		sLinkyParams.u8LinkySendPeriod = sBaseDevice.sLinkyServerCluster.au8LinkyPeriodicSend;
 
-		PDM_eSaveRecordData(PDM_ID_APP_LINKY_PARAM,
+		PDM_eSaveRecordDataInIdleTask(PDM_ID_APP_LINKY_PARAM,
 								&sLinkyParams,
 								sizeof(tsLinkyParams));
 	}
@@ -1296,12 +1494,14 @@ PUBLIC void SaveLinkyParams()
 	if (sBaseDevice.sBasicServerCluster.u8TuyaMagicID != sLinkyParams.u8LinkyModeTuya)
 	{
 		sLinkyParams.u8LinkyModeTuya = sBaseDevice.sBasicServerCluster.u8TuyaMagicID;
-		PDM_eSaveRecordData(PDM_ID_APP_LINKY_PARAM,
+		PDM_eSaveRecordDataInIdleTask(PDM_ID_APP_LINKY_PARAM,
 										&sLinkyParams,
 										sizeof(tsLinkyParams));
 		APP_LeaveAndResetForTuya();
 
 	}
+
+
 
 	DBG_vPrintf(1,"\r\nSaveLinkyParams - sLinkyParams.u8LinkySendPeriod = %d\n", sLinkyParams.u8LinkySendPeriod);
 }

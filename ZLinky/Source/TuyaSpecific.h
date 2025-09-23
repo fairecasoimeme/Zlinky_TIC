@@ -71,6 +71,13 @@ PUBLIC teZCL_Status eCLD_TuyaSpecificCreateLinky(
                 void                               *pvEndPointSharedStructPtr,
                 uint8                              *pu8AttributeControlBits);
 
+PUBLIC teZCL_Status eCLD_TuyaCommandRspSend(
+                uint8           u8SourceEndPointId,
+                uint8           u8DestinationEndPointId,
+                tsZCL_Address   *psDestinationAddress,
+                uint8           *pu8TransactionSequenceNumber ,
+				PDUM_thAPduInstance PduInst);
+
 PUBLIC teZCL_Status eCLD_TuyaCommandMcuVerRspSend(
                 uint8           u8SourceEndPointId,
                 uint8           u8DestinationEndPointId,
@@ -84,9 +91,10 @@ PUBLIC teZCL_Status eCLD_TuyaCommandBasicMagidId(
                 uint8           *pu8TransactionSequenceNumber                );
 
 PUBLIC void SendTuyaReportCommand(uint8_t DP);
-PUBLIC teZCL_Status eCLD_TuyaCommandTotalPowerSend( uint16_t ApparentPower );
-PUBLIC teZCL_Status eCLD_TuyaCommandActivePowerSend( uint32_t index );
-PUBLIC teZCL_Status eCLD_TuyaCommandPhaseSend( uint8_t DP,uint16_t Voltage, uint16_t Current,uint16_t Power);
+
+PUBLIC teZCL_Status eCLD_TuyaCommandPhaseSend( uint8_t DP,uint16_t Voltage, uint16_t Current,int16_t Power);
+
+PUBLIC teZCL_Status eCLD_TuyaCommandUniversalSend(uint8_t type,  uint8_t datapoint, uint8_t* payload_data, uint16_t payload_size);
 
 extern tsZCL_ClusterDefinition sCLD_TuyaSpecific;
 extern const tsZCL_AttributeDefinition asCLD_TuyaSpecificLinkyClusterAttributeDefinitions[];

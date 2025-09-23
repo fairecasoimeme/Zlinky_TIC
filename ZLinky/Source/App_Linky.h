@@ -71,7 +71,14 @@ typedef struct {
     uint8 u8LinkySendPeriod;
     /* TUYA */
     uint8 u8LinkyModeTuya;
-    zuint48 u48StartTotalConsumption;
+    bool_t bHighPowerAlarm;
+    uint16_t u16HighPowerValue;
+    bool_t bOverCurrentAlarm;
+    uint16_t u16OverCurrentValue;
+    bool_t bOverVoltageAlarm;
+    uint16_t u16OverVoltageValue;
+    bool_t bUnderVoltageAlarm;
+    uint16_t u16UnderVoltageValue;
 }tsLinkyParams;
 /****************************************************************************/
 /***        External Variables                                            ***/
