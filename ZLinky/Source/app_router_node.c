@@ -269,7 +269,7 @@ PUBLIC void APP_vInitialiseRouter(void)
 #endif
     /* Initialise LEDs and buttons */
     APP_vLedInitialise();
-    //GPIO_PinWrite(GPIO, 0, 10, 1);
+    GPIO_PinWrite(GPIO, 0, 10, 1);
 
     APP_bButtonInitialise();
     /* Delete PDM if required */
@@ -316,7 +316,7 @@ PUBLIC void APP_vInitialiseRouter(void)
     vPrintAPSTable();
     vAPP_LinkySensorSample();
 
-    vAPP_TuyaAllReport();
+    //vAPP_TuyaAllReport();
 
 #ifdef CLD_GREENPOWER
     vManagePowerOnCountInit();
@@ -515,9 +515,7 @@ PUBLIC void APP_taskRouter(void)
         }else if (sAppEvent.eType == APP_E_EVENT_PERIODIC_REPORT)
         {
         	vAPP_LinkySensorSample();
-        	/*TUYA*/
 
-        	vAPP_TuyaAllReport();
 
         }
 
