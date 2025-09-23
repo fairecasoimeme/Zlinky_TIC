@@ -125,7 +125,7 @@ DISABLE_LTO            = 1
 OTA ?= 0 
 OTA_ENCRYPTED ?= 0
 LIMITED ?= 0
-VERSION = 16
+VERSION = 17
 ###############################################################################
 # Network settings
 
