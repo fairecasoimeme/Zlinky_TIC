@@ -43,12 +43,12 @@ const tsZCL_AttributeDefinition asCLD_LixeeLinkyClusterAttributeDefinitions[] = 
 		{E_CLD_LINKY_STANDARD_EASD03 ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT32,   (uint32)(&((tsCLD_Linky*)(0))->u32LinkyEASD03),0},
 		{E_CLD_LINKY_STANDARD_EASD04 ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT32,   (uint32)(&((tsCLD_Linky*)(0))->u32LinkyEASD04),0},
 
-		{E_CLD_LINKY_STANDARD_SINSTI ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySINSTI),0},
-		{E_CLD_LINKY_STANDARD_SMAXIN ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXIN),0},
-		{E_CLD_LINKY_STANDARD_SMAXIN_1 ,     (E_ZCL_AF_RD),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXIN_1),0},
+		{E_CLD_LINKY_STANDARD_SINSTI ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySINSTI),0},
+		{E_CLD_LINKY_STANDARD_SMAXIN ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXIN),0},
+		{E_CLD_LINKY_STANDARD_SMAXIN_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXIN_1),0},
 
-		{E_CLD_LINKY_STANDARD_CCAIN ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN),0},
-		{E_CLD_LINKY_STANDARD_CCAIN_1 ,     (E_ZCL_AF_RD),       E_ZCL_INT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN_1),0},
+		{E_CLD_LINKY_STANDARD_CCAIN ,     (E_ZCL_AF_RD|E_ZCL_AF_RP),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN),0},
+		{E_CLD_LINKY_STANDARD_CCAIN_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkyCCAIN_1),0},
 
 		{E_CLD_LINKY_STANDARD_SMAXSN1_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN1_1),0},
 		{E_CLD_LINKY_STANDARD_SMAXSN2_1 ,     (E_ZCL_AF_RD),       E_ZCL_UINT16,   (uint32)(&((tsCLD_Linky*)(0))->u16LinkySMAXSN2_1),0},

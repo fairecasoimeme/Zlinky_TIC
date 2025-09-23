@@ -100,11 +100,11 @@ typedef struct
 	 uint32						 u32LinkyEASD02;
 	 uint32						 u32LinkyEASD03;
 	 uint32						 u32LinkyEASD04;
-	 int16						 u16LinkySINSTI;
-	 int16						 u16LinkySMAXIN;
-	 int16						 u16LinkySMAXIN_1;
-	 int16						 u16LinkyCCAIN;
-	 int16						 u16LinkyCCAIN_1;
+	 uint16						 u16LinkySINSTI;
+	 uint16						 u16LinkySMAXIN;
+	 uint16						 u16LinkySMAXIN_1;
+	 uint16						 u16LinkyCCAIN;
+	 uint16						 u16LinkyCCAIN_1;
 	 uint16						 u16LinkySMAXSN1_1;
 	 uint16						 u16LinkySMAXSN2_1;
 	 uint16						 u16LinkySMAXSN3_1;
