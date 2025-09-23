@@ -167,127 +167,127 @@ Now you can modify the time to do a Linky acquisition.
 ## Subscription (OPTARIF Values)
 
 ### Mode historique  
-![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE  
-![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HC..  
-![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJP.  
-![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRx  
+🟥 BASE  
+🟩 HC..  
+🟧 EJP.  
+🟦 BBRx  
 
 
 RO= READ only RP= Reportable / RW = Read/Write	
 
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
 |------------|-------|--------|-----|-------|---------|--------|----|-----------|-----------------|				
-|ADC0|0x0702|0x0308|RO||String|12 car|-|	Serial Number|NULL|
-|![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) BASE|0x0702|0x0000|RP||Uint48|9 car|Wh| Index Base|0|
-|OPTARIF			|0xFF66|	0x0000|		RO||String|4 car|-| Option tarifaire|BASE|	
-|ISOUSC			|0x0B01	|0x000D		|RO		||Uint16|2 car|A| Intensité souscrite|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHC			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index HCHC|0|
-|![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) HCHP			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index HCHP|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHN			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index EJPHN|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) EJPHPM			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index EJPHPM|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJB			|0x0702	|0x0100		|RP			||Uint48|9 car|Wh|Index BBRHCJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJB			|0x0702	|0x0102		|RP			||Uint48|9 car|Wh|Index BBRHPJB|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJW			|0x0702	|0x0104		|RP			||Uint48|9 car|Wh|Index BBRHCJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJW			|0x0702	|0x0106		|RP			||Uint48|9 car|Wh|Index BBRHPJW|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHCJR			|0x0702	|0x0108		|RP			||Uint48|9 car|Wh|Index BBRHCJR|0|
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) BBRHPJR			|0x0702	|0x010A		|RP			||Uint48|9 car|Wh|Index BBRHPJR|0|
-|IINST			|0x0B04	|0x0508		|RP			||Uint16|3 car|A|Courant efficace|0xFFFF|
-|IINST1			|0x0B04	|0x0508		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 1|0xFFFF|
-|IINST2			|0x0B04	|0x0908		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 2|0xFFFF|
-|IINST3			|0x0B04	|0x0A08		|RP			|Triphasé|Uint16|3 car|A|Courant efficace phase 3|0xFFFF|
-|IMAX			|0x0B04	|0x050A		|RO			||Uint16|3 car|A|Intensité maximale|0xFFFF|
-|IMAX1			|0x0B04	|0x050A		|RO			|Triphasé|Uint16|3 car|A|Intensité maximale phase 1|0xFFFF|
-|IMAX2			|0x0B04	|0x090A		|RO			|Triphasé|Uint16|3 car|A|Intensité maximale phase 2|0xFFFF|
-|IMAX3			|0x0B04	|0x0A0A		|RO			|Triphasé|Uint16|3 car|A|Intensité maximale phase 3|0xFFFF|
-|PMAX			|0x0B04	|0x050D		|RO			|Triphasé|Uint16|5 car|W|Puissance maximale triphasée atteinte|0x8000|
-|PAPP			|0x0B04	|0x050F		|RP			|Triphasé|Uint16|5 car|VA|Puissance apparente|0xFFFF|
-|PTEC			|0x0702	|0x0020		|RO	||String|4 car|-|Periode tarifaire en cours|NULL|				
-|![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) DEMAIN			|0xFF66	|0x0001		|RP||String|4 car|-|Couleur du lendemain|NULL|
-|HHPHC			|0xFF66	|0x0002		|RO||Uint8|1 car|-|Horaire Heure Pleines Heures Creuses|0|
-|PPOT 			|0xFF66	|0x0003		|RO|Triphasé|Uint8|2 car|-| Présence des potentiels|0|
-|![#c56615](https://via.placeholder.com/15/c56615/000000?text=+) PEJP			|0xFF66	|0x0004		|RP||Uint8|2 car|Min|Préavis début EJP(30min)|0|
-|ADPS			|0xFF66	|0x0005		|RP||Uint16|3 car|A|Avertissement de Dépassement De Puissance Souscrite|0|
-|ADIR1			|0xFF66	|0x0006		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
-|ADIR2			|0xFF66	|0x0007		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
-|ADIR3			|0xFF66	|0x0008		|RP|Triphasé|Uint16|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
-|MOTDETAT|0xFF66	|0x0009	|RO|-|String|6 car||Etat du Linky (From V13)|"000000"|
-|-			|0xFF66	|0x0300		|RO||Uint8|1 car|-|Protocole linky|0|
+|ADC0|0x0702|0x0308|RO||String (0x41)|12 car|-|	Serial Number|NULL|
+|🟥 BASE|0x0702|0x0000|RP||Uint48 (0x25)|9 car|Wh| Index Base|0|
+|OPTARIF			|0xFF66|	0x0000|		RO||String (0x42)|4 car|-| Option tarifaire|BASE|	
+|ISOUSC			|0x0B01	|0x000D		|RO		||Uint16 (0x21)|2 car|A| Intensité souscrite|0|
+|🟩 HCHC			|0x0702	|0x0100		|RP			||Uint48 (0x25)|9 car|Wh|Index HCHC|0|
+|🟩 HCHP			|0x0702	|0x0102		|RP			||Uint48 (0x25)|9 car|Wh|Index HCHP|0|
+|🟧 EJPHN			|0x0702	|0x0100		|RP			||Uint48 (0x25)|9 car|Wh|Index EJPHN|0|
+|🟧 EJPHPM			|0x0702	|0x0102		|RP			||Uint48 (0x25)|9 car|Wh|Index EJPHPM|0|
+|🟦 BBRHCJB			|0x0702	|0x0100		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHCJB|0|
+|🟦 BBRHPJB			|0x0702	|0x0102		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHPJB|0|
+|🟦 BBRHCJW			|0x0702	|0x0104		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHCJW|0|
+|🟦 BBRHPJW			|0x0702	|0x0106		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHPJW|0|
+|🟦 BBRHCJR			|0x0702	|0x0108		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHCJR|0|
+|🟦 BBRHPJR			|0x0702	|0x010A		|RP			||Uint48 (0x25)|9 car|Wh|Index BBRHPJR|0|
+|IINST			|0x0B04	|0x0508		|RP			||Uint16 (0x21)|3 car|A|Courant efficace|0xFFFF|
+|IINST1			|0x0B04	|0x0508		|RP			|Triphasé|Uint16 (0x21)|3 car|A|Courant efficace phase 1|0xFFFF|
+|IINST2			|0x0B04	|0x0908		|RP			|Triphasé|Uint16 (0x21)|3 car|A|Courant efficace phase 2|0xFFFF|
+|IINST3			|0x0B04	|0x0A08		|RP			|Triphasé|Uint16 (0x21)|3 car|A|Courant efficace phase 3|0xFFFF|
+|IMAX			|0x0B04	|0x050A		|RO			||Uint16 (0x21)|3 car|A|Intensité maximale|0xFFFF|
+|IMAX1			|0x0B04	|0x050A		|RO			|Triphasé|Uint16 (0x21)|3 car|A|Intensité maximale phase 1|0xFFFF|
+|IMAX2			|0x0B04	|0x090A		|RO			|Triphasé|Uint16 (0x21)|3 car|A|Intensité maximale phase 2|0xFFFF|
+|IMAX3			|0x0B04	|0x0A0A		|RO			|Triphasé|Uint16 (0x21)|3 car|A|Intensité maximale phase 3|0xFFFF|
+|PMAX			|0x0B04	|0x050D		|RO			|Triphasé|Uint16 (0x21)|5 car|W|Puissance maximale triphasée atteinte|0x8000|
+|PAPP			|0x0B04	|0x050F		|RP			|Triphasé|Uint16 (0x21)|5 car|VA|Puissance apparente|0xFFFF|
+|PTEC			|0x0702	|0x0020		|RO	||String (0x42)|4 car|-|Periode tarifaire en cours|NULL|				
+|🟦 DEMAIN			|0xFF66	|0x0001		|RP||String (0x42)|4 car|-|Couleur du lendemain|NULL|
+|HHPHC			|0xFF66	|0x0002		|RO||Uint8 (0x20)|1 car|-|Horaire Heure Pleines Heures Creuses|0|
+|PPOT 			|0xFF66	|0x0003		|RO|Triphasé|Uint8 (0x20)|2 car|-| Présence des potentiels|0|
+|🟧 PEJP			|0xFF66	|0x0004		|RP||Uint8 (0x20)|2 car|Min|Préavis début EJP(30min)|0|
+|ADPS			|0xFF66	|0x0005		|RP||Uint16 (0x21)|3 car|A|Avertissement de Dépassement De Puissance Souscrite|0|
+|ADIR1			|0xFF66	|0x0006		|RP|Triphasé|Uint16 (0x21)|3 car|A|Avertissement de Dépassement D'intensité phase 1|0|
+|ADIR2			|0xFF66	|0x0007		|RP|Triphasé|Uint16 (0x21)|3 car|A|Avertissement de Dépassement D'intensité phase 2|0|
+|ADIR3			|0xFF66	|0x0008		|RP|Triphasé|Uint16 (0x21)|3 car|A|Avertissement de Dépassement D'intensité phase 3|0|
+|MOTDETAT|0xFF66	|0x0009	|RO|-|String (0x42)|6 car||Etat du Linky (From V13)|"000000"|
+|-			|0xFF66	|0x0300		|RO||Uint8 (0x20)|1 car|-|Protocole linky|0|
 
 #### Mode standard
 |Commande TIC|CLUSTER|Attribut|Droit|Comment|data type|size max|unit|designation|valeur par defaut|
 |------------|-------|--------|-----|--------------|---------|-------|----|-----------|------------|				
-|ADSC|0x0702|0x0308|RO||String|12 car|-|	Adresse Secondaire du Compteur|NULL|
-|NGTF|0xFF66|	0x0000|		RO||String|16 car|-| Nom du calendrier tarifaire fournisseur|-|	
-|LTARF|0xFF66|	0x0200|		RO||String|16 car|-| Libellé tarif fournisseur en cours|-|	
-|NTARF|0xFF66|	0x0201|		RO||Uint8|2 car|-| Numéro de l’index tarifaire en cours|-|	
-|VTIC|0xB01|	0x000A|		RO||Uint16|2 car|-| Version de la TIC|-|	
-|DATE|0xFF66|	0x0202|		RO||String|10 car|-| Date et heure courant|EX: E211022162000 |	
-|EAST|0x702|	0x0000|		RP||Uint48|9 car|Wh| Energie active soutirée totale|0 |	
-|EASF01|0x702|	0x0100|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 01|0 |	
-|EASF02|0x702|	0x0102|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 02|0 |	
-|EASF03|0x702|	0x0104|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 03|0 |	
-|EASF04|0x702|	0x0106|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 04|0 |	
-|EASF05|0x702|	0x0108|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 05|0 |	
-|EASF06|0x702|	0x010A|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 06|0 |	
-|EASF07|0x702|	0x010C|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 07|0 |	
-|EASF08|0x702|	0x010E|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 08|0 |	
-|EASF09|0x702|	0x0110|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index 09|0 |	
-|EASF10|0x702|	0x0112|		RP||Uint48|9 car|Wh| Energie active soutirée Fournisseur, index10|0 |	
-|EASD01|0xFF66|	0x0203|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 01|0 |	
-|EASD02|0xFF66|	0x0204|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 02|0 |	
-|EASD03|0xFF66|	0x0205|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 03|0 |	
-|EASD04|0xFF66|	0x0206|		RP||Uint32|9 car|Wh| Energie active soutirée Distributeur, index 04|0 |	
-|EAIT|0x702|	0x0001|		RP|Production|Uint48|9 car|Wh| Energie active injectée totale|0 |	
-|ERQ1|0xB04|	0x0305|		RP|Production|int16|9 car|VArh| Energie réactive Q1 total|0 |	
-|ERQ2|0xB04|	0x050E|		RP|Production|int16|9 car|VArh| Energie réactive Q2 total|0 |	
-|ERQ3|0xB04|	0x090E|		RP|Production|int16|9 car|VArh| Energie réactive Q3 total|0 |	
-|ERQ4|0xB04|	0x0A0E|		RP|Production|int16|9 car|VArh| Energie réactive Q4 total|0 |	
-|IRMS1|0xB04|	0x0508|		RP|mono / triphasé|Uint16|3 car|A| Courant efficace, phase 1|0 |	
-|IRMS2|0xB04|	0x0908|		RP|Triphasé|Uint16|3 car|A| Courant efficace, phase 2|0 |	
-|IRMS3|0xB04|	0x0A08|		RP|Triphasé|Uint16|3 car|A| Courant efficace, phase 3|0 |	
-|URMS1|0xB04|	0x0505|		RP|mono / triphasé|Uint16|3 car|V|Tension efficace, phase 1|0 |	
-|URMS2|0xB04|	0x0905|		RP|Triphasé|Uint16|3 car|V| Tension efficace, phase 2|0 |	
-|URMS3|0xB04|	0x0A05|		RP|Triphasé|Uint16|3 car|V| Tension efficace, phase 3|0 |	
-|PREF|0xB01|	0x000D|		RO||Uint16|2 car|kVA| Puissance app. de référence (PREF)|0 |	
-|STGE|0xFF66|	0x0217|		RO||String|8 car|-| Registre de Statuts|0 |	
-|PCOUP|0xB01|	0x000E|		RO||Uint8|2 car|kVA| Puissance app. de coupure (PCOUP)|0 |	
-|SINSTI|0xFF66|	0x0207|		RP|Production|int16|5 car|VA| Puissance app. Instantanée injectée|0 |	
-|SMAXIN|0xFF66|	0x0208|		RP|Production|int16|5 car|VA| Puissance app max. injectée n|0 |	
-|SMAXIN-1|0xFF66|	0x0209|		RO|Production|int16|5 car|VA| Puissance app max. injectée n-1|0 |	
-|CCASN|0xB04|	0x050B|		RP||int16|5 car|W| Point n de la courbe de charge active soutirée|0 |	
-|CCASN-1|0xB04|	0x090B|		RP||int16|5 car|W| Point n-1 de la courbe de charge active soutirée|0 |	
-|CCAIN|0xFF66|	0x0210|		RP|Production|int16|5 car|W| Point n de la courbe de charge active injectée|0 |	
-|CCAIN-1|0xFF66|	0x0211|		RO|Production|int16|5 car|W| Point n-1 de la courbe de charge active injectée|0 |	
-|UMOY1|0xB04|	0x0511|		RP|Mono / triphasé|Uint16|3 car|V|Tension moy. ph. 1|0 |	
-|UMOY2|0xB04|	0x0911|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 2|0 |	
-|UMOY3|0xB04|	0x0A11|		RP|Triphasé|Uint16|3 car|V| Tension moy. ph. 3|0 |	
-|SINSTS|0xB04|	0x0306 (Triphasé) <br>0x050F (Monophasé)|		RP|(Mono /Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. Instantanée soutirée|0 |	
-|SINSTS1|0xB04|	0x050F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph.1|0 |	
-|SINSTS2|0xB04|	0x090F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 2|0 |	
-|SINSTS3|0xB04|	0x0A0F|		RP|Triphasé|Uint16|5 car|VA| Puissance app. Instantanée soutirée ph. 3|0 |	
-|SMAXN|0xB04|	0x0304 (Triphasé) <br>0x050D (Monophasé)|		RP|(Mono / Triphasé depuis v10)|int16|5 car|VA|Puissance app. max. soutirée n|0 |	
-|SMAXN1|0xB04|	0x050D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph.1|0 |	
-|SMAXN2|0xB04|	0x090D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 2|0 |	
-|SMAXN3|0xB04|	0x0A0D|		RP|Triphasé|int16|5 car|VA| Puissance app. max. soutirée n ph. 3|0 |	
-|SMAXN-1|0xFF66|	0x0400 (Triphasé) <br>0x0212 (Monophasé)|		RO|(Mono / Triphasé depuis v10)|Uint16|5 car|VA|Puissance app. max. soutirée n-1|0 |	
-|SMAXN1-1|0xFF66|	0x0212|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
-|SMAXN2-1|0xFF66|	0x0213|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.2|0 |	
-|SMAXN3-1|0xFF66|	0x0214|		RO|Triphasé|Uint16|5 car|VA| Puissance app. max. soutirée n-1 ph.3|0 |	
-|MSG1|0xFF66|	0x0215|		RO||String|32 car|-| Message court|0 |	
-|MSG2|0xFF66|	0x0216|		RO||String|16 car|-| Message ultra court|0 |	
-|PRM|0x702|	0x0307|		RO||String|14 car|-| PRM|0 |	
-|DPM1|0xFF66|	0x0218|		RO||Uint8|2 car|-| Début Pointe Mobile 1|0 |	
-|FPM1|0xFF66|	0x0219|		RO||Uint8|2 car|-| Fin Pointe Mobile 1|0 |	
-|DPM2|0xFF66|	0x0220|		RO||Uint8|2 car|-| Début Pointe Mobile 2|0 |	
-|FPM2|0xFF66|	0x0221|		RO||Uint8|2 car|-| Fin Pointe Mobile 2|0 |	
-|DPM3|0xFF66|	0x0222|		RO||Uint8|2 car|-| Début Pointe Mobile 3|0 |	
-|FPM3|0xFF66|	0x0223|		RO||Uint8|2 car|-| Fin Pointe Mobile 3|0 |	
-|RELAIS|0xFF66|	0x0224|		RO||Uint16|3 car|-| RELAIS|0 |	
-|NJOURF|0xFF66|	0x0225|		RO||Uint8|2 car|-| Numéro du jour en cours calendrier fournisseur|0 |	
-|NJOURF+1|0xFF66|	0x0226|		RO||Uint8|2 car|-| Numéro du prochain jour calendrier fournisseur|0 |	
-|PJOURF+1|0xFF66|	0x0227|		RO||String|98 car|-|Profil du prochain jour calendrier fournisseur|0 |	
-|PPOINTE1|0xFF66|	0x0228|		RO||String|98 car|-|Profil du prochain jour de pointe|0 |	
-|-			    |0xFF66	|0x0300|RO||Uint8|1 car|-|Protocole linky|0|
+|ADSC|0x0702|0x0308|RO||String (0x41)|12 car|-|	Adresse Secondaire du Compteur|NULL|
+|NGTF|0xFF66|	0x0000|		RO||String (0x42)|16 car|-| Nom du calendrier tarifaire fournisseur|-|	
+|LTARF|0xFF66|	0x0200|		RO||String (0x42)|16 car|-| Libellé tarif fournisseur en cours|-|	
+|NTARF|0xFF66|	0x0201|		RO||Uint8 (0x20)|2 car|-| Numéro de l’index tarifaire en cours|-|	
+|VTIC|0xB01|	0x000A|		RO||Uint16 (0x21)|2 car|-| Version de la TIC|-|	
+|DATE|0xFF66|	0x0202|		RO||String (0x42)|10 car|-| Date et heure courant|EX: E211022162000 |	
+|EAST|0x702|	0x0000|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée totale|0 |	
+|EASF01|0x702|	0x0100|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 01|0 |	
+|EASF02|0x702|	0x0102|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 02|0 |	
+|EASF03|0x702|	0x0104|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 03|0 |	
+|EASF04|0x702|	0x0106|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 04|0 |	
+|EASF05|0x702|	0x0108|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 05|0 |	
+|EASF06|0x702|	0x010A|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 06|0 |	
+|EASF07|0x702|	0x010C|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 07|0 |	
+|EASF08|0x702|	0x010E|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 08|0 |	
+|EASF09|0x702|	0x0110|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index 09|0 |	
+|EASF10|0x702|	0x0112|		RP||Uint48 (0x25)|9 car|Wh| Energie active soutirée Fournisseur, index10|0 |	
+|EASD01|0xFF66|	0x0203|		RP||Uint32 (0x23)|9 car|Wh| Energie active soutirée Distributeur, index 01|0 |	
+|EASD02|0xFF66|	0x0204|		RP||Uint32 (0x23)|9 car|Wh| Energie active soutirée Distributeur, index 02|0 |	
+|EASD03|0xFF66|	0x0205|		RP||Uint32 (0x23)|9 car|Wh| Energie active soutirée Distributeur, index 03|0 |	
+|EASD04|0xFF66|	0x0206|		RP||Uint32 (0x23)|9 car|Wh| Energie active soutirée Distributeur, index 04|0 |	
+|EAIT|0x702|	0x0001|		RP|Production|Uint48 (0x25)|9 car|Wh| Energie active injectée totale|0 |	
+|ERQ1|0xB04|	0x0305|		RP|Production|int32 (0x29)|9 car|VArh| Energie réactive Q1 total|0 |	
+|ERQ2|0xB04|	0x050E|		RP|Production|int16 (0x29)|9 car|VArh| Energie réactive Q2 total|0 |	
+|ERQ3|0xB04|	0x090E|		RP|Production|int16 (0x29)|9 car|VArh| Energie réactive Q3 total|0 |	
+|ERQ4|0xB04|	0x0A0E|		RP|Production|int16 (0x29)|9 car|VArh| Energie réactive Q4 total|0 |	
+|IRMS1|0xB04|	0x0508|		RP|mono / triphasé|Uint16 (0x21)|3 car|A| Courant efficace, phase 1|0 |	
+|IRMS2|0xB04|	0x0908|		RP|Triphasé|Uint16 (0x21)|3 car|A| Courant efficace, phase 2|0 |	
+|IRMS3|0xB04|	0x0A08|		RP|Triphasé|Uint16 (0x21)|3 car|A| Courant efficace, phase 3|0 |	
+|URMS1|0xB04|	0x0505|		RP|mono / triphasé|Uint16 (0x21)|3 car|V|Tension efficace, phase 1|0 |	
+|URMS2|0xB04|	0x0905|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension efficace, phase 2|0 |	
+|URMS3|0xB04|	0x0A05|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension efficace, phase 3|0 |	
+|PREF|0xB01|	0x000D|		RO||Uint16 (0x21)|2 car|kVA| Puissance app. de référence (PREF)|0 |	
+|STGE|0xFF66|	0x0217|		RO||String (0x41)|8 car|-| Registre de Statuts|0 |	
+|PCOUP|0xB01|	0x000E|		RO||Uint8 (0x20)|2 car|kVA| Puissance app. de coupure (PCOUP)|0 |	
+|SINSTI|0xFF66|	0x0207|		RP|Production|Uint16 (0x21)|5 car|VA| Puissance app. Instantanée injectée|0 |	
+|SMAXIN|0xFF66|	0x0208|		RP|Production|Uint16 (0x21)|5 car|VA| Puissance app max. injectée n|0 |	
+|SMAXIN-1|0xFF66|	0x0209|		RO|Production|Uint16 (0x21)|5 car|VA| Puissance app max. injectée n-1|0 |	
+|CCASN|0xB04|	0x050B|		RP||int16 (0x29)|5 car|W| Point n de la courbe de charge active soutirée|0 |	
+|CCASN-1|0xB04|	0x090B|		RP||int16 (0x29)|5 car|W| Point n-1 de la courbe de charge active soutirée|0 |	
+|CCAIN|0xFF66|	0x0210|		RP|Production|Uint16 (0x21)|5 car|W| Point n de la courbe de charge active injectée|0 |	
+|CCAIN-1|0xFF66|	0x0211|		RO|Production|Uint16 (0x21)|5 car|W| Point n-1 de la courbe de charge active injectée|0 |	
+|UMOY1|0xB04|	0x0511|		RP|Mono / triphasé|Uint16 (0x21)|3 car|V|Tension moy. ph. 1|0 |	
+|UMOY2|0xB04|	0x0911|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension moy. ph. 2|0 |	
+|UMOY3|0xB04|	0x0A11|		RP|Triphasé|Uint16 (0x21)|3 car|V| Tension moy. ph. 3|0 |	
+|SINSTS|0xB04|	0x0306 (Triphasé) <br>0x050F (Monophasé)|		RP|(Mono /Triphasé depuis v10)|Uint16 (0x21)|5 car|VA|Puissance app. Instantanée soutirée|0 |	
+|SINSTS1|0xB04|	0x050F|		RP|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. Instantanée soutirée ph.1|0 |	
+|SINSTS2|0xB04|	0x090F|		RP|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. Instantanée soutirée ph. 2|0 |	
+|SINSTS3|0xB04|	0x0A0F|		RP|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. Instantanée soutirée ph. 3|0 |	
+|SMAXSN|0xB04|	0x0304 (Triphasé) <br>0x050D (Monophasé)|		RP|(Mono / Triphasé depuis v10)|int32 (0x2B)|5 car|VA|Puissance app. max. soutirée n|0 |	
+|SMAXSN1|0xB04|	0x050D|		RP|Triphasé|int16 (0x29)|5 car|VA| Puissance app. max. soutirée n ph.1|0 |	
+|SMAXSN2|0xB04|	0x090D|		RP|Triphasé|int16 (0x29)|5 car|VA| Puissance app. max. soutirée n ph. 2|0 |	
+|SMAXSN3|0xB04|	0x0A0D|		RP|Triphasé|int16 (0x29)|5 car|VA| Puissance app. max. soutirée n ph. 3|0 |	
+|SMAXSN-1|0xFF66|	0x0400 (Triphasé) <br>0x0212 (Monophasé)|		RO|(Mono / Triphasé depuis v10)|Uint16 (0x21)|5 car|VA|Puissance app. max. soutirée n-1|0 |	
+|SMAXSN1-1|0xFF66|	0x0212|		RO|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. max. soutirée n-1 ph.1|0 |	
+|SMAXSN2-1|0xFF66|	0x0213|		RO|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. max. soutirée n-1 ph.2|0 |	
+|SMAXSN3-1|0xFF66|	0x0214|		RO|Triphasé|Uint16 (0x21)|5 car|VA| Puissance app. max. soutirée n-1 ph.3|0 |	
+|MSG1|0xFF66|	0x0215|		RO||String (0x42)|32 car|-| Message court|0 |	
+|MSG2|0xFF66|	0x0216|		RO||String (0x42)|16 car|-| Message ultra court|0 |	
+|PRM|0x702|	0x0307|		RO||String (0x41)|14 car|-| PRM|0 |	
+|DPM1|0xFF66|	0x0218|		RO||Uint8 (0x20)|2 car|-| Début Pointe Mobile 1|0 |	
+|FPM1|0xFF66|	0x0219|		RO||Uint8 (0x20)|2 car|-| Fin Pointe Mobile 1|0 |	
+|DPM2|0xFF66|	0x0220|		RO||Uint8 (0x20)|2 car|-| Début Pointe Mobile 2|0 |	
+|FPM2|0xFF66|	0x0221|		RO||Uint8 (0x20)|2 car|-| Fin Pointe Mobile 2|0 |	
+|DPM3|0xFF66|	0x0222|		RO||Uint8 (0x20)|2 car|-| Début Pointe Mobile 3|0 |	
+|FPM3|0xFF66|	0x0223|		RO||Uint8 (0x20)|2 car|-| Fin Pointe Mobile 3|0 |	
+|RELAIS|0xFF66|	0x0224|		RO||Uint16 (0x21)|3 car|-| RELAIS|0 |	
+|NJOURF|0xFF66|	0x0225|		RO||Uint8 (0x20)|2 car|-| Numéro du jour en cours calendrier fournisseur|0 |	
+|NJOURF+1|0xFF66|	0x0226|		RO||Uint8 (0x20)|2 car|-| Numéro du prochain jour calendrier fournisseur|0 |	
+|PJOURF+1|0xFF66|	0x0227|		RO||String (0x42)|98 car|-|Profil du prochain jour calendrier fournisseur|0 |	
+|PPOINTE1|0xFF66|	0x0228|		RO||String (0x42)|98 car|-|Profil du prochain jour de pointe|0 |	
+|-			    |0xFF66	|0x0300|RO||Uint8 (0x20)|1 car|-|Protocole linky|0|
 
 ### Synthèse développeur
 |Fonctions|CLUSTER|Attribut|
@@ -479,6 +479,8 @@ Les modes Historique et Standard sont supportés. Nous avons effectués des test
 
 Lien vers l'application : [App](https://homey.app/fr-fr/app/com.lixee/liXee/)  
 Lien vers le forum concerné : [Forum ZLinky Homey](https://community.homey.app/t/app-pro-lixee/74924)  
+⚠️ Avec certaines versions du logiciel LiXee sur HomeyPro 2023, il est parfois nécessaire d'avoir un routeur zigbee déjà jumelé avec la box pour que le ZLinky puisse s'appairer avec la box.
+
 
 ### SmartThing
 
@@ -559,6 +561,9 @@ Pour palier le problème de distance, il existe plusieurs solution :
 * Le zigbee permet de "mailler" le réseau. Grâce à des équipements zigbee qui ont la fonction de routeur, il est possible d'augmenter les distances en plaçant stratégiquement les appareils zigbee routeur qui joueront le rôle de relai et ainsi augmenter la portée ou fiabiliser les échanges.
 * Utiliser la version du ZLinky avec antenne externe. En effet, grâce à cette version, vous pourrez utiliser une rallonge SMA [(exemple de rallonge compatible)](https://amzn.to/3PUPA4J) afin de déporter l'antenne à un endroit plus optimisé. Vous pourrez aussi utiliser une antenne avec un gain plus important que celle par défaut (2dBi). [(exemple d'antenne avec un meilleur gain)](https://amzn.to/4cPQDwA)
 * Corriger les perturbation radios liés au WiFi. En effet, certains paramétrage WiFi peut polluer le réseau zigbee. Il convient parfois de limiter la bande passante de votre borne WiFi (passer en 20Mhz plutôt que 40Mhz) et/ou de changer de canal WiFi(il faut éloigner au maximum le canal WiFi du canal Zigbee. Je vous conseille de lire cet article qui rentrera plus dans les détails. [(Tutoriel)](https://haade.fr/fr/blog/interference-zigbee-wifi-2-4ghz-a-savoir)
+
+### 7. Malgré le maillage de mon réseau zigbee, la portée n'est pas suffisante. Existe t-il une autre solution ?
+Il est possible d'utiliser la solution suivante pour [augmenter la portée du ZLinky](https://faire-ca-soi-meme.fr/domotique/2025/03/29/augmenter-la-portee-du-zlinky_tic-v2/)
 
 ## Changelog
 
