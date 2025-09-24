@@ -544,7 +544,9 @@ Cette opération est gratuite et en général, le changement est effectué dans 
 ### 3. J'ai installé des panneaux photovoltaïques et j'aimerai récupérer les infos d'injection
 Pour avoir les données d'injection, il faut remplir les 2 conditions suivantes:  
 * Etre en mode standard  
-* Avoir un contrat CRAE avec EDF OA. (Dans un futur proche, il suffira d'avoir un contrat CACSI mais à ma connaissance, ce n'est pas encore le cas)  
+* Avoir un contrat CRAE avec EDF OA. (Dans un futur proche, il suffira d'avoir un contrat CACSI mais à ma connaissance, ce n'est pas encore le cas)
+
+Pour avoir plus de précision sur l'exploitation des panneaux photovoltaïques avec le linky, vous pouvez [suivre le guide](https://faire-ca-soi-meme.fr/domotique/2025/09/24/linky-exploiter-les-donnees-de-production-pas-si-simple/)
 
 ### 4. Je ne comprends pas, la puissance affichée par le Linky ne correspond pas à la puissance mesurée
 Attention, le Linky ne mesure que la puissance apparente (en VA). Cette puissance est dans certains cas différente de la puissance active (en W). Tout dépend du déphasage (cos Phi) des appareils qui consomment dans votre maison.  
