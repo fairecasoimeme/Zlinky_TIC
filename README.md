@@ -523,6 +523,41 @@ Screenshots
 |---------------|-------------|-----------------|
 |<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_dashboard_tuya_smart.jpg" width="200">|<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_dashboard_standard_tuya_smart.jpg" width="200">|<img src="https://github.com/fairecasoimeme/Zlinky_TIC/blob/master/Doc/Images/Screenshot_graphe_tuya_smart.jpg" width="200">|
 
+### Tuya (from v17)
+
+Depuis la version v4000-0017, il est possible d'intégrer le ZLinky_TIC sur une passerelle zigbee Tuya. Pour cela, il suffit de passer la passerelle zigbee en mode "appairage".  
+   * Cliquer sur la passerelle zigbee
+   * Cliquer sur "Ajouter un sous-appareil"
+   * Mettre le ZLinky en mode appairage - Appui long sur le bouton "link" (clignotement rapide de la LED bleue)
+   * Cliquer sur "La LED clignote déjà"
+   * Attendre que "Smart Lighting" apparaisse dans la découverte des appareils zigbee à proximité
+
+Voici les données exploitables sur la plateforme Tuya :
+   * Mode historique:
+     * Consommation totale (en kWh)
+     * Consommation horaire (en kWh)
+     * Intensité par phase (en A)
+     * Puissance apparente totale (en kVA affiché kW)
+     * Graphes consommation journalier / mensuel / annuel
+     * 1 "alarm set" dépassement de puissance apparente
+     * 1 "alarm set" dépassement d'intensité
+
+    
+   * Mode standard (mode conseillé):
+     * Consommation totale (en kWh)
+     * Production photovoltaïque totale (en kWh) (si contrat)
+     * Consommation horaire (en kWh)
+     * Production photovoltaïque horaire (en kWh) (si contrat)
+     * Intensité par phase (en A)
+     * Tension par phase (en V)
+     * Puissance apparente par phase (en kVA marqué kW)
+     * Puissance apparente totale (en kVA affiché kW). Si vous êtes en production autonome (sans contrat) et que la production > consommation, la puissance apparente sera négative
+     * Graphes consommation journalier / mensuel / annuel
+     * 1 "alarm set" dépassement de puissance apparente
+     * 1 "alarm set" dépassement d'intensité
+     * 1 "alarm set" sur-tension
+     * 1 "alarm set" sous-tension
+
 ## F.A.Q
 
 ### 1. J'ai changé d'abonnement et je ne retrouve plus mes index dans mon dashboard domotique
@@ -569,12 +604,21 @@ Il est possible d'utiliser la solution suivante pour [augmenter la portée du ZL
 
 ## Changelog
 
+### Version 0017
+
+* Add new alarm and new values for Tuya
+* Add new model id for Tuya (_TZE284_dikb3dp6)
+* Fix Linky mode instability
+* Fix bugs type for some attributes (SINSTI, SMAXIN, SMAXIN-1, CCAIN, CCAIN-1)
+* LED ON on startup
+* Fix Ota Bug (test valid structure)
+* Fix other minor bugs
+
 ### Version 0016
 
 * Fix dataType for SINSTS ERQ1 and SMAXN for the reporting
 * Fix acquisition after update
 * Delete some debug to free UART
-
 
 ### Version 0015
 
