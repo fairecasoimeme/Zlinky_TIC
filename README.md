@@ -315,7 +315,7 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Histo: <br>- IMAX<br>- IMAX1(Triphasé)|0x0B04|0x050A|
 |Histo: <br>- IMAX2(Triphasé)|0x0B04|0x090A|
 |Histo: <br>- IMAX3(Triphasé)|0x0B04|0x0A0A|
-|Histo: <br>- PMAX(Triphasé)<br>Standard :<br>- SMAXN<br>- SMAXN1(Triphasé)|0x0B04|0x050D|
+|Histo: <br>- PMAX(Triphasé)<br>Standard :<br>- SMAXSN<br>- SMAXSN1(Triphasé)|0x0B04|0x050D|
 |Histo: <br>- PAPP<br>Standard :<br>- SINSTS<br>- SINSTS1(Triphasé)|0x0B04|0x050F|
 |Standard : SINSTS2(Triphasé)|0x0B04|0x090F|
 |Standard : SINSTS3(Triphasé)|0x0B04|0x0A0F|
@@ -352,10 +352,10 @@ RO= READ only RP= Reportable / RW = Read/Write
 |Standard : SMAXIN-1 (Production)|0xFF66|0x0209|
 |Standard : CCAIN (Production)|0xFF66|0x0210|
 |Standard : CCAIN-1 (Production)|0xFF66|0x0211|
-|Standard : <br>- SMAXN-1 (Monophasé)<br>- SMAXN1-1 (Triphasé)|0xFF66|0x0212|
-|Standard : SMAXN1-1 (Triphasé)|0xFF66|0x0212|
-|Standard : SMAXN2-1 (Triphasé)|0xFF66|0x0213|
-|Standard : SMAXN3-1 (Triphasé)|0xFF66|0x0214|
+|Standard : <br>- SMAXSN-1 (Monophasé)<br>- SMAXSN1-1 (Triphasé)|0xFF66|0x0212|
+|Standard : SMAXSN1-1 (Triphasé)|0xFF66|0x0212|
+|Standard : SMAXSN2-1 (Triphasé)|0xFF66|0x0213|
+|Standard : SMAXSN3-1 (Triphasé)|0xFF66|0x0214|
 |Standard : MSG1|0xFF66|0x0215|
 |Standard : MSG2|0xFF66|0x0216|
 |Standard : STGE|0xFF66|0x0217|
@@ -616,7 +616,7 @@ Il est possible d'utiliser la solution suivante pour [augmenter la portée du ZL
 
 ### Version 0016
 
-* Fix dataType for SINSTS ERQ1 and SMAXN for the reporting
+* Fix dataType for SINSTS ERQ1 and SMAXSN for the reporting
 * Fix acquisition after update
 * Delete some debug to free UART
 
@@ -658,12 +658,12 @@ Clusters 0x0001 :
 
 ### Version 0011
 
-* Add SINST SMAXN SMAXN-1 "monophasé" compatibility to all plugins
+* Add SINST SMAXSN SMAXSN-1 "monophasé" compatibility to all plugins
 
 ### Version 0010
 
 * Update LED management to reduce consumption when all is ok (LED ON)
-* Add new cluster/ attr SINSTS, SMAXN and SMAXN-1 because these values are unique in "mode triphasé" https://github.com/fairecasoimeme/Zlinky_TIC/issues/112
+* Add new cluster/ attr SINSTS, SMAXSN and SMAXSN-1 because these values are unique in "mode triphasé" https://github.com/fairecasoimeme/Zlinky_TIC/issues/112
 * Update MCUXpresso config files and Makefile to manage limited and legacy firmware
 * Update OTA time wait. Verify update OTA between 2 hours and 4 hours instead of 2m-4m
 * Rename the limited version configuration file
@@ -684,7 +684,7 @@ https://github.com/zigpy/zha-device-handlers/pull/1165
 * Add Blinking LED (fast) for permit join mode
 * Add 2 config files. With or without childs routing function
 * Fix blocking timer when Linky Acquisition.
-* Fix Reportable Attribut. SMAXN2 Cluster : 0x0b04 - attribut : 0x090D / SMAXN3 Cluster : 0x0b04 - attribut : 0x0A0D
+* Fix Reportable Attribut. SMAXSN2 Cluster : 0x0b04 - attribut : 0x090D / SMAXSN3 Cluster : 0x0b04 - attribut : 0x0A0D
 
 ### Version 0006
 
@@ -706,7 +706,7 @@ https://github.com/zigpy/zha-device-handlers/pull/1165
 * Add LinkyMode property (cluster 0xFF66 / property : 0x0300)
 * Add Alarm reportable function
 * Add Alarm when STGE was updated
-* Fix reportable value (UMOY1, UMOY2, UMOY2, SMAXN, STGE)
+* Fix reportable value (UMOY1, UMOY2, UMOY2, SMAXSN, STGE)
 * Fix ADPS value (RAZ when no appear)
 
 
