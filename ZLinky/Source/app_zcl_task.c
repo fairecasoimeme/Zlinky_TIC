@@ -752,9 +752,9 @@ PUBLIC void APP_vZCL_DeviceSpecific_Init(void)
 		memcpy(sBaseDevice.sBasicServerCluster.au8ProductCode, "0017", CLD_BAS_PCODE_SIZE);
 		memcpy(sBaseDevice.sLinkyServerCluster.au8LinkyOptarif, "BASE",4);
 
-		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x10;
+		sBaseDevice.sBasicServerCluster.u8ApplicationVersion=0x11;
 		sBaseDevice.sSimpleMeteringServerCluster.eMeteringDeviceType = E_CLD_SM_MDT_ELECTRIC;
-		sBaseDevice.sCLD_OTA.u32CurrentFileVersion = 0x10;
+		sBaseDevice.sCLD_OTA.u32CurrentFileVersion = 0x11;
 
 	}
 
