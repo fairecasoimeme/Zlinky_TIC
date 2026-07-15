@@ -71,9 +71,9 @@ uint32 pow10[9]={1,10,100,1000,10000,100000,1000000,10000000,100000000};
 /****************************************************************************/
 uint16             u16PacketType;
 uint16             u16PacketLength;
-uint8              au8Command[128];
-uint8              au8Date[128];
-uint8              au8Value[256];
+uint8              au8Command[LK_TIC_LABEL_SIZE];
+uint8              au8Date[LK_TIC_DATE_SIZE];
+uint8              au8Value[LK_TIC_VALUE_SIZE];
 uint8 			   au8Error;
 uint8 			   au8Pos;
 uint8              loopOK;

@@ -60,6 +60,14 @@ extern "C" {
 /***        Macro Definitions                                             ***/
 /****************************************************************************/
 
+/* Capacities of the TIC accumulation buffers. These MUST match the sizes of
+ * au8Command / au8Date / au8Value declared in ZLinky/Source/App_Linky.c: the
+ * parsers below use them to bound every write, so that an over-long field in
+ * the (untrusted) TIC stream is truncated instead of overflowing the buffer. */
+#define LK_TIC_LABEL_SIZE   128
+#define LK_TIC_DATE_SIZE    128
+#define LK_TIC_VALUE_SIZE   256
+
 /****************************************************************************/
 /***        Type Definitions                                              ***/
 /****************************************************************************/
