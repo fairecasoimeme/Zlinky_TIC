@@ -245,6 +245,26 @@ PUBLIC void vRestoreDefaultRecord(  uint8                                       
                         sizeof(asSavedReports));
 
 }
+
+/* --- BEGIN report-slot-search (host-testable, see tests/host) --- */
+/* Index of the saved-report slot for (u16ClusterID, u16AttributeEnum): the
+ * existing slot for that attribute, else the first free slot, else -1 when the
+ * table is full. Callers MUST treat -1 as "no slot" and never index with it. */
+PRIVATE int iFindReportSlot(uint16 u16ClusterID, uint16 u16AttributeEnum)
+{
+    int i;
+    for (i = 0; i < ZCL_NUMBER_OF_REPORTS; i++)
+    {
+        if (asSavedReports[i].u16ClusterID == u16ClusterID &&
+            asSavedReports[i].sAttributeReportingConfigurationRecord.u16AttributeEnum == u16AttributeEnum)
+            return i;
+        if (asSavedReports[i].u16ClusterID == 0)
+            return i;
+    }
+    return -1;
+}
+/* --- END report-slot-search --- */
+
 /****************************************************************************
  *
  * NAME: vSaveReportableRecord
@@ -259,21 +279,15 @@ PUBLIC void vRestoreDefaultRecord(  uint8                                       
 PUBLIC void vSaveReportableRecord(  uint16 u16ClusterID,
                                     tsZCL_AttributeReportingConfigurationRecord* psAttributeReportingConfigurationRecord)
 {
-    int iIndex;
-    int i;
-	for (i=0; i<ZCL_NUMBER_OF_REPORTS; i++)
+    int iIndex = iFindReportSlot(u16ClusterID,
+                                 psAttributeReportingConfigurationRecord->u16AttributeEnum);
+
+	if (iIndex < 0)
 	{
-		DBG_vPrintf(TRACE_REPORT,"\r\ncount i : %d Cluster : %04x attr : %04x",i,u16ClusterID,psAttributeReportingConfigurationRecord->u16AttributeEnum);
-		if  ((asSavedReports[i].u16ClusterID==u16ClusterID) && (asSavedReports[i].sAttributeReportingConfigurationRecord.u16AttributeEnum == psAttributeReportingConfigurationRecord->u16AttributeEnum))
-		{
-			iIndex=i;
-			break;
-		}
-		if  (asSavedReports[i].u16ClusterID==0)
-		{
-			iIndex=i;
-			break;
-		}
+		/* Reporting table full and no existing slot for this (cluster,
+		 * attribute): drop it instead of writing at an uninitialised index. */
+		DBG_vPrintf(TRACE_REPORT, "\r\nReport table full, dropping cluster %04x", u16ClusterID);
+		return;
 	}
 
 	DBG_vPrintf(TRACE_REPORT, "\r\nSave to report %d", iIndex);
