@@ -68,6 +68,31 @@ uint8_t au8TuyaSpecificSequenceNumber = 0;
 /****************************************************************************/
 /***        Public Functions                                              ***/
 /****************************************************************************/
+
+/* --- BEGIN tuya-payload-validation (host-testable, see tests/host) --- */
+/* Smallest payload (ZCL header included) whose header fields at offsets 4..8
+ * can be read safely, and upper bound that keeps the on-stack payload array
+ * bounded. A received Tuya TY_DATA_REQUEST is untrusted, so it must be checked
+ * against these before any byte of it is dereferenced. */
+#define TUYA_TY_DATA_MIN_LEN   9
+#define TUYA_TY_DATA_MAX_LEN   128
+
+/* TRUE when a TY_DATA_REQUEST payload of u16PayloadSize bytes is large enough
+ * to parse data point u8DataPoint without reading past the received buffer. */
+PUBLIC bool bTuyaRequestPayloadValid(uint16 u16PayloadSize, uint8 u8DataPoint)
+{
+    if (u16PayloadSize < TUYA_TY_DATA_MIN_LEN) return FALSE;
+    if (u16PayloadSize > TUYA_TY_DATA_MAX_LEN) return FALSE;
+
+    switch (u8DataPoint)
+    {
+        case 0x11: return (bool)(u16PayloadSize >= 13);   /* reads up to offset 12 */
+        case 0x12: return (bool)(u16PayloadSize >= 21);   /* reads up to offset 20 */
+        default:   return TRUE;                           /* header already validated */
+    }
+}
+/* --- END tuya-payload-validation --- */
+
 PUBLIC teZCL_Status eCLD_TuyaCommandBasicMagidId(
                 uint8           u8SourceEndPointId,
                 uint8           u8DestinationEndPointId,
@@ -113,6 +138,14 @@ PUBLIC teZCL_Status eCLD_TuyaCommandRspSend(
 
 	uint8 *pu8PayloadData = (uint8 *)(PDUM_pvAPduInstanceGetPayload(PduInst));
 
+	/* The payload is received over the Zigbee network and is untrusted. Reject
+	 * truncated or oversized frames before indexing it: this bounds the
+	 * variable-length asPayloadDefinition[] below and every fixed-offset read. */
+	if (u16PayloadSize < TUYA_TY_DATA_MIN_LEN || u16PayloadSize > TUYA_TY_DATA_MAX_LEN)
+	{
+		return E_ZCL_FAIL;
+	}
+
 	static uint8 u8ResponseStatus = 0x00;
 	static uint8 u8seq;
 	uint8 tmp = pu8PayloadData[4];
@@ -137,6 +170,14 @@ PUBLIC teZCL_Status eCLD_TuyaCommandRspSend(
 	for (int i = 5; i < u16PayloadSize; i++) {
 		asPayloadDefinition[u8ItemCount++] = (tsZCL_TxPayloadItem){1, E_ZCL_UINT8, &pu8PayloadData[i]};
 
+	}
+
+	/* Only touch the data-point specific offsets once we know the frame is
+	 * long enough for them (otherwise we would read past the received data
+	 * and persist garbage thresholds to flash). */
+	if (!bTuyaRequestPayloadValid(u16PayloadSize, DP))
+	{
+		return E_ZCL_FAIL;
 	}
 
 	switch (DP)
