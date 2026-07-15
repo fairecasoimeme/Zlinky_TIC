@@ -164,8 +164,9 @@ char*  trim (char *s)
 {
     int i;
 
-    while (isspace (*s)) s++;   // skip left side white spaces
-    for (i = strlen (s) - 1; (isspace (s[i])); i--) ;   // skip right side white spaces
+    while (isspace ((unsigned char) *s)) s++;   // skip left side white spaces
+    if (*s == '\0') return s;                   // empty after left trim: nothing more to do
+    for (i = strlen (s) - 1; i >= 0 && isspace ((unsigned char) s[i]); i--) ;   // skip right side white spaces
     s[i + 1] = '\0';
     return s;
 }
