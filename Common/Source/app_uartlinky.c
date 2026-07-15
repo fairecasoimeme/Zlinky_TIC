@@ -216,12 +216,9 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 
 			u8TmpCRC=0;
 			u8TmpCRCHorodate=0;
-			memset(command,0,0);
-			memset(date,0,0);
-			memset(value,0,0);
-			command=0;
-			value=0;
-			date=0;
+			memset(command,0,LK_TIC_LABEL_SIZE);
+			memset(date,0,LK_TIC_DATE_SIZE);
+			memset(value,0,LK_TIC_VALUE_SIZE);
 			*error=0;
 			*posFinal=0;
 			pos=0;
@@ -260,7 +257,7 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 					{
 						if (u8TmpCRC==u8CRC)
 						{
-							memcpy(value,date,256);
+							memcpy(value,date,LK_TIC_DATE_SIZE);
 							return(TRUE);
 						}else{
 							DBG_vPrintf(1, "\r\ncommand : %s Error CRC : tmp=%c - reçu=%c",command, u8TmpCRC,u8CRC);
@@ -282,7 +279,7 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 						//Specif for DATE
 						if (memcmp(command,"DATE",4)==0)
 						{
-							memcpy(value,date,256);
+							memcpy(value,date,LK_TIC_DATE_SIZE);
 						}
 						return(TRUE);
 					}else{
@@ -311,25 +308,34 @@ PUBLIC bool bSL_ReadMessageStandard(uint16 u16MaxLength, uint8 *command, uint8 *
 			{
 				if (pos==0)
 				{
-					command[i++] = u8Data;
+					if (i < LK_TIC_LABEL_SIZE - 1)
+					{
+						command[i++] = u8Data;
+						command[i]='\0';
+					}
 					u8TmpCRCHorodate+=u8Data;
 					u8TmpCRC=u8TmpCRCHorodate;
-					command[i]='\0';
 
 
 				}else if (pos==1)
 				{
-					date[i++] = u8Data;
+					if (i < LK_TIC_DATE_SIZE - 1)
+					{
+						date[i++] = u8Data;
+						date[i]='\0';
+					}
 					u8TmpCRCHorodate+=u8Data;
 					u8TmpCRC=u8TmpCRCHorodate;
-					date[i]='\0';
 
 
 				}else if (pos==2)
 				{
-					value[i++] = u8Data;
+					if (i < LK_TIC_VALUE_SIZE - 1)
+					{
+						value[i++] = u8Data;
+						value[i]='\0';
+					}
 					u8TmpCRCHorodate+=u8Data;
-					value[i]='\0';
 					u8CRC = u8Data;
 
 				}else{
@@ -358,10 +364,8 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
     {
     	case 0x0A:
     		u8TmpCRC=0;
-    		memset(command,0,0);
-    		memset(value,0,0);
-    		command=0;
-    		value=0;
+    		memset(command,0,LK_TIC_LABEL_SIZE);
+    		memset(value,0,LK_TIC_VALUE_SIZE);
     		pos=0;
     		i=0;
     		*error=0;
@@ -415,15 +419,21 @@ PUBLIC bool bSL_ReadMessageHisto(uint16 u16MaxLength, uint8 *command, uint8 *val
     		{
     			if (pos==0)
 				{
-					command[i++] = u8Data;
+					if (i < LK_TIC_LABEL_SIZE - 1)
+					{
+						command[i++] = u8Data;
+						command[i]='\0';
+					}
 					u8TmpCRC+=u8Data;
-					command[i]='\0';
 
 				}else if (pos==1)
 				{
-					value[i++] = u8Data;
+					if (i < LK_TIC_VALUE_SIZE - 1)
+					{
+						value[i++] = u8Data;
+						value[i]='\0';
+					}
 					u8TmpCRC+=u8Data;
-					value[i]='\0';
 
 				}else{
 					u8CRC = u8Data;
