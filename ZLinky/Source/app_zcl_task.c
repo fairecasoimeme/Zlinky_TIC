@@ -601,7 +601,7 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
         case GENERAL_CLUSTER_ID_IDENTIFY:
         {
             tsCLD_IdentifyCallBackMessage *psCallBackMessage = (tsCLD_IdentifyCallBackMessage*)psEvent->uMessage.sClusterCustomMessage.pvCustomData;
-            if (psCallBackMessage->u8CommandId == E_CLD_IDENTIFY_CMD_IDENTIFY)
+            if (psCallBackMessage != NULL && psCallBackMessage->u8CommandId == E_CLD_IDENTIFY_CMD_IDENTIFY)
             {
                 APP_vHandleIdentify(sBaseDevice.sIdentifyServerCluster.u16IdentifyTime);
             }
@@ -612,7 +612,7 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
         {
         	tsCLD_TuyaSpecificCallBackMessage *psCallBackMessage = (tsCLD_TuyaSpecificCallBackMessage*)psEvent->uMessage.sClusterCustomMessage.pvCustomData;
         	DBG_vPrintf(TRACE_ZCL, "\r\n--------------------------------TUYA_SPECIFIC_ID_LINKY");
-        	if (psCallBackMessage->u8CommandId == E_CLD_TUYA_MCU_VERSION_REQ )
+        	if (psCallBackMessage != NULL && psCallBackMessage->u8CommandId == E_CLD_TUYA_MCU_VERSION_REQ )
         	{
         		DBG_vPrintf(TRACE_ZCL, "\r\n--------------------------------E_CLD_TUYA_MCU_VERSION_REQ");
         	}
@@ -621,7 +621,7 @@ PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
         case GENERAL_CLUSTER_ID_BASIC:
         {
             tsCLD_BasicCallBackMessage *psCallBackMessage = (tsCLD_BasicCallBackMessage*)psEvent->uMessage.sClusterCustomMessage.pvCustomData;
-            if (psCallBackMessage->u8CommandId == E_CLD_BASIC_CMD_RESET_TO_FACTORY_DEFAULTS )
+            if (psCallBackMessage != NULL && psCallBackMessage->u8CommandId == E_CLD_BASIC_CMD_RESET_TO_FACTORY_DEFAULTS )
             {
                 DBG_vPrintf(TRACE_ZCL, "Basic Factory Reset Received\r\n");
                // memset(&sBaseDevice,0,sizeof(tsZLO_LinkyDevice));
