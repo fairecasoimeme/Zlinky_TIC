@@ -596,6 +596,18 @@ PUBLIC void vIdEffectTick(uint8 u8Endpoint)
  ****************************************************************************/
 PRIVATE void APP_vHandleClusterCustomCommands(tsZCL_CallBackEvent *psEvent)
 {
+    /* Every case below casts pvCustomData and dereferences it, either here or
+     * in the handler it calls. The ZCL layer is expected to always provide it,
+     * so this guard should never fire; it is checked once here rather than
+     * once per case, and traced so that an unexpected event is not swallowed
+     * silently. */
+    if (psEvent->uMessage.sClusterCustomMessage.pvCustomData == NULL)
+    {
+        DBG_vPrintf(TRACE_ZCL, "\r\nCustom command on cluster %04x : pvCustomData NULL, event ignored",
+                    psEvent->uMessage.sClusterCustomMessage.u16ClusterId);
+        return;
+    }
+
       switch(psEvent->uMessage.sClusterCustomMessage.u16ClusterId)
     {
         case GENERAL_CLUSTER_ID_IDENTIFY:
