@@ -946,7 +946,10 @@ PRIVATE void vPrintAPSTable(void)
 
     psAplAib = ZPS_psAplAibGetAib();
 
-    for ( i = 0 ; i < (psAplAib->psAplDeviceKeyPairTable->u16SizeOfKeyDescriptorTable + 3) ; i++ )
+    /* Bounded by the announced table size. The previous "+ 3" indexed three
+     * descriptors past the end of psAplApsKeyDescriptorEntry[] and printed
+     * that adjacent RAM on the debug UART at every start-up. */
+    for ( i = 0 ; i < psAplAib->psAplDeviceKeyPairTable->u16SizeOfKeyDescriptorTable ; i++ )
     {
         u64Addr = ZPS_u64NwkNibGetMappedIeeeAddr(ZPS_pvAplZdoGetNwkHandle(), psAplAib->psAplDeviceKeyPairTable->psAplApsKeyDescriptorEntry[i].u16ExtAddrLkup);
         DBG_vPrintf(TRUE, "%d MAC: 0x%x %x Key: ", i, (uint32)(u64Addr>>32), (uint32)(u64Addr&0xffffffff) );
