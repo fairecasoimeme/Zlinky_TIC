@@ -172,6 +172,10 @@ char*  trim (char *s)
 
 
 
+#ifndef TIC_MAX_BAD_GROUPS
+#define TIC_MAX_BAD_GROUPS 10
+#endif
+
 uint8 APP_vProcessRxDataStandard ( void )
 {
 	uint8    u8RxByte;
@@ -179,6 +183,9 @@ uint8 APP_vProcessRxDataStandard ( void )
 	static bool stx;
 	static bool lf;
 	static uint8_t carError;
+	/* resynchronisation sur LF apres un groupe invalide */
+	static bool skipGroup;
+	static uint8_t u8BadGroups;
 	if (u32Timeout>1000000)
 	{
 		stx= FALSE;
@@ -200,6 +207,8 @@ uint8 APP_vProcessRxDataStandard ( void )
 				case 0x02:
 					stx=TRUE;
 					lf=FALSE;
+					skipGroup=FALSE;
+					u8BadGroups=0;
 					DBG_vPrintf(1, "\r\nSTX ");
 					break;
 				case 0x03:
@@ -215,6 +224,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 					{
 						DBG_vPrintf(1, "\r\nLF ");
 						lf=TRUE;
+						skipGroup=FALSE;
 					}
 					break;
 				case 0x0D:
@@ -226,12 +236,18 @@ uint8 APP_vProcessRxDataStandard ( void )
 					break;
 				default:
 					DBG_vPrintf(1, "%02X ",u8RxByte);
-					if (stx && (carError==0))
+					if (stx)
 					{
+						/* caractere parasite dans la trame -> on ignore
+						 * le groupe courant et on attend le prochain LF */
 						DBG_vPrintf(1, "\r\nCar ERROR : 0x%2X / LF : %d",u8RxByte, lf);
-						stx=FALSE;
-						return 3;
-						//return 2;
+						if (!skipGroup)
+						{
+							skipGroup=TRUE;
+							lf=FALSE;
+							u8BadGroups++;
+						}
+						break;
 					}
 					carError++;
 					break;
@@ -243,12 +259,13 @@ uint8 APP_vProcessRxDataStandard ( void )
 			if (flagStatus & USART_STAT_PARITYERRINT_MASK)
 			{
 				UARTLINKY->STAT |= USART_STAT_PARITYERRINT_MASK;
-				if (stx && lf)
+				if (stx && lf && !skipGroup)
 				{
+					/* erreur de parite -> groupe ignore, resynchro sur LF */
 					DBG_vPrintf(1, "\r\nPARITY_ERROR ");
-					stx=FALSE;
+					skipGroup=TRUE;
 					lf= FALSE;
-					return 3;
+					u8BadGroups++;
 				}
 			}
 		}
@@ -257,7 +274,20 @@ uint8 APP_vProcessRxDataStandard ( void )
 		{
 			etx=FALSE;
 			carError=0;
+			skipGroup=FALSE;
+			u8BadGroups=0;
 			return 1;
+		}
+
+		/* trop de groupes invalides dans la meme trame -> meme
+		 * comportement qu'avant (erreur, compte pour la detection de mode) */
+		if (u8BadGroups>=TIC_MAX_BAD_GROUPS)
+		{
+			DBG_vPrintf(1, "\r\nBAD GROUPS >= %d",u8BadGroups);
+			stx=FALSE;
+			skipGroup=FALSE;
+			u8BadGroups=0;
+			return 3;
 		}
 
 		if (carError>=10)
@@ -268,7 +298,7 @@ uint8 APP_vProcessRxDataStandard ( void )
 			return 2;
 		}
 
-		if (stx)
+		if (stx && !skipGroup)
 		{
 
 			if( TRUE == bSL_ReadMessageStandard(     MAX_PACKET_SIZE,
@@ -840,9 +870,13 @@ uint8 APP_vProcessRxDataStandard ( void )
 			}else{
 				if (au8Error==1)
 				{
+					/* groupe invalide (CRC, separateur, LF manquant...)
+					 * -> on l'ignore et on attend le prochain LF au lieu
+					 * d'abandonner le reste de la trame */
 					DBG_vPrintf(1, "\r\nCRC ERROR");
-					stx=FALSE;
-					return 3;
+					skipGroup=TRUE;
+					lf=FALSE;
+					u8BadGroups++;
 				}
 			}
 		}else{
